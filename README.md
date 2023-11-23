@@ -1,13 +1,13 @@
 # Hey Dev Leaguers
 
-# **Here's how to collaborate on the Dev League Official Website Project👇🏾**
+## **Here's how to collaborate on the Dev League Official Website Project👇🏾**
 
-**Step 1: Fork the Repository**
+### Step 1: Fork the Repository
 
 1. Go to the main page of the repository.
 2. Click on the **Fork** button in the upper right corner.
 
-**Step 2: Clone the Forked Repository**
+### Step 2: Clone the Forked Repository
 
 1. Go to your forked repository.
 2. Click on the **Code** button.
@@ -16,25 +16,25 @@
 5. Navigate to the directory where you want to clone the repository.
 6. Run the following command:
 
-```
+```git
 git clone https://github.com/moboluwade/dev-league.git
 ```
 
-**Step 3: Create a New Branch**
+### Step 3: Create a New Branch
 
 1. Navigate into the cloned repository.
 2. Run the following command to create a new branch:
 
-```
+```git
 git checkout -b setup
 ```
 
-**Step 4: Make Your Changes**
+### Step 4: Make Your Changes
 
 1. Open the project in your favorite code editor.
 2. Make your changes.
 
-**Step 5: Commit and Push Your Changes**
+### Step 5: Commit and Push Your Changes
 
 1. Stage your changes by running: `git add .`
 
@@ -42,7 +42,7 @@ git checkout -b setup
 
 3. Push your changes by running: `git push origin \<branch-name\>`
 
-**Step 6: Create a Pull Request**
+### Step 6: Create a Pull Request
 
 1. Go to the original repository you created your fork from.
 2. Click on the **Pull requests** tab.
