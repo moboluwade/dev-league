@@ -5,7 +5,6 @@ function App() {
 
   return (
     <div>
-      <Header width={93} height={59}/>
       fix it
       <div className='text-black'>thid is not good </div>
     </div>
