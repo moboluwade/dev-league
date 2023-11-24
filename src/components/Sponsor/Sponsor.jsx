@@ -10,11 +10,6 @@ const Sponsor = () => {
         <div className="p-4"><Bloomberg /></div>
         <div className="p-4"><Gizmodo /></div>
         <div className="p-4"><Forbes /></div>
-        
-        
-        
-        
-        
       </div>
     </section>
   )

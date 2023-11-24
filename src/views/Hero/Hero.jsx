@@ -5,7 +5,7 @@ const Hero = () => {
     const [email, setEmail] = useState('')
     return (
         <main className="flex flex-col items-center w-full bg-text-dev-light-orange">
-            <div className=" lg:px-[7.5rem] md:px-12 px-4 md:text-start text-center flex md:flex-row flex-col justify-between ">
+            <div className=" lg:px-[7.5rem] md:px-12 px-4 flex flex-col justify-between text-center md:text-start md:flex-row ">
                 <div className="flex md:flex-col flex-col md:w-1/2 md:max-w-[50%] lg:pt-[9rem] md:pt-20 pt-8 md:justify-center h-full ">
                     <div className="flex flex-col md:max-w-[44rem] max-w-[30rem]">
                         <span className="pb-4 text-4xl font-bold md:text-6xl">Code or No-Code, Thrive with DEV LEAGUE!</span>
