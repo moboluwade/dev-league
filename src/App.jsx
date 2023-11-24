@@ -1,14 +1,12 @@
 import './App.css'
-import { Header } from './components/Header'
+import { Hero } from './views/Hero'
 
-function App() {
+const App = () => {
 
   return (
-    <div>
-      <Header width={93} height={59}/>
-      fix it
-      <div className='text-black'>thid is not good </div>
-    </div>
+    <>
+      <Hero />
+    </>
   )
 }
 
