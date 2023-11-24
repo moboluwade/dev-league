@@ -20,7 +20,7 @@ const Header = () => {
   ]
 
   return (
-    <div className="flex justify-between items-center h-auto bg-white py-6 text mx-20">
+    <div className="flex items-center justify-between h-auto py-6 mx-20 bg-white text">
       <Link to="/">
         <img src="/Union.png" alt="logo" />
       </Link>
