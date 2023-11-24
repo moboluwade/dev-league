@@ -1,4 +1,5 @@
 import './App.css'
+import { Sponsor } from './components/Sponsor'
 import { Hero } from './views/Hero'
 
 const App = () => {
@@ -6,6 +7,7 @@ const App = () => {
   return (
     <>
       <Hero />
+      <Sponsor />
     </>
   )
 }

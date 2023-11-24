@@ -11,7 +11,7 @@ const Hero = () => {
                         <span className="pb-4 text-4xl font-bold md:text-6xl">Code or No-Code, Thrive with DEV LEAGUE!</span>
                         <span className="pb-9 md:pb-6 mx-auto md:ml-0 md:max-w-[30rem] max-w-[20rem] opacity-80">Here, you&apos;ll find the right resources and support to take your tech career to the next level. </span>
                     </div>
-                    <div className="md:flex flex-row relative md:visible hidden w-full md:min-w-[23rem]">
+                    <div className="md:flex flex-row relative md:visible hidden w-10/12 md:min-w-[23rem]">
                         <input
                             className="w-full focus:outline-none focus:border-text-dev-orange focus:border-opacity-80 focus:border-2 shadow-input pl-6 h-16 bg-white rounded-[3rem] placeholder:opacity-40 placeholder:font-normal placeholder:text-text-dev-faded-base text-text-dev-faded-base"
                             value={email}
@@ -27,7 +27,7 @@ const Hero = () => {
                         </motion.button>
                     </div>
                 </div>
-                <div className="flex flex-col items-end pb-6 pl-6 md:pb-0 md:w-1/2 lg:pt-10 md:pt-8 ">
+                <div className="flex flex-col items-end pb-6 pl-6 md:pb-8 md:w-1/2 lg:pt-10 md:pt-8 ">
                     <img
                         className="lg:w-[27rem] m-auto"
                         src="/hero-image.png"
