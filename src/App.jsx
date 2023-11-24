@@ -1,12 +1,14 @@
+import { Outlet } from 'react-router-dom'
 import './App.css'
-import { Hero } from './views/Hero'
+import { Header } from './components/Header'
 
 const App = () => {
-
   return (
-    <>
-      <Hero />
-    </>
+    <div>
+      <Header />
+      <Outlet />
+    </div>
+
   )
 }
 
