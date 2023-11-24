@@ -1,12 +1,12 @@
 import './App.css'
 import { Hero } from './views/Hero'
 
-const  App =()=> {
+const App = () => {
 
   return (
-    <div>
-     <Hero />
-    </div>
+    <>
+      <Hero />
+    </>
   )
 }
 
