@@ -1,5 +1,5 @@
-import { Sponsor } from './components/Sponsor'
-import { Hero } from './views/Hero'
+import { Sponsor } from '../../components/Sponsor'
+import { Hero } from '../../views/Hero'
 
 const Home = () => {
   return (

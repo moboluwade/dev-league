@@ -6,7 +6,7 @@ const Hero = () => {
     return (
         <main className="flex flex-col items-center w-full bg-text-dev-light-orange">
             <div className=" lg:px-[7.5rem] md:px-12 px-4 flex flex-col justify-between text-center md:text-start md:flex-row ">
-                <div className="flex md:flex-col flex-col md:w-1/2 md:max-w-[50%] lg:pt-[9rem] md:pt-20 pt-8 md:justify-center h-full ">
+                <div className="flex md:flex-col flex-col md:w-1/2 md:max-w-[50%] lg:pt-[7rem] md:pt-20 pt-8 md:justify-center h-full ">
                     <div className="flex flex-col md:max-w-[44rem] max-w-[30rem]">
                         <span className="pb-4 text-4xl font-bold md:text-6xl">Code or No-Code, Thrive with DEV LEAGUE!</span>
                         <span className="pb-9 md:pb-6 mx-auto md:ml-0 md:max-w-[30rem] max-w-[20rem] opacity-80">Here, you&apos;ll find the right resources and support to take your tech career to the next level. </span>
@@ -22,7 +22,7 @@ const Hero = () => {
                             whileHover={{ scale: 1.1, x: -6 }}
                             whileTap={{ scale: 1.05 }}
                             transition={{ duration: 0.5 }}
-                            className="absolute right-[0.5rem] top-[0.5rem] flex flex-col justify-center text-white text-center w-40 h-12 bg-text-dev-orange font-semibold text-base py-4 px-5 rounded-[3rem]">
+                            className="absolute right-[0.5rem] top-[0.5rem] flex flex-col justify-center text-white text-center w-fit h-12 bg-text-dev-orange font-semibold py-4 px-5 rounded-[3rem]">
                             Get started now
                         </motion.button>
                     </div>
