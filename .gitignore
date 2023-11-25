@@ -23,9 +23,13 @@ dist-ssr
 *.sln
 *.sw?
 <<<<<<< HEAD
+<<<<<<< HEAD
 .history
 =======
 
 # folders to ignore
 src/components/Header
 >>>>>>> 6cf97eeb084ef24cdf2b242e2244ea01eb5889e8
+=======
+.history
+>>>>>>> 9c1bd72da3691f9bf69e077cb35e9a883821c078

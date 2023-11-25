@@ -2,13 +2,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 .text {
     font-size: 16px;
@@ -21,4 +16,18 @@ body{
   padding: 0;
   
 >>>>>>> 6cf97eeb084ef24cdf2b242e2244ea01eb5889e8
+=======
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+.text {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 19px;
+>>>>>>> 9c1bd72da3691f9bf69e077cb35e9a883821c078
 }
