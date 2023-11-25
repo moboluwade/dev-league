@@ -9,9 +9,16 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+<<<<<<< HEAD
 .text {
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
     line-height: 19px;
+=======
+body{
+  margin: 0;
+  padding: 0;
+  
+>>>>>>> 6cf97eeb084ef24cdf2b242e2244ea01eb5889e8
 }

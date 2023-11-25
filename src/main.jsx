@@ -1,3 +1,4 @@
+import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
@@ -11,6 +12,7 @@ import Shop from './pages/Shop/Shop.jsx'
 const router = createBrowserRouter([
   {
     path: '/',
+<<<<<<< HEAD
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
@@ -35,4 +37,14 @@ const router = createBrowserRouter([
 ])
 ReactDOM.createRoot(document.getElementById('root')).render(
   <RouterProvider router={router} />,
+=======
+    element:
+      <App />
+  },
+])
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+>>>>>>> 6cf97eeb084ef24cdf2b242e2244ea01eb5889e8
 )
