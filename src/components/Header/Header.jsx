@@ -28,14 +28,19 @@ const Header = () => {
       <div>
         {links.map((link) => {
           return (
-            <NavLink to={link.path} key={link.title} className="pr-12" end>
+            <NavLink
+              to={link.path}
+              key={link.title}
+              className="hidden md:inline pr-12"
+              end
+            >
               {link.title}
             </NavLink>
           )
         })}
       </div>
       <div>
-        <button className="uppercase">donate</button>
+        <button className="uppercase btn">donate</button>
       </div>
     </div>
   )

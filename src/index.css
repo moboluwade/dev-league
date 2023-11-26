@@ -2,32 +2,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 .text {
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
     line-height: 19px;
-=======
-body{
-  margin: 0;
-  padding: 0;
-  
->>>>>>> 6cf97eeb084ef24cdf2b242e2244ea01eb5889e8
-=======
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
 }
 
-.text {
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 19px;
->>>>>>> 9c1bd72da3691f9bf69e077cb35e9a883821c078
+.btn {
+    padding: 16px 20px;
+    gap: 8px;
+    border-radius: 8px;
+    background: var(--primary-500, #fd4f13);
+    box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+    color: white;
 }
