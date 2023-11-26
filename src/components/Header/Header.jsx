@@ -21,7 +21,7 @@ const Header = () => {
   ]
 
   return (
-    <div className="flex items-center justify-between h-auto py-6 mx-20 bg-white text">
+    <div className="flex items-center justify-between h-auto py-6 mx-8 md:mx-20 bg-white text">
       <Link to="/">
         <img src="/Union.png" alt="logo" />
       </Link>
@@ -39,8 +39,16 @@ const Header = () => {
           )
         })}
       </div>
-      <div>
-        <button className="uppercase btn">donate</button>
+      <div className="flex items-center justify-between gap-8">
+        <button className="uppercase btn">
+          <span>donate</span>
+        </button>
+
+        <img
+          src="/List.png"
+          alt="bar"
+          className="block md:hidden cursor-pointer icon"
+        />
       </div>
     </div>
   )
