@@ -21,9 +21,9 @@ const Header = () => {
   ]
 
   return (
-    <div className="flex items-center justify-between h-auto py-6 mx-8 md:mx-20 bg-white text">
+    <div className="flex items-center justify-between h-auto py-4 md:py-6 mx-8 md:mx-20 bg-white text">
       <Link to="/">
-        <img src="/Union.png" alt="logo" />
+        <img src="/Union.png" alt="logo" className="w-20 h-auto" />
       </Link>
       <div>
         {links.map((link) => {
@@ -41,7 +41,7 @@ const Header = () => {
       </div>
       <div className="flex items-center justify-between gap-8">
         <button className="uppercase btn">
-          <span>donate</span>
+          <span className="text-sm">donate</span>
         </button>
 
         <img

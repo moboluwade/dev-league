@@ -35,8 +35,16 @@ body {
     color: var(--primary-500, #fd4f13);
 }
 
+.icon {
+    width: 1rem;
+}
+
 @media (max-width: 678px) {
-    .btn {
-        padding: 6px 10px;
+    .btn>span {
+        padding: 5px 10px;
+    }
+    .icon {
+        width: 2rem;
+        height: 5rem;
     }
 }
