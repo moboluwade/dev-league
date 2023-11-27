@@ -1,0 +1,267 @@
+.form {
+  border: 1px solid #c5bdb9;
+  padding: 30px 25px;
+  border-radius: 5px;
+  box-shadow: 0px 0.72234px 1.44468px 0px rgba(16, 24, 40, 0.05);
+}
+
+.form__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form__header h3 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 30px;
+  letter-spacing: -0.5px;
+  margin-bottom: 20px;
+}
+
+.form__radio {
+  display: flex;
+  gap: 20px;
+}
+
+.form__input-group {
+  border: 1px solid #c5bdb9;
+  box-shadow: 0px 0.72234px 1.44468px 0px rgba(16, 24, 40, 0.05);
+  border-radius: 5px;
+  height: 45px;
+  width: 120px;
+  position: relative;
+  /* box-shadow: 0 50px 100px rgba(#b63e3e 0.9); */
+}
+
+.form__input-select {
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--neutral-800, #292422);
+}
+
+.form__input-select:focus {
+  outline: none;
+}
+
+.form__radio-group label {
+  position: relative;
+  cursor: pointer;
+}
+
+.original-radio {
+  display: none;
+}
+
+.form__radio-group .custom-button {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  border: 3px solid #fd4f13;
+  border-radius: 50%;
+  transform: translateY(4px);
+  margin-right: 5px;
+  position: relative;
+}
+
+.form__radio-group .custom-button::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: #fd4f13;
+  visibility: hidden;
+  transition: all 0.2s;
+}
+
+.original-radio:checked + label .custom-button::after {
+  visibility: visible;
+}
+
+.original-radio:checked + label {
+  font-weight: 600;
+}
+
+.form__radio-group label {
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+/*////////////// MAIN ////////////////*/
+
+.form__main {
+  margin: 25px 0;
+}
+
+.form__main--upper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: 25px 0;
+  gap: 15px;
+}
+
+.price-label {
+  padding: 5px 8px;
+  border-radius: 3px;
+  box-shadow: 0px 0.72234px 1.44468px 0px rgba(16, 24, 40, 0.05);
+  font-size: 24px;
+  font-weight: 600;
+  border-radius: 5px;
+  border: 1px solid #c5bdb9;
+  transition: all 0.2s;
+  cursor: pointer;
+  /* min-width: 100px; */
+}
+
+.price-radio {
+  display: none;
+}
+
+.price-radio:checked + .price-label {
+  background-color: #fd4f13;
+  color: #fff;
+}
+
+.form__main--lower {
+  width: 100%;
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  /* align-items: center; */
+}
+
+.form__main--text {
+  border: 1px solid #c5bdb9;
+  box-shadow: 0px 0.72234px 1.44468px 0px rgba(16, 24, 40, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.form__main--text .amount {
+  font-size: 14px;
+  font-weight: 500;
+  border-left: 1px solid #c5bdb9;
+  height: 100%;
+  margin-left: 5px;
+  padding-left: 4px;
+  background-color: transparent;
+}
+
+.form__main--text input:focus {
+  outline: none;
+}
+
+.form__main--text label {
+  font-size: 20px;
+  font-weight: 600;
+  padding-left: 5px;
+}
+
+.form__main--text input::placeholder {
+  font-weight: 600;
+  font-size: inherit;
+  color: black;
+}
+
+.form__footer--button {
+  padding: 5px 30px;
+  border-radius: 3px;
+  box-shadow: 0px 0.72234px 1.44468px 0px rgba(16, 24, 40, 0.05);
+  font-size: 24px;
+  font-weight: 600;
+  border-radius: 5px;
+  border: 1px solid #c5bdb9;
+  transition: all 0.2s;
+  cursor: pointer;
+  background-color: #fd4f13;
+  color: #fff;
+}
+
+.form__footer--button:hover {
+  filter: brightness(0.8);
+}
+
+.invalid {
+  color: #fd4f13;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 900px) {
+  .form__header h3 {
+    font-size: 16px;
+    margin-bottom: 2px;
+  }
+  .form__radio-group .custom-button {
+    height: 15px;
+    width: 15px;
+    font-size: 9px;
+  }
+  .form__radio-group .custom-button::after {
+    width: 5px;
+    height: 5px;
+  }
+  .form__radio-group label {
+    font-size: 10px;
+  }
+
+  .form__input-select {
+    font-size: 11px;
+  }
+
+  .form__input-group {
+    height: 30px;
+  }
+
+  .price-label {
+    font-size: 16px;
+    padding: 5px 20px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .form__input-select {
+    background-color: transparent;
+  }
+
+  .form__footer--button {
+    padding: 5px 15px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .form__main--text {
+    width: 60%;
+  }
+
+  .last-btn-container {
+    width: 100%;
+  }
+
+  .price-label {
+    padding: 5px 8px;
+    width: 100%;
+    display: inline-block;
+  }
+
+  .form {
+    padding: 30px 15px;
+  }
+  .form__radio {
+    gap: 5px;
+  }
+}
