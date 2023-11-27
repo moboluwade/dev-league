@@ -1,5 +1,6 @@
-import { Sponsor } from '../../components/Sponsor'
-import { Hero } from '../../views/Hero'
+import { Sponsor } from "../../components/Sponsor";
+import { Hero } from "../../views/Hero";
+import { Donation } from "../../views/Donation";
 
 const Home = () => {
   return (
@@ -8,8 +9,9 @@ const Home = () => {
       {/*  lg:px-[7.5rem] md:px-12 px-4  */}
       <Hero />
       <Sponsor />
+      <Donation />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
