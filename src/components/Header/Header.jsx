@@ -1,4 +1,7 @@
 import { Link, NavLink } from 'react-router-dom'
+import { FiBarChart } from 'react-icons/fi'
+import { RxCross1 } from 'react-icons/rx'
+import { useState } from 'react'
 
 const Header = () => {
   const links = [
@@ -20,6 +23,12 @@ const Header = () => {
     },
   ]
 
+  const [togglerNav, setTogglerNav] = useState(false)
+
+  const handleTogglerClick = () => {
+    setTogglerNav(!togglerNav)
+  }
+
   return (
     <div className="flex items-center justify-between h-auto py-4 md:py-6 mx-8 md:mx-20 bg-white text">
       <Link to="/">
@@ -31,7 +40,9 @@ const Header = () => {
             <NavLink
               to={link.path}
               key={link.title}
-              className="hidden md:inline pr-12"
+              className={
+                togglerNav ? 'flex flex-col gap-4' : 'hidden md:inline pr-12'
+              }
               end
             >
               {link.title}
@@ -39,16 +50,23 @@ const Header = () => {
           )
         })}
       </div>
-      <div className="flex items-center justify-between gap-8">
+      <div className="flex items-center justify-between gap-10">
         <button className="uppercase btn">
           <span className="text-sm">donate</span>
         </button>
-
-        <img
-          src="/List.png"
-          alt="bar"
-          className="block md:hidden cursor-pointer icon"
-        />
+        {togglerNav ? (
+          <RxCross1
+            className="block md:hidden cursor-pointer icon"
+            onClick={handleTogglerClick}
+          />
+        ) : (
+          <FiBarChart
+            className="block md:hidden cursor-pointer icon"
+            style={{ transform: 'rotate(270deg)' }}
+            color="#fd4f13"
+            onClick={handleTogglerClick}
+          />
+        )}
       </div>
     </div>
   )

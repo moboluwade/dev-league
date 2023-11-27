@@ -41,10 +41,16 @@ body {
 
 @media (max-width: 678px) {
     .btn>span {
-        padding: 5px 10px;
+        padding: 2px 6px;
     }
     .icon {
-        width: 2rem;
-        height: 5rem;
+        height: 31.2px;
     }
+}
+
+.text {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 19px;
 }
