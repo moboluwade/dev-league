@@ -22,11 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-<<<<<<< HEAD
-<<<<<<< HEAD
 .history
-=======
 
-# folders to ignore
-src/components/Header
+# folders to ignore in dev
+src/components/Impact
 .history
