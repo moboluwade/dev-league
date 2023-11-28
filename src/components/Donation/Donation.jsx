@@ -29,9 +29,9 @@ const Donation = () => {
               Our mission is to empower and enhance the economic potential of
               one million African youths in the tech sector through training and
               resources. By supporting us, you help these individuals make a
-              meaningful contribution to Africa's social and economic
+              meaningful contribution to Africa&apos;s social and economic
               development. Make a donation today and be the catalyst for
-              changing someone's life.
+              changing someone&apos;s life.
             </p>
           </div>
         </div>
