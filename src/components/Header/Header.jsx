@@ -25,7 +25,7 @@ const Header = () => {
 
   const [togglerNav, setTogglerNav] = useState(false)
 
-  const handleTogglerClick = () => {
+  const handleClick = () => {
     setTogglerNav(!togglerNav)
   }
 
@@ -34,6 +34,7 @@ const Header = () => {
       <Link to="/">
         <img src="/Union.png" alt="logo" className="w-20 h-auto" />
       </Link>
+
       <div>
         {links.map((link) => {
           return (
@@ -41,7 +42,7 @@ const Header = () => {
               to={link.path}
               key={link.title}
               className={
-                togglerNav ? 'flex flex-col gap-4' : 'hidden md:inline pr-12'
+                togglerNav ? 'flex flex-col pb-8' : 'hidden md:inline pr-12'
               }
               end
             >
@@ -50,24 +51,26 @@ const Header = () => {
           )
         })}
       </div>
-      <div className="flex items-center justify-between gap-10">
-        <button className="uppercase btn">
-          <span className="text-sm">donate</span>
-        </button>
+
+      <div
+        className="md:hidden absolute top-5 right-6 cursor-pointer"
+        style={{ color: '#fd4f13', fontSize: '3rem' }}
+        onClick={handleClick}
+      >
         {togglerNav ? (
-          <RxCross1
-            className="block md:hidden cursor-pointer icon"
-            onClick={handleTogglerClick}
-          />
+          <RxCross1 />
         ) : (
           <FiBarChart
-            className="block md:hidden cursor-pointer icon"
-            style={{ transform: 'rotate(270deg)' }}
-            color="#fd4f13"
-            onClick={handleTogglerClick}
+            style={{
+              transform: 'rotate(270deg)',
+            }}
           />
         )}
       </div>
+
+      <button className="uppercase mr-20 md:mr-0 btn">
+        <span className="text-sm">donate</span>
+      </button>
     </div>
   )
 }
