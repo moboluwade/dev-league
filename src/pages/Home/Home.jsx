@@ -1,6 +1,7 @@
 import { Sponsor } from "../../components/Sponsor";
 import { Hero } from "../../views/Hero";
 import { Donation } from "../../views/Donation";
+import { Impact } from "../../views/Impact/Impact";
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <Hero />
       <Sponsor />
       <Donation />
+      <Impact />
     </>
   );
 };

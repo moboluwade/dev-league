@@ -1,7 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import './App.css'
 import { Header } from './components/Header'
-import Impact from './views/Impact/Impact'
 
 
 const App = () => {
@@ -9,7 +8,6 @@ const App = () => {
     <>
       <div>
         <Header />
-        <Impact />
         <Outlet />
       </div>
     </>

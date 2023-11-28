@@ -31,7 +31,7 @@ const Donation = () => {
               resources. By supporting us, you help these individuals make a
               meaningful contribution to Africa&apos;s social and economic
               development. Make a donation today and be the catalyst for
-              changing someone`&apos;`s life.
+              changing someone&apos;s life.
             </p>
           </div>
         </div>
