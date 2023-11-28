@@ -1,7 +1,7 @@
 import { Sponsor } from "../../components/Sponsor";
 import { Hero } from "../../views/Hero";
 import { Donation } from "../../views/Donation";
-import { Impact } from "../../views/Impact/Impact";
+import { Impact } from "../../views/Impact";
 
 const Home = () => {
   return (
