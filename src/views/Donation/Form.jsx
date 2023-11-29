@@ -84,6 +84,8 @@ const Form = (props) => {
       return;
     }
 
+    props.onOpen(currency, amount);
+
     props.openModal();
   };
 

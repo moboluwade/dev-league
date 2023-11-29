@@ -1,10 +1,13 @@
 import { useState } from "react";
+import Modal from "../../UI/Modal";
+import PaymentModal from "./PaymentModal.jsx";
 import Form from "./Form";
 import "./Donation.css";
-import Modal from "../../UI/Modal";
 
 const Donation = () => {
   const [showModal, setShowModal] = useState(false);
+  const [amount, setAmount] = useState("");
+  const [currency, setCurrency] = useState("");
 
   const showModalHandler = () => {
     setShowModal(true);
@@ -12,6 +15,11 @@ const Donation = () => {
 
   const hideModalHandler = () => {
     setShowModal(false);
+  };
+
+  const getValueHandler = (currency, amount) => {
+    setCurrency(currency);
+    setAmount(amount);
   };
 
   return (
@@ -36,9 +44,13 @@ const Donation = () => {
           </div>
         </div>
         <div className="form-container">
-          <Form openModal={showModalHandler} />
+          <Form openModal={showModalHandler} onOpen={getValueHandler} />
         </div>
-        {showModal && <Modal onClose={hideModalHandler}>In Progress....</Modal>}
+        {showModal && (
+          <Modal onClose={hideModalHandler}>
+            <PaymentModal price={amount} currency={currency} />
+          </Modal>
+        )}
       </div>
     </section>
   );

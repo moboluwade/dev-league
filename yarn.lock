@@ -1652,7 +1652,7 @@
   "resolved" "https://registry.npmjs.org/prelude-ls/-/prelude-ls-1.2.1.tgz"
   "version" "1.2.1"
 
-"prop-types@^15.8.1":
+"prop-types@^15.5.6", "prop-types@^15.8.1":
   "integrity" "sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg=="
   "resolved" "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   "version" "15.8.1"
@@ -1699,7 +1699,14 @@
   dependencies:
     "@remix-run/router" "1.13.0"
 
-"react@^18.0.0", "react@^18.2.0", "react@>=16.8":
+"react-text-mask@^5.5.0":
+  "integrity" "sha512-SLJlJQxa0uonMXsnXRpv5abIepGmHz77ylQcra0GNd7Jtk4Wj2Mtp85uGQHv1avba2uI8ZvRpIEQPpJKsqRGYw=="
+  "resolved" "https://registry.npmjs.org/react-text-mask/-/react-text-mask-5.5.0.tgz"
+  "version" "5.5.0"
+  dependencies:
+    "prop-types" "^15.5.6"
+
+"react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^18.0.0", "react@^18.2.0", "react@>=16.8":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   "version" "18.2.0"
