@@ -13,7 +13,7 @@ const Hero = () => {
             </span>
             <span className="pb-9 md:pb-6 mx-auto md:ml-0 md:max-w-[30rem] max-w-[20rem] opacity-80">
               Here, you&apos;ll find the right resources and support to take
-              your tech career to the next level.{' '}
+              your tech career to the next level.
             </span>
           </div>
           <div className="md:flex flex-row relative md:visible hidden w-10/12 md:min-w-[23rem]">
