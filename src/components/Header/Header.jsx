@@ -35,21 +35,20 @@ const Header = () => {
         <img src="/Union.png" alt="logo" className="w-20 h-auto" />
       </Link>
 
-      <div>
-        {links.map((link) => {
-          return (
-            <NavLink
-              to={link.path}
-              key={link.title}
-              className={
-                togglerNav ? 'flex flex-col pb-8' : 'hidden md:inline pr-12'
-              }
-              end
-            >
-              {link.title}
-            </NavLink>
-          )
-        })}
+      <div
+        className={`md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 duration-500 md:w-auto w-full flex items-center px-5 md:z-[auto] z-[99] ${
+          togglerNav ? 'top-[9%]' : 'top-[-100%]'
+        }`}
+      >
+        <div className="flex md:flex-row flex-col md:items-center md:gap-[3vw] gap-6">
+          {links.map((link) => {
+            return (
+              <NavLink to={link.path} key={link.title} end>
+                {link.title}
+              </NavLink>
+            )
+          })}
+        </div>
       </div>
 
       <div
