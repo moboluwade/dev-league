@@ -6,8 +6,8 @@ const Footer = () => {
     const [email, setEmail] = useState('')
     return (
         <footer className="flex flex-col items-center text-white bg-dev-black">
-            <div className="justify-between max-w-[87.5rem] w-full lg:px-[7rem] px-8 py-12 md:px-12">
-                <div className="flex flex-col justify-center py-16 md:justify-start md:flex-row ">
+            <div className="justify-between max-w-[87.5rem] w-full lg:px-[7rem] px-8 py-4 md:px-12">
+                <div className="flex flex-col justify-center py-4 md:py-16 md:justify-start md:flex-row ">
                     <div className="flex flex-col items-center w-full text-center md:w-1/2 md:text-left md:items-start">
                         <span className="md:text-[2rem] text-2xl font-bold tracking-[-0.05rem]">Join our mailing list</span>
                         <span className="text-xs font-normal md:text-xl lg:w-full md:w-11/12 md:pt-1">Stay up to date with the latest news, announcements, and articles.</span>
