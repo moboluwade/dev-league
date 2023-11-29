@@ -147,42 +147,48 @@ const Form = (props) => {
 
       <div className="form__main">
         <div className="form__main--upper">
-          <input
-            className="price-radio"
-            type="radio"
-            value="10"
-            id="_10"
-            name="price"
-            onChange={setAmountHandler}
-            checked={isChecked._10}
-          />
-          <label className="price-label" htmlFor="_10">
-            {currency} 10.0
-          </label>
-          <input
-            className="price-radio"
-            type="radio"
-            value="20"
-            id="_20"
-            name="price"
-            onChange={setAmountHandler}
-            checked={isChecked._20}
-          />
-          <label className="price-label" htmlFor="_20">
-            {currency} 20.0
-          </label>
-          <input
-            className="price-radio"
-            type="radio"
-            value="50"
-            id="_50"
-            name="price"
-            onChange={setAmountHandler}
-            checked={isChecked._50}
-          />
-          <label className="price-label" htmlFor="_50">
-            {currency} 50.0
-          </label>
+          <div className="input-group">
+            <input
+              className="price-radio"
+              type="radio"
+              value="10"
+              id="_10"
+              name="price"
+              onChange={setAmountHandler}
+              checked={isChecked._10}
+            />
+            <label className="price-label" htmlFor="_10">
+              {currency} 10.0
+            </label>
+          </div>
+          <div className="input-group">
+            <input
+              className="price-radio"
+              type="radio"
+              value="20"
+              id="_20"
+              name="price"
+              onChange={setAmountHandler}
+              checked={isChecked._20}
+            />
+            <label className="price-label" htmlFor="_20">
+              {currency} 20.0
+            </label>
+          </div>
+          <div className="input-group">
+            <input
+              className="price-radio"
+              type="radio"
+              value="50"
+              id="_50"
+              name="price"
+              onChange={setAmountHandler}
+              checked={isChecked._50}
+            />
+            <label className="price-label" htmlFor="_50">
+              {currency} 50.0
+            </label>
+          </div>
         </div>
         <div className="form__main--lower">
           <div className="last-btn-container">

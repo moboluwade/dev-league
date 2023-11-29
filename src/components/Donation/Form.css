@@ -122,7 +122,6 @@
   border: 1px solid #c5bdb9;
   transition: all 0.2s;
   cursor: pointer;
-  /* min-width: 100px; */
 }
 
 .price-radio {
@@ -139,7 +138,6 @@
   display: flex;
   gap: 15px;
   justify-content: space-between;
-  /* align-items: center; */
 }
 
 .form__main--text {
@@ -203,24 +201,15 @@
 
 @media screen and (max-width: 900px) {
   .form__header h3 {
-    /* font-size: 16px; */
     margin-bottom: 2px;
   }
   .form__radio-group .custom-button {
     height: 15px;
     width: 15px;
-    /* font-size: 9px; */
   }
   .form__radio-group .custom-button::after {
     width: 5px;
     height: 5px;
-  }
-  .form__radio-group label {
-    /* font-size: 10px; */
-  }
-
-  .form__input-select {
-    /* font-size: 11px; */
   }
 
   .form__input-group {
@@ -228,7 +217,7 @@
   }
 
   .price-label {
-    /* font-size: 16px; */
+    font-size: 16px;
     padding: 5px 20px;
   }
 }

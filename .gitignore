@@ -23,3 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 .history
+
+# folders to ignore in dev
+src/components/Impact
+.history
