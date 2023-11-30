@@ -1,4 +1,3 @@
-import React from 'react'
 import { useState } from "react";
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
