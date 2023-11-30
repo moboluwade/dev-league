@@ -6,7 +6,7 @@ import { Footer } from './components/Footer'
 const App = () => {
   return (
     <>
-      <div>
+      <div className='min-h-screen'>
         <Header />
         <Outlet />
         <Footer />
