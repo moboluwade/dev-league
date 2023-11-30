@@ -27,3 +27,9 @@ dist-ssr
 src/components/Header
 .history
 yarn.lock
+.history
+
+# folders to ignore in dev
+src/components/Impact
+.history
+
