@@ -22,13 +22,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# folders to ignore
+src/components/Header
+.history
+yarn.lock
 .history
 
 # folders to ignore in dev
 src/components/Impact
 .history
-<<<<<<< HEAD
->>>>>>> 9c1bd72da3691f9bf69e077cb35e9a883821c078
-yarn.lock
-=======
->>>>>>> origin/main
+
