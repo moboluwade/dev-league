@@ -9,11 +9,38 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+.logo {
+    width: 96.93px;
+    height: 59.811px;
+}
+
 .text {
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
     line-height: 19px;
+}
+
+.textBig {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px;
+}
+
+.textLight {
+    color: var(--neutral-600, #7a6c65);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+}
+
+.btn-red {
+    color: #fd4f13;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    text-decoration-line: underline;
 }
 
 .btn {
@@ -37,6 +64,10 @@ body {
 
 .icon {
     width: 1rem;
+}
+
+.innerWidth {
+    width: 28rem;
 }
 
 @media (max-width: 678px) {
