@@ -36,7 +36,7 @@ const Header = () => {
       </Link>
 
       <div
-        className={`md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 duration-500 md:w-auto w-full flex items-center px-5 md:z-[auto] z-[99] ${
+        className={`md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 duration-700 ease-in-out md:w-auto w-full flex items-center px-5 md:z-[auto] z-[99] ${
           togglerNav ? 'top-[9%]' : 'top-[-100%]'
         }`}
       >
