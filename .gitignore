@@ -24,7 +24,6 @@ dist-ssr
 *.sw?
 
 # folders to ignore
-src/components/Header
 .history
 yarn.lock
 .history

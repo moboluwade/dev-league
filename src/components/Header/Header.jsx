@@ -1,36 +1,36 @@
-import { Link, NavLink } from 'react-router-dom'
-import { FiBarChart } from 'react-icons/fi'
-import { RxCross1 } from 'react-icons/rx'
-import { useState } from 'react'
+import { Link, NavLink } from "react-router-dom";
+import { FiBarChart } from "react-icons/fi";
+import { RxCross1 } from "react-icons/rx";
+import { useState } from "react";
 
 const Header = () => {
   const links = [
     {
-      title: 'About us',
-      path: '/about',
+      title: "About us",
+      path: "/about",
     },
     {
-      title: 'Events',
-      path: '/events',
+      title: "Events",
+      path: "/events",
     },
     {
-      title: 'Blog',
-      path: '/blog',
+      title: "Blog",
+      path: "/blog",
     },
     {
-      title: 'Shop',
-      path: '/shop',
+      title: "Shop",
+      path: "/shop",
     },
-  ]
+  ];
 
-  const [togglerNav, setTogglerNav] = useState(false)
+  const [togglerNav, setTogglerNav] = useState(false);
 
   const handleClick = () => {
-    setTogglerNav(!togglerNav)
-  }
+    setTogglerNav(!togglerNav);
+  };
 
   return (
-    <div className="flex items-center justify-between h-auto py-4 md:py-6 mx-8 md:mx-20 bg-white text">
+    <div className="flex items-center justify-between h-auto py-4 mx-8 bg-white md:py-6 md:mx-20 text">
       <Link to="/">
         <img src="/Union.png" alt="logo" className="w-20 h-auto" />
       </Link>
@@ -52,7 +52,7 @@ const Header = () => {
       </div>
 
       <div
-        className="md:hidden absolute top-5 right-6 cursor-pointer"
+        className="absolute cursor-pointer md:hidden top-5 right-6"
         style={{ color: '#fd4f13', fontSize: '3rem' }}
         onClick={handleClick}
       >
@@ -61,17 +61,17 @@ const Header = () => {
         ) : (
           <FiBarChart
             style={{
-              transform: 'rotate(270deg)',
+              transform: "rotate(270deg)",
             }}
           />
         )}
       </div>
 
-      <button className="uppercase mr-20 md:mr-0 btn">
+      <button className="mr-20 uppercase md:mr-0 btn">
         <span className="text-sm">donate</span>
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
