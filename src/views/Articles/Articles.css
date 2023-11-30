@@ -1,0 +1,27 @@
+.heading {
+    color: var(--dark-mode-800, #20232a);
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 44px;
+    letter-spacing: -0.72px;
+}
+
+.sub-heading {
+    color: var(--neutral-800, #292422);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+}
+
+.card {
+    width: 478.67px;
+    height: 241px;
+}
+
+.head {
+    color: var(--gray-900, #101828);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px;
+}

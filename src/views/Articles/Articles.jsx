@@ -1,13 +1,14 @@
 // import { useState } from 'react'
 import Cards from './data'
+import './Articles.css'
 
 const Articles = () => {
   // const [readMore, setReadMore] = useState(false)
   return (
     <div className="flex flex-col justify-center items-center gap-6 w-full mx-auto mt-8 text-center">
       <div>
-        <h1 className="font-bold text-3xl pb-2">Our Articles</h1>
-        <span className=" text-normal">
+        <h1 className="pb-1 heading">Our Articles</h1>
+        <span className="sub-heading">
           The latest industry news, interviews, technologies, and resources.
         </span>
       </div>
@@ -16,15 +17,15 @@ const Articles = () => {
         {Cards.map((card) => {
           const { id, desc, img, person } = card
           return (
-            <div key={id} className="flex flex-col text-start gap-4">
+            <div key={id} className="flex flex-col text-start gap-4 card">
               <div>
-                <img src={img} alt="image" />
+                <img src={img} alt="image" className="image-container" />
               </div>
-              <div className="innerWidth">
-                <h1 className="pt-4 pl-6 pb-2 textBig">
-                  {/* {readMore ? title : title.substring(0, 50)} : title} */}
+              <div className="desc">
+                <h1 className="pt-4 pl-6 pb-2 head">
+                  The Impact of DevOps on Software Development and Deployment
                 </h1>
-                <p className="pl-6 textLight">
+                <p className="pl-6 content">
                   {desc}
                   {/* <button>{readMore ? 'show less' : 'read more'}</button> */}
                 </p>

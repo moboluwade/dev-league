@@ -1,6 +1,7 @@
-import { Sponsor } from "../../components/Sponsor";
-import { Hero } from "../../components/Hero";
-import { Donation } from "../../components/Donation";
+import { Sponsor } from '../../components/Sponsor'
+import { Hero } from '../../components/Hero'
+import { Donation } from '../../components/Donation'
+import Articles from '../../views/Articles/Articles'
 // import { Impact } from "../../components/Impact";
 
 const Home = () => {
@@ -11,9 +12,10 @@ const Home = () => {
       <Hero />
       <Sponsor />
       <Donation />
+      <Articles />
       {/* <Impact /> */}
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
