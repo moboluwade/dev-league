@@ -16,27 +16,34 @@
   max-height: 85%;
   background-color: white;
   padding: 1rem;
-  border-radius: 14px;
+  border-radius: 14px !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 30;
-  animation: slide-down 300ms ease-out forwards;
-  overflow: hidden;
+  animation: zoom-out 300ms ease-out forwards;
+  animation-delay: 0.2s;
+  animation-fill-mode: backwards;
+}
+
+@media (max-width: 600px) {
+  .modal {
+    padding: 10px;
+  }
 }
 
 @media (min-width: 768px) {
   .modal {
-    width: 40rem;
+    width: 35rem;
     left: calc(50% - 20rem);
   }
 }
 
-@keyframes slide-down {
+@keyframes zoom-out {
   from {
     opacity: 0;
-    transform: translateY(-3rem);
+    transform: scale(0.2);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1);
   }
 }
