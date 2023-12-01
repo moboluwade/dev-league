@@ -32,7 +32,7 @@ const Header = () => {
   }
 
   return (
-    <div className="flex items-center justify-between h-auto py-4 md:py-6 mx-8 md:mx-20 bg-white text">
+    <div className="flex items-center justify-between h-auto py-4 mx-8 bg-white md:py-6 md:mx-20 text">
       <Link to="/">
         <img src="/Union.png" alt="logo" className="w-20 h-auto" />
       </Link>
@@ -54,7 +54,7 @@ const Header = () => {
       </div>
 
       <div
-        className="md:hidden absolute top-5 right-6 cursor-pointer transition duration-700 z-[99]"
+        className="absolute cursor-pointer md:hidden top-5 right-6"
         onClick={handleClick}
       >
         {togglerNav ? (

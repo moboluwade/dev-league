@@ -13,7 +13,7 @@ const Hero = () => {
             </span>
             <span className="pb-9 md:pb-6 mx-auto md:ml-0 md:max-w-[30rem] max-w-[20rem] opacity-80">
               Here, you&apos;ll find the right resources and support to take
-              your tech career to the next level.{' '}
+              your tech career to the next level.
             </span>
           </div>
           <div className="md:flex flex-row relative md:visible hidden w-10/12 md:min-w-[23rem]">
@@ -46,7 +46,7 @@ const Hero = () => {
           />
         </div>
         {/* mobile view email field */}
-        <div className="flex flex-row relative md:hidden w-full md:min-w-[23rem]">
+        <div className="flex flex-row relative mb-16 md:hidden w-full md:min-w-[23rem]">
           <input
             className="w-full focus:outline-none focus:border-text-dev-orange focus:border-opacity-80 focus:border-2 shadow-input pl-6 h-10 bg-white rounded-[3rem] text-sm placeholder:opacity-40 placeholder:font-normal placeholder:text-text-dev-faded-base text-text-dev-faded-base"
             value={email}
