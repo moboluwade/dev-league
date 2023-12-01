@@ -14,7 +14,7 @@ const Home = () => {
       <Impact />
       <Articles />
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

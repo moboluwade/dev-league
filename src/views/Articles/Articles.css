@@ -1,0 +1,68 @@
+.heading {
+    color: var(--dark-mode-800, #20232a);
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 44px;
+    letter-spacing: -0.72px;
+}
+
+.sub-heading {
+    color: var(--neutral-800, #292422);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+}
+
+.card {
+    width: 478.67px;
+    height: auto;
+    border-radius: 8px;
+    border: 0.5px solid var(--neutral-300, #d4cecb);
+}
+
+.desc {
+    width: 454.67px;
+    padding-bottom: 40px;
+}
+
+.head {
+    color: var(--gray-900, #101828);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px;
+}
+
+.content {
+    color: var(--neutral-600, #7a6c65);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+}
+
+button {
+    color: #fd4f13;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    text-decoration-line: underline;
+}
+
+.p-img {
+    width: 40px;
+    height: 40px;
+}
+
+.p-name {
+    color: var(--gray-900, #101828);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.p-date {
+    color: var(--neutral-600, #7a6c65);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
