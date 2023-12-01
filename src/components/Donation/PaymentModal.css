@@ -1,0 +1,147 @@
+.payment__modal {
+  padding: 10px 20px;
+  overflow: auto;
+}
+
+.payment__modal::-webkit-scrollbar {
+  width: 10px;
+}
+.payment__modal::-webkit-scrollbar-track {
+  background: #fea789;
+}
+
+.payment__modal::-webkit-scrollbar-thumb {
+  background: #fd4f13;
+}
+
+.payment__details {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  align-items: center;
+}
+
+.payment__details-input-box {
+  flex: 60%;
+}
+
+.payment__details-input {
+  width: 100%;
+}
+
+.payment__details-price-container {
+  width: 165px;
+  height: 165px;
+  text-align: center;
+  background-color: #fd4f13;
+  border-radius: 50%;
+  border: 10px solid #fea789;
+  color: #fff;
+  font-weight: 600;
+  position: relative;
+}
+
+.payment__details-price-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.payment__details-price-box h3 {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.payment__details-price-box p {
+  font-size: 48px;
+}
+
+/* GENERAL STYLING*/
+.payment__modal-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #344054;
+  margin-bottom: 5px;
+}
+
+.payment__modal-input {
+  width: 100%;
+}
+
+.payment__modal-input:focus {
+  outline: none;
+}
+
+.payment__input-container:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.payment__input-container {
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+  gap: 10px;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+}
+
+.payment__modal-svg {
+}
+
+/*-------MAIN SECTION--------*/
+
+.payment__method-paragraph {
+  font-size: 21px;
+  font-weight: 500;
+  color: #101828;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.payment__method-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.payment__methood-long {
+  flex: 100%;
+}
+
+.payment__button {
+  text-transform: uppercase;
+  margin-top: 20px;
+  background-color: #fd4f13;
+  color: #fff;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1.154px solid #fd4f13;
+  box-shadow: 0px 1.15351px 2.30702px 0px rgba(16, 24, 40, 0.05);
+  transition: all 0.2s;
+}
+
+.payment__button:hover {
+  background-color: #fd4d13e1;
+}
+
+@media screen and (max-width: 420px) {
+  .payment__modal {
+    height: 80vh;
+    padding: 10px;
+  }
+  .payment__details {
+    flex-direction: column-reverse;
+  }
+
+  .payment__method-container {
+    flex-direction: column;
+  }
+
+  .payment__details-input-box {
+    width: 100%;
+  }
+}

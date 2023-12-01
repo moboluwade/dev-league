@@ -23,13 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-# folders to ignore
-src/components/Header
-.history
+# folders to ignore in dev
 yarn.lock
 .history
-
-# folders to ignore in dev
-src/components/Impact
-.history
-
