@@ -59,7 +59,7 @@ const Header = () => {
       </div>
 
       <div
-        className="absolute cursor-pointer md:hidden right-2"
+        className="absolute cursor-pointer md:hidden right-1"
         onClick={handleClick}
       >
         {togglerNav ? (
@@ -80,21 +80,21 @@ const Header = () => {
       </div>
       {togglerNav && ( // Display the overlay only when togglerNav is true
         <div
-          className="fixed inset-0 z-40 bg-black opacity-95"
+          className="fixed md:hidden inset-0 z-40 bg-black opacity-95"
           onClick={handleClick} // Close the navigation menu when the overlay is clicked
         ></div>
       )}
 
       {/* mobile navigation menu */}
       <div
-        className={`md:hidden fixed inset-y-0 right-0 z-50 bg-white w-64 p-4 transition duration-300 transform ${
+        className={`md:hidden absolute inset-y-0 top-0 right-0 h-[554px] z-50 bg-white w-96 p-4 transition duration-300 transform ${
           togglerNav ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         {/* Navbar content goes here */}
         <div className="p-4">
-          <div className="flex justify-between items-center pb-4">
-            <h1>Main Menu</h1>
+          <div className="flex justify-between items-center pb-4 border-b-2 ">
+            <h1 className="text">Main Menu</h1>
             <RxCrossCircled style={{ fontSize: '2rem', color: '#D4CECB' }} />
           </div>
           {links.map((link) => {
