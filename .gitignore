@@ -24,6 +24,5 @@ dist-ssr
 *.sw?
 
 # folders to ignore in dev
-.history
 yarn.lock
 .history
