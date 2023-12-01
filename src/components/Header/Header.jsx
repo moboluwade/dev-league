@@ -1,34 +1,35 @@
 import { Link, NavLink } from 'react-router-dom'
 import './Header.css'
+import { motion } from 'framer-motion'
 import { FiBarChart } from 'react-icons/fi'
-import { RxCross1 } from 'react-icons/rx'
+import { RxCrossCircled } from 'react-icons/rx'
 import { useState } from 'react'
 
 const Header = () => {
   const links = [
     {
-      title: "About us",
-      path: "/about",
+      title: 'About us',
+      path: '/about',
     },
     {
-      title: "Events",
-      path: "/events",
+      title: 'Events',
+      path: '/events',
     },
     {
-      title: "Blog",
-      path: "/blog",
+      title: 'Blog',
+      path: '/blog',
     },
     {
-      title: "Shop",
-      path: "/shop",
+      title: 'Shop',
+      path: '/shop',
     },
-  ];
+  ]
 
-  const [togglerNav, setTogglerNav] = useState(false);
+  const [togglerNav, setTogglerNav] = useState(false)
 
   const handleClick = () => {
-    setTogglerNav(!togglerNav);
-  };
+    setTogglerNav(!togglerNav)
+  }
 
   return (
     <div className="flex items-center justify-between h-auto py-4 mx-8 bg-white md:py-6 md:mx-20 text">
@@ -37,8 +38,8 @@ const Header = () => {
       </Link>
 
       <div
-        className={`md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 duration-700 ease-in-out md:w-auto w-full flex items-center px-5 md:z-[auto] z-[99] ${
-          togglerNav ? 'top-[9%]' : 'top-[-100%]'
+        className={`md:static absolute bg-white md:min-h-fit min-h-[60vh] right-0 duration-700 ease-in-out md:w-auto w-60 flex items-center px-5 md:z-[auto] z-[99] ${
+          togglerNav ? 'top-[0]' : 'top-[-100%]'
         }`}
       >
         <div className="flex md:flex-row flex-col md:items-center md:gap-[3vw] gap-6">
@@ -54,25 +55,31 @@ const Header = () => {
 
       <div
         className="absolute cursor-pointer md:hidden top-5 right-6"
-        style={{ color: '#fd4f13', fontSize: '3rem' }}
         onClick={handleClick}
       >
         {togglerNav ? (
-          <RxCross1 />
+          <RxCrossCircled style={{ fontSize: '2rem', color: '#D4CECB' }} />
         ) : (
           <FiBarChart
             style={{
-              transform: "rotate(270deg)",
+              transform: 'rotate(270deg)',
+              color: '#fd4f13',
+              fontSize: '3rem',
             }}
           />
         )}
       </div>
 
-      <button className="mr-20 uppercase md:mr-0 btn">
+      <motion.button
+        whileHover={{ scale: 1.1, x: -6 }}
+        whileTap={{ scale: 1.05 }}
+        transition={{ duration: 0.5 }}
+        className="uppercase mr-20 md:mr-0 btn"
+      >
         <span className="text-sm">donate</span>
-      </button>
+      </motion.button>
     </div>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
