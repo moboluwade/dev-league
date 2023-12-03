@@ -1,4 +1,5 @@
 import Cards from './data'
+import './Articles.css'
 
 const Articles = () => {
   const SliceText = (text) => {
@@ -44,7 +45,6 @@ const Articles = () => {
                     <span className="textLight">{person.date}</span>
                   </div>
                 </div>
-
               </div>
             )
           })}
