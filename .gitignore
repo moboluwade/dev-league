@@ -22,8 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-.history
 
 # folders to ignore in dev
-src/components/Impact
+yarn.lock
 .history

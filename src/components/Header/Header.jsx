@@ -1,6 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
+import "./Header.css";
+import { motion } from "framer-motion";
 import { FiBarChart } from "react-icons/fi";
-import { RxCross1 } from "react-icons/rx";
+import { RxCrossCircled } from "react-icons/rx";
 import { useState } from "react";
 
 const Header = () => {
@@ -30,47 +32,52 @@ const Header = () => {
   };
 
   return (
-    <div className="flex items-center justify-between h-auto py-4 md:py-6 mx-8 md:mx-20 bg-white text">
+    <div className="flex items-center justify-between h-auto py-4 mx-8 bg-white md:py-6 md:mx-20 text">
       <Link to="/">
         <img src="/Union.png" alt="logo" className="w-20 h-auto" />
       </Link>
 
-      <div>
-        {links.map((link) => {
-          return (
-            <NavLink
-              to={link.path}
-              key={link.title}
-              className={
-                togglerNav ? "flex flex-col pb-8" : "hidden md:inline pr-12"
-              }
-              end
-            >
-              {link.title}
-            </NavLink>
-          );
-        })}
+      <div
+        className={`md:static absolute bg-white md:min-h-fit min-h-[60vh] right-0 duration-700 ease-in-out md:w-auto w-60 flex items-center px-5 md:z-[auto] z-[99] ${
+          togglerNav ? "top-[0]" : "top-[-100%]"
+        }`}
+      >
+        <div className="flex md:flex-row flex-col md:items-center md:gap-[3vw] gap-6">
+          {links.map((link) => {
+            return (
+              <NavLink to={link.path} key={link.title} end>
+                {link.title}
+              </NavLink>
+            );
+          })}
+        </div>
       </div>
 
       <div
-        className="md:hidden absolute top-5 right-6 cursor-pointer"
-        style={{ color: "#fd4f13", fontSize: "3rem" }}
+        className="absolute cursor-pointer md:hidden top-5 right-6"
         onClick={handleClick}
       >
         {togglerNav ? (
-          <RxCross1 />
+          <RxCrossCircled style={{ fontSize: "2rem", color: "#D4CECB" }} />
         ) : (
           <FiBarChart
             style={{
               transform: "rotate(270deg)",
+              color: "#fd4f13",
+              fontSize: "3rem",
             }}
           />
         )}
       </div>
 
-      <button className="uppercase mr-20 md:mr-0 btn">
+      <motion.button
+        whileHover={{ scale: 1.1, x: -6 }}
+        whileTap={{ scale: 1.05 }}
+        transition={{ duration: 0.5 }}
+        className="uppercase mr-20 md:mr-0 btn"
+      >
         <span className="text-sm">donate</span>
-      </button>
+      </motion.button>
     </div>
   );
 };
