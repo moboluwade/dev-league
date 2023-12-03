@@ -1,8 +1,6 @@
-// import { useState } from 'react'
 import Cards from './data'
 
 const Articles = () => {
-  // const [readMore, setReadMore] = useState(false)
   const SliceText = (text) => {
     const length = text.length;
     if (length > 65) {
@@ -34,10 +32,10 @@ const Articles = () => {
                 </div>
                 <div className="px-3 pt-5 pb-3">
                   <span className="text-xl font-semibold text-black ">
-                    {title} <a className="" href="">Read more</a>
+                    {title}
                   </span>
                   <p className="w-full pt-2 textLight">
-                    {SliceText(desc)}
+                    {SliceText(desc)} <a className="underline text-text-dev-orange" href="#">Read more</a>
                   </p>
 
                   <div className="flex items-center w-full gap-4 pt-7">
