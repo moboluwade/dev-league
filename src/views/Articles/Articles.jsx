@@ -1,51 +1,58 @@
-import { useState } from 'react'
 import Cards from './data'
 import './Articles.css'
 
 const Articles = () => {
-  const [readMore, setReadMore] = useState(false)
+  const SliceText = (text) => {
+    const length = text.length;
+    if (length > 65) {
+      const slicedText = text.slice(0, 65)
+      const newText = slicedText + "..."
+      return newText
+    } else {
+      return text+"..."
+    }
+  }
   return (
-    <div className="flex flex-col justify-center items-center gap-6 w-full mx-auto mt-8 text-center">
-      <div>
-        <h1 className="pb-1 heading">Our Articles</h1>
-        <span className="sub-heading">
-          The latest industry news, interviews, technologies, and resources.
-        </span>
-      </div>
+    <div className="flex flex-col items-center w-full pb-12 text-center text-black h-fit">
+      <div className='lg:px-[7.5rem] lg:w-[87.5rem] md:px-12 px-4 max-w-[87.5rem] flex flex-col justify-center items-center'>
 
-      <div className="flex flex-wrap justify-center items-center gap-4">
-        {Cards.map((card) => {
-          const { id, desc, img, person } = card
-          return (
-            <div key={id} className="flex flex-col text-start card">
-              <div className="w-full">
-                <img src={img} alt="image" className="image-container" />
-              </div>
-              <div className="p-[12px]">
-                <div className="desc">
-                  <h1 className="pt-4 pb-2 head">
-                    The Impact of DevOps on Software Development and Deployment
-                  </h1>
-                  <p className="content">
-                    {readMore ? desc : `${desc.substring(0, 65)}`}...
-                    <button
-                      onClick={() => setReadMore(!readMore)}
-                      className="pl-1"
-                    >
-                      {readMore ? 'Show less' : 'Read more'}
-                    </button>
+        <div className='flex flex-col pt-6 pb-9'>
+          <span className="pb-2 text-4xl font-semibold ">Our Articles</span>
+          <span className="text-lg font-normal ">
+            The latest industry news, interviews, technologies, and resources.
+          </span>
+        </div>
+
+        <div className="flex flex-row flex-wrap items-start justify-between w-full gap-8 pb-12 text-black">
+          {Cards.map((card) => {
+            const { id, title, desc, img, person } = card
+            return (
+              <div key={id} className="flex flex-col border border-[#D4CECB] lg:max-w-[22rem] max-w-[18rem] bg-white rounded-lg text-start">
+                <div>
+                  <img className='w-full rounded-t-lg' src={img} alt="image" />
+                </div>
+                <div className="px-3 pt-5 pb-3">
+                  <span className="text-xl font-semibold text-black ">
+                    {title}
+                  </span>
+                  <p className="w-full pt-2 textLight">
+                    {SliceText(desc)} <a className="underline text-text-dev-orange" href="#">Read more</a>
                   </p>
-                </div>
 
-                <div className="flex gap-4 items-center">
-                  <img src={person.img} alt="" className="p-img mr-[12px]" />
-                  <span className="text p-name mr-[21px]">{person.name}</span>
-                  <span className="textLight p-date">{person.date}</span>
+                  <div className="flex items-center w-full gap-4 pt-7">
+                    <img src={person.img} alt="" />
+                    <span className="text">{person.name}</span>
+                    <span className="textLight">{person.date}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          )
-        })}
+            )
+          })}
+        </div>
+
+        <button className='h-12 px-5 py-3 bg-black rounded-lg w-fit text-[#FFF6F3]'>
+          Read Blog
+        </button>
       </div>
     </div>
   )
