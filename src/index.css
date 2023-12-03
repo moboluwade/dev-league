@@ -2,7 +2,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 body {
     margin: 0;
     padding: 0;
@@ -10,10 +9,12 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
-a{
+a {
     text-decoration: none;
 }
-
+button {
+    text-decoration: none;
+}
 .logo {
     width: 96.93px;
     height: 59.811px;
@@ -75,14 +76,14 @@ a{
     width: 28rem;
 }
 
-.third-blur{
-    background: linear-gradient(to bottom, rgba(255, 255, 255, .2) rgba(255, 255, 255, .6));
-    
+.third-blur {
+    background: linear-gradient( to bottom, rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.6));
 }
-.fourth-blur{
-    background: linear-gradient(to bottom, rgba(255, 255, 255, .2) rgba(255, 255, 255, .6));
 
+.fourth-blur {
+    background: linear-gradient( to bottom, rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.6));
 }
+
 @media (max-width: 678px) {
     .btn>span {
         padding: 2px 6px;
