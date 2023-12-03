@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
-// import { FiBarChart } from "react-icons/fi";
-// import { RxCross1 } from "react-icons/rx";
+import { FiBarChart } from "react-icons/fi";
+import { RxCross1 } from "react-icons/rx";
 import { useState } from "react";
 
 const Header = () => {
