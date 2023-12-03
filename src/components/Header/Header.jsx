@@ -1,41 +1,42 @@
-import { Link, NavLink } from 'react-router-dom'
-import './Header.css'
-import { motion } from 'framer-motion'
-import { FiBarChart } from 'react-icons/fi'
-import { RxCrossCircled } from 'react-icons/rx'
-import { useState } from 'react'
+import { Link, NavLink } from "react-router-dom";
+import "./Header.css";
+import { motion } from "framer-motion";
+import { FiBarChart } from "react-icons/fi";
+import { RxCrossCircled } from "react-icons/rx";
+import { useState } from "react";
 
 const Header = () => {
   const links = [
     {
-      title: 'About us',
-      path: '/about',
+      title: "About us",
+      path: "/about",
     },
     {
-      title: 'Events',
-      path: '/events',
+      title: "Events",
+      path: "/events",
     },
     {
-      title: 'Blog',
-      path: '/blog',
+      title: "Blog",
+      path: "/blog",
     },
     {
-      title: 'Shop',
-      path: '/shop',
+      title: "Shop",
+      path: "/shop",
     },
-  ]
+  ];
 
-  const [togglerNav, setTogglerNav] = useState(false)
+  const [togglerNav, setTogglerNav] = useState(false);
 
   const handleClick = () => {
-    setTogglerNav(!togglerNav)
-  }
+    setTogglerNav(!togglerNav);
+  };
 
   return (
     <div className="relative flex items-center justify-between h-auto py-4 mx-8 bg-white md:py-6 md:mx-20 text">
       <Link to="/">
         <img src="/Union.png" alt="logo" className="w-20 h-auto" />
       </Link>
+
 
       <div className="hidden md:flex items-center gap-[3vw]">
         {links.map((link) => {
@@ -63,6 +64,7 @@ const Header = () => {
         onClick={handleClick}
       >
         {togglerNav ? (
+
           <RxCrossCircled
             style={{ fontSize: '2rem', color: '#D4CECB' }}
             className="top-8"
@@ -70,9 +72,9 @@ const Header = () => {
         ) : (
           <FiBarChart
             style={{
-              transform: 'rotate(270deg)',
-              color: '#fd4f13',
-              fontSize: '3rem',
+              transform: "rotate(270deg)",
+              color: "#fd4f13",
+              fontSize: "3rem",
             }}
             className="top-5"
           />
@@ -107,7 +109,7 @@ const Header = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
