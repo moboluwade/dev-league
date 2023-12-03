@@ -12,7 +12,9 @@ body {
 a {
     text-decoration: none;
 }
-
+button {
+    text-decoration: none;
+}
 .logo {
     width: 96.93px;
     height: 59.811px;
