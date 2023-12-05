@@ -1,3 +1,5 @@
+import { OrangeBrow } from "../../../utils"
+
 const AboutContext = () => {
     return (
         <div className="flex flex-col items-center justify-center bg-white">
@@ -5,11 +7,14 @@ const AboutContext = () => {
                 <div className="relative flex flex-row justify-center py-12">
                     <div className="relative w-1/2 max-w-60">
                         <div className="relative w-full left-1 bottom-6">
+                            <div className="absolute w-4 h-4 -right-1 -top-5 ">
+                                <OrangeBrow />
+                            </div>
                             <img className="top-0 object-cover w-auto h-40 rounded-lg max-w-40" src="/about-image-square.png" alt="dev-league-team" />
                         </div>
-                        <div className="relative z-20 bottom-4 left-16">
+                        <div className="relative z-20 bottom-4 left-14">
                             <div className="overflow-hidden rounded-lg w-fit h-fit ">
-                                <img className=" object-cover object-top w-[10rem] h-20 scale-[1.5]  overflow-clip " src="/about-image-rectangle.png" alt="dev-league-event" />
+                                <img className=" object-cover object-top w-[10rem] h-24 scale-[1.5]  overflow-clip " src="/about-image-rectangle.png" alt="dev-league-event" />
                             </div>
                         </div>
 
