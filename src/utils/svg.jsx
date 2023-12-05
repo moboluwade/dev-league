@@ -202,8 +202,8 @@ export const OrangeStar = () => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="94"
-            height="86"
+            width="60"
+            height="60"
             fill="none"
             viewBox="0 0 94 86"
         >
@@ -238,8 +238,8 @@ export const ChatBubbleRing = () => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="140"
-            height="140"
+            width="80"
+            height="80"
             fill="none"
             viewBox="0 0 140 140"
         >

@@ -1,4 +1,4 @@
-import { OrangeBrow } from "../../../utils"
+import { ChatBubbleRing, OrangeBrow, OrangeStar } from "../../../utils"
 
 const AboutContext = () => {
     return (
@@ -13,6 +13,9 @@ const AboutContext = () => {
                             <img className="top-0 object-cover w-auto h-40 rounded-lg max-w-40" src="/about-image-square.png" alt="dev-league-team" />
                         </div>
                         <div className="relative z-20 bottom-4 left-14">
+                            <div className="absolute -left-16 top-4">
+                                <OrangeStar />
+                            </div>
                             <div className="overflow-hidden rounded-lg w-fit h-fit ">
                                 <img className=" object-cover object-top w-[10rem] h-24 scale-[1.5]  overflow-clip " src="/about-image-rectangle.png" alt="dev-league-event" />
                             </div>
@@ -20,6 +23,9 @@ const AboutContext = () => {
 
                     </div>
                     <div className="relative z-10 w-1/2 left-3">
+                        <div className="absolute right-4 -bottom-8">
+                            <ChatBubbleRing />
+                        </div>
                         <img className="object-cover w-32 rounded-lg h-52" src="/about-image-slim.png" alt="brainstorm-session" />
                     </div>
                 </div>
