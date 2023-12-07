@@ -53,6 +53,11 @@
     width: 1rem;
 }
 
+.vec {
+    width: auto;
+    height: auto;
+}
+
 @media (max-width: 678px) {
     .btn>span {
         padding: 2px 6px;
