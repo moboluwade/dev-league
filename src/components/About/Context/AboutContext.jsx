@@ -5,7 +5,7 @@ const AboutContext = () => {
     return (
         <div className="flex flex-col items-center justify-center bg-white">
             <div className=" relative max-w-[87.5rem] w-full lg:px-[7.5rem] md:px-12 px-4 flex flex-col items-center  py-14 md:gap-16">
-                <div className="flex flex-col gap-16 md:flex-row-reverse w-fit">
+                <div className="flex flex-col gap-16 md:flex-row-reverse w-fit md:pt-12">
                     <div className="relative flex flex-row items-center justify-center w-fit md:w-1/2">
                         <div className="relative flex flex-row justify-center py-12 h-fit">
                             <div className="relative w-1/2 max-w-60">
@@ -35,7 +35,7 @@ const AboutContext = () => {
                     </div>
 
                     <span className="md:w-1/2 w-fit">
-                        <h3 className="pb-6 text-2xl font-bold"><span className="text-text-dev-orange">Welcome</span> to Dev League</h3>
+                        <h3 className="pb-6 text-2xl font-bold lg:text-3xl "><span className="text-text-dev-orange">Welcome</span> to Dev League</h3>
                         <span>
                             <span className="block pb-6">
                                 A community that blends technology with inclusivity. In a world where technology is the push behind innovation, we understand the importance of creating an environment that embraces diversity and inclusivity so whether you are a code-savvy techie, seeking to enhance your coding skills or a code-curious techie exploring the realm of no-code solutions Dev League is your space to learn, collaborate and connect.
