@@ -3,42 +3,48 @@ import { ChatBubbleRing, OrangeBrow, OrangeStar } from "../../../utils"
 const AboutContext = () => {
     return (
         <div className="flex flex-col items-center justify-center bg-white">
-            <div className=" relative max-w-[87.5rem] w-full lg:px-[7.5rem] md:px-12 px-4 flex flex-col items-center  py-14 md:flex-row md:gap-64">
-                <div className="relative flex flex-row justify-center py-12">
-                    <div className="relative w-1/2 max-w-60">
-                        <div className="relative w-full left-1 bottom-6">
-                            <div className="absolute w-4 h-4 -right-1 -top-5 ">
-                                <OrangeBrow />
-                            </div>
-                            <img className="top-0 object-cover w-auto h-40 rounded-lg max-w-40" src="/about-image-square.png" alt="dev-league-team" />
-                        </div>
-                        <div className="relative z-20 bottom-4 left-14">
-                            <div className="absolute -left-16 top-4">
-                                <OrangeStar />
-                            </div>
-                            <div className="overflow-hidden rounded-lg w-fit h-fit ">
-                                <img className=" object-cover object-top w-[10rem] h-24 scale-[1.5]  overflow-clip " src="/about-image-rectangle.png" alt="dev-league-event" />
-                            </div>
-                        </div>
+            <div className=" relative max-w-[87.5rem] w-full lg:px-[7.5rem] md:px-12 px-4 flex flex-col items-center  py-14 md:gap-16">
+                <div className="flex flex-col gap-16 md:flex-row-reverse w-fit">
+                    <div className="relative flex flex-row items-center justify-center w-fit md:w-1/2">
+                        <div className="relative flex flex-row justify-center py-12 h-fit">
+                            <div className="relative w-1/2 max-w-60">
+                                <div className="relative w-full left-1 bottom-6">
+                                    <div className="absolute w-4 h-4 -right-1 -top-5 ">
+                                        <OrangeBrow />
+                                    </div>
+                                    <img className="top-0 object-cover w-auto h-40 rounded-lg max-w-40" src="/about-image-square.png" alt="dev-league-team" />
+                                </div>
+                                <div className="relative z-20 bottom-4 left-14">
+                                    <div className="absolute -left-16 top-4">
+                                        <OrangeStar />
+                                    </div>
+                                    <div className="overflow-hidden rounded-lg w-fit h-fit ">
+                                        <img className=" object-cover object-top w-[10rem] h-24 scale-[1.5]  overflow-clip " src="/about-image-rectangle.png" alt="dev-league-event" />
+                                    </div>
+                                </div>
 
-                    </div>
-                    <div className="relative z-10 w-1/2 left-3">
-                        <div className="absolute right-4 -bottom-8">
-                            <ChatBubbleRing />
+                            </div>
+                            <div className="relative z-10 w-fit left-3">
+                                <div className="absolute right-2 -bottom-10">
+                                    <ChatBubbleRing />
+                                </div>
+                                <img className="object-cover w-32 rounded-lg h-52" src="/about-image-slim.png" alt="brainstorm-session" />
+                            </div>
                         </div>
-                        <img className="object-cover w-32 rounded-lg h-52" src="/about-image-slim.png" alt="brainstorm-session" />
                     </div>
-                </div>
-                <span>
-                    <h3 className="pb-6 text-2xl font-bold"><span className="text-text-dev-orange">Welcome</span> to Dev League</h3>
-                    <span>
-                        <span className="block pb-6">
-                            A community that blends technology with inclusivity. In a world where technology is the push behind innovation, we understand the importance of creating an environment that embraces diversity and inclusivity so whether you are a code-savvy techie, seeking to enhance your coding skills or a code-curious techie exploring the realm of no-code solutions Dev League is your space to learn, collaborate and connect.
+
+                    <span className="md:w-1/2 w-fit">
+                        <h3 className="pb-6 text-2xl font-bold"><span className="text-text-dev-orange">Welcome</span> to Dev League</h3>
+                        <span>
+                            <span className="block pb-6">
+                                A community that blends technology with inclusivity. In a world where technology is the push behind innovation, we understand the importance of creating an environment that embraces diversity and inclusivity so whether you are a code-savvy techie, seeking to enhance your coding skills or a code-curious techie exploring the realm of no-code solutions Dev League is your space to learn, collaborate and connect.
+                            </span>
+                            <span className="block">
+                                Here, you&apos;ll find the right resources and support to take your tech career to the next level. you&apos;ll also discover a diverse group of individuals who are passionate about technology and dedicated to fostering a supportive atmosphere for everyone, regardless of their varied backgrounds, experiences, and skill sets.  Our community is more than just a gathering of minds; it&apos;s a vibrant ecosystem thriving with mentorship, knowledge sharing, and collaboration opportunities.</span>
                         </span>
-                        <span className="block">
-                            Here, you&apos;ll find the right resources and support to take your tech career to the next level. you&apos;ll also discover a diverse group of individuals who are passionate about technology and dedicated to fostering a supportive atmosphere for everyone, regardless of their varied backgrounds, experiences, and skill sets.  Our community is more than just a gathering of minds; it&apos;s a vibrant ecosystem thriving with mentorship, knowledge sharing, and collaboration opportunities.</span>
                     </span>
-                </span>
+                </div>
+
                 <span>
                     <h3 className="pt-8 pb-6 text-2xl font-bold text-text-dev-orange">Why should you be a part of the community</h3>
                     <span className="block pb-6">
