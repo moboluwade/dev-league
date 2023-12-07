@@ -1,5 +1,6 @@
-import { ChatBubbleRing, OrangeBrow, OrangeStar } from "../../../utils"
-
+import { ChatBubbleRing, Github, LinkedIn, OrangeBrow, OrangeStar, TwitterBird } from "../../../utils"
+import { demoTeam } from "../../../utils/demo-team"
+import { DribbleIcon } from "../../../utils/svg"
 const AboutContext = () => {
     return (
         <div className="flex flex-col items-center justify-center bg-white">
@@ -44,31 +45,72 @@ const AboutContext = () => {
                         </span>
                     </span>
                 </div>
+                <div className="flex flex-col gap-16 md:flex-row w-fit">
+                    <div className="relative flex flex-row items-center justify-center w-full h-full pt-8 md:w-1/2">
+                        <div className="relative flex flex-col justify-center w-full h-full gap-6 pt-11">
+                            <div className="bg-[#FEC1AC] w-full h-12 md:h-20 rounded-xl"></div>
+                            <div className=" max-w-[34rem] overflow-hidden">
+                                <img className="rounded-xl lg:h-[26rem] object-cover" src="/dev-community.png" alt="" />
+                            </div>
+                            <div className="bg-[#D4CECB] w-full h-12 md:h-20 rounded-xl"></div>
+                        </div>
+                    </div>
+                    <span className="md:w-1/2 w-fit">
+                        <h3 className="pb-6 text-2xl font-bold md:pt-8 text-text-dev-orange">Why should you be a part of the community</h3>
+                        <span className="block pb-6">
+                            Our tech community plays a paramount role for tech enthusiasts and this spans across all levels of experience, from beginners to intermediate and even up to advanced-level.
+                        </span>
+                        <span className="block pb-6">
+                            As a no-code enthusiast entering our community, you step into a space that not only recognizes but wholeheartedly embraces the transformative potential of no-code solutions. Here, you will find a supportive environment that acknowledges your expertise and values and also celebrates the simplicity and efficiency that no-code development brings toa the forefront of technology.
+                        </span>
+                        <span className="block pb-6">
+                            By becoming a part of our community, you connect with a diverse group of like-minded no-code techies, fostering a collaborative atmosphere where insights are freely exchanged, challenges are collectively addressed, and networks are built. Joining us isn&apos;t just a commitment; it&apos;s an acknowledgment of your readiness to harness the latent power residing within the realm of no-code solutions, contributing to a joint effort to redefine and shape the trajectory of technology without the constraints of traditional coding practices.
+                        </span>
+                        <span className="block pb-6">
+                            Beginners seeking to embark on their coding journey gain significant advantages as they navigate well-structured learning paths, follow detailed roadmaps, participate in interactive workshops, and benefit from mentorship, accelerating their entry into the world of technology. Intermediate-level tech enthusiasts find a bridge for honing their well-defined skills and advancing toward more sophisticated expertise, aided by tailored content, guidance maps, and mentorship. In this phase, tech enthusiast not only sharpen their existing skills but actively contribute to the collective knowledge within the community.
+                        </span>
+                        <span className="block pb-6">
+                            Advanced tech professionals are actively involved in community discussions and participate in innovation projects. Going beyond networking, they find a valuable platform within the community—a space where industry leaders can influence and guide the path of the ever-changing world of technology.
+                        </span>
+                        <span className="block pb-6">
+                            In essence, our community serves as an all-inclusive, diverse hub that caters to tech enthusiasts regardless of expertise, race, background, gender, and age.
+                        </span>
+                    </span>
+                </div>
+                <div className="flex flex-col items-center justify-center w-full">
+                    <h3 className="py-6 text-2xl font-semibold text-text-dev-orange">Our Team</h3>
+                    <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                        {demoTeam.map(member =>
+                            <div className="max-w-[21rem] py-8 flex flex-col" key={member.id}>
+                                <div className="overflow-hidden w-fit ">
+                                    <img className="object-cover w-full" src={member.profile} alt="" />
+                                </div>
+                                <div className="flex flex-col pt-6">
+                                    <span className="text-xl font-semibold">{member.name}</span>
+                                    <span className="pt-2 text-lg text-text-dev-orange">{member.role}</span>
+                                    <span className="pt-4">{member.description}</span>
+                                </div>
+                                <div className="flex flex-row gap-5 pt-6 grayscale">
+                                    <div className="">
+                                        <TwitterBird />
+                                    </div>
+                                    <div className="grayscale-0">
+                                        <LinkedIn />
+                                    </div>
+                                    {member.devBoolean && <Github />}
+                                    {member.designerBoolean && <DribbleIcon />}
 
-                <span>
-                    <h3 className="pt-8 pb-6 text-2xl font-bold text-text-dev-orange">Why should you be a part of the community</h3>
-                    <span className="block pb-6">
-                        Our tech community plays a paramount role for tech enthusiasts and this spans across all levels of experience, from beginners to intermediate and even up to advanced-level.
-                    </span>
-                    <span className="block pb-6">
-                        As a no-code enthusiast entering our community, you step into a space that not only recognizes but wholeheartedly embraces the transformative potential of no-code solutions. Here, you will find a supportive environment that acknowledges your expertise and values and also celebrates the simplicity and efficiency that no-code development brings toa the forefront of technology.
-                    </span>
-                    <span className="block pb-6">
-                        By becoming a part of our community, you connect with a diverse group of like-minded no-code techies, fostering a collaborative atmosphere where insights are freely exchanged, challenges are collectively addressed, and networks are built. Joining us isn&apos;t just a commitment; it&apos;s an acknowledgment of your readiness to harness the latent power residing within the realm of no-code solutions, contributing to a joint effort to redefine and shape the trajectory of technology without the constraints of traditional coding practices.
-                    </span>
-                    <span className="block pb-6">
-                        Beginners seeking to embark on their coding journey gain significant advantages as they navigate well-structured learning paths, follow detailed roadmaps, participate in interactive workshops, and benefit from mentorship, accelerating their entry into the world of technology. Intermediate-level tech enthusiasts find a bridge for honing their well-defined skills and advancing toward more sophisticated expertise, aided by tailored content, guidance maps, and mentorship. In this phase, tech enthusiast not only sharpen their existing skills but actively contribute to the collective knowledge within the community.
-                    </span>
-                    <span className="block pb-6">
-                        Advanced tech professionals are actively involved in community discussions and participate in innovation projects. Going beyond networking, they find a valuable platform within the community—a space where industry leaders can influence and guide the path of the ever-changing world of technology.
-                    </span>
-                    <span className="block pb-6">
-                        In essence, our community serves as an all-inclusive, diverse hub that caters to tech enthusiasts regardless of expertise, race, background, gender, and age.
-                    </span>
-                </span>
+                                </div>
+                            </div>
+                        )}
 
+                    </div>
+
+                    <div>
+
+                    </div>
+                </div>
             </div>
-
         </div>
     )
 }
