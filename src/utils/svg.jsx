@@ -293,3 +293,41 @@ export const DribbleIcon = () => {
         </svg>
     );
 }
+
+export const OrangeDownArrow = () => {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="484"
+            height="327"
+            fill="none"
+            viewBox="0 0 484 327"
+        >
+            <path
+                stroke="#FD4F13"
+                strokeOpacity="0.03"
+                strokeWidth="38.221"
+                d="M464.63 172.099L242.948 303.962 19.354 172.099V34.504l223.594 137.595L464.63 36.415v135.684z"
+            ></path>
+        </svg>
+    )
+}
+
+export const OrangeUpArrow = () => {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="484"
+            height="327"
+            fill="none"
+            viewBox="0 0 484 327"
+        >
+            <path
+                stroke="#FD4F13"
+                strokeOpacity="0.03"
+                strokeWidth="38.221"
+                d="M19.54 154.574L241.22 22.711l223.594 131.863V292.17L241.221 154.574 19.539 290.259V154.574z"
+            ></path>
+        </svg>
+    )
+}
