@@ -3,37 +3,84 @@ import { demoTeam } from "../../../utils/demo-team"
 import { DribbleIcon } from "../../../utils/svg"
 import { motion } from "framer-motion"
 
+
 const AboutContext = () => {
+
+    const hideItemFromLeft = {
+        opacity: 0, scale: 0.3
+    }
+
+    const showItemFromLeft = {
+        opacity: 1, scale: 1
+    }
+    const hideItemFromRight = {
+        opacity: 0, y: -200
+    }
+
+    const showItemFromRight = {
+        opacity: 1, y: 0
+    }
+
     return (
         <div className="flex flex-col items-center justify-center bg-white">
             <div className=" relative max-w-[87.5rem] w-full lg:px-[7.5rem] md:px-12 px-4 flex flex-col items-center  py-14 md:gap-16">
                 <div className="flex flex-col gap-16 md:flex-row-reverse w-fit md:pt-12">
                     <div className="relative flex flex-row items-center justify-center w-fit md:w-1/2">
-                        <motion.div className="relative flex flex-row justify-center py-12 h-fit">
+                        <div className="relative flex flex-row justify-center py-12 h-fit">
                             <div className="relative w-1/2 max-w-60">
                                 <div className="relative w-full left-1 bottom-6">
-                                    <div className="absolute w-4 h-4 -right-1 -top-5 ">
+                                    <motion.div
+                                        initial={{ opacity: 0, scale: 0.1 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        transition={{ duration: 1, delay: 1.5, type: "spring" }}
+                                        viewport={{ once: true }}
+                                        className="absolute w-4 h-4 -right-1 -top-5 ">
                                         <OrangeBrow />
-                                    </div>
-                                    <img className="top-0 object-cover w-auto h-40 rounded-lg md:h-60 max-w-40" src="/about-image-square.png" alt="dev-league-team" />
+                                    </motion.div>
+                                    <motion.img
+                                        initial={hideItemFromLeft}
+                                        whileInView={showItemFromLeft}
+                                        transition={{ duration: 1.5, delay: 0.2, type: "spring" }}
+                                        viewport={{ once: true }}
+                                        className="top-0 object-cover w-auto h-40 rounded-lg md:rounded-xl md:h-60 max-w-40" src="/about-image-square.png" alt="dev-league-team" />
                                 </div>
                                 <div className="relative z-20 bottom-4 left-14 md:left-20">
-                                    <div className="absolute -left-16 top-4">
+                                    <motion.div
+                                        initial={{ opacity: 0, scale: 0.1 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        transition={{ duration: 1, delay: 1, type: "spring" }}
+                                        viewport={{ once: true }}
+                                        className="absolute -left-16 top-4 md:-left-18 md:top-1">
                                         <OrangeStar />
-                                    </div>
+                                    </motion.div>
                                     <div className="overflow-hidden rounded-lg w-fit h-fit ">
-                                        <img className=" object-cover object-top w-[10rem] md:w-56 md:h-32 h-24 scale-[1.5] md:scale-100  overflow-clip " src="/about-image-rectangle.png" alt="dev-league-event" />
+                                        <motion.img
+                                            initial={hideItemFromLeft}
+                                            whileInView={showItemFromLeft}
+                                            transition={{ duration: 1.5, delay: 0.2, type: "spring" }}
+                                            viewport={{ once: true }}
+                                            className=" object-cover object-top w-[10rem] md:rounded-xl md:w-56 md:h-32 h-24 scale-[1.5] md:scale-100  overflow-clip " src="/about-image-rectangle.png" alt="dev-league-event" />
                                     </div>
                                 </div>
 
                             </div>
                             <div className="relative z-10 w-fit left-3">
-                                <div className="absolute right-2 -bottom-10">
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.1 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    transition={{ duration: 1, delay: 1, type: "spring" }}
+                                    viewport={{ once: true }}
+                                    className="absolute right-2 -bottom-10 md:-bottom-5 md:right-10">
                                     <ChatBubbleRing />
-                                </div>
-                                <img className="object-cover w-32 rounded-lg md:w-52 md:h-72 h-52" src="/about-image-slim.png" alt="brainstorm-session" />
+                                </motion.div>
+                                <motion.img
+                                    initial={hideItemFromRight}
+                                    whileInView={showItemFromRight}
+                                    transition={{ duration: 2, delay: 0.5, type: "spring" }}
+                                    viewport={{ once: true }}
+                                    className="object-cover w-32 rounded-lg md:w-52 md:rounded-xl md:h-72 h-52" src="/about-image-slim.png" alt="brainstorm-session" />
                             </div>
-                        </motion.div>
+                        </div>
                     </div>
 
                     <span className="md:w-1/2 w-fit">
