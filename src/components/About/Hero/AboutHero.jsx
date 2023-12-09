@@ -4,7 +4,7 @@ import { OrangeDownArrow } from "../../../utils"
 const AboutHero = () => {
   return (
     <div className="flex flex-col items-center justify-center overflow-hidden h-fit lg:h-25rem bg-text-dev-light-orange">
-      <div className="max-w-[87.6rem] w-full lg:h-[25rem] h-[12.5rem] lg:px-[7.5rem] md:px-12 px-4 flex flex-col justify-center items-center relative">
+      <div className="max-w-[87.6rem] w-full lg:h-[28rem] h-[12.5rem] lg:px-[7.5rem] md:px-12 px-4 flex flex-col justify-center items-center relative">
         <div className="absolute">
           <div className="flex flex-row">
             <motion.div

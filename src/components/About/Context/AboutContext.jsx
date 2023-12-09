@@ -20,7 +20,25 @@ const AboutContext = () => {
     const showItemFromRight = {
         opacity: 1, y: 0
     }
-
+    const teamParent = {
+        hidden: { opacity: 1 },
+        show: {
+            opacity: 1,
+            transition: {
+                when: "beforeChildren",
+                delayChildren: 0.2,
+                staggerChildren: 0.2,
+            }
+        }
+    }
+    const teamChild = {
+        hidden: { opacity: 0, x: 30},
+        show: {
+            opacity: 1,
+            x: 0,
+            transition: { duration: 0.4 }
+        }
+    }
     return (
         <div className="flex flex-col items-center justify-center bg-white">
             <div className=" relative max-w-[87.5rem] w-full lg:px-[7.5rem] md:px-12 px-4 flex flex-col items-center  py-14 md:gap-16">
@@ -128,9 +146,16 @@ const AboutContext = () => {
                 </div>
                 <div className="flex flex-col items-center justify-center w-full">
                     <h3 className="py-6 text-2xl font-semibold text-text-dev-orange">Our Team</h3>
-                    <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    <motion.div
+                        initial="hidden"
+                        whileInView="show"
+                        variants={teamParent}
+                        viewport={{once: true}}
+                        className="grid w-full grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
                         {demoTeam.map(member =>
-                            <div className="max-w-[21rem] py-8 flex flex-col" key={member.id}>
+                            <motion.div
+                            variants={teamChild}
+                            className="max-w-[21rem] py-8 flex flex-col" key={member.id}>
                                 <div className="overflow-hidden w-fit ">
                                     <img className="object-cover w-full" src={member.profile} alt="" />
                                 </div>
@@ -148,12 +173,11 @@ const AboutContext = () => {
                                     </div>
                                     {member.devBoolean && <Github />}
                                     {member.designerBoolean && <DribbleIcon />}
-
                                 </div>
-                            </div>
+                            </motion.div>
                         )}
 
-                    </div>
+                    </motion.div>
 
                     <div>
 
