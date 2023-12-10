@@ -26,9 +26,9 @@ const Donation = () => {
     <section className="donation-container">
       <div className="donation">
         <div className="details">
-          <h2 className="text-lg">We need donations</h2>
+          <h2>We need donations</h2>
           <h3>Towards the One Million Mission.</h3>
-          <div className="paragraph max-w-[33rem]">
+          <div className="paragraph">
             <p>
               Your contribution holds the power to create a tangible and
               positive impact on numerous lives.
@@ -51,7 +51,6 @@ const Donation = () => {
             <PaymentModal price={amount} currency={currency} />
           </Modal>
         )}
-
       </div>
     </section>
   );
