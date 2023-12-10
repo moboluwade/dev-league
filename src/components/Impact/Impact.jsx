@@ -11,7 +11,7 @@ const Impact = () => {
                     {/* link to dev league testimonial twitter feed */}
                 </span>
                 <div className="relative grid">
-                    <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 700: 2, 900: 3 }}>
+                    <ResponsiveMasonry columnsCountBreakPoints={{350: 1, 750: 2, 900: 3 }}>
                         <Masonry columnsCount={3}>
                             {demoImpactStories.map(story =>
                                 <div className="w-auto p-6 mx-2 my-2 border rounded-lg h-fit" key={story.id}>

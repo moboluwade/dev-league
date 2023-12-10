@@ -155,6 +155,7 @@
   font-weight: 500;
   border-left: 1px solid #c5bdb9;
   height: 100%;
+  width: 100%;
   margin-left: 5px;
   padding-left: 4px;
   background-color: transparent;
@@ -238,7 +239,7 @@
   }
 
   .last-btn-container {
-    width: 100%;
+    width: 70px;
   }
 
   .price-label {
