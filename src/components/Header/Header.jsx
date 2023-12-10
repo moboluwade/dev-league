@@ -88,10 +88,8 @@ const Header = () => {
 
       {/* mobile navigation menu */}
       <div
-        className={`md:hidden absolute inset-y-0 h-[774px] z-50 bg-white nav p-4 transition duration-300 transform ${
-          togglerNav
-            ? 'translate-x-0 top-0 right-0'
-            : 'translate-x-full -translate-x-full'
+        className={`md:hidden absolute inset-y-0 h-[774px] w-96 z-50 bg-white p-4 transition duration-300 transform ${
+          togglerNav ? 'translate-x-0 top-0 right-0' : '-translate-x-full'
         }`}
       >
         {/* Navbar content goes here */}
@@ -101,7 +99,7 @@ const Header = () => {
             <RxCrossCircled
               className="cursor-pointer"
               style={{ fontSize: '2rem', color: '#D4CECB' }}
-              onClick={() => setTogglerNav(!togglerNav)}
+              onClick={handleClick}
             />
           </div>
           {links.map((link) => {
