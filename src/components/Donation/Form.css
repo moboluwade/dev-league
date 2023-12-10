@@ -1,8 +1,8 @@
 .form {
-  border: 1px solid rgba(169, 165, 164, 0.7);
+  border: 1px solid rgb(252, 77, 18, 0.7);
   padding: 30px 25px;
   border-radius: 8px;
-  box-shadow: 0px 1px 2px rgba(150, 145, 144, 0.5);
+  box-shadow: 0px 1px 2px rgba(252, 77, 18, 0.5);
 }
 
 .form__header {
@@ -25,11 +25,12 @@
 
 .form__input-group {
   border: 1px solid #c5bdb9;
-  box-shadow: 0px 0.72234px 1.44468px 0px rgba(16, 24, 40, 0.5);
+  box-shadow: 0px 0.72234px 1.44468px 0px rgba(16, 24, 40, 0.05);
   border-radius: 5px;
   height: 45px;
   width: 120px;
   position: relative;
+  /* box-shadow: 0 50px 100px rgba(#b63e3e 0.9); */
 }
 
 .form__input-select {
@@ -176,8 +177,7 @@
 }
 
 .form__footer--button {
-  padding: 10px 30px;
-  text-decoration: none;
+  padding: 5px 30px;
   border-radius: 3px;
   box-shadow: 0px 0.72234px 1.44468px 0px rgba(16, 24, 40, 0.05);
   font-size: 24px;
@@ -233,14 +233,6 @@
 }
 
 @media screen and (max-width: 420px) {
-  .form__radio-group {
-    font-size: 10px;
-  }
-
-  .form__header h3 {
-    font-size: 16px;
-  }
-
   .form__main--text {
     width: 60%;
   }
@@ -253,7 +245,6 @@
     padding: 5px 8px;
     width: 100%;
     display: inline-block;
-    font-size: 12px;
   }
 
   .form {

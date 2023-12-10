@@ -32,13 +32,46 @@ const AboutContext = () => {
         }
     }
     const teamChild = {
-        hidden: { opacity: 0, x: 30},
+        hidden: { opacity: 0, x: 30 },
         show: {
             opacity: 1,
             x: 0,
             transition: { duration: 0.4 }
         }
     }
+
+    const aboutImageParent = {
+        hidden: { opacity: 0, y: -300 },
+        show: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 1,
+                when: "beforeChildren",
+                delayChildren: 0.2,
+                staggerChildren: 0.2
+            }
+        }
+    }
+
+    const aboutImageChildrenFromLeft = {
+        hidden: { opacity: 0, x: -40 },
+        show: {
+            duration: 1,
+            opacity: 1,
+            x: 0,
+            transition: { duration: 0.4, type: "spring" }
+        }
+    }
+    const aboutImageChildrenFromRight = {
+        hidden: { opacity: 0, x: 40 },
+        show: {
+            opacity: 1,
+            x: 0,
+            transition: { duration: 0.4, type: "spring" }
+        }
+    }
+
     return (
         <div className="flex flex-col items-center justify-center bg-white">
             <div className=" relative max-w-[87.5rem] w-full lg:px-[7.5rem] md:px-12 px-4 flex flex-col items-center  py-14 md:gap-16">
@@ -112,15 +145,24 @@ const AboutContext = () => {
                         </span>
                     </span>
                 </div>
-                <div className="flex flex-col gap-16 md:flex-row w-fit">
+                <div className="flex flex-col gap-16 md:flex-row md:items-center w-fit">
                     <div className="relative flex flex-row items-center justify-center w-full h-full pt-8 md:w-1/2">
-                        <div className="relative flex flex-col justify-center w-full h-full gap-6 pt-11">
-                            <div className="bg-[#FEC1AC] w-full h-12 md:h-20 rounded-xl"></div>
-                            <div className=" max-w-[34rem] overflow-hidden">
+                        <motion.div
+                            initial="hidden"
+                            whileInView="show"
+                            variants={aboutImageParent}
+                            viewport={{once: true}}
+                            className="relative flex flex-col justify-center w-full h-full gap-6 pt-11">
+                            <motion.div
+                                variants={aboutImageChildrenFromLeft}
+                                className="bg-[#FEC1AC] w-full h-12 md:h-20 rounded-xl"></motion.div>
+                            <motion.div className=" max-w-[34rem] overflow-hidden">
                                 <img className="rounded-xl lg:h-[26rem] object-cover" src="/dev-community.png" alt="" />
-                            </div>
-                            <div className="bg-[#D4CECB] w-full h-12 md:h-20 rounded-xl"></div>
-                        </div>
+                            </motion.div>
+                            <motion.div
+                                variants={aboutImageChildrenFromRight}
+                                className="bg-[#D4CECB] w-full h-12 md:h-20 rounded-xl"></motion.div>
+                        </motion.div>
                     </div>
                     <span className="md:w-1/2 w-fit">
                         <h3 className="pb-6 text-2xl font-bold md:pt-8 text-text-dev-orange">Why should you be a part of the community</h3>
@@ -150,12 +192,12 @@ const AboutContext = () => {
                         initial="hidden"
                         whileInView="show"
                         variants={teamParent}
-                        viewport={{once: true}}
+                        viewport={{ once: true }}
                         className="grid w-full grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
                         {demoTeam.map(member =>
                             <motion.div
-                            variants={teamChild}
-                            className="max-w-[21rem] py-8 flex flex-col" key={member.id}>
+                                variants={teamChild}
+                                className="max-w-[21rem] py-8 flex flex-col" key={member.id}>
                                 <div className="overflow-hidden w-fit ">
                                     <img className="object-cover w-full" src={member.profile} alt="" />
                                 </div>

@@ -331,3 +331,27 @@ export const OrangeUpArrow = () => {
         </svg>
     )
 }
+
+export const StrokeFrame = () => {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            // width="356"
+            width="416"
+            height="420"
+            fill="none"
+            viewBox="0 0 356 420"
+        >
+            <rect
+                width="355.407"
+                height="418.893"
+                x="0.297"
+                y="0.297"
+                stroke="#FD4F13"
+                strokeDasharray="23.73 23.73"
+                strokeWidth="0.593"
+                rx="13.943"
+            ></rect>
+        </svg>
+    );
+}
