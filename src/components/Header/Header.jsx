@@ -34,7 +34,7 @@ const Header = () => {
   return (
     <div className="relative flex items-center justify-between h-auto py-4 bg-white md:py-6 md:mx-20 text">
       <Link to="/">
-        <img src="/Union.png" alt="logo" className="w-20 h-auto md:ml-0 ml-8" />
+        <img src="/Union.png" alt="logo" className="w-20 h-auto ml-8 md:ml-0" />
       </Link>
 
       <div className="hidden md:flex items-center gap-[3vw]">
@@ -52,7 +52,7 @@ const Header = () => {
           whileHover={{ scale: 1.1, x: -4 }}
           whileTap={{ scale: 1.05 }}
           transition={{ duration: 0.5 }}
-          className="uppercase mr-20 md:mr-0 btn"
+          className="mr-20 uppercase md:mr-0 btn"
         >
           <span className="text-sm text-white">donate</span>
         </motion.button>
@@ -81,7 +81,7 @@ const Header = () => {
       </div>
       {togglerNav && ( // Display the overlay only when togglerNav is true
         <div
-          className="fixed md:hidden inset-0 z-40 bg-black opacity-95"
+          className="fixed inset-0 z-40 bg-black md:hidden opacity-95"
           onClick={handleClick} // Close the navigation menu when the overlay is clicked
         ></div>
       )}
@@ -94,7 +94,7 @@ const Header = () => {
       >
         {/* Navbar content goes here */}
         <div className="p-4">
-          <div className="flex justify-between items-center pb-4 border-b-2">
+          <div className="flex items-center justify-between pb-4 border-b-2">
             <h1 className="font-semibold text-xl/[19px]">Main Menu</h1>
             <RxCrossCircled
               className="cursor-pointer"
@@ -105,7 +105,7 @@ const Header = () => {
           {links.map((link) => {
             return (
               <NavLink to={link.path} key={link.title} end>
-                <div className="flex justify-between items-center py-4 border-b-2 mt-3">
+                <div className="flex items-center justify-between py-4 mt-3 border-b-2">
                   {link.title}
                   <img src="/Vector.png" alt="vector" className="vec" />
                 </div>
