@@ -36,7 +36,7 @@ const Articles = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 1.02 }}
                   transition={{ delay: 0, duration: 0.5, type: "spring" }}
-                  className="flex flex-col border border-[#D4CECB] lg:max-w-[22rem] m-auto  max-w-[18rem] bg-white rounded-lg text-start">
+                  className="flex flex-col border border-[#D4CECB] lg:max-w-[22rem] m-auto max-w-[18rem] bg-white rounded-lg text-start">
                   <div>
                     <img className='w-full rounded-t-lg' draggable="false" src={img} alt="image" />
                   </div>
