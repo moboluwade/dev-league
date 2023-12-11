@@ -29,6 +29,7 @@ const Header = () => {
 
   const handleClick = () => {
     setTogglerNav(!togglerNav)
+    console.log(togglerNav)
   }
 
   return (
@@ -47,7 +48,7 @@ const Header = () => {
         })}
       </div>
 
-      <div className="d-btn md:mr-0 mr-8">
+      <div className="mr-8 d-btn md:mr-0">
         <motion.button
           whileHover={{ scale: 1.1, x: -4 }}
           whileTap={{ scale: 1.05 }}
@@ -87,11 +88,11 @@ const Header = () => {
       )}
 
       {/* mobile navigation menu */}
-      <div
+      <motion.div
         className={`md:hidden absolute inset-y-0 h-[774px] z-50 bg-white nav p-4 transition duration-300 transform ${
           togglerNav
             ? 'translate-x-0 top-0 right-0'
-            : 'translate-x-full -translate-x-full'
+            : 'hidden'
         }`}
       >
         {/* Navbar content goes here */}
@@ -115,7 +116,7 @@ const Header = () => {
             )
           })}
         </div>
-      </div>
+      </motion.div>
     </div>
   )
 }
