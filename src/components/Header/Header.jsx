@@ -107,7 +107,7 @@ const Header = () => {
           </div>
           {links.map((link) => {
             return (
-              <NavLink to={link.path} key={link.title} end>
+              <NavLink onClick={handleClick} to={link.path} key={link.title} end>
                 <div className="flex items-center justify-between py-4 mt-3 border-b-2">
                   {link.title}
                   <img src="/Vector.png" alt="vector" className="vec" />
