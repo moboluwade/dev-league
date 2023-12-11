@@ -2,7 +2,7 @@ import { Sponsor } from "../../components/Sponsor";
 import { Hero } from "../../components/Hero";
 import { Donation } from "../../components/Donation";
 import { Impact } from "../../components/Impact";
-import Articles from "../../views/Articles/Articles";
+import { Articles } from "../../components/Articles";
 const Home = () => {
   return (
     <>

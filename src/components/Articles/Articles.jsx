@@ -60,9 +60,13 @@ const Articles = () => {
           })}
         </motion.div>
 
-        <button className='h-12 px-5 py-3 bg-black rounded-lg w-fit text-[#FFF6F3]'>
-          Read Blog
-        </button>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 1}}
+          transition={{ delay: 0, duration: 0.3, type: "spring" }}
+          className='h-12 px-5 py-3 bg-black rounded-lg w-fit text-[#FFF6F3]'>
+          <a href="">Read Blog</a>
+        </motion.button>
       </div>
     </div>
   )
