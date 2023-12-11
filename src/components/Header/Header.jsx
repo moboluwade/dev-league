@@ -33,7 +33,7 @@ const Header = () => {
   }
 
   return (
-    <div className="relative flex items-center justify-between h-auto py-4 bg-white md:py-6 md:mx-20 text">
+    <div className="relative flex items-center justify-between h-24 py-4 bg-white md:py-6 md:mx-20 text">
       <Link to="/">
         <img src="/Union.png" alt="logo" className="w-20 h-auto ml-8 md:ml-0" />
       </Link>
@@ -47,53 +47,48 @@ const Header = () => {
           )
         })}
       </div>
+      <div className='flex flex-row gap-4 '>
+        <div className="hidden h-fit md:block">
+          <motion.button
+            whileHover={{ scale: 1.05, x: -4 }}
+            whileTap={{ scale: 1.05 }}
+            transition={{ duration: 0.5 }}
+            className="px-5 py-4 uppercase rounded-lg md:mr-0 bg-text-dev-orange"
+          >
+            <span className="text-xl font-semibold text-white ">donate</span>
+          </motion.button>
+        </div>
 
-      <div className="mr-8 d-btn md:mr-0">
-        <motion.button
-          whileHover={{ scale: 1.1, x: -4 }}
-          whileTap={{ scale: 1.05 }}
-          transition={{ duration: 0.5 }}
-          className="mr-20 uppercase md:mr-0 btn"
+        {/* Mobile nav-icon */}
+        <div
+          className="px-4 cursor-pointer w-fit md:hidden right-8"
+          onClick={handleClick}
         >
-          <span className="text-sm text-white">donate</span>
-        </motion.button>
-      </div>
-
-      {/* Mobile navbar */}
-      <div
-        className="absolute cursor-pointer md:hidden right-8"
-        onClick={handleClick}
-      >
-        {togglerNav ? (
-          <RxCrossCircled
-            style={{ fontSize: '2rem', color: '#D4CECB' }}
-            className="top-8"
-          />
-        ) : (
-          <FiBarChart
-            style={{
-              transform: 'rotate(270deg)',
-              color: '#fd4f13',
-              fontSize: '3rem',
-            }}
-            className="top-5"
-          />
+          {!togglerNav && (
+            <FiBarChart
+              style={{
+                transform: 'rotate(270deg)',
+                color: '#fd4f13',
+                fontSize: '3rem',
+              }}
+              className="top-5"
+            />
+          )}
+        </div>
+        {togglerNav && ( // Display the overlay only when togglerNav is true
+          <div
+            className="fixed inset-0 z-40 bg-black md:hidden opacity-95"
+            onClick={handleClick} // Close the navigation menu when the overlay is clicked
+          ></div>
         )}
       </div>
-      {togglerNav && ( // Display the overlay only when togglerNav is true
-        <div
-          className="fixed inset-0 z-40 bg-black md:hidden opacity-95"
-          onClick={handleClick} // Close the navigation menu when the overlay is clicked
-        ></div>
-      )}
 
       {/* mobile navigation menu */}
       <motion.div
-        className={`md:hidden absolute inset-y-0 h-[774px] z-50 bg-white nav p-4 transition duration-300 transform ${
-          togglerNav
+        className={`md:hidden absolute inset-y-0 h-[774px] z-50 bg-white nav p-4 transition duration-300 transform ${togglerNav
             ? 'translate-x-0 top-0 right-0'
             : 'hidden'
-        }`}
+          }`}
       >
         {/* Navbar content goes here */}
         <div className="p-4">
