@@ -32,6 +32,7 @@ const Impact = () => {
                     initial="hidden"
                     whileInView="show"
                     variants={parent}
+                    viewport={{ once: true }}
                     className="relative grid">
                     <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
                         <Masonry columnsCount={3}>
@@ -42,8 +43,8 @@ const Impact = () => {
                                         variants={children}
                                         className="w-fit">
                                         <motion.div
-                                        variants={children}
-                                        className="flex flex-row pb-4">
+                                            variants={children}
+                                            className="flex flex-row pb-4">
                                             <img className="w-8 h-8 bg-white aspect-square" src={story.profile} alt="" />
                                             <div className="flex flex-col pl-2">
                                                 <span className="text-xs font-semibold capitalize">{story.name}</span>
