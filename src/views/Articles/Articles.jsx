@@ -1,7 +1,10 @@
 import Cards from './data'
 import './Articles.css'
+import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 const Articles = () => {
+
   const SliceText = (text) => {
     const length = text.length;
     if (length > 65) {
@@ -9,7 +12,7 @@ const Articles = () => {
       const newText = slicedText + "..."
       return newText
     } else {
-      return text+"..."
+      return text + "..."
     }
   }
   return (
@@ -23,32 +26,39 @@ const Articles = () => {
           </span>
         </div>
 
-        <div className="flex flex-row flex-wrap items-start w-full gap-8 pb-12 text-black">
+        <motion.div
+          className="flex flex-row flex-wrap items-start w-full gap-8 pb-12 text-black">
           {Cards.map((card) => {
             const { id, title, desc, img, person } = card
             return (
-              <div key={id} className="flex flex-col border border-[#D4CECB] lg:max-w-[22rem] m-auto  max-w-[18rem] bg-white rounded-lg text-start">
-                <div>
-                  <img className='w-full rounded-t-lg' src={img} alt="image" />
-                </div>
-                <div className="px-3 pt-5 pb-3">
-                  <span className="text-xl font-semibold text-black ">
-                    {title}
-                  </span>
-                  <p className="w-full pt-2 textLight">
-                    {SliceText(desc)} <a className="underline text-text-dev-orange" href="#">Read more</a>
-                  </p>
-
-                  <div className="flex items-center w-full gap-4 pt-7">
-                    <img src={person.img} alt="" />
-                    <span className="text">{person.name}</span>
-                    <span className="textLight">{person.date}</span>
+              <Link to="/" key={id} className='w-fit h-fit'>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 1.02 }}
+                  transition={{ delay: 0, duration: 0.5, type: "spring" }}
+                  className="flex flex-col border border-[#D4CECB] lg:max-w-[22rem] m-auto  max-w-[18rem] bg-white rounded-lg text-start">
+                  <div>
+                    <img className='w-full rounded-t-lg' draggable="false" src={img} alt="image" />
                   </div>
-                </div>
-              </div>
+                  <div className="px-3 pt-5 pb-3">
+                    <span className="text-xl font-semibold text-black ">
+                      {title}
+                    </span>
+                    <p className="w-full pt-2 textLight">
+                      {SliceText(desc)} <a className="underline text-text-dev-orange hover:opacity-80" href="#">Read more</a>
+                    </p>
+
+                    <div className="flex items-center w-full gap-4 pt-7">
+                      <img src={person.img} alt="" />
+                      <span className="text">{person.name}</span>
+                      <span className="textLight">{person.date}</span>
+                    </div>
+                  </div>
+                </motion.div>
+              </Link>
             )
           })}
-        </div>
+        </motion.div>
 
         <button className='h-12 px-5 py-3 bg-black rounded-lg w-fit text-[#FFF6F3]'>
           Read Blog
