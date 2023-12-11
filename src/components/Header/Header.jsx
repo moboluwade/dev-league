@@ -51,8 +51,8 @@ const Header = () => {
         <div className="hidden h-fit md:block">
           <motion.button
             whileHover={{ scale: 1.05, x: -4 }}
-            whileTap={{ scale: 1.05 }}
-            transition={{ duration: 0.5 }}
+            whileTap={{ scale: 1 }}
+            transition={{ duration: 0.3 }}
             className="px-5 py-4 uppercase rounded-lg md:mr-0 bg-text-dev-orange"
           >
             <span className="text-xl font-semibold text-white ">donate</span>
