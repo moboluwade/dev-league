@@ -27,7 +27,7 @@ const Articles = () => {
         </div>
 
         <motion.div
-          className="flex flex-row flex-wrap items-start w-full gap-8 pb-12 text-black">
+          className="flex flex-row flex-wrap items-start justify-center w-full gap-8 pb-12 text-black">
           {Cards.map((card) => {
             const { id, title, desc, img, person } = card
             return (
