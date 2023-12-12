@@ -33,13 +33,13 @@ const Header = () => {
   }
 
   return (
-    <div className="bg-white flex flex-row justify-center text lg:px-[7.5rem] px-auto">
-      <div className="relative flex items-center gap-4 h-20 pt-4 pb-3 justify-between max-w-[80.5rem] w-full px-4">
+    <div className="bg-white flex flex-row justify-center text lg:px-[7.5rem] md:px-8 px-auto">
+      <div className="relative flex items-center gap-4 h-20 md:pb-5 pt-4 pb-3 justify-between max-w-[80.5rem] w-full px-4">
         <Link to="/">
           <img
             src="/Union.png"
             alt="logo"
-            className="md:w-[3.7rem] w-auto h-[2.5rem] md:h-[6rem] ml-1 md:ml-0"
+            className="md:w-20 w-auto h-[2.5rem] md:h-auto ml-1 md:ml-0"
           />
         </Link>
 
@@ -58,7 +58,7 @@ const Header = () => {
               whileHover={{ scale: 1.05, x: -4 }}
               whileTap={{ scale: 1 }}
               transition={{ duration: 0.3 }}
-              className="md:px-5 px-3 md:py-4 py-3 uppercase rounded-lg bg-text-dev-orange"
+              className="md:px-4 px-3 md:py-3 py-3 uppercase rounded-lg bg-text-dev-orange"
             >
               <span className="text-sm md:text-xl font-semibold text-white">
                 donate
