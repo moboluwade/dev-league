@@ -8,6 +8,10 @@ import { useState } from 'react'
 const Header = () => {
   const links = [
     {
+      title: 'Home',
+      path: '/'
+    },
+    {
       title: 'About us',
       path: '/about',
     },
