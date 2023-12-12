@@ -76,7 +76,7 @@ const AboutContext = () => {
         <div className="flex flex-col items-center justify-center bg-white">
             <div className=" relative max-w-[87.5rem] w-full lg:px-[7.5rem] md:px-12 px-4 flex flex-col items-center  py-14 md:gap-16">
                 <div className="flex flex-col gap-16 md:flex-row-reverse w-fit md:pt-12">
-                    <div className="relative flex flex-row items-center justify-center w-fit md:w-1/2">
+                    <div className="relative flex flex-row items-center justify-center m-auto overflow-clip w-fit md:w-1/2">
                         <div className="relative flex flex-row justify-center py-12 h-fit">
                             <div className="relative w-1/2 max-w-60">
                                 <div className="relative w-full left-1 bottom-6">
@@ -95,13 +95,13 @@ const AboutContext = () => {
                                         viewport={{ once: true }}
                                         className="top-0 object-cover w-auto h-40 rounded-lg md:rounded-xl md:h-60 max-w-40" src="/about-image-square.png" alt="dev-league-team" />
                                 </div>
-                                <div className="relative z-20 bottom-4 left-14 md:left-20">
+                                <div className="relative z-20 overflow-none bottom-4 left-14 md:left-20">
                                     <motion.div
                                         initial={{ opacity: 0, scale: 0.1 }}
                                         whileInView={{ opacity: 1, scale: 1 }}
                                         transition={{ duration: 1, delay: 1, type: "spring" }}
                                         viewport={{ once: true }}
-                                        className="absolute -left-16 top-4 md:-left-18 md:top-1">
+                                        className="absolute -left-16 top-4 md:-left-20 md:top-1 lg:top-6">
                                         <OrangeStar />
                                     </motion.div>
                                     <div className="overflow-hidden rounded-lg w-fit h-fit ">
@@ -146,18 +146,18 @@ const AboutContext = () => {
                     </span>
                 </div>
                 <div className="flex flex-col gap-16 md:flex-row md:items-center w-fit">
-                    <div className="relative flex flex-row items-center justify-center w-full h-full pt-8 md:w-1/2">
+                    <div className="relative flex flex-row items-center justify-center w-full h-full pt-8 overflow-hidden md:w-1/2">
                         <motion.div
                             initial="hidden"
                             whileInView="show"
                             variants={aboutImageParent}
-                            viewport={{once: true}}
-                            className="relative flex flex-col justify-center w-full h-full gap-6 pt-11">
+                            viewport={{ once: true }}
+                            className="relative flex flex-col justify-center w-full h-full gap-6 pt-11 max-w-[34rem]">
                             <motion.div
                                 variants={aboutImageChildrenFromLeft}
-                                className="bg-[#FEC1AC] w-full h-12 md:h-20 rounded-xl"></motion.div>
-                            <motion.div className=" max-w-[34rem] overflow-hidden">
-                                <img className="rounded-xl lg:h-[26rem] object-cover" src="/dev-community.png" alt="" />
+                                className="bg-[#FEC1AC] w-full h-12 md:h-20 rounded-xl "></motion.div>
+                            <motion.div className=" max-w-[34rem] overflow-hidden m-auto">
+                                <img className="rounded-xl lg:h-[26rem] object-cover w-full" src="/dev-community.png" alt="" />
                             </motion.div>
                             <motion.div
                                 variants={aboutImageChildrenFromRight}
@@ -186,7 +186,7 @@ const AboutContext = () => {
                         </span>
                     </span>
                 </div>
-                <div className="flex flex-col items-center justify-center w-full">
+                <div className="flex flex-col items-center justify-center w-full overflow-hidden">
                     <h3 className="py-6 text-2xl font-semibold text-text-dev-orange">Our Team</h3>
                     <motion.div
                         initial="hidden"
@@ -197,7 +197,7 @@ const AboutContext = () => {
                         {demoTeam.map(member =>
                             <motion.div
                                 variants={teamChild}
-                                className="max-w-[21rem] py-8 flex flex-col" key={member.id}>
+                                className="max-w-[21rem] py-8 flex flex-col m-auto" key={member.id}>
                                 <div className="overflow-hidden w-fit ">
                                     <img className="object-cover w-full" src={member.profile} alt="" />
                                 </div>
