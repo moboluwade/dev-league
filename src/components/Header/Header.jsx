@@ -33,81 +33,17 @@ const Header = () => {
   }
 
   return (
-    <div className="bg-white flex flex-row justify-center text lg:px-[7.5rem] md:px-12 px-4 ">
-      <div className='relative flex items-center justify-between h-24 py-4 max-w-[80.5rem] w-full '>
+    <div className="bg-white flex flex-row justify-center text lg:px-[7.5rem] px-auto">
+      <div className="relative flex items-center gap-4 h-20 pt-4 pb-3 justify-between max-w-[80.5rem] w-full px-4">
         <Link to="/">
-          <img src="/Union.png" alt="logo" className="w-20 h-auto ml-8 md:ml-0" />
+          <img
+            src="/Union.png"
+            alt="logo"
+            className="md:w-[3.7rem] w-auto h-[2.5rem] md:h-[6rem] ml-1 md:ml-0"
+          />
         </Link>
 
-<<<<<<< HEAD
-      <div className="hidden md:flex items-center gap-[3vw]">
-        {links.map((link) => {
-          return (
-            <NavLink to={link.path} key={link.title} end>
-              {link.title}
-            </NavLink>
-          )
-        })}
-      </div>
-
-      <div className="d-btn md:mr-0 mr-8">
-        <motion.button
-          whileHover={{ scale: 1.1, x: -4 }}
-          whileTap={{ scale: 1.05 }}
-          transition={{ duration: 0.5 }}
-          className="mr-20 uppercase md:mr-0 btn"
-        >
-          <span className="text-sm text-white">donate</span>
-        </motion.button>
-      </div>
-
-      {/* Mobile navbar */}
-      <div
-        className="absolute cursor-pointer md:hidden right-8"
-        onClick={handleClick}
-      >
-        {togglerNav ? (
-          <RxCrossCircled
-            style={{ fontSize: '2rem', color: '#D4CECB' }}
-            className="top-8"
-          />
-        ) : (
-          <FiBarChart
-            style={{
-              transform: 'rotate(270deg)',
-              color: '#fd4f13',
-              fontSize: '3rem',
-            }}
-            className="top-5"
-          />
-        )}
-      </div>
-      {togglerNav && ( // Display the overlay only when togglerNav is true
-        <div
-          className="fixed inset-0 z-40 bg-black md:hidden opacity-95"
-          onClick={handleClick} // Close the navigation menu when the overlay is clicked
-        ></div>
-      )}
-
-      {/* mobile navigation menu */}
-      <div
-        className={`md:hidden absolute inset-y-0 h-[774px] w-96 z-50 bg-white p-4 transition duration-300 transform ${
-          togglerNav ? 'translate-x-0 top-0 right-0' : '-translate-x-full'
-        }`}
-      >
-        {/* Navbar content goes here */}
-        <div className="p-4">
-          <div className="flex items-center justify-between pb-4 border-b-2">
-            <h1 className="font-semibold text-xl/[19px]">Main Menu</h1>
-            <RxCrossCircled
-              className="cursor-pointer"
-              style={{ fontSize: '2rem', color: '#D4CECB' }}
-              onClick={handleClick}
-            />
-          </div>
-=======
         <div className="hidden md:flex items-center gap-[3vw]">
->>>>>>> cca9be6ab2c10978a2ec6ad9b6f61fe00f10294a
           {links.map((link) => {
             return (
               <NavLink to={link.path} key={link.title} end>
@@ -116,21 +52,23 @@ const Header = () => {
             )
           })}
         </div>
-        <div className='flex flex-row gap-4 '>
-          <div className="hidden h-fit md:block">
+        <div className="flex flex-row">
+          <div className="h-fit inline pt-1 md:block">
             <motion.button
               whileHover={{ scale: 1.05, x: -4 }}
               whileTap={{ scale: 1 }}
               transition={{ duration: 0.3 }}
-              className="px-5 py-4 uppercase rounded-lg md:mr-0 bg-text-dev-orange"
+              className="md:px-5 px-3 md:py-4 py-3 uppercase rounded-lg bg-text-dev-orange"
             >
-              <span className="text-xl font-semibold text-white ">donate</span>
+              <span className="text-sm md:text-xl font-semibold text-white">
+                donate
+              </span>
             </motion.button>
           </div>
 
           {/* Mobile nav-icon */}
           <div
-            className="px-4 cursor-pointer w-fit md:hidden right-8"
+            className="pl-6 cursor-pointer w-fit md:hidden right-4"
             onClick={handleClick}
           >
             {!togglerNav && (
@@ -140,7 +78,7 @@ const Header = () => {
                   color: '#fd4f13',
                   fontSize: '3rem',
                 }}
-                className="top-5"
+                className="top-8"
               />
             )}
           </div>
@@ -154,10 +92,9 @@ const Header = () => {
 
         {/* mobile navigation menu */}
         <motion.div
-          className={`md:hidden absolute inset-y-0 h-[774px] z-50 bg-white nav p-4 transition duration-300 transform ${togglerNav
-            ? 'translate-x-0 top-0 right-0'
-            : 'hidden'
-            }`}
+          className={`md:hidden absolute inset-y-0 h-[574px] w-[15rem] z-50 bg-white p-4 transition duration-300 transform ${
+            togglerNav ? 'translate-x-0 top-0 right-0' : 'hidden'
+          }`}
         >
           {/* Navbar content goes here */}
           <div className="p-4">
@@ -171,7 +108,12 @@ const Header = () => {
             </div>
             {links.map((link) => {
               return (
-                <NavLink onClick={handleClick} to={link.path} key={link.title} end>
+                <NavLink
+                  onClick={handleClick}
+                  to={link.path}
+                  key={link.title}
+                  end
+                >
                   <div className="flex items-center justify-between py-4 mt-3 border-b-2">
                     {link.title}
                     <img src="/Vector.png" alt="vector" className="vec" />
