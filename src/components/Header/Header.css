@@ -59,7 +59,7 @@
 }
 
 .nav {
-    width: 26rem;
+    width: 100%;
 }
 
 @media (max-width: 678px) {
@@ -73,6 +73,6 @@
 
 @media (max-width: 320px) {
     .nav {
-        width: 16rem;
+        width: 75%;
     }
 }

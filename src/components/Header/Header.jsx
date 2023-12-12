@@ -34,7 +34,7 @@ const Header = () => {
 
   return (
     <div className="bg-white flex flex-row justify-center text lg:px-[7.5rem] md:px-12 px-4 ">
-      <div className='relative flex items-center justify-between h-24 py-4 max-w-[80.5rem] w-full '>
+      <div className='relative flex items-center justify-between w-full h-24 py-4 '>
         <Link to="/">
           <img src="/Union.png" alt="logo" className="w-20 h-auto ml-8 md:ml-0" />
         </Link>
@@ -86,7 +86,7 @@ const Header = () => {
 
         {/* mobile navigation menu */}
         <motion.div
-          className={`md:hidden absolute inset-y-0 h-[774px] z-50 bg-white nav p-4 transition duration-300 transform ${togglerNav
+          className={`md:hidden fixed inset-y-0 z-50 bg-white nav p-4 transition duration-300 transform h-[774px] ${togglerNav
             ? 'translate-x-0 top-0 right-0'
             : 'hidden'
             }`}
