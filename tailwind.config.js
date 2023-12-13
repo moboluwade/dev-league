@@ -16,6 +16,9 @@ export default {
       boxShadow:{
         'input': '0px 4px 80px 0px rgba(0, 0, 0, 0.06)'
       },
+      font:{
+        'Manrope': ['Manrope', 'sans-serif']
+      },
     },
   },
   plugins: [],

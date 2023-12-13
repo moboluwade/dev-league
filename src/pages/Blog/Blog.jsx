@@ -1,5 +1,14 @@
-const Blog = () => {
-  return <div>Blog</div>
-}
+import BlogHero from "./BlogHero";
+import "./Blog.css";
+import BlogContent from "./BlogContent/BlogContent";
 
-export default Blog
+const Blog = (props) => {
+  return (
+    <div>
+      <BlogHero/>
+      <BlogContent />
+    </div>
+  );
+};
+
+export default Blog;
