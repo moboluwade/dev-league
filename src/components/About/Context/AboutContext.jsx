@@ -46,7 +46,7 @@ const AboutContext = () => {
             opacity: 1,
             y: 0,
             transition: {
-                duration: 1,
+                duration: 0.5,
                 when: "beforeChildren",
                 delayChildren: 0.2,
                 staggerChildren: 0.2
@@ -57,7 +57,6 @@ const AboutContext = () => {
     const aboutImageChildrenFromLeft = {
         hidden: { opacity: 0, x: -40 },
         show: {
-            duration: 1,
             opacity: 1,
             x: 0,
             transition: { duration: 0.4, type: "spring" }
@@ -83,7 +82,7 @@ const AboutContext = () => {
                                     <motion.div
                                         initial={{ opacity: 0, scale: 0.1 }}
                                         whileInView={{ opacity: 1, scale: 1 }}
-                                        transition={{ duration: 1, delay: 1.5, type: "spring" }}
+                                        transition={{ duration: 0.5, delay: 1, type: "spring" }}
                                         viewport={{ once: true }}
                                         className="absolute w-4 h-4 -right-1 -top-5 ">
                                         <OrangeBrow />
@@ -91,7 +90,7 @@ const AboutContext = () => {
                                     <motion.img
                                         initial={hideItemFromLeft}
                                         whileInView={showItemFromLeft}
-                                        transition={{ duration: 1.5, delay: 0.2, type: "spring" }}
+                                        transition={{ duration: 0.5, delay: 0.2, type: "spring" }}
                                         viewport={{ once: true }}
                                         className="top-0 object-cover w-auto h-40 rounded-lg md:rounded-xl md:h-60 max-w-40" src="/about-image-square.png" alt="dev-league-team" />
                                 </div>
@@ -99,7 +98,7 @@ const AboutContext = () => {
                                     <motion.div
                                         initial={{ opacity: 0, scale: 0.1 }}
                                         whileInView={{ opacity: 1, scale: 1 }}
-                                        transition={{ duration: 1, delay: 1, type: "spring" }}
+                                        transition={{ duration: 0.5, delay: 1, type: "spring" }}
                                         viewport={{ once: true }}
                                         className="absolute -left-16 top-4 md:-left-20 md:top-1 lg:top-6">
                                         <OrangeStar />
@@ -108,7 +107,7 @@ const AboutContext = () => {
                                         <motion.img
                                             initial={hideItemFromLeft}
                                             whileInView={showItemFromLeft}
-                                            transition={{ duration: 1.5, delay: 0.2, type: "spring" }}
+                                            transition={{ duration: 0.5, delay: 0.2, type: "spring" }}
                                             viewport={{ once: true }}
                                             className=" object-cover object-top w-[10rem] md:rounded-xl md:w-56 md:h-32 h-24 scale-[1.5] md:scale-100  overflow-clip " src="/about-image-rectangle.png" alt="dev-league-event" />
                                     </div>
@@ -119,7 +118,7 @@ const AboutContext = () => {
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0.1 }}
                                     whileInView={{ opacity: 1, scale: 1 }}
-                                    transition={{ duration: 1, delay: 1, type: "spring" }}
+                                    transition={{ duration: 0.5, delay: 1, type: "spring" }}
                                     viewport={{ once: true }}
                                     className="absolute right-2 -bottom-10 md:-bottom-5 md:right-10">
                                     <ChatBubbleRing />
@@ -127,7 +126,7 @@ const AboutContext = () => {
                                 <motion.img
                                     initial={hideItemFromRight}
                                     whileInView={showItemFromRight}
-                                    transition={{ duration: 2, delay: 0.5, type: "spring" }}
+                                    transition={{ duration: 0.5, delay: 0.4, type: "spring" }}
                                     viewport={{ once: true }}
                                     className="object-cover w-32 rounded-lg md:w-52 md:rounded-xl md:h-72 h-52" src="/about-image-slim.png" alt="brainstorm-session" />
                             </div>
