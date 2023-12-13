@@ -8,10 +8,6 @@ import { useState } from 'react'
 const Header = () => {
   const links = [
     {
-      title: 'Home',
-      path: '/'
-    },
-    {
       title: 'About us',
       path: '/about',
     },
@@ -105,6 +101,12 @@ const Header = () => {
                 onClick={() => setTogglerNav(!togglerNav)}
               />
             </div>
+            <NavLink onClick={handleClick} to={'/'} key={'Home'} end>
+              <div className="flex items-center justify-between py-4 mt-3 border-b-2">
+                {'Home'}
+                <img src="/Vector.png" alt="vector" className="vec" />
+              </div>
+            </NavLink>
             {links.map((link) => {
               return (
                 <NavLink onClick={handleClick} to={link.path} key={link.title} end>
