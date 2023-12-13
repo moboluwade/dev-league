@@ -33,10 +33,14 @@ const Header = () => {
   }
 
   return (
-    <div className="bg-white flex flex-row justify-center text lg:px-[7.5rem] md:px-12 px-4 ">
-      <div className='relative flex items-center justify-between w-full h-24 py-4 '>
+    <div className="bg-white flex flex-row justify-center text lg:px-[7.5rem] md:px-8 px-auto">
+      <div className="relative flex items-center gap-4 h-20 md:pb-5 pt-4 pb-3 justify-between max-w-[80.5rem] w-full px-4">
         <Link to="/">
-          <img src="/Union.png" alt="logo" className="w-20 h-auto ml-8 md:ml-0" />
+          <img
+            src="/Union.png"
+            alt="logo"
+            className="md:w-20 w-auto h-[2.5rem] md:h-auto ml-1 md:ml-0"
+          />
         </Link>
 
         <div className="hidden md:flex items-center gap-[3vw]">
@@ -48,21 +52,23 @@ const Header = () => {
             )
           })}
         </div>
-        <div className='flex flex-row gap-4 '>
-          <div className="hidden h-fit md:block">
+        <div className="flex flex-row">
+          <div className="h-fit inline pt-1 md:block">
             <motion.button
               whileHover={{ scale: 1.05, x: -4 }}
               whileTap={{ scale: 1 }}
               transition={{ duration: 0.3 }}
-              className="px-5 py-4 uppercase rounded-lg md:mr-0 bg-text-dev-orange"
+              className="md:px-4 px-3 md:py-3 py-3 uppercase rounded-lg bg-text-dev-orange"
             >
-              <span className="text-xl font-semibold text-white ">donate</span>
+              <span className="text-sm md:text-xl font-semibold text-white">
+                donate
+              </span>
             </motion.button>
           </div>
 
           {/* Mobile nav-icon */}
           <div
-            className="px-4 cursor-pointer w-fit md:hidden right-8"
+            className="pl-6 cursor-pointer w-fit md:hidden right-4"
             onClick={handleClick}
           >
             {!togglerNav && (
@@ -72,7 +78,7 @@ const Header = () => {
                   color: '#fd4f13',
                   fontSize: '3rem',
                 }}
-                className="top-5"
+                className="top-8"
               />
             )}
           </div>
@@ -86,10 +92,9 @@ const Header = () => {
 
         {/* mobile navigation menu */}
         <motion.div
-          className={`md:hidden fixed inset-y-0 z-50 bg-white nav p-4 transition duration-300 transform h-[774px] ${togglerNav
-            ? 'translate-x-0 top-0 right-0'
-            : 'hidden'
-            }`}
+          className={`md:hidden absolute inset-y-0 h-[574px] w-[15rem] z-50 bg-white p-4 transition duration-300 transform ${
+            togglerNav ? 'translate-x-0 top-0 right-0' : 'hidden'
+          }`}
         >
           {/* Navbar content goes here */}
           <div className="p-4">
@@ -103,7 +108,12 @@ const Header = () => {
             </div>
             {links.map((link) => {
               return (
-                <NavLink onClick={handleClick} to={link.path} key={link.title} end>
+                <NavLink
+                  onClick={handleClick}
+                  to={link.path}
+                  key={link.title}
+                  end
+                >
                   <div className="flex items-center justify-between py-4 mt-3 border-b-2">
                     {link.title}
                     <img src="/Vector.png" alt="vector" className="vec" />
