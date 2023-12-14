@@ -1,2 +1,2 @@
-import { WashingtonPost, TechCrunch, Bloomberg, Gizmodo, Forbes, TwitterBird, LinkedIn, Facebook, Github } from "./svg";
-export { WashingtonPost, TechCrunch, Bloomberg, Gizmodo, Forbes, TwitterBird, LinkedIn, Facebook, Github};
+import { WashingtonPost, TechCrunch, Bloomberg, Gizmodo, Forbes, TwitterBird, LinkedIn, Facebook, Github, OrangeStar, OrangeBrow, ChatBubbleRing, OrangeDownArrow, OrangeUpArrow, StrokeFrame } from "./svg";
+export { WashingtonPost, TechCrunch, Bloomberg, Gizmodo, Forbes, TwitterBird, LinkedIn, Facebook, Github, OrangeStar, OrangeBrow, ChatBubbleRing, OrangeDownArrow, OrangeUpArrow, StrokeFrame };

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useState } from "react";
 
 import "./Form.css";
@@ -92,7 +91,7 @@ const Form = (props) => {
   };
 
   return (
-    <form className="form " onSubmit={formSubmitHandler}>
+    <form className="form" onSubmit={formSubmitHandler}>
       <div className="form__header">
         <div>
           <h3>Donate Now</h3>

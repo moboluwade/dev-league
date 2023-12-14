@@ -3,6 +3,7 @@ import Modal from "../../UI/Modal";
 import PaymentModal from "./PaymentModal.jsx";
 import Form from "./Form";
 import "./Donation.css";
+import { motion } from "framer-motion";
 
 const Donation = () => {
   const [showModal, setShowModal] = useState(false);
@@ -23,12 +24,17 @@ const Donation = () => {
   };
 
   return (
-    <section className="donation-container">
-      <div className="donation">
+    <section className="overflow-hidden donation-container">
+      <motion.div
+      initial={{y: 60, opacity:0}}
+      whileInView={{y:0, opacity: 1}}
+      transition={{duration: 2, delay: 0.5, type: "spring"}}
+      viewport={{once: true}}
+      className="donation">
         <div className="details">
-          <h2 className="text-lg">We need donations</h2>
+          <h2>We need donations</h2>
           <h3>Towards the One Million Mission.</h3>
-          <div className="paragraph max-w-[33rem]">
+          <div className="paragraph">
             <p>
               Your contribution holds the power to create a tangible and
               positive impact on numerous lives.
@@ -51,8 +57,7 @@ const Donation = () => {
             <PaymentModal price={amount} currency={currency} />
           </Modal>
         )}
-
-      </div>
+      </motion.div>
     </section>
   );
 };
