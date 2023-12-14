@@ -34,7 +34,7 @@ const Hero = () => {
             <motion.button
               whileHover={{ scale: 1.1, x: -6 }}
               whileTap={{ scale: 1.05 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.3 }}
               className="absolute right-[0.5rem] top-[0.5rem] flex flex-col justify-center text-white text-center w-fit h-12 bg-text-dev-orange font-semibold py-4 px-5 rounded-[3rem]"
             >
               Get started now

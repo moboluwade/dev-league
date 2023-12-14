@@ -8,10 +8,6 @@ import { useState } from 'react'
 const Header = () => {
   const links = [
     {
-      title: 'Home',
-      path: '/'
-    },
-    {
       title: 'About us',
       path: '/about',
     },
@@ -57,14 +53,14 @@ const Header = () => {
           })}
         </div>
         <div className="flex flex-row">
-          <div className="h-fit inline pt-1 md:block">
+          <div className="inline pt-1 h-fit md:block">
             <motion.button
               whileHover={{ scale: 1.05, x: -4 }}
               whileTap={{ scale: 1 }}
               transition={{ duration: 0.3 }}
-              className="md:px-4 px-3 md:py-3 py-3 uppercase rounded-lg bg-text-dev-orange"
+              className="px-3 py-3 uppercase rounded-lg md:px-4 md:py-3 bg-text-dev-orange"
             >
-              <span className="text-sm md:text-xl font-semibold text-white">
+              <span className="text-sm font-semibold text-white md:text-xl">
                 donate
               </span>
             </motion.button>
@@ -96,9 +92,8 @@ const Header = () => {
 
         {/* mobile navigation menu */}
         <motion.div
-          className={`md:hidden absolute inset-y-0 h-[574px] w-[15rem] z-50 bg-white p-4 transition duration-300 transform ${
-            togglerNav ? 'translate-x-0 top-0 right-0' : 'hidden'
-          }`}
+          className={`md:hidden absolute inset-y-0 h-[574px] w-[15rem] z-50 bg-white p-4 transition duration-300 transform ${togglerNav ? 'translate-x-0 top-0 right-0' : 'hidden'
+            }`}
         >
           {/* Navbar content goes here */}
           <div className="p-4">
@@ -110,6 +105,17 @@ const Header = () => {
                 onClick={() => setTogglerNav(!togglerNav)}
               />
             </div>
+            <NavLink
+              onClick={handleClick}
+              to={'/'}
+              key={'Home'}
+              end
+            >
+              <div className="flex items-center justify-between py-4 mt-3 border-b-2">
+                {'Home'}
+                <img src="/Vector.png" alt="vector" className="vec" />
+              </div>
+            </NavLink>
             {links.map((link) => {
               return (
                 <NavLink
