@@ -28,7 +28,7 @@ const Donation = () => {
       <motion.div
       initial={{y: 60, opacity:0}}
       whileInView={{y:0, opacity: 1}}
-      transition={{duration: 2, delay: 0.5, type: "spring"}}
+      transition={{duration: 0.8, delay: 0.2, type: "spring"}}
       viewport={{once: true}}
       className="donation">
         <div className="details">

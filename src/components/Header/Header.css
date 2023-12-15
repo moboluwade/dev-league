@@ -69,4 +69,16 @@
     .icon {
         height: 31.2px;
     }
+<<<<<<< HEAD
+=======
+    .nav {
+        width: 100%;
+    }
+}
+
+@media (max-width: 550px) {
+    .nav {
+        width: 75%;
+    }
+>>>>>>> 48f90df6d2859c007ac252703c98a0f864e6559d
 }

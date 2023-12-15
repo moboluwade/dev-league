@@ -8,7 +8,7 @@ const Impact = () => {
         show: {
             opacity: 1,
             when: "beforeChildren",
-            delayChildren: 0.5,
+            delayChildren: 0.2,
             staggerChildren: 0.2
         }
     }
