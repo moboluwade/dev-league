@@ -69,9 +69,12 @@
     .icon {
         height: 31.2px;
     }
+    .nav {
+        width: 100%;
+    }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 550px) {
     .nav {
         width: 75%;
     }
