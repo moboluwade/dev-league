@@ -1,10 +1,10 @@
 import { EventsHero } from "../../components/Events/Hero"
-import { UpcomingEvents } from "../../components/Events/Context/UpcomingEvents"
+import { EventsContext } from "../../components/Events/Context"
 const Events = () => {
   return (
     <div>
       <EventsHero />
-      <UpcomingEvents />
+      <EventsContext />
     </div>
       )
 }
