@@ -73,7 +73,7 @@ const AboutContext = () => {
 
     return (
         <div className="flex flex-col items-center justify-center bg-white">
-            <div className=" relative max-w-[87.5rem] w-full lg:px-[7.5rem] md:px-12 px-4 flex flex-col items-center  py-14 md:gap-16">
+            <div className=" relative max-w-[87.5rem] w-full lg:px-[7.5rem] md:px-12 px-4 flex flex-col items-center pb-14 md:gap-16">
                 <div className="flex flex-col gap-16 md:flex-row-reverse w-fit md:pt-12">
                     <div className="relative flex flex-row items-center justify-center m-auto overflow-clip w-fit md:w-1/2">
                         <div className="relative flex flex-row justify-center py-12 h-fit">
