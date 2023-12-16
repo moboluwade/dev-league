@@ -92,8 +92,9 @@ const Header = () => {
 
         {/* mobile navigation menu */}
         <motion.div
-          className={`md:hidden absolute inset-y-0 h-[574px] w-[15rem] z-50 bg-white p-4 transition duration-300 transform ${togglerNav ? 'translate-x-0 top-0 right-0' : 'hidden'
-            }`}
+          className={`md:hidden absolute inset-y-0 h-[574px] w-[15rem] z-50 bg-white p-4 transition duration-300 transform ${
+            togglerNav ? 'translate-x-0 top-0 right-0' : 'hidden'
+          }`}
         >
           {/* Navbar content goes here */}
           <div className="p-4">
@@ -105,12 +106,7 @@ const Header = () => {
                 onClick={() => setTogglerNav(!togglerNav)}
               />
             </div>
-            <NavLink
-              onClick={handleClick}
-              to={'/'}
-              key={'Home'}
-              end
-            >
+            <NavLink onClick={handleClick} to={'/'} key={'Home'} end>
               <div className="flex items-center justify-between py-4 mt-3 border-b-2">
                 {'Home'}
                 <img src="/Vector.png" alt="vector" className="vec" />
