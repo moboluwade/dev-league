@@ -1,3 +1,5 @@
+import { EventsHero } from "../../components/Events/Hero"
+
 const Events = () => {
   return (
     <div className="flex flex-col justify-center items-center">
