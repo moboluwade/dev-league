@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import {
   BackArrow,
   FrontArrow,
@@ -7,9 +6,6 @@ import {
   Instagram,
   Twitter,
 } from "./SVG";
-import Avatar from "../../../public/Avatar.png";
-import image1 from "../../../public/post2.png";
-import image2 from "../../../public/post1.jpeg";
 import "./BlogView.css";
 
 const BlogView = () => {
@@ -42,7 +38,7 @@ const BlogView = () => {
         <h1>The Impact of DevOps on SoftWare Development and Deployment</h1>
         <div className="post-details">
           <div className="avatar">
-            <img src={Avatar} />
+            <img src="/Avatar.png" />
             <p className="author">Qawi</p>
           </div>
           <div className="post-status">
@@ -51,7 +47,7 @@ const BlogView = () => {
           </div>
         </div>
         <div className="post">
-          <img src={image1} />
+          <img src="/post2.png" />
           <p>
             You never get a second chance at a first impression. For firms
             within private markets, this first impression is their data room: a
@@ -69,7 +65,7 @@ const BlogView = () => {
             impression their best impression. This means firms can spend less
             time selling and more time investing.
           </p>
-          <img src={image2} />
+          <img src="/post1.png" />
           <p>
             You never get a second chance at a first impression. For firms
             within private markets, this first impression is their data room: a

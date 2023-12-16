@@ -48,13 +48,11 @@ const EventsHero = () => {
         </h1>
         <div className="z-20 flex flex-row items-center gap-4">
           <span className="text-4xl font-bold">Categories</span>
-          <motion.button
-          whileFocus={{color:"rgb(253,79,19)"}}
-          className="border border-[#D4CECB] rounded-lg px-5 py-1 text-lg">All</motion.button>
-          <motion.button
-          whileFocus={{color:"rgb(253,79,19)"}}
-          className="border border-[#D4CECB] rounded-lg px-5 py-1 text-lg">Virtual</motion.button>
-          <button className="border border-[#D4CECB] rounded-lg px-5 py-1 text-lg focus:text-text-dev-orange">Physical</button>
+          <button
+          className="border border-[#D4CECB] rounded-lg px-5 py-1 text-lg">All</button>
+          <button
+          className="border border-[#D4CECB] rounded-lg px-5 py-1 text-lg">Virtual</button>
+          <button className="border border-[#D4CECB] rounded-lg px-5 py-1 text-lg ">Physical</button>
           <div className="border border-[#D4CECB] rounded-lg px-5 py-1 text-lg">Upcoming</div>
           <div className="border border-[#D4CECB] rounded-lg px-5 py-1 text-lg">Past</div>
         </div>

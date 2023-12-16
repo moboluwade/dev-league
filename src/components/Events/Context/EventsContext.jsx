@@ -1,7 +1,9 @@
+import { UpcomingEvents } from "./UpcomingEvents"
+
 const EventsContext = () => {
   return (
     <div>
-        <main></main>
+        <UpcomingEvents />
     </div>
   )
 }
