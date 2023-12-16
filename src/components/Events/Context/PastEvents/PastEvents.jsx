@@ -1,3 +1,4 @@
+import { motion } from "framer-motion"
 const PastEvents = () => {
     return (
         <div className="flex flex-col items-center">
@@ -9,7 +10,9 @@ const PastEvents = () => {
 
                 {/* card grid */}
                 <div className="grid grid-cols-2 gap-16">
-                    <div className="p-4 border h-fit rounded-2xl min-w-[30rem] max-w-[35rem]">
+                    <motion.div
+                        whileHover={{ scale: 1.02 }}
+                        className="p-4 border h-fit rounded-2xl min-w-[30rem] max-w-[35rem]">
                         <div className="flex flex-col gap-3 ">
                             <div className="flex flex-row items-center gap-2 w-fit h-fit">
                                 <div className="h-fit">
@@ -26,11 +29,12 @@ const PastEvents = () => {
                                 <span>01 June 2023</span>
                                 <span>8:30pm</span>
                             </div>
-
                         </div>
-                    </div>
+                    </motion.div>
 
-                    <div className="p-4 border h-fit rounded-2xl min-w-[30rem] max-w-[35rem]">
+                    <motion.div
+                        whileHover={{ scale: 1.02 }}
+                        className="p-4 border h-fit rounded-2xl min-w-[30rem] max-w-[35rem]">
                         <div className="flex flex-col gap-3 ">
                             <div className="flex flex-row items-center gap-2 w-fit h-fit">
                                 <div className="h-fit">
@@ -47,11 +51,12 @@ const PastEvents = () => {
                                 <span>01 June 2023</span>
                                 <span>8:30pm</span>
                             </div>
-
                         </div>
-                    </div>
-
-                    <div className="p-4 border h-fit rounded-2xl min-w-[30rem] max-w-[35rem]">
+                    </motion.div>
+                    
+                    <motion.div
+                        whileHover={{ scale: 1.02 }}
+                        className="p-4 border h-fit rounded-2xl min-w-[30rem] max-w-[35rem]">
                         <div className="flex flex-col gap-3 ">
                             <div className="flex flex-row items-center gap-2 w-fit h-fit">
                                 <div className="h-fit">
@@ -68,11 +73,12 @@ const PastEvents = () => {
                                 <span>01 June 2023</span>
                                 <span>8:30pm</span>
                             </div>
-
                         </div>
-                    </div>
+                    </motion.div>
 
-                    <div className="p-4 border h-fit rounded-2xl min-w-[30rem] max-w-[35rem]">
+                    <motion.div
+                        whileHover={{ scale: 1.02 }}
+                        className="p-4 border h-fit rounded-2xl min-w-[30rem] max-w-[35rem]">
                         <div className="flex flex-col gap-3 ">
                             <div className="flex flex-row items-center gap-2 w-fit h-fit">
                                 <div className="h-fit">
@@ -89,10 +95,8 @@ const PastEvents = () => {
                                 <span>01 June 2023</span>
                                 <span>8:30pm</span>
                             </div>
-
                         </div>
-                    </div>
-
+                    </motion.div>
                 </div>
             </div>
         </div>
