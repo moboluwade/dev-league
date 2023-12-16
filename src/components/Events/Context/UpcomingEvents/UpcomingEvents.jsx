@@ -9,7 +9,7 @@ const UpcomingEvents = () => {
         </div>
 
         {/* card grid */}
-        <div className="grid grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 gap-16 md:grid-cols-2">
         <motion.div
                         whileHover={{ scale: 1.02 }}
                         className="p-4 border h-fit rounded-2xl min-w-[30rem] max-w-[35rem]">
