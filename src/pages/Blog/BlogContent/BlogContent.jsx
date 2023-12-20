@@ -16,7 +16,10 @@ function BlogContent() {
             <button className="border-2 px-1 py-[2px] font-bold rounded-[5px]">
               1
             </button>
-            <button className="border-2 px-1 py-[2px] font-bold rounded-[5px]">
+            <button
+              className="border-2 px-1 py-[2px] font-bold rounded-[5px]"
+              onClick={() => setShowDetails(true)}
+            >
               2
             </button>
           </div>
