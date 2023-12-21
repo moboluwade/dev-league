@@ -1,8 +1,8 @@
-import { Sponsor } from "../../components/Sponsor";
-import { Hero } from "../../components/Hero";
-import { Donation } from "../../components/Donation";
-import { Impact } from "../../components/Impact";
-import { Articles } from "../../components/Articles";
+import { Sponsor } from '../../components/Sponsor'
+import { Hero } from '../../components/Hero'
+import { Donation } from '../../components/Donation'
+import { Impact } from '../../components/Impact'
+import { Articles } from '../../components/Articles'
 const Home = () => {
   return (
     <>
@@ -10,7 +10,9 @@ const Home = () => {
       {/* max-w-[88rem] lg:px-[7.5rem] md:px-12 px-4  */}
       <Hero />
       <Sponsor />
-      <Donation />
+      <section id="donationSection">
+        <Donation />
+      </section>
       <Impact />
       <Articles />
     </>
