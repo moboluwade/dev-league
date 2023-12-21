@@ -6,6 +6,9 @@ import { RxCrossCircled } from 'react-icons/rx'
 import { useState } from 'react'
 
 const Header = () => {
+  const handleDonateClick = () => {
+    window.location.href = '/donation'
+  }
   const links = [
     {
       title: 'About us',
@@ -59,6 +62,7 @@ const Header = () => {
               whileTap={{ scale: 1 }}
               transition={{ duration: 0.3 }}
               className="px-3 py-3 uppercase rounded-lg md:px-4 md:py-3 bg-text-dev-orange"
+              onClick={handleDonateClick}
             >
               <span className="text-sm font-semibold text-white md:text-xl">
                 donate
