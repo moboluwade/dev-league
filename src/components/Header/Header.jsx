@@ -7,7 +7,12 @@ import { useState } from 'react'
 
 const Header = () => {
   const handleDonateClick = () => {
-    window.location.href = '/donation'
+    const donationSection = document.getElementById('donationSection')
+
+    if (donationSection) {
+      // Scroll to the donation section
+      donationSection.scrollIntoView({ behavior: 'smooth' })
+    }
   }
   const links = [
     {
