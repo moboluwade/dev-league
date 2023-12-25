@@ -5,7 +5,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import ErrorPage from './ErrorPage.jsx'
 import About from './pages/About/About.jsx'
-import Events from './pages/Events/Events.jsx'
+import Events from './pages/EventsPage/Events.jsx'
 import EventView from './pages/Events/EventView/EventView.jsx'
 import Blog from './pages/Blog/Blog.jsx'
 import BlogView from './pages/Blog/BlogView.jsx'
@@ -46,7 +46,6 @@ const router = createBrowserRouter([
         path: '/shop',
         element: <Shop />,
       },
-    
     ],
   },
 ])

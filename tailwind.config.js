@@ -11,8 +11,11 @@ export default {
         'dev-dark-brown': '#292422',
         pinkish: '#FFF6F3',
         neutral600: '#7A6C65',
+        neutral800: '#292422',
         neutral900: '#101828',
         neutralGrey: '#F3F3F3',
+        primary500: '#FD4F13',
+        gray700: '#534F4B',
       },
       boxShadow: {
         input: '0px 4px 80px 0px rgba(0, 0, 0, 0.06)',
