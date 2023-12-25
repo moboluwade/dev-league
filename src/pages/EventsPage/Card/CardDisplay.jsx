@@ -3,7 +3,7 @@ import { eventsData } from '../data'
 
 const CardDisplay = () => {
   return (
-    <div>
+    <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
       {eventsData.map((card) => (
         <div key={card.id}>
           <Card
