@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import './Header.css'
 import { motion } from 'framer-motion'
 import { FiBarChart } from 'react-icons/fi'
@@ -6,14 +6,18 @@ import { RxCrossCircled } from 'react-icons/rx'
 import { useState } from 'react'
 
 const Header = () => {
+  const navigate = useNavigate()
   const handleDonateClick = () => {
-    const donationSection = document.getElementById('donationSection')
-
-    if (donationSection) {
-      // Scroll to the donation section
-      donationSection.scrollIntoView({ behavior: 'smooth' })
-    }
+    navigate('/')
+    setTimeout(() => {
+      const donationSection = document.getElementById('donationSection')
+      if (donationSection) {
+        // Scroll to the donation section
+        donationSection.scrollIntoView({ behavior: 'smooth' })
+      }
+    }, 100)
   }
+
   const links = [
     {
       title: 'About us',
