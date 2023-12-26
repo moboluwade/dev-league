@@ -49,7 +49,11 @@ const Events = () => {
           <h1 className="text-2xl md:text-4xl font-bold text-primary500">
             All Events
           </h1>
-          <button className="text-black text-md md:text-xl underline underline-offset-2 font-bold">
+
+          <button
+            className="text-black text-md md:text-xl underline underline-offset-2 font-bold"
+            onClick={() => filterCards('all')}
+          >
             View all
           </button>
         </div>

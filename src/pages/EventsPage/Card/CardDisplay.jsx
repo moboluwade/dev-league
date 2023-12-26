@@ -18,7 +18,10 @@ const CardDisplay = ({ displayType, eventsData, setEventsData }) => {
   return (
     <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
       {displayedCards.map((card) => (
-        <div key={card.id}>
+        <div
+          key={card.id}
+          style={{ cursor: card.isEventOpen ? 'pointer' : 'not-allowed' }}
+        >
           <Card
             isEventOpen={card.isEventOpen}
             day={card.day}
