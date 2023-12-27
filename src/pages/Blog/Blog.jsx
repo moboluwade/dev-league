@@ -1,5 +1,4 @@
 import BlogHero from "./BlogHero";
-import "./Blog.css";
 import BlogContent from "./BlogContent/BlogContent";
 
 const Blog = (props) => {

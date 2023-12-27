@@ -1,13 +1,13 @@
 .hero--btn{
-    padding: 3px 8px;
+    /* padding: 3px 8px;
     border: 1px solid #D4CECB;
     padding: 8px 15px;
     border-radius: 8px;
     text-align: center;
-    font-family: Manrope;
+    font-family: ; */
 }
 
-@media screen and (min-device-width: 1025px) {
+/* @media screen and (min-device-width: 1025px) {
     .Blog--Card{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -31,10 +31,10 @@
         color: black;
         flex-wrap: wrap;
     }
-}
+} */
 
 /* mobile screen */
-@media screen and (max-device-width: 480px) {
+/* @media screen and (max-device-width: 480px) {
     .Blog--Card{
         display: grid;
         grid-template-columns: 1fr;
@@ -47,4 +47,4 @@
     .content--top{
         flex-direction: column;
     }
-}
+} */
