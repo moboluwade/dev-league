@@ -24,7 +24,7 @@ const Events = () => {
           <div className="flex md:gap-6 gap-2 justify-center items-center">
             <h2 className="font-bold text-lg md:text-2xl">Categories</h2>
             <button
-              className="px-3 text-primary500 text-sm md:text-lg border border-primary500 border-1 rounded-md"
+              className="px-3 text-sm text-gray700 md:text-lg hover:border focus:border hover:text-primary500 focus:border-primary500 focus:text-primary500 hover:border-primary500 border-1 rounded-md transition-all duration-300"
               onClick={() => filterCards('all')}
             >
               All
