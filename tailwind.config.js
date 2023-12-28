@@ -19,7 +19,10 @@ export default {
         primary600: '#EC3E02',
         primary700: '#B91C1C',
         gray700: '#534F4B',
+        grey700: '#344054',
         error50: '#FEF3F2',
+        gray600: '#D4CECB',
+        lightPink: '#FFF6F3',
       },
       boxShadow: {
         input: '0px 4px 80px 0px rgba(0, 0, 0, 0.06)',

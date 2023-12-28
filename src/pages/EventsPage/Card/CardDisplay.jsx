@@ -1,4 +1,5 @@
 import Card from './Card'
+import { Link } from 'react-router-dom'
 
 const CardDisplay = ({ displayType, eventsData, setEventsData }) => {
   let displayedCards = eventsData
@@ -22,12 +23,14 @@ const CardDisplay = ({ displayType, eventsData, setEventsData }) => {
           key={card.id}
           style={{ cursor: card.isEventOpen ? 'pointer' : 'not-allowed' }}
         >
-          <Card
-            isEventOpen={card.isEventOpen}
-            day={card.day}
-            month={card.month}
-            onClick={handleCardClick}
-          />
+          <Link to={'/event-details'}>
+            <Card
+              isEventOpen={card.isEventOpen}
+              day={card.day}
+              month={card.month}
+              onClick={handleCardClick}
+            />
+          </Link>
         </div>
       ))}
     </div>
