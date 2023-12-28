@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types' // Import PropTypes
 import { RxDotFilled } from 'react-icons/rx'
 import { IoArrowRedo } from 'react-icons/io5'
+import { motion } from 'framer-motion'
 
 const Card = ({ isEventOpen, day, month }) => {
   const buttonStyles = {
@@ -11,7 +12,12 @@ const Card = ({ isEventOpen, day, month }) => {
     backgroundColor: isEventOpen ? '#EC3E02' : '#9F918B',
   }
   return (
-    <div className="py-4 px-2 md:px-6 border border-2 rounded-md border-neutral400 flex gap-2 md:gap-6">
+    <motion.div
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 1.01 }}
+      transition={{ delay: 0, duration: 0.5, type: 'tween' }}
+      className="py-4 px-2 md:px-6 border border-2 rounded-md border-neutral400 flex gap-2 md:gap-6"
+    >
       <div
         className="px-8 py-6 text-white flex items-center justify-center flex-col"
         style={dateStyles}
@@ -62,7 +68,7 @@ const Card = ({ isEventOpen, day, month }) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
