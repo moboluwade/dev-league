@@ -28,6 +28,7 @@ const CardDisplay = ({ displayType, eventsData, setEventsData }) => {
               isEventOpen={card.isEventOpen}
               day={card.day}
               month={card.month}
+              type={card.type}
               onClick={handleCardClick}
             />
           </Link>
