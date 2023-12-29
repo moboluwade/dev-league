@@ -207,13 +207,25 @@ const AboutContext = () => {
                                 </div>
                                 <div className="flex flex-row gap-5 pt-6 grayscale">
                                     <div className="">
-                                        {member.twitter && <TwitterBird />}
+                                        <a target="_blank" rel="noreferrer" href={member.twitter}>
+                                            {member.twitter && <TwitterBird />}
+                                        </a>
                                     </div>
                                     <div className="grayscale-0">
-                                        {member.linkedin && <LinkedIn />}
+                                        <a target="_blank" rel="noreferrer" href={member.linkedin}>
+                                            {member.linkedin && <LinkedIn />}
+                                        </a>
                                     </div>
-                                    {member.github && <Github />}
-                                    {member.dribble && <DribbleIcon />}
+                                    <div>
+                                        <a target="_blank" rel="noreferrer" href={member.github}>
+                                            {member.github && <Github />}
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a target="_blank" rel="noreferrer" href={member.linkedin}>
+                                            {member.dribble && <DribbleIcon />}
+                                        </a>
+                                    </div>
                                 </div>
                             </motion.div>
                         )}
