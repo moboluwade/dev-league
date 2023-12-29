@@ -196,9 +196,9 @@ const AboutContext = () => {
                         {demoTeam.map(member =>
                             <motion.div
                                 variants={teamChild}
-                                className="max-w-[21rem] py-8 flex flex-col m-auto" key={member.id}>
+                                className="max-w-[21rem] py-8 flex flex-col mx-auto justify-start content-start" key={member.id}>
                                 <div className="overflow-hidden w-fit ">
-                                    <img className="object-cover w-full" src={member.profile} alt="" />
+                                    <img className="object-cover w-80 aspect-square" src={member.profile} alt="" />
                                 </div>
                                 <div className="flex flex-col pt-6">
                                     <span className="text-xl font-semibold">{member.name}</span>
@@ -207,13 +207,13 @@ const AboutContext = () => {
                                 </div>
                                 <div className="flex flex-row gap-5 pt-6 grayscale">
                                     <div className="">
-                                        <TwitterBird />
+                                        {member.twitter && <TwitterBird />}
                                     </div>
                                     <div className="grayscale-0">
-                                        <LinkedIn />
+                                        {member.linkedin && <LinkedIn />}
                                     </div>
-                                    {member.devBoolean && <Github />}
-                                    {member.designerBoolean && <DribbleIcon />}
+                                    {member.github && <Github />}
+                                    {member.dribble && <DribbleIcon />}
                                 </div>
                             </motion.div>
                         )}
