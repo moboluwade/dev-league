@@ -5,6 +5,11 @@ import { eventsData } from '../EventsPage/data'
 const Events = () => {
   const [cardsData, setCardsData] = useState(eventsData)
   const [displayType, setDisplayType] = useState('all')
+  const isActive = (type) => {
+    return displayType === type
+      ? 'text-primary500 border border-1 border-primary500 active'
+      : ''
+  }
 
   const filterCards = (type) => {
     setDisplayType(type)
@@ -24,19 +29,25 @@ const Events = () => {
           <div className="flex md:gap-6 gap-2 justify-center items-center">
             <h2 className="font-bold text-lg md:text-2xl">Categories</h2>
             <button
-              className="px-3 text-sm text-gray700 md:text-lg hover:border border hover:text-primary500 border-primary500 text-primary500 focus:border hover:text-primary500 focus:border-primary500 focus:text-primary500 hover:border-primary500 border-1 rounded-md transition-all duration-300"
+              className={`px-3 text-sm text-gray700 md:text-lg hover:border hover:text-primary500 focus:border hover:text-primary500 focus:border-primary500 focus:text-primary500 hover:border-primary500 border-1 rounded-md transition-all duration-300 ${isActive(
+                'all',
+              )}`}
               onClick={() => filterCards('all')}
             >
               All
             </button>
             <button
-              className="px-3 text-gray700 text-sm md:text-lg hover:border hover:border-primary500 hover:text-primary500 focus:border focus:border-primary500 focus:text-primary500 border-1 rounded-md transition-all duration-300"
+              className={`px-3 text-sm text-gray700 md:text-lg hover:border hover:text-primary500 focus:border hover:text-primary500 focus:border-primary500 focus:text-primary500 hover:border-primary500 border-1 rounded-md transition-all duration-300 ${isActive(
+                'upcoming',
+              )}`}
               onClick={() => filterCards('upcoming')}
             >
               Upcoming
             </button>
             <button
-              className="px-3 text-gray700 text-sm md:text-lg hover:border focus:border hover:text-primary500 focus:border-primary500 focus:text-primary500 hover:border-primary500 border-1 rounded-md transition-all duration-300"
+              className={`px-3 text-sm text-gray700 md:text-lg hover:border hover:text-primary500 focus:border hover:text-primary500 focus:border-primary500 focus:text-primary500 hover:border-primary500 border-1 rounded-md transition-all duration-300 ${isActive(
+                'closed',
+              )}`}
               onClick={() => filterCards('closed')}
             >
               Past
