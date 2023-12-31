@@ -1,9 +1,20 @@
 import BlogData from "./BlogData";
 
 function BlogContent() {
+  const TextLength = (text) => {
+    const length = text.length;
+    if (length > 65) {
+      const textLength = text.slice(0, 65);
+      const newText = textLength + "...";
+      return newText;
+    } else {
+      return text + "...";
+    }
+  };
+
   return (
     <div className="flex flex-col gap-[50px] py-[4.5rem] lg:px-[7rem] md:px-12 px-4 max-w-[87.5rem] justify-center">
-      <div className="flex justify-end gap-2">
+      <div className="flex justify-end mr-5 gap-2">
         <button className="border-2 px-1 py-[2px] font-bold rounded-[5px]">
           1
         </button>
@@ -11,20 +22,20 @@ function BlogContent() {
           2
         </button>
       </div>
-      <div className="flex flex-col gap-8">
-        <div className="flex flex-col-reverse md:flex-shrink-0 md:flex-grow flex-auto md:flex-row gap-10">
-          <div className="flex flex-col gap-2 lg:gap-4 w-full align-middle text-left">
-            <button className="text-[16px] text-[#7A6C65] font-[inter] font-normal p-[12px] border-[0.5px] h-[40px] w-[73px] rounded-[8px] ">
+      <div className="flex flex-col gap-8 px-4">
+        <div className="grid place-items-center sm:grid-cols-2 gap-10 ">
+          <div className="flex flex-col gap-1 lg:gap-3 w-full align-middle text-left">
+            <button className="text-[15px] sm:text-[18px] text-[#7A6C65] font-[inter] font-normal p-2 sm:p-[12px] border-[0.5px] max-w-[73px] rounded-[8px] ">
               Article
             </button>
-            <span className="font-[inter] font-normal text-base w-[103px] h-[20px] text-[#7A6C65] ">
+            <span className="font-[inter] font-normal text-[14px] sm:text-base w-[103px] h-[20px] text-[#7A6C65] ">
               01 June 2023
             </span>
 
-            <b className="font-[inter] text-xl lg:text-[30px] lg:leading-10 font-semibold text-[#101828] w-full ">
+            <b className="font-[inter] text-base sm:text-lg lg:text-2xl font-semibold text-[#101828] w-full ">
               The Impact of DevOps on Software Development and Deployment
             </b>
-            <p className="w-full font-medium text-sm">
+            <p className="w-full font-medium text-xs md:text-base">
               How do you create compelling presentations that wow your
               audience...
             </p>
@@ -34,18 +45,24 @@ function BlogContent() {
                 className="w-10 h-10 rounded-[200px]"
                 alt="authorImg"
               />
-              <span className="font-[inter] text-base font-bold text-center ">
+              <span className="font-[inter] text-sm sm:ext-base font-bold text-center ">
                 Qawi
               </span>
             </div>
           </div>
-          <img className="max-w-md rounded-[16px]" src="/Image.png" alt="" />
+          <div className="w-2xl h-full">
+            <img
+              className="w-356px h-155px sm:w-500px sm:h-full md:w-510px rounded-[8px]"
+              src="/Image.png"
+              alt=""
+            />
+          </div>
         </div>
 
         {/* Blog main section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {BlogData.map((blog) => {
-            const { id, title, text, image, author, button } = blog;
+            const { id, title, body, image, author, button } = blog;
             return (
               <div
                 key={id}
@@ -58,18 +75,26 @@ function BlogContent() {
                     alt="image"
                   />
                 </div>
-                <div className="px-3 pt-5 pb-3">
+                <div className="px-3 pt-3 pb-2">
                   <span className="text-xl font-semibold text-black ">
                     {title}
                   </span>
-                  <p className="w-full pt-2 textLight">{text}</p>
+                  <p className="w-full pt-2 text-base lg:text-sm">
+                    {TextLength(body)}{" "}
+                    <a
+                      className="underline text-text-dev-orange hover:opacity-70"
+                      href="#"
+                    >
+                      Read more
+                    </a>
+                  </p>
 
-                  <div className="flex items-center w-full gap-4 pt-7">
+                  <div className="flex items-center w-full gap-4 pt-5">
                     <img src={author.img} alt="authorImg" />
                     <span className="text">{author.name}</span>
                     <span className="textLight">{author.date}</span>
                   </div>
-                  <button className="text-[18px] font-semibold text-[#7A6C65] font-[inter] p-[8px] border-[0.5px] w-[73px] mt-4 rounded-[8px]">
+                  <button className="text-[18px] font-medium text-[#7A6C65] font-[inter] p-[8px] border-[0.5px]  mt-4 rounded-[8px]">
                     {button}
                   </button>
                 </div>

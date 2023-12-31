@@ -3,7 +3,7 @@ export default [
         id: 1,
         image: '/Image.png',
         heading: 'The Impact of DevOps on Software Development and Deployment',
-        text:
+        body:
             'How do you create compelling presentations that wow your audience ...',
         author: {
           img: '/Avatar.png',
@@ -16,7 +16,7 @@ export default [
         id: 2,
         image: '/Image (1).png',
         heading: 'The Impact of DevOps on Software Development and Deployment',
-        text:
+        body:
         'How do you create compelling presentations that wow your audience ...',
         author: {
           img: '/Avatar.png',
@@ -29,7 +29,7 @@ export default [
         id: 3,
         image: '/Image.png',
         heading: 'The Impact of DevOps on Software Development and Deployment',
-        text:
+        body:
         'How do you create compelling presentations that wow your audience ...',
         author: {
           img: '/Avatar.png',
@@ -42,7 +42,7 @@ export default [
         id: 4,
         image: '/Image.png',
         heading: 'The Impact of DevOps on Software Development and Deployment',
-        text:
+        body:
             'How do you create compelling presentations that wow your audience ...',
         author: {
           img: '/Avatar.png',
@@ -55,7 +55,7 @@ export default [
         id: 5,
         image: '/Image (1).png',
         heading: 'The Impact of DevOps on Software Development and Deployment',
-        text:
+        body:
             'How do you create compelling presentations that wow your audience ...',
         author: {
           img: '/Avatar.png',
@@ -68,7 +68,7 @@ export default [
         id: 6,
         image: '/Image.png',
         heading: 'The Impact of DevOps on Software Development and Deployment',
-        text:
+        body:
           'How do you create compelling presentations that wow your audience ...',
         author: {
           img: '/Avatar.png',
