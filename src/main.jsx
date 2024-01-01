@@ -11,6 +11,7 @@ import Blog from './pages/Blog/Blog.jsx'
 import BlogView from './pages/Blog/BlogView.jsx'
 import Shop from './pages/Shop/Shop.jsx'
 import Home from './pages/Home/Home.jsx'
+
 const router = createBrowserRouter([
   {
     path: '/',
