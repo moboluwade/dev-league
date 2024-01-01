@@ -1,7 +1,25 @@
 import { demoImpactStories } from "../../utils/demo-impact-stories"
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
+import { motion } from "framer-motion"
 
 const Impact = () => {
+    const parent = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            when: "beforeChildren",
+            delayChildren: 0.2,
+            staggerChildren: 0.2
+        }
+    }
+    const children = {
+        hidden: { opacity: 0, y: 40 },
+        show: {
+            opacity: 1,
+            y: 0,
+            transition: { type: "spring" }
+        }
+    }
     return (
         <section className="items-center pb-12 text-black bg-white xl:flex-col xl:flex">
             <div className="max-w-[88rem] lg:px-[7.5rem] md:px-12 px-4 w-full">
@@ -10,22 +28,31 @@ const Impact = () => {
                     {/* <span className="absolute"><a href="">X</a></span> */}
                     {/* link to dev league testimonial twitter feed */}
                 </span>
-                <div className="relative grid">
-                    <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 700: 2, 900: 3 }}>
+                <motion.div
+                    initial="hidden"
+                    whileInView="show"
+                    variants={parent}
+                    viewport={{ once: true }}
+                    className="relative grid">
+                    <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 500: 2, 900: 3 }}>
                         <Masonry columnsCount={3}>
                             {demoImpactStories.map(story =>
-                                <div className="w-auto p-6 mx-2 my-2 border rounded-lg h-fit" key={story.id}>
-                                    <div className="w-fit">
-                                        <div className="flex flex-row pb-4">
+                                <div
+                                    className="w-auto p-6 mx-2 my-2 border rounded-lg h-fit" key={story.id}>
+                                    <motion.div
+                                        variants={children}
+                                        className="w-fit">
+                                        <motion.div
+                                            variants={children}
+                                            className="flex flex-row pb-4">
                                             <img className="w-8 h-8 bg-white aspect-square" src={story.profile} alt="" />
                                             <div className="flex flex-col pl-2">
                                                 <span className="text-xs font-semibold capitalize">{story.name}</span>
                                                 <span className="text-xs opacity-60">@{story.username}</span>
                                             </div>
-
-                                        </div>
+                                        </motion.div>
                                         <span className="w-[15rem] text-base font-normal">{story.testimonial}</span>
-                                    </div>
+                                    </motion.div>
                                 </div>
                             )}
                         </Masonry>
@@ -38,7 +65,7 @@ const Impact = () => {
                             <div className="w-full h-full blur-2xl"></div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </section>
     )

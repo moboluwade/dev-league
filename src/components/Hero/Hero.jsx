@@ -5,7 +5,12 @@ const Hero = () => {
   const [email, setEmail] = useState('')
   return (
     <main className="flex flex-col items-center w-full bg-text-dev-light-orange">
-      <div className=" lg:px-[7.5rem] md:px-12 px-4 flex flex-col justify-between text-center md:text-start md:flex-row ">
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.5, type: "tween" }}
+        viewport={{ once: true }}
+        className=" lg:px-[7.5rem] md:px-12 px-4 flex flex-col justify-between text-center md:text-start md:flex-row ">
         <div className="flex md:flex-col flex-col md:w-1/2 md:max-w-[50%] lg:pt-[7rem] md:pb-8 md:pt-20 pt-8 md:justify-center h-full ">
           <div className="flex flex-col md:max-w-[44rem] max-w-[30rem]">
             <span className="pb-4 text-4xl font-bold md:text-6xl">
@@ -17,19 +22,19 @@ const Hero = () => {
             </span>
           </div>
           <div className="md:flex flex-row relative md:visible hidden w-10/12 md:min-w-[23rem]">
-            <input
-              className="w-full focus:outline-none focus:border-text-dev-orange focus:border-opacity-80 focus:border-2 shadow-input pl-6 h-16 bg-white rounded-[3rem] placeholder:opacity-40 placeholder:font-normal placeholder:text-text-dev-faded-base text-text-dev-faded-base"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value)
-              }}
-              placeholder="Enter your email"
-              type="text"
-            />
+              <input
+                className="w-full focus:outline-none pr-40 focus:border-text-dev-orange focus:border-opacity-80 focus:border-2 shadow-input pl-6 h-16 bg-white rounded-[3rem] placeholder:opacity-40 placeholder:font-normal placeholder:text-text-dev-faded-base text-text-dev-faded-base"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value)
+                }}
+                placeholder="Enter your email"
+                type="text"
+              />
             <motion.button
               whileHover={{ scale: 1.1, x: -6 }}
               whileTap={{ scale: 1.05 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.3 }}
               className="absolute right-[0.5rem] top-[0.5rem] flex flex-col justify-center text-white text-center w-fit h-12 bg-text-dev-orange font-semibold py-4 px-5 rounded-[3rem]"
             >
               Get started now
@@ -48,7 +53,7 @@ const Hero = () => {
         {/* mobile view email field */}
         <div className="flex flex-row relative mb-16 md:hidden w-full md:min-w-[23rem]">
           <input
-            className="w-full focus:outline-none focus:border-text-dev-orange focus:border-opacity-80 focus:border-2 shadow-input pl-6 h-10 bg-white rounded-[3rem] text-sm placeholder:opacity-40 placeholder:font-normal placeholder:text-text-dev-faded-base text-text-dev-faded-base"
+            className="w-full focus:outline-none pr-32 focus:border-text-dev-orange focus:border-opacity-80 focus:border-2 shadow-input pl-6 h-10 bg-white rounded-[3rem] text-sm placeholder:opacity-40 placeholder:font-normal placeholder:text-text-dev-faded-base text-text-dev-faded-base"
             value={email}
             onChange={(e) => {
               setEmail(e.target.value)
@@ -65,7 +70,7 @@ const Hero = () => {
             Get started
           </motion.button>
         </div>
-      </div>
+      </motion.div>
     </main>
   )
 }

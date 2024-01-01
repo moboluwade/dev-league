@@ -1,12 +1,10 @@
 /* eslint-disable react/prop-types */
 import ReactDOM from "react-dom";
-// import "./Modal.css";
+import "./Modal.css";
 
 const Modal = (props) => {
   const Backdrop = () => {
-    return (
-    <div className="backdrop" onClick={props.onClose}></div>
-    )
+    return <div className="backdrop" onClick={props.onClose}></div>;
   };
 
   const ModalOverlay = () => {

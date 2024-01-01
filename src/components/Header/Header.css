@@ -53,11 +53,29 @@
     width: 1rem;
 }
 
+.vec {
+    width: auto;
+    height: auto;
+}
+
+.nav {
+    width: 100%;
+}
+
 @media (max-width: 678px) {
     .btn>span {
         padding: 2px 6px;
     }
     .icon {
         height: 31.2px;
+    }
+    .nav {
+        width: 100%;
+    }
+}
+
+@media (max-width: 550px) {
+    .nav {
+        width: 75%;
     }
 }

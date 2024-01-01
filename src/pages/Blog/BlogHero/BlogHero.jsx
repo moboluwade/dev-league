@@ -46,3 +46,4 @@ const BlogHero = () => {
 };
 
 export default BlogHero;
+

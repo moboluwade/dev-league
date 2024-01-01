@@ -46,9 +46,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
 }
 
 .payment__details-price-box h3 {
@@ -91,9 +88,6 @@
   box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
 }
 
-.payment__modal-svg {
-}
-
 /*-------MAIN SECTION--------*/
 
 .payment__method-paragraph {
@@ -125,7 +119,6 @@
   border: 1.154px solid #fd4f13;
   box-shadow: 0px 1.15351px 2.30702px 0px rgba(16, 24, 40, 0.05);
   transition: all 0.2s;
-  text-decoration: none;
 }
 
 .payment__button:hover {

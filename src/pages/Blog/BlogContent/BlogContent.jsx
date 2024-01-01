@@ -45,7 +45,7 @@ function BlogContent() {
                 className="w-10 h-10 rounded-[200px]"
                 alt="authorImg"
               />
-              <span className="font-[inter] text-sm sm:ext-base font-bold text-center ">
+              <span className="font-[inter] text-sm sm:text-base font-bold text-center ">
                 Qawi
               </span>
             </div>
@@ -116,3 +116,4 @@ function BlogContent() {
 }
 
 export default BlogContent;
+
