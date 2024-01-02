@@ -30,7 +30,7 @@ export const demoTeam = [
         id: 4,
         profile: "/dev-league-team/bello-lateefat.jpg",
         name: "Bello Lateefat",
-        role: "DevLeague Creative Director ",
+        role: "DevLeague Co-Creative Director ",
         description: "Former frontend dev for Coinbase, and CryptoKnight.",
         linkedin: "https://www.linkedin.com/in/teefah-bello-17a961273?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
         twitter: "https://x.com/Teefah_codes?t=YnbS6P0bOJfVPGk8pa0fRA&s=09",
@@ -79,18 +79,9 @@ export const demoTeam = [
         github: "https://github.com/Alabiabdullah1"
     }, {
         id: 10,
-        profile: "/dev-league-team/alabi-abdullah.jpg",
-        name: "Alabi Abdullah Ayodeji",
-        role: "DevLeague Content Writer",
-        description: "Lead CX at Wealthsimple. Former PagerDuty and Sqreen.",
-        linkedin: "https://www.linkedin.com/in/alabi-abdullahi-7a313523a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-        twitter: "https://x.com/Alabiabdullah1",
-        github: "https://github.com/Alabiabdullah1"
-    }, {
-        id: 11,
         profile: "/dev-league-team/aliu-aminat.jpg",
         name: "Aliu Aminat",
-        role: "DevLeague Creative Director",
+        role: "DevLeague Co-Creative Director",
         description: "Lead CX at Wealthsimple. Former PagerDuty and Sqreen.",
         linkedin: "https://www.linkedin.com/in/aminat-aliu-993a83229",
         twitter: "https://x.com/aminatdamilola5",
