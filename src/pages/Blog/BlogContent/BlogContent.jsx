@@ -23,8 +23,8 @@ function BlogContent() {
         </button>
       </div>
       <div className="flex flex-col gap-8 px-4">
-        <div className="grid place-items-center sm:grid-cols-2 gap-10 ">
-          <div className="flex flex-col gap-1 lg:gap-3 w-full align-middle text-left">
+        <div className="grid place-items-center sm:grid-cols-2 gap-7 sm:gap-10">
+          <div className="flex flex-col gap-1 lg:gap-3 w-full align-middle order-2 text-left">
             <button className="text-[15px] sm:text-[18px] text-[#7A6C65] font-[inter] font-normal p-2 sm:p-[12px] border-[0.5px] max-w-[73px] rounded-[8px] ">
               Article
             </button>
@@ -35,7 +35,7 @@ function BlogContent() {
             <b className="font-[inter] text-base sm:text-lg lg:text-2xl font-semibold text-[#101828] w-full ">
               The Impact of DevOps on Software Development and Deployment
             </b>
-            <p className="w-full font-medium text-xs md:text-base">
+            <p className="w-full font-normal text-sm lg:text-base">
               How do you create compelling presentations that wow your
               audience...
             </p>
@@ -50,19 +50,19 @@ function BlogContent() {
               </span>
             </div>
           </div>
-          <div className="w-2xl h-full">
+          <div className="w-2xl h-full order-1 sm:order-2">
             <img
               className="w-356px h-155px sm:w-500px sm:h-full md:w-510px rounded-[8px]"
               src="/Image.png"
               alt=""
             />
-          </div>
         </div>
 
+          </div>
         {/* Blog main section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {BlogData.map((blog) => {
-            const { id, title, body, image, author, button } = blog;
+            const { id, heading, body, image, author, button } = blog;
             return (
               <div
                 key={id}
@@ -76,10 +76,10 @@ function BlogContent() {
                   />
                 </div>
                 <div className="px-3 pt-3 pb-2">
-                  <span className="text-xl font-semibold text-black ">
-                    {title}
+                  <span className="font-[inter] text-lg sm:text-lg font-bold text-[#101828]">
+                    {heading}
                   </span>
-                  <p className="w-full pt-2 text-base lg:text-sm">
+                  <p className="font-normal text-sm md:text-base mt-2">
                     {TextLength(body)}{" "}
                     <a
                       className="underline text-text-dev-orange hover:opacity-70"
@@ -89,7 +89,7 @@ function BlogContent() {
                     </a>
                   </p>
 
-                  <div className="flex items-center w-full gap-4 pt-5">
+                  <div className="flex items-center w-full gap-4 pt-3">
                     <img src={author.img} alt="authorImg" />
                     <span className="text">{author.name}</span>
                     <span className="textLight">{author.date}</span>
