@@ -3,7 +3,7 @@ export const demoTeam = [
         id: 1,
         profile: "/dev-league-team/abdulqawi-laniyan.jpg",
         name: "AbdulQawi Laniyan Dotun",
-        role: "Devleague Community Lead and Founder",
+        role: "DevLeague Community Lead and Founder",
         description: "Former co-founder of Opendoor. Early staff at Spotify and Clearbit.",
         linkedin: "https://www.linkedin.com/in/abdul-qawi-laniyan-173355248?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
         twitter: "https://x.com/Devdotun?t=fBZqZAT8Jwp_hXECNQzmJQ&s=09",

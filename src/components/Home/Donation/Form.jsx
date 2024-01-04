@@ -12,7 +12,7 @@ const defaultState = {
 
 const Form = (props) => {
   const [currency, setCurrency] = useState("$");
-  const [duration, setDuration] = useState("");
+  // const [duration, setDuration] = useState("");
   const [amount, setAmount] = useState("");
 
   const [amountIsValid, setAmountIsValid] = useState(false);
@@ -29,8 +29,9 @@ const Form = (props) => {
     setInputIsTouched(true);
   };
 
-  const SetDurationHandler = (event) => {
-    setDuration(event.target.value);
+  const SetDurationHandler = () => {
+    // setDuration(event.target.value);
+    // unused function
     setDurationIsValid(true);
   };
 

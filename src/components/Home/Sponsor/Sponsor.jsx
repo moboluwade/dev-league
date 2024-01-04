@@ -1,4 +1,4 @@
-import { Bloomberg, Forbes, Gizmodo, TechCrunch, WashingtonPost } from "../../utils"
+import { Bloomberg, Forbes, Gizmodo, TechCrunch, WashingtonPost } from "../../../utils"
 
 const Sponsor = () => {
   return (

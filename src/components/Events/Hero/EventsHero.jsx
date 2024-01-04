@@ -1,7 +1,14 @@
 import { motion } from "framer-motion"
 import { OrangeDownArrow } from "../../../utils"
 
-const EventsHero = () => {
+const EventsHero = (props) => {
+  const isActive = (type) => {
+    return props.displayType === type
+      ? 'text-primary500 border border-1 border-primary500 active'
+      : ''
+  }
+
+
   return (
     <div className="flex flex-col items-center justify-center overflow-hidden h-fit lg:h-fit bg-text-dev-light-orange">
       <div className="max-w-[87.6rem] w-full lg:h-[15rem] h-[12.5rem] lg:px-[7.5rem] md:px-12 px-4 flex flex-col justify-center items-center relative">
@@ -43,18 +50,35 @@ const EventsHero = () => {
           </div>
         </div>
         <h1
-          className="md:text-6xl text-[2.1rem] text-center font-bold leading-[-0.15rem] text-black pb-10 ">
+          className="md:text-6xl text-[2.1rem] text-center font-bold leading-[-0.15rem] text-black pb-10 z-20">
           <span className="uppercase text-text-dev-orange">Dev League</span> Events
         </h1>
-        <div className="z-20 flex flex-row items-center gap-4">
-          <span className="text-4xl font-bold">Categories</span>
+        <div className="flex md:gap-6 gap-2 justify-center items-center z-20">
+          <h2 className="font-bold text-lg md:text-2xl">Categories</h2>
           <button
-          className="border border-[#D4CECB] rounded-lg px-5 py-1 text-lg">All</button>
+            className={`px-3 text-sm text-gray700 md:text-lg hover:border focus:border hover:text-primary500 focus:border-primary500 focus:text-primary500 hover:border-primary500 border-1 rounded-md transition-all duration-300 ${isActive(
+              'all',
+            )}`}
+            onClick={() => props.filterCards('all')}
+          >
+            All
+          </button>
           <button
-          className="border border-[#D4CECB] rounded-lg px-5 py-1 text-lg">Virtual</button>
-          <button className="border border-[#D4CECB] rounded-lg px-5 py-1 text-lg ">Physical</button>
-          <div className="border border-[#D4CECB] rounded-lg px-5 py-1 text-lg">Upcoming</div>
-          <div className="border border-[#D4CECB] rounded-lg px-5 py-1 text-lg">Past</div>
+            className={`px-3 text-sm text-gray700 md:text-lg hover:border focus:border hover:text-primary500 focus:border-primary500 focus:text-primary500 hover:border-primary500 border-1 rounded-md transition-all duration-300 ${isActive(
+              'upcoming',
+            )}`}
+            onClick={() => props.filterCards('upcoming')}
+          >
+            Upcoming
+          </button>
+          <button
+            className={`px-3 text-sm text-gray700 md:text-lg hover:border focus:border hover:text-primary500 focus:border-primary500 focus:text-primary500 hover:border-primary500 border-1 rounded-md transition-all duration-300 ${isActive(
+              'closed',
+            )}`}
+            onClick={() => props.filterCards('closed')}
+          >
+            Past
+          </button>
         </div>
       </div>
     </div>

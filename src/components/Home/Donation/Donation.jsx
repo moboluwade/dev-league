@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Modal from "../../UI/Modal";
+import Modal from "./UI/Modal";
 import PaymentModal from "./PaymentModal.jsx";
 import Form from "./Form";
 import "./Donation.css";
