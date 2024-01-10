@@ -39,8 +39,8 @@ const PaymentModal = (props) => {
           </div>
         </div>
         <div className="payment__details-price-container">
-          <div className="payment__details-price-box">
-            <h3>Donating</h3>
+          <div className="payment__details-price-box flex flex-col">
+            <h3 className="mb-5 mt-[-10px]">Donating</h3>
             <p>{`${props.currency}${props.price}`}</p>
           </div>
         </div>
