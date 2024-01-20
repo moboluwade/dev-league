@@ -1,8 +1,7 @@
 import BlogHero from "./BlogHero";
 import BlogContent from "./BlogContent/BlogContent";
-import "./Blog.css";
 
-const Blog = () => {
+const Blog = (props) => {
   return (
     <div>
       <BlogHero/>
@@ -10,4 +9,5 @@ const Blog = () => {
     </div>
   );
 };
+
 export default Blog;
