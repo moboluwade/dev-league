@@ -1,5 +1,5 @@
-import BlogHero from "./BlogHero";
-import BlogContent from "./BlogContent/BlogContent";
+import BlogHero from "../../components/Blog/BlogHero";
+import BlogContent from "../../components/Blog/BlogContent/BlogContent";
 import "./Blog.css";
 
 const Blog = () => {
