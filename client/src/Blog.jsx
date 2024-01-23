@@ -1,7 +1,7 @@
 import BlogHero from "./BlogHero";
 import BlogContent from "./BlogContent/BlogContent";
 
-const Blog = (props) => {
+const Blog = () => {
   return (
     <div>
       <BlogHero/>
