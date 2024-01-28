@@ -5,7 +5,9 @@ const Schema = mongoose.Schema;
 const EmailSchema = new Schema({
     email : {
         type  : String ,
-       unique : true
+       unique : true,
+       required : true,
+       match : [/^\S+@\S+\.\S+$/, 'Invalid email format'] // Regex validation
     }
     
 })
