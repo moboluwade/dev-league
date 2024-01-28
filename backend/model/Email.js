@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 
 const EmailSchema = new Schema({
-    Email : {
+    email : {
         type  : String ,
        unique : true
     }
@@ -11,4 +11,4 @@ const EmailSchema = new Schema({
 })
 
 
-module.exports = mongoose.model('Email', EmailSchema )
+module.exports = mongoose.model('emails', EmailSchema )

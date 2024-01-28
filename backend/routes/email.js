@@ -1,31 +1,21 @@
 const express = require('express');
 const router = express.Router();
-const Email = require('../model/Email')
+const email = require('../model/Email')
 
-router.get('/', async(req, res)=>{
-                try {
-
-                const email = await Email.find()
-                res.json(email)
-
-                } catch (error) {
-                    res.json({error})
-                }
-})
 
 router.post('/', async(req,res)=>{
-    const email= req.body.Email
+    const Email= req.body.email
     try { 
-                            const newEmail = new Email({ Email :email  });
-                            const savedEmail = await Email.create(newEmail);
-                            res.status(201).json(savedEmail);
+                            const newEmail = new email({ email :Email  });
+                            const savedEmail = await emailmail.create(newEmail);
+                            res.status(201).json({status: 'success', message: 'Email stored successfully',  data : savedEmail} );
                         
     } catch (error) {
         if(error.code === 11000){
-         return    res.status(409).json({ message: 'Email already exists' });
+         return     res.status(409).json({ status: 'failed', message: 'Email already exists' }); 
         }
         
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ status: 'failed', message: 'Error saving email' });
     }
 })
 
