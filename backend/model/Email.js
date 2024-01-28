@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const EmailSchema = new Schema({
     Email : {
         type  : String ,
-        unique : true
+       unique : true
     }
     
 })
