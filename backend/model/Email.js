@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
-const Schema = new mongoose.Schema;
+const Schema = mongoose.Schema;
 
 
 const EmailSchema = new Schema({
     Email : {
-        type  : String 
+        type  : String ,
+        unique : true
     }
     
 })
 
 
-module.exports = mongoose.model('Email',Schema )
+module.exports = mongoose.model('Email', EmailSchema )
