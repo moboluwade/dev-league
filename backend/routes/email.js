@@ -6,7 +6,7 @@ router.get('/', async(req, res)=>{
                 try {
 
                 const email = await Email.find()
-                res.send(email)
+                res.json(email)
 
                 } catch (error) {
                     res.json({error})
