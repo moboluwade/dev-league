@@ -1,8 +1,8 @@
-import { Sponsor } from '../../components/Home/Sponsor'
-import { Hero } from '../../components/Home/Hero'
-import { Donation } from '../../components/Home/Donation'
-import { Impact } from '../../components/Home/Impact'
-import { Articles } from '../../components/Home/Articles'
+import { Sponsor } from '../../components/regular/Home/Sponsor'
+import { Hero } from '../../components/regular/Home/Hero'
+import { Donation } from '../../components/regular/Home/Donation'
+import { Impact } from '../../components/regular/Home/Impact'
+import { Articles } from '../../components/regular/Home/Articles'
 const Home = () => {
   return (
     <>

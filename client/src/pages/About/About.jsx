@@ -1,5 +1,5 @@
-import { AboutContext } from '../../components/About/Context'
-import { AboutHero } from '../../components/About/Hero'
+import { AboutContext } from '../../components/regular/About/Context'
+import { AboutHero } from '../../components/regular/About/Hero'
 
 const About = () => {
   return (

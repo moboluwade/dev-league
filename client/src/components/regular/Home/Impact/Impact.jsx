@@ -1,4 +1,4 @@
-import { demoImpactStories } from "../../../utils/demo-impact-stories"
+import { demoImpactStories } from "../../../../utils/demo-impact-stories"
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 import { motion } from "framer-motion"
 

@@ -1,5 +1,5 @@
-import { EventsHero } from "../../components/Events/Hero"
-import { EventsContext } from "../../components/Events/Context"
+import { EventsHero } from "../../components/regular/Events/Hero"
+import { EventsContext } from "../../components/regular/Events/Context"
 import { useState } from "react"
 
 const Events = () => {
