@@ -64,7 +64,7 @@ const Header = () => {
             )
           })}
         </div>
-        <div className="flex flex-row">
+        <div className="flex flex-row items-center gap-4">
           <div className="inline pt-1 h-fit md:block">
             <motion.button
               whileHover={{ scale: 1.05, x: -4 }}
@@ -75,6 +75,19 @@ const Header = () => {
             >
               <span className="text-sm font-semibold text-white md:text-xl">
                 donate
+              </span>
+            </motion.button>
+          </div>
+          <div className="inline pt-1 h-fit md:block">
+            <motion.button
+              whileHover={{ scale: 1.05, x: -4 }}
+              whileTap={{ scale: 1 }}
+              transition={{ duration: 0.3 }}
+              className="px-3 py-3 rounded-lg md:px-5 md:py-3 border-2 border-text-dev-orange"
+              // onClick={handleLoginClick}
+            >
+              <span className="text-sm font-semibold text-dev-orange md:text-xl">
+                Login
               </span>
             </motion.button>
           </div>
