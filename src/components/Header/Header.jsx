@@ -5,7 +5,7 @@ import { FiBarChart } from 'react-icons/fi'
 import { RxCrossCircled } from 'react-icons/rx'
 import { useState } from 'react'
 
-const Header = () => {
+const Header = ({ onLogin }) => {
   const navigate = useNavigate()
   const handleDonateClick = () => {
     navigate('/')
@@ -84,7 +84,7 @@ const Header = () => {
               whileTap={{ scale: 1 }}
               transition={{ duration: 0.3 }}
               className="px-3 py-3 rounded-lg md:px-5 md:py-3 border-2 border-text-dev-orange"
-              // onClick={handleLoginClick}
+              onClick={onLogin}
             >
               <span className="text-sm font-semibold text-dev-orange md:text-xl">
                 Login
