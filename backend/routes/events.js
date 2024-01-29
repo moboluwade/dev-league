@@ -4,12 +4,33 @@ const Events = require('../model/events');
 
 
 
-
+// get all the blogs 
 router.get('/', async (req, res)=>{
-    const Event = await Events.find()
-    .sort({date : -1});
-    res.status(200).json({Events : Event})
+    try {
 
+        const Event = await Events.find()
+        .sort({date : -1});
+        res.status(200).json({Events : Event})
+    
+        
+    } catch (error) {
+        res.status(500).json({error : error.message}) 
+    }
+ 
+})
+
+
+// get specific blog
+router.get('/:id', async  (req, res)=>{
+   
+        try {
+            const id =  req.params.id
+            const Event = await Events.findOne({_id : id})
+            res.status(200).json({event : Event})
+            
+        } catch (error) {
+                res.status(500).json({error : error.message}) 
+        }
 })
 
 
