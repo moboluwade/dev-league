@@ -12,6 +12,8 @@ import Blog from './pages/Blog/Blog.jsx'
 import BlogView from './pages/Blog/BlogView.jsx'
 import Shop from './pages/Shop/Shop.jsx'
 import Home from './pages/Home/Home.jsx'
+import { store } from './store/store'
+import { Provider } from 'react-redux'
 
 const router = createBrowserRouter([
   {
@@ -53,6 +55,8 @@ const router = createBrowserRouter([
 ])
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>,
 )
