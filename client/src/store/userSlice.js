@@ -4,7 +4,7 @@ const initialState = {
   isLoggedIn: false,
 }
 
-export const userrSlice = createSlice({
+export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
@@ -17,6 +17,6 @@ export const userrSlice = createSlice({
   },
 })
 
-export const { LoggedIn } = userrSlice.actions
+export const userActions = userSlice.actions
 
-export default userrSlice.reducer
+export default userSlice.reducer

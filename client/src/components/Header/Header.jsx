@@ -3,9 +3,16 @@ import { FiBarChart } from 'react-icons/fi'
 import { RxCrossCircled } from 'react-icons/rx'
 import { useState } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { userActions } from '../../store/userSlice'
 
-const Navbar = ({ onLogin }) => {
+const Header = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const handleLogin = () => {
+    dispatch(userActions.LoggedIn())
+  }
   const handleDonateClick = () => {
     navigate('/')
     setTimeout(() => {
@@ -83,7 +90,7 @@ const Navbar = ({ onLogin }) => {
               whileTap={{ scale: 1 }}
               transition={{ duration: 0.3 }}
               className="px-3 py-3 rounded-lg md:px-5 md:py-3 border-2 border-text-dev-orange"
-              onClick={onLogin}
+              onClick={handleLogin}
             >
               <span className="text-sm font-semibold text-dev-orange md:text-xl">
                 Login
@@ -121,7 +128,7 @@ const Navbar = ({ onLogin }) => {
             togglerNav ? 'translate-x-0 top-0 right-0' : 'hidden'
           }`}
         >
-          {/* Navbar content goes here */}
+          {/* Header content goes here */}
           <div className="p-4">
             <div className="flex items-center justify-between pb-4 border-b-2">
               <h1 className="font-semibold text-xl/[19px]">Main Menu</h1>
@@ -159,4 +166,4 @@ const Navbar = ({ onLogin }) => {
   )
 }
 
-export default Navbar
+export default Header
