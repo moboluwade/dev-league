@@ -4,6 +4,7 @@ import Header from './components/Header/Header'
 import { Footer } from './components/Footer'
 import { useSelector } from 'react-redux'
 import SideNavbar from './components/Header/SideNavbar'
+import Event from './components/admin/login/Events/Event'
 
 const App = () => {
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn)
@@ -15,11 +16,15 @@ const App = () => {
           <div>
             <Header />
             <Outlet />
+            <Footer />
           </div>
         )}
         {isLoggedIn && (
           <div>
-            <SideNavbar />
+            <div className="flex">
+              <SideNavbar />
+              <Event />
+            </div>
             <Footer />
           </div>
         )}
