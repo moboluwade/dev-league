@@ -1,10 +1,11 @@
+import { Link, NavLink, useNavigate } from 'react-router-dom'
+import './Header.css'
 import { motion } from 'framer-motion'
 import { FiBarChart } from 'react-icons/fi'
 import { RxCrossCircled } from 'react-icons/rx'
 import { useState } from 'react'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
 
-const Navbar = ({ onLogin }) => {
+const Header = () => {
   const navigate = useNavigate()
   const handleDonateClick = () => {
     navigate('/')
@@ -63,7 +64,7 @@ const Navbar = ({ onLogin }) => {
             )
           })}
         </div>
-        <div className="flex flex-row items-center gap-4">
+        <div className="flex flex-row">
           <div className="inline pt-1 h-fit md:block">
             <motion.button
               whileHover={{ scale: 1.05, x: -4 }}
@@ -74,19 +75,6 @@ const Navbar = ({ onLogin }) => {
             >
               <span className="text-sm font-semibold text-white md:text-xl">
                 donate
-              </span>
-            </motion.button>
-          </div>
-          <div className="inline pt-1 h-fit md:block">
-            <motion.button
-              whileHover={{ scale: 1.05, x: -4 }}
-              whileTap={{ scale: 1 }}
-              transition={{ duration: 0.3 }}
-              className="px-3 py-3 rounded-lg md:px-5 md:py-3 border-2 border-text-dev-orange"
-              onClick={onLogin}
-            >
-              <span className="text-sm font-semibold text-dev-orange md:text-xl">
-                Login
               </span>
             </motion.button>
           </div>
@@ -159,4 +147,4 @@ const Navbar = ({ onLogin }) => {
   )
 }
 
-export default Navbar
+export default Header

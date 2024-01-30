@@ -1,10 +1,6 @@
-import { motion } from 'framer-motion'
-import { FiBarChart } from 'react-icons/fi'
-import { RxCrossCircled } from 'react-icons/rx'
-import { useState } from 'react'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
+import './Header.css'
 
-const Navbar = ({ onLogin }) => {
+const Header = ({ onLogin }) => {
   const navigate = useNavigate()
   const handleDonateClick = () => {
     navigate('/')
@@ -159,4 +155,4 @@ const Navbar = ({ onLogin }) => {
   )
 }
 
-export default Navbar
+export default Header
