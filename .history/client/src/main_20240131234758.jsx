@@ -14,7 +14,6 @@ import Shop from './pages/Shop/Shop.jsx'
 import Home from './pages/Home/Home.jsx'
 import { store } from './store/store'
 import { Provider } from 'react-redux'
-import Login from './components/admin/login/login.jsx'
 
 const router = createBrowserRouter([
   {
