@@ -3,7 +3,7 @@ import { FaRegEdit } from 'react-icons/fa'
 const Event = () => {
   return (
     <div className="flex flex-col gap-6 items-center mx-auto my-12 font-Inter">
-      <div className="flex justify-between items-center md:gap-20 md:gap-2">
+      <div className="flex justify-between md:gap-20 md:gap-2">
         <div className="flex justify-between bg-[#E2DEDC] w-[42rem] rounded-md">
           <div className="flex gap-2 items-center px-6 py-3">
             <CiSearch className="text-xl" />
