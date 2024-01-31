@@ -1,6 +1,6 @@
 import { CiSearch } from 'react-icons/ci'
 import { FaRegEdit } from 'react-icons/fa'
-import { eventsCard } from '../../../../utils/eventsCard'
+import { eventsCard } from '../../../../utils/data'
 
 const Event = () => {
   return (

@@ -1,6 +1,6 @@
 import { CiSearch } from 'react-icons/ci'
 import { FaRegEdit } from 'react-icons/fa'
-import { eventsCard } from '../../../../utils/eventsCard'
+import { eventsCard } from '../../../../utils/data'
 
 const Event = () => {
   return (
@@ -25,15 +25,7 @@ const Event = () => {
         </div>
       </div>
       <div className="flex flex-col gap-6">
-        <div>
-          {eventsCard.map((card) => {
-            return (
-              <div key={card.id}>
-                <h1>is this working</h1>
-              </div>
-            )
-          })}
-        </div>
+        <div></div>
       </div>
     </div>
   )
