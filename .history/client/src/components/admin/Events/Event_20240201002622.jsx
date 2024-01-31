@@ -31,7 +31,7 @@ const Event = () => {
             return (
               <div
                 key={card.id}
-                className="py-4 px-2 md:px-4 border-2 rounded-md border-neutral400 flex gap-2 md:gap-4"
+                className="py-4 px-2 md:px-6 border-2 rounded-md border-neutral400 flex gap-2 md:gap-8"
               >
                 <div className="px-8 py-6 text-white flex items-center justify-center flex-col bg-primary500">
                   <span className="text-2xl md:text-5xl font-bold">
@@ -43,7 +43,7 @@ const Event = () => {
                 </div>
                 <div className="flex flex-col gap-2 w-full py-4">
                   <div className="flex justify-between items-center">
-                    <div className="flex md:justify-between flex-wrap items-center gap-2 mb-1 md:mb-3">
+                    <div className="flex md:justify-between flex-wrap items-center gap-2 md:gap-4 mb-1 md:mb-3">
                       <h2 className="text-neutral900 text-md md:text-xl font-bold">
                         Why Techies Need Law
                       </h2>
@@ -58,7 +58,7 @@ const Event = () => {
                     </div>
                   </div>
                   <div className="flex justify-between items-center">
-                    <div className="flex flex-col gap-1">
+                    <div className="flex flex-col gap-2">
                       <span className="text-xl text-neutral600">
                         How do you create compelling presentations......
                       </span>
@@ -67,10 +67,8 @@ const Event = () => {
                         <p className="text-primary500">{card.date}</p>
                       </div>
                     </div>
-                    <div className="flex gap-3 items-center mt-6 cursor-pointer">
-                      <img src="/edit2.png" alt="" />
-                      <img src="/search.png" alt="" />
-                      <img src="/delete2.png" alt="" />
+                    <div className="flex gap-1 items-center">
+                      <div></div>
                     </div>
                   </div>
                 </div>

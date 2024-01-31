@@ -67,10 +67,8 @@ const Event = () => {
                         <p className="text-primary500">{card.date}</p>
                       </div>
                     </div>
-                    <div className="flex gap-3 items-center mt-6 cursor-pointer">
-                      <img src="/edit2.png" alt="" />
-                      <img src="/search.png" alt="" />
-                      <img src="/delete2.png" alt="" />
+                    <div className="flex gap-1 items-center">
+                      <div></div>
                     </div>
                   </div>
                 </div>
