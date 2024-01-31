@@ -1,14 +1,7 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { userActions } from '../../../store/userSlice'
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
-  const dispatch = useDispatch()
-
-  const handleLogin = () => {
-    dispatch(userActions.LoggedIn())
-  }
 
   return (
     <div className="my-20">
@@ -78,7 +71,7 @@ const Login = () => {
 
           <button
             className="bg-[#FD4F13] hover:bg-[#FD4F30] transition text-[#fff] mt-8 w-full text-center p-4 text-base font-semibold rounded-lg"
-            onClick={handleLogin}
+            onClick={handleClick}
           >
             Login
           </button>

@@ -3,6 +3,8 @@ import { FiBarChart } from 'react-icons/fi'
 import { RxCrossCircled } from 'react-icons/rx'
 import { useState } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
+// import { useDispatch } from 'react-redux'
+// import { userActions } from '../../store/userSlice'
 
 const Header = () => {
   const navigate = useNavigate()

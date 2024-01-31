@@ -3,9 +3,16 @@ import { FiBarChart } from 'react-icons/fi'
 import { RxCrossCircled } from 'react-icons/rx'
 import { useState } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { userActions } from '../../store/userSlice'
 
 const Header = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const handleLogin = () => {
+    dispatch(userActions.LoggedIn())
+  }
 
   const handleDonateClick = () => {
     navigate('/')
@@ -88,6 +95,7 @@ const Header = () => {
               whileTap={{ scale: 1 }}
               transition={{ duration: 0.3 }}
               className="px-3 py-3 rounded-lg md:px-5 md:py-3 border-2 border-text-dev-orange"
+              onClick={handleLogin}
             >
               <Link
                 to="/admin/login"

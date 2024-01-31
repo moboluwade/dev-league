@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { userActions } from '../../../store/userSlice'
+import { userActions } from '../../store/userSlice'
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
