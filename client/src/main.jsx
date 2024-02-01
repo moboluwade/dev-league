@@ -5,16 +5,17 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import ErrorPage from './ErrorPage.jsx'
 import About from './pages/About/About.jsx'
-// import Events from './pages/EventsPage/Events.jsx'
-import Events from './pages/Events/Events.jsx'
-import EventView from './pages/Events/EventView/EventView.jsx'
+import Events from './pages/Events/Events'
+import Event from './components/admin/Events/Event'
+import EventView from './pages/Events/EventView/EventView'
 import Blog from './pages/Blog/Blog.jsx'
 import BlogView from './pages/Blog/BlogView.jsx'
 import Shop from './pages/Shop/Shop.jsx'
 import Home from './pages/Home/Home.jsx'
 import { store } from './store/store'
 import { Provider } from 'react-redux'
-import Login from './components/admin/login/login.jsx'
+
+import Login from './components/admin/login/login'
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: '/admin/login',
         element: <Login />,
+      },
+      {
+        path: '/admin/events',
+        element: <Event />,
       },
     ],
   },
