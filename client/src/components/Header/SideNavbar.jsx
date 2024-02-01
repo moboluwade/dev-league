@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom'
 const SideNavbar = () => {
   return (
     <div className="w-[25.3rem] bg-[#14171F] font-Inter">
-      <div className="flex flex-col ml-20 my-16 gap-4">
-        <div className="flex items-center gap-16 mb-20">
+      <div className="flex flex-col ml-28 mt-28 gap-4">
+        <div className="flex items-center gap-16 mb-24">
           <FaBars className="text-3xl text-white" />
           <Link to="/">
             <img
@@ -25,7 +25,7 @@ const SideNavbar = () => {
           <FaPlusCircle />
           <h2>New Event</h2>
         </div>
-        <div className="flex flex-col mt-8 text-sm">
+        <div className="flex flex-col mt-12 text-sm">
           <div className="flex items-center justify-between w-60 text-white p-4 gap-4 rounded-md cursor-pointer hover:bg-primary500 hover:bg-opacity-10">
             <div className="flex items-center gap-4">
               <img src="/file.png" alt="" />
@@ -48,7 +48,7 @@ const SideNavbar = () => {
             <IoIosArrowForward />
           </div>
         </div>
-        <div className="text-[#FAFAF9] w-60 flex flex-wrap gap-6 gap-x-2 text-sm my-12">
+        <div className="text-[#FAFAF9] w-60 flex flex-wrap gap-6 gap-x-2 text-sm mt-24 mb-16">
           <span>Terms of service</span>
           <span>Privacy</span>
           <span>Content Policy</span>
