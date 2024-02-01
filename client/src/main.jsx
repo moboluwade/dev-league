@@ -6,7 +6,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import ErrorPage from './ErrorPage.jsx'
 import About from './pages/About/About.jsx'
 import Events from './pages/Events/Events'
-import Event from './components/admin/Events/Event'
+import AllPost from './components/admin/AllPost/AllPost'
+import ManageEvent from './components/admin/event/Event'
 import EventView from './pages/Events/EventView/EventView'
 import Blog from './pages/Blog/Blog.jsx'
 import BlogView from './pages/Blog/BlogView.jsx'
@@ -57,8 +58,12 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: '/admin/events',
-        element: <Event />,
+        path: '/admin/allpost/allpost',
+        element: <AllPost />,
+      },
+      {
+        path: '/admin/event/event',
+        element: <ManageEvent />,
       },
     ],
   },

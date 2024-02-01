@@ -3,7 +3,7 @@ import { FaRegEdit } from 'react-icons/fa'
 import { RxDotFilled } from 'react-icons/rx'
 import { eventsCard } from '../../../utils/eventsCard'
 
-const Event = () => {
+const AllPost = () => {
   return (
     <div className="flex flex-col gap-6 items-center mx-auto my-12 font-Inter">
       <div className="flex justify-between items-center md:gap-20 md:gap-2 w-[52.95rem] mb-8">
@@ -83,4 +83,4 @@ const Event = () => {
   )
 }
 
-export default Event
+export default AllPost

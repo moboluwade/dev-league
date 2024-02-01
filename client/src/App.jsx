@@ -4,10 +4,11 @@ import Header from './components/Header/Header'
 import { Footer } from './components/Footer'
 import { useSelector } from 'react-redux'
 import SideNavbar from './components/Header/SideNavbar'
-import Event from './components/admin/Events/Event'
+import AllPost from './components/admin/AllPost/AllPost'
 
 const App = () => {
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn)
+
   console.log(isLoggedIn)
   return (
     <>
@@ -23,7 +24,7 @@ const App = () => {
           <div>
             <div className="flex">
               <SideNavbar />
-              <Event />
+              <AllPost />
             </div>
             <Footer />
           </div>

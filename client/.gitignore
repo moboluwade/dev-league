@@ -26,4 +26,4 @@ dist-ssr
 
 # folders to ignore in dev
 yarn.lock
-.history
+
