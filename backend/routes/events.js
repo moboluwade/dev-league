@@ -4,7 +4,7 @@ const Events = require('../model/events');
 
 
 
-// get all the blogs 
+// get all the EVENTS
 router.get('/', async (req, res)=>{
     try {
 
@@ -20,7 +20,7 @@ router.get('/', async (req, res)=>{
 })
 
 
-// get specific blog
+// get specific EVE
 router.get('/:id', async  (req, res)=>{
    
         try {
@@ -31,6 +31,26 @@ router.get('/:id', async  (req, res)=>{
         } catch (error) {
                 res.status(500).json({error : error.message}) 
         }
+})
+
+// CREATE A NEW EVENT 
+router.post('/', async (req, res)=>{
+    const { date, title, description, eventType, eventStatus } = req.body;
+
+    try {
+        const event = new Events({
+            date : date,
+            title : title,
+            description : description,
+            eventType : eventType,
+            eventStatus : eventStatus
+        })
+        const savedEvent = await  Events.create(event);
+        res.status(201).json({ message: 'Events created successfully' });
+    } catch (error) {
+        res.status(400).json({ error: error.message, message : "Events can either be VIRTUAL or ONSITE" });
+    }
+
 })
 
 

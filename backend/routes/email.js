@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const email = require('../model/Email')
 
-
+// POSt THE EMAIL
 router.post('/', async(req,res)=>{
     const Email= req.body.email
     try { 
