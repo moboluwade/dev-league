@@ -6,7 +6,7 @@ const Hero = () => {
 
   const [email, setEmail] = useState('')
 
-  const mutation = useMutation({
+  const addEmail = useMutation({
     mutationFn: (userEmail) => {
       return axios.post('/email', userEmail)
     },
@@ -47,7 +47,7 @@ const Hero = () => {
               whileHover={{ scale: 1.1, x: -6 }}
               whileTap={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
-              onClick={() => { mutation.mutate({ email: email }) }}
+              onClick={() => { addEmail.mutate({ email: email }) }}
               className="absolute right-[0.5rem] top-[0.5rem] flex flex-col justify-center text-white text-center w-fit h-12 bg-text-dev-orange font-semibold py-4 px-5 rounded-[3rem]"
             >
               Get started now
@@ -78,7 +78,7 @@ const Hero = () => {
             whileHover={{ scale: 1.1, x: -4 }}
             whileTap={{ scale: 1.05 }}
             transition={{ duration: 0.5 }}
-            onClick={() => { mutation.mutate({ email: email }) }}
+            onClick={() => { addEmail.mutate({ email: email }) }}
             className="absolute right-[0.25rem] top-[0.25rem] flex flex-col justify-center text-white text-sm text-center w-25 h-8 bg-text-dev-orange font-semibold py-4 px-5 rounded-[3rem]"
           >
             Get started
