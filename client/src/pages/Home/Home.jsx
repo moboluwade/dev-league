@@ -3,6 +3,7 @@ import { Hero } from '../../components/regular/Home/Hero'
 import { Donation } from '../../components/regular/Home/Donation'
 import { Impact } from '../../components/regular/Home/Impact'
 import { Articles } from '../../components/regular/Home/Articles'
+ 
 const Home = () => {
   return (
     <>
