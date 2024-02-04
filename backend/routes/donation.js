@@ -3,7 +3,7 @@ const router = express.Router();
 
 // THIS IS STILL IN TESTING 
 
-
+// SINGLE PAYMENT
 router.get('/', (req, res)=>{
     const https = require('https')
 

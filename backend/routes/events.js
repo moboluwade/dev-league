@@ -46,7 +46,7 @@ router.post('/', async (req, res)=>{
             eventStatus : eventStatus
         })
         const savedEvent = await  Events.create(event);
-        res.status(201).json({ message: 'Events created successfully' });
+        res.status(201).json({ message: 'Events created successfully' ,  Event : savedEvent});
     } catch (error) {
         res.status(400).json({ error: error.message, message : "Events can either be VIRTUAL or ONSITE" });
     }
@@ -66,6 +66,27 @@ router.patch('/:id', async (req, res)=>{
     }
 })
 
+// GET EVENTS BY EVENT TYPE
+router.get('/eventtype/:eventType', async (req, res)=>{
+    try {
+        const eventType = req.params.eventType;
+        const Event = await Events.find({eventType : eventType});
+        res.status(200).json({Events : Event})
+    } catch (error) {
+        res.status(500).json({error : error.message})
+    }
+})
+
+// GET EVENTS BY EVENT STATUS
+router.get('/eventstatus/:eventStatus', async (req, res)=>{
+    try {
+        const eventStatus = req.params.eventStatus;
+        const Event = await Events.find({eventStatus : eventStatus});
+        res.status(200).json({Events : Event})
+    } catch (error) {
+        res.status(500).json({error : error.message})
+    }
+})
 
 
 

@@ -19,9 +19,10 @@ const ArticleSchema = new Schema({
         type: String,
         required: true
     },
-    blogimage : {
+    blogimage: {
         type: String,
         required: true
+    
     },
     blogtype : {
         type: String,
