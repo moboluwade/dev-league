@@ -1,7 +1,14 @@
-import { useState } from "react";
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { userActions } from '../../../store/userSlice'
 
 const Login = () => {
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false)
+  const dispatch = useDispatch()
+
+  const handleLogin = () => {
+    dispatch(userActions.LoggedIn())
+  }
 
   return (
     <div className="my-20">
@@ -28,7 +35,7 @@ const Login = () => {
           <div className="flex items-center">
             <input
               className="block py-3 px-4 rounded-lg w-full focus:ring-0 border-2 focus:outline-none focus:border-[#D1E9FF]  border-gray-300"
-              type={`${showPassword ? "text" : "password"}`}
+              type={`${showPassword ? 'text' : 'password'}`}
               placeholder="Enter your password"
             />
             <svg
@@ -69,13 +76,16 @@ const Login = () => {
             </svg>
           </div>
 
-          <button className="bg-[#FD4F13] hover:bg-[#FD4F30] transition text-[#fff] mt-8 w-full text-center p-4 text-base font-semibold rounded-lg">
+          <button
+            className="bg-[#FD4F13] hover:bg-[#FD4F30] transition text-[#fff] mt-8 w-full text-center p-4 text-base font-semibold rounded-lg"
+            onClick={handleLogin}
+          >
             Login
           </button>
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
