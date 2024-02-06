@@ -10,6 +10,8 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@tanstack/react-query": "^5.18.0",
+        "axios": "^1.6.7",
         "framer-motion": "^10.16.5",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
@@ -19,6 +21,7 @@
         "react-text-mask": "^5.5.0"
     },
     "devDependencies": {
+        "@tanstack/eslint-plugin-query": "^5.18.0",
         "@types/react": "^18.2.37",
         "@types/react-dom": "^18.2.15",
         "@vitejs/plugin-react-swc": "^3.5.0",

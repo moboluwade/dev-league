@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { OrangeDownArrow } from "../../../utils"
+import { OrangeDownArrow } from "../../../../utils"
 
 const EventsHero = (props) => {
   const isActive = (type) => {
@@ -53,8 +53,8 @@ const EventsHero = (props) => {
           className="md:text-6xl text-[2.1rem] text-center font-bold leading-[-0.15rem] text-black pb-10 z-20">
           <span className="uppercase text-text-dev-orange">Dev League</span> Events
         </h1>
-        <div className="flex md:gap-6 gap-2 justify-center items-center z-20">
-          <h2 className="font-bold text-lg md:text-2xl">Categories</h2>
+        <div className="z-20 flex items-center justify-center gap-2 md:gap-6">
+          <h2 className="text-lg font-bold md:text-2xl">Categories</h2>
           <button
             className={`px-3 text-sm text-gray700 md:text-lg hover:border focus:border hover:text-primary500 focus:border-primary500 focus:text-primary500 hover:border-primary500 border-1 rounded-md transition-all duration-300 ${isActive(
               'all',

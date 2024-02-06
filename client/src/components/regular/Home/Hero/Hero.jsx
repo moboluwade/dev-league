@@ -1,8 +1,20 @@
+import { useMutation } from '@tanstack/react-query'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-
+import axios from "axios"
 const Hero = () => {
+
   const [email, setEmail] = useState('')
+
+  const addEmail = useMutation({
+    mutationFn: (userEmail) => {
+      return axios.post('/email', userEmail)
+    },
+  })
+  //as a fix, give user a feedback when their email is added successfully
+  //either a failure modal.
+  //or an appealing tick animation for success.
+
   return (
     <main className="flex flex-col items-center w-full bg-text-dev-light-orange">
       <motion.div
@@ -22,19 +34,20 @@ const Hero = () => {
             </span>
           </div>
           <div className="md:flex flex-row relative md:visible hidden w-10/12 md:min-w-[23rem]">
-              <input
-                className="w-full focus:outline-none pr-40 focus:border-text-dev-orange focus:border-opacity-80 focus:border-2 shadow-input pl-6 h-16 bg-white rounded-[3rem] placeholder:opacity-40 placeholder:font-normal placeholder:text-text-dev-faded-base text-text-dev-faded-base"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value)
-                }}
-                placeholder="Enter your email"
-                type="text"
-              />
+            <input
+              className="w-full focus:outline-none pr-40 focus:border-text-dev-orange focus:border-opacity-80 focus:border-2 shadow-input pl-6 h-16 bg-white rounded-[3rem] placeholder:opacity-40 placeholder:font-normal placeholder:text-text-dev-faded-base text-text-dev-faded-base"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value)
+              }}
+              placeholder="Enter your email"
+              type="text"
+            />
             <motion.button
               whileHover={{ scale: 1.1, x: -6 }}
               whileTap={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
+              onClick={() => { addEmail.mutate({ email: email }) }}
               className="absolute right-[0.5rem] top-[0.5rem] flex flex-col justify-center text-white text-center w-fit h-12 bg-text-dev-orange font-semibold py-4 px-5 rounded-[3rem]"
             >
               Get started now
@@ -65,6 +78,7 @@ const Hero = () => {
             whileHover={{ scale: 1.1, x: -4 }}
             whileTap={{ scale: 1.05 }}
             transition={{ duration: 0.5 }}
+            onClick={() => { addEmail.mutate({ email: email }) }}
             className="absolute right-[0.25rem] top-[0.25rem] flex flex-col justify-center text-white text-sm text-center w-25 h-8 bg-text-dev-orange font-semibold py-4 px-5 rounded-[3rem]"
           >
             Get started

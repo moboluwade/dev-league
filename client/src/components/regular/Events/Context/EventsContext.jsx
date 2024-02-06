@@ -1,6 +1,6 @@
 import CardDisplay from '../Card/CardDisplay'
 import { useState } from 'react'
-import { eventsData } from '../../../utils/data'
+import { eventsData } from '../../../../utils/data'
  
 const EventsContext = (props) => {
 

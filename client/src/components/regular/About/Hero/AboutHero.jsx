@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { OrangeDownArrow } from "../../../utils"
+import { OrangeDownArrow } from "../../../../utils"
 
 const AboutHero = () => {
   return (

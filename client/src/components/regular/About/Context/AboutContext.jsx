@@ -1,6 +1,6 @@
-import { ChatBubbleRing, Github, LinkedIn, OrangeBrow, OrangeStar, TwitterBird } from "../../../utils"
-import { demoTeam } from "../../../utils/demo-team"
-import { DribbleIcon } from "../../../utils/svg"
+import { ChatBubbleRing, Github, LinkedIn, OrangeBrow, OrangeStar, TwitterBird } from "../../../../utils"
+import { demoTeam } from "../../../../utils/demo-team"
+import { DribbleIcon } from "../../../../utils/svg"
 import { motion } from "framer-motion"
 
 
