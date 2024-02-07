@@ -1,8 +1,11 @@
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { store } from './store/store';
+import { Provider } from 'react-redux';
 import ErrorPage from "./ErrorPage.jsx";
 import About from "./pages/About/About.jsx";
 // import Events from './pages/EventsPage/Events.jsx'
@@ -14,6 +17,10 @@ import Shop from "./pages/Shop/Shop.jsx";
 import Home from "./pages/Home/Home.jsx";
 import Login from "./components/admin/login/login.jsx";
 import Event from "./components/admin/event/Event.jsx";
+import AllPost from './components/admin/AllPost/AllPost';
+import ManageEvent from './components/admin/event/Event';
+import Login from './components/admin/login/login';
+
 import {
   QueryClient,
   QueryClientProvider,
@@ -21,42 +28,50 @@ import {
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/",
+        path: '/',
         element: <Home />,
       },
       {
-        path: "/about",
+        path: '/about',
         element: <About />,
       },
       {
-        path: "/events",
+        path: '/events',
         element: <Events />,
       },
       {
-        path: "/event-details",
+        path: '/event-details',
         element: <EventView />,
       },
       {
-        path: "/blog",
+        path: '/blog',
         element: <Blog />,
       },
 
       {
-        path: "/blog/:id",
+        path: '/blog/:id',
         element: <BlogView />,
       },
       {
-        path: "/shop",
+        path: '/shop',
         element: <Shop />,
       },
       {
-        path: "/admin/login",
+        path: '/admin/login',
         element: <Login />,
+      },
+      {
+        path: '/admin/allpost/allpost',
+        element: <AllPost />,
+      },
+      {
+        path: '/admin/event/event',
+        element: <ManageEvent />,
       },
       {
         path: "/admin/events",
@@ -64,14 +79,16 @@ const router = createBrowserRouter([
       }
     ],
   },
-]);
+])
 
 const queryClient = new QueryClient()
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
     </QueryClientProvider>
   </React.StrictMode>,
-);
+)
