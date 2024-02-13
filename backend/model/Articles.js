@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 
 
 
-const ArticleSchema = new Schema({
+const articleSchema = new Schema({
     title: {
         type: String,
         required: true
@@ -40,4 +40,4 @@ const ArticleSchema = new Schema({
 
 
 
-module.exports = mongoose.model('articles', ArticleSchema);
+module.exports = mongoose.model('articles', articleSchema);

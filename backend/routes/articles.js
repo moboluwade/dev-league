@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
         const {title, body, author, blogtype, blogimage} = req.body;
         const newArticle = new Article({title, body, author, blogtype, blogimage});
         const savedArticle = await newArticle.save();
-        res.json({message : 'Article created successfully', Article : savedArticle});
+        res.json({data : [{message : 'Article created successfully'}, {Article : savedArticle}]});
     } catch (error) {
         console.log(error);
         return res.status(500).json({message : 'Internal server error', error : error});
@@ -31,7 +31,7 @@ router.get('/:id', async (req, res) => {
     const  id =  req.params.id;
     const Articles = await Article.findOne({_id : id});
     if(!Articles){
-        return res.status(404).json({message : 'Articles not found'});
+        return res.status(404).json({message : 'Articles not found' , error : error});
     }
     res.json({Articles : Articles});
 }
