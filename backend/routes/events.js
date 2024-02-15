@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Events = require('../model/events');
+const checkAuth = require('../middlewares/auth');
 
 
 
@@ -10,7 +11,7 @@ router.get('/', async (req, res)=>{
 
         const Event = await Events.find()
         .sort({date : -1});
-        res.status(200).json({Events : Event})
+        res.status(200).json({ data : [ { Events : Event} ] })
     
         
     } catch (error) {
@@ -26,7 +27,7 @@ router.get('/:id', async  (req, res)=>{
         try {
             const id =  req.params.id
             const Event = await Events.findOne({_id : id})
-            res.status(200).json({event : Event})
+            res.status(200).json({ data : {event : Event} })
             
         } catch (error) {
                 res.status(500).json({error : error.message}) 
@@ -34,7 +35,7 @@ router.get('/:id', async  (req, res)=>{
 })
 
 // CREATE A NEW EVENT 
-router.post('/', async (req, res)=>{
+router.post('/', checkAuth,  async (req, res)=>{
     const { date, title, description, eventType, eventStatus } = req.body;
 
     try {
@@ -54,7 +55,7 @@ router.post('/', async (req, res)=>{
 })
 
 // update a specific event
-router.patch('/:id', async (req, res)=>{
+router.patch('/:id', checkAuth , async (req, res)=>{
     try {
         const id = req.params.id;
         const update = req.body;
@@ -66,7 +67,8 @@ router.patch('/:id', async (req, res)=>{
     }
 })
 
-// GET EVENTS BY EVENT TYPE
+// GET EVENTS BY EVENT TYPE (})
+
 router.get('/eventtype/:eventType', async (req, res)=>{
     try {
         const eventType = req.params.eventType;

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Article= require('../model/Articles');
+const checkAuth = require('../middlewares/auth');
 
 
 // GET ALL ARTICLES
@@ -14,7 +15,7 @@ router.get('/', async (req, res) => {
     }
 })
 // Create a new Article
-router.post('/', async (req, res) => {
+router.post('/', checkAuth ,  async (req, res) => {
     try {
         const {title, body, author, blogtype, blogimage} = req.body;
         const newArticle = new Article({title, body, author, blogtype, blogimage});
