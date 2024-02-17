@@ -2,9 +2,27 @@ import Cards from './data'
 import './Articles.css'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
+import { useEffect } from 'react'
 
 const Articles = () => {
 
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['home-articles'],
+    queryFn: (async () => {
+      const response = await fetch('/events')
+      if (!response.ok) {
+        throw new error('failed to fetch response')
+      }
+      const jsonResponse = await response.json()
+      const articles = jsonResponse.data
+      return articles
+    })
+  })
+
+  useEffect(() => {
+    !isLoading && console.log(data)
+  }, [isLoading, data])
   const SliceText = (text) => {
     const length = text.length;
     if (length > 65) {
@@ -62,7 +80,7 @@ const Articles = () => {
 
         <motion.button
           whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 1}}
+          whileTap={{ scale: 1 }}
           transition={{ delay: 0, duration: 0.3, type: "spring" }}
           className='h-12 px-5 py-3 bg-black rounded-lg w-fit text-[#FFF6F3]'>
           <a href="">Read Blog</a>

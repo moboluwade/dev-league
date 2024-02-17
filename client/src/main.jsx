@@ -19,7 +19,7 @@ import Login from "./components/admin/login/login.jsx";
 import Event from "./components/admin/event/Event.jsx";
 import AllPost from './components/admin/AllPost/AllPost';
 import ManageEvent from './components/admin/event/Event';
-import Login from './components/admin/login/login';
+// import Login from './components/admin/login/login';
 
 import {
   QueryClient,
