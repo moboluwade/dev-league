@@ -43,7 +43,7 @@ const Articles = () => {
             The latest industry news, interviews, technologies, and resources.
           </span>
         </div>
-
+        
         <motion.div
           className="flex flex-row flex-wrap items-start justify-center w-full gap-8 pb-12 text-black">
           {Cards.map((card) => {

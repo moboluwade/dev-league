@@ -25,6 +25,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import Admin from "./components/admin/Admin.jsx";
 
 const router = createBrowserRouter([
   {
@@ -66,16 +67,22 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: '/admin/allpost/allpost',
-        element: <AllPost />,
-      },
-      {
-        path: '/admin/event/event',
-        element: <ManageEvent />,
-      },
-      {
-        path: "/admin/events",
-        element: < Event />,
+        path: "/admin",
+        element: <Admin />,
+        children: [
+          {
+            path: 'allpost',
+            element: <AllPost />,
+          },
+          {
+            path: 'event',
+            element: <ManageEvent />,
+          },
+          {
+            path: "event/:events",
+            element: < Event />,
+          },
+        ]
       }
     ],
   },
