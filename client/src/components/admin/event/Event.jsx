@@ -10,7 +10,7 @@ const ManageEvent = () => {
 
   return (
     <div>
-      <div className="flex flex-col justify-start md:pl-8 md:pt-20">
+      <div className="flex flex-col justify-start md:pl-[22rem] md:pt-20">
         <h2 className="pb-8 text-4xl font-bold">Event Management</h2>
         <div className="flex flex-col justify-center">
           <div className="flex flex-col pt-4">

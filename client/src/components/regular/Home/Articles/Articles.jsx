@@ -10,13 +10,13 @@ const Articles = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ['home-articles'],
     queryFn: (async () => {
-      const response = await fetch('/events')
+      const response = await fetch('/endpoints/api/blogs')
       if (!response.ok) {
         throw new error('failed to fetch response')
       }
       const jsonResponse = await response.json()
       const articles = jsonResponse.data
-      return articles
+      return articles.slice(0, 3)
     })
   })
 
@@ -43,39 +43,72 @@ const Articles = () => {
             The latest industry news, interviews, technologies, and resources.
           </span>
         </div>
-        
+
         <motion.div
           className="flex flex-row flex-wrap items-start justify-center w-full gap-8 pb-12 text-black">
-          {Cards.map((card) => {
-            const { id, title, desc, img, person } = card
-            return (
-              <Link to="/" key={id} className='w-fit h-fit'>
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 1.02 }}
-                  transition={{ delay: 0, duration: 0.5, type: "spring" }}
-                  className="flex flex-col border border-[#D4CECB] lg:max-w-[22rem] m-auto max-w-[18rem] bg-white rounded-lg text-start">
-                  <div>
-                    <img className='w-full rounded-t-lg' draggable="false" src={img} alt="image" />
-                  </div>
-                  <div className="px-3 pt-5 pb-3">
-                    <span className="text-xl font-semibold text-black ">
-                      {title}
-                    </span>
-                    <p className="w-full pt-2 textLight">
-                      {SliceText(desc)} <a className="underline text-text-dev-orange hover:opacity-80" href="#">Read more</a>
-                    </p>
-
-                    <div className="flex items-center w-full gap-4 pt-7">
-                      <img src={person.img} alt="" />
-                      <span className="text">{person.name}</span>
-                      <span className="textLight">{person.date}</span>
+          {data ?
+            data.map((card) => {
+              const { id, date, title, description, blogAuthor, blogImage } = card
+              return (
+                <Link to="/" key={id} className='w-fit h-fit'>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 1.02 }}
+                    transition={{ delay: 0, duration: 0.5, type: "spring" }}
+                    className="flex flex-col border border-[#D4CECB] lg:max-w-[22rem] m-auto max-w-[18rem] bg-white rounded-lg text-start">
+                    <div>
+                      <img className='w-full rounded-t-lg' draggable="false" src={blogImage} alt="image" />
                     </div>
-                  </div>
-                </motion.div>
-              </Link>
-            )
-          })}
+                    <div className="px-3 pt-5 pb-3">
+                      <span className="text-xl font-semibold text-black ">
+                        {title}
+                      </span>
+                      <p className="w-full pt-2 textLight">
+                        {SliceText(description)} <a className="underline text-text-dev-orange hover:opacity-80" href="#">Read more</a>
+                      </p>
+
+                      <div className="flex items-center w-full gap-4 pt-7">
+                        <img src={blogImage} alt="" />
+                        <span className="text">{blogAuthor}</span>
+                        <span className="textLight">{date}</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                </Link>
+              )
+            })
+            :
+            Cards.map((card) => {
+              const { id, title, desc, img, person } = card
+              return (
+                <Link to="/" key={id} className='w-fit h-fit'>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 1.02 }}
+                    transition={{ delay: 0, duration: 0.5, type: "spring" }}
+                    className="flex flex-col border border-[#D4CECB] lg:max-w-[22rem] m-auto max-w-[18rem] bg-white rounded-lg text-start">
+                    <div>
+                      <img className='w-full rounded-t-lg' draggable="false" src={img} alt="image" />
+                    </div>
+                    <div className="px-3 pt-5 pb-3">
+                      <span className="text-xl font-semibold text-black ">
+                        {title}
+                      </span>
+                      <p className="w-full pt-2 textLight">
+                        {SliceText(desc)} <a className="underline text-text-dev-orange hover:opacity-80" href="#">Read more</a>
+                      </p>
+
+                      <div className="flex items-center w-full gap-4 pt-7">
+                        <img src={person.img} alt="" />
+                        <span className="text">{person.name}</span>
+                        <span className="textLight">{person.date}</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                </Link>
+              )
+            })
+          }
         </motion.div>
 
         <motion.button

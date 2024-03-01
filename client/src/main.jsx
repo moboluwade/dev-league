@@ -66,26 +66,26 @@ const router = createBrowserRouter([
         path: '/admin/login',
         element: <Login />,
       },
-      {
-        path: "/admin",
-        element: <Admin />,
-        children: [
-          {
-            path: 'allpost',
-            element: <AllPost />,
-          },
-          {
-            path: 'event',
-            element: <ManageEvent />,
-          },
-          {
-            path: "event/:events",
-            element: < Event />,
-          },
-        ]
-      }
     ],
   },
+  {
+    path: "/admin",
+    element: <Admin />,
+    children: [
+      {
+        path: 'allpost',
+        element: <AllPost />,
+      },
+      {
+        path: 'event',
+        element: <ManageEvent />,
+      },
+      {
+        path: "event/:events",
+        element: < Event />,
+      },
+    ]
+  }
 ])
 
 const queryClient = new QueryClient()

@@ -8,7 +8,7 @@ const Hero = () => {
 
   const addEmail = useMutation({
     mutationFn: (userEmail) => {
-      return axios.post('/email', userEmail)
+      return axios.post('/endpoint/api/emails', userEmail)
     },
   })
   //as a fix, give user a feedback when their email is added successfully
