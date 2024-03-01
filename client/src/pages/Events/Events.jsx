@@ -4,6 +4,7 @@ import { useState } from "react"
 
 const Events = () => {
   const [displayType, setDisplayType] = useState('all')
+
   const filterCards = (type) => {
     setDisplayType(type)
   }

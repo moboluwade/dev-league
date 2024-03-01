@@ -1,4 +1,4 @@
-export const eventsData = [
+export const customEventsData = [
   {
     id: 1,
     isEventOpen: true,
