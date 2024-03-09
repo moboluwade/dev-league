@@ -3,7 +3,7 @@ import { Navbar } from "./Navbar";
 
 const Admin = () => {
     return (
-        <div className="flex flex-row w-full h-screen overflow-scroll">
+        <div className="flex flex-row w-full h-screen overflow-y-scroll">
             <Navbar />
             <Outlet />
         </div>

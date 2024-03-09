@@ -1,6 +1,6 @@
 const Navbar = () => {
     return (
-        <div className="w-[18rem] pt-6 bg-black fixed h-full">
+        <div className="md:w-[18rem] pt-6 bg-black sticky top-0 h-full">
             <div className="flex flex-row items-center justify-start w-full gap-12 px-10 mb-8 text-white">
                 <button>
                     <img width={40} height={40} src="/admin/menu.svg" alt="menu" />
