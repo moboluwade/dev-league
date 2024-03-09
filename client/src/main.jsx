@@ -76,7 +76,7 @@ const router = createBrowserRouter([
         element: <AllPost />,
       },
       {
-        path: 'event',
+        path: 'create/event',
         element: <ManageEvent />,
       },
       {
