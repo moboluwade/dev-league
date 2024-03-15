@@ -24,25 +24,27 @@ const ManageEvent = () => {
           <div className="flex flex-col pt-4">
             <label className="pb-1 font-bold" htmlFor="event-location">Event Location</label>
             <div className="flex flex-row content-center border-[1.5px] border-[#292422] placeholder:text-[#9F918B] pl-4 py-4 w-[36rem] placeholder:text-start h-fit gap-6 outline-none rounded-md" name="event-location" id="event-location" >
-              <label className="px-3 pt-[0.125rem] pb-[0.125rem] text-white border h-fit rounded-2xl bg-text-dev-orange">
+              <label className={`px-3 flex flex-row items-center gap-1 pt-[0.125rem] pb-[0.125rem] text-white border h-fit rounded-2xl ${selectedLocation === "virtual" ? "bg-text-dev-orange" : "bg-[#D4CECB] text-[#9F918B]"} `}>
                 <input
-                  className=""
+                  className={`w-2 h-2 bg-white rounded-full appearance-none  ${selectedLocation === "virtual" ? "bg-white" : "bg-[#9F918B]"}`}
                   type="radio"
                   value="virtual"
                   checked={selectedLocation === "virtual"}
                   onChange={handleLocationChange}
                 />
-                Virtual
+                <span>Virtual</span>
               </label>
-              <label className="px-3 pt-[0.125rem] pb-[0.125rem] text-white border h-fit rounded-2xl bg-text-dev-orange">
+              <label className={`px-3 flex flex-row items-center gap-1 pt-[0.125rem] pb-[0.125rem] text-white border h-fit rounded-2xl ${selectedLocation === "onsite" ? "bg-text-dev-orange" : "bg-[#D4CECB] text-[#9F918B]"}`}>
                 <input
-                  className=""
+                  className={`w-2 h-2 bg-white rounded-full appearance-none  ${selectedLocation === "onsite" ? "bg-white" : "bg-[#9F918B]"}`}
                   type="radio"
                   value="onsite"
                   checked={selectedLocation === "onsite"}
                   onChange={handleLocationChange}
                 />
-                Onsite
+                <span>
+                  Onsite
+                </span>
               </label>
             </div>
             <div className="pb-8"></div>
@@ -76,15 +78,28 @@ const ManageEvent = () => {
             </div>
             <div className="flex flex-col pt-4">
               <label className="pb-1 font-bold" htmlFor="event-title">Choose Event Banner</label>
-              <div className=" h-fit border-[1.5px] bg-[#E2DEDC] border-[#292422] rounded-md flex flex-row w-[36rem]">
-                <input className="bg-white placeholder:text-black placeholder:font-semibold pl-4 h-12 outline-none rounded-md rounded-r-none min-w-[88%] " placeholder="Choose File" type="text" name="event-title" id="event-title" />
-                <button className="flex flex-row content-center justify-center w-full border-l border-black"><span className="m-auto font-bold text-black w-fit h-fit">Browse</span></button>
-              </div>
+
+              <label
+                htmlFor="file-input"
+                className=" h-fit border-[1.5px] bg-[#E2DEDC] border-[#292422] rounded-md flex flex-row items-center w-[36rem] "
+              >
+                <div className="bg-white placeholder:text-black placeholder:font-semibold pl-4 h-12 outline-none rounded-md rounded-r-none min-w-[88%] border-r-[1px] border-black flex flex-col justify-center">
+                  <span className="text-[#9F918B] font-bold"> Choose file </span>
+                  {/* <button className="flex flex-row content-center justify-center w-full border-l border-black"></button> */}
+                </div>
+                <span className="pl-1 font-bold">Browse</span>
+                <input className="hidden" id="file-input" type="file" />
+              </label>
+
+              {/* <label htmlFor="" className="bg-white placeholder:text-black placeholder:font-semibold pl-4 h-12 outline-none rounded-md rounded-r-none min-w-[88%] " id="event-title">
+                  Choose File
+                </label> */}
+              {/* <button className="flex flex-row content-center justify-center w-full border-l border-black"><input type="file" placeholder="Browse" className="m-auto font-bold text-black w-fit h-fit" /></button> */}
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 
