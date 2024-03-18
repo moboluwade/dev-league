@@ -1,5 +1,7 @@
-import { useRef, useState } from "react";
-import { MarkCalendar, MarkTimer } from "../svg";
+import { useState } from "react";
+import { MarkTimer } from "../svg";
+import DateStart from "../../DateStart"
+import DateEnd from "../../DateEnd";
 
 const ManageEvent = () => {
   const [selectedLocation, setSelectedLocation] = useState(null)
@@ -8,16 +10,6 @@ const ManageEvent = () => {
     setSelectedLocation(event.target.value)
   }
 
-  const calEndRef = useRef(null)
-  const calStartRef = useRef(null)
-
-  const handleCalendarEndClick = () => {
-    calEndRef.current.showPicker()
-  }
-
-  const handleCalendarStartClick = () => {
-    calStartRef.current.showPicker()
-  }
 
 
   return (
@@ -60,37 +52,9 @@ const ManageEvent = () => {
               </label>
             </div>
             <div className="pb-8"></div>
-            <div className="flex flex-col pt-4">
-              <label className="pb-1 font-bold" htmlFor="event-title">Event Start Date</label>
-              <div className=" h-fit border-[1.5px] bg-[#E2DEDC] border-[#292422] rounded-md flex flex-row w-[36rem]">
-                {/* <div className="bg-[#E2DEDC] placeholder:text-black placeholder:font-semibold pl-4 h-12 outline-none rounded-md w-[88%] " placeholder="Event Title" type="text" name="event-title" id="event-title" /> */}
-                <div className="bg-[#E2DEDC] placeholder:text-black placeholder:font-semibold pl-4 h-12 outline-none rounded-md w-[88%] flex flex-row items-center font-semibold">
-                  <input className="p-0 m-0 border-none outline-none w-fit max-w-[1.3rem] h-fit bg-inherit placeholder:text-black" maxLength={2} type="text" placeholder="18" />
-                  <span>/</span>
-                  <input className=" w-fit max-w-[1.3rem] p-0 m-0 border-none outline-none w- h-fit bg-inherit placeholder:text-black" maxLength={2} type="text" placeholder="20" />
-                  <span>/</span>
-                  <input className=" w-fit max-w-[1.3rem] p-0 m-0 border-none outline-none h-fit bg-inherit placeholder:text-black" maxLength={2} type="text" placeholder="24" />
-                </div>
-                <label onClick={handleCalendarStartClick} className="flex flex-col justify-center w-6 px-6 border-l border-black" htmlFor="calendar"><MarkCalendar /></label>
-                <input ref={calStartRef} className="invisible w-0 h-0" type="date" name="" id="calendar" />
-              </div>
-            </div>
 
-            <div className="flex flex-col pt-4">
-              <label className="pb-1 font-bold" htmlFor="event-title">Event End Date</label>
-              <div className=" h-fit border-[1.5px] bg-[#E2DEDC] border-[#292422] rounded-md flex flex-row w-[36rem]">
-                <div className="bg-[#E2DEDC] placeholder:text-black placeholder:font-semibold pl-4 h-12 outline-none rounded-md w-[88%] flex flex-row items-center font-semibold">
-                  <input className="p-0 m-0 border-none outline-none w-fit max-w-[1.3rem] h-fit bg-inherit placeholder:text-black" maxLength={2} type="text" placeholder="18" />
-                  <span>/</span>
-                  <input className=" w-fit max-w-[1.3rem] p-0 m-0 border-none outline-none w- h-fit bg-inherit placeholder:text-black" maxLength={2} type="text" placeholder="20" />
-                  <span>/</span>
-                  <input className=" w-fit max-w-[1.3rem] p-0 m-0 border-none outline-none h-fit bg-inherit placeholder:text-black" maxLength={2} type="text" placeholder="24" />
-                </div>
-                {/* <input className="bg-[#E2DEDC] placeholder:text-black placeholder:font-semibold pl-4 h-12 outline-none rounded-md w-[88%] " placeholder="Event Title" type="text" name="event-title" id="event-title" /> */}
-                <label onClick={handleCalendarEndClick} className="flex flex-col justify-center w-6 px-6 border-l border-black" htmlFor="calendar"><MarkCalendar /></label>
-                <input ref={calEndRef} className="invisible w-0 h-0" type="date" name="" id="calendar" />
-              </div>
-            </div>
+            <DateStart />
+            <DateEnd />
 
             <div className="flex flex-col pt-4">
               <label className="pb-1 font-bold" htmlFor="event-title">Event Start Time</label>
@@ -111,9 +75,9 @@ const ManageEvent = () => {
                 {/* <input className="bg-[#E2DEDC] placeholder:text-black placeholder:font-semibold pl-4 h-12 outline-none rounded-md w-[88%] " placeholder="01:00 PM" type="text" name="event-title" id="event-title" /> */}
                 <div className="bg-[#E2DEDC] placeholder:text-black placeholder:font-semibold pl-4 h-12 outline-none rounded-md w-[88%] flex flex-row items-center font-semibold">
                   <input className="p-0 m-0 border-none outline-none w-fit max-w-[1.3rem] h-fit bg-inherit placeholder:text-black" maxLength={2} type="text" placeholder="18" />
-                                    <span>:</span>
-                                    <input className=" w-fit max-w-[1.3rem] p-0 m-0 border-none outline-none w- h-fit bg-inherit placeholder:text-black" maxLength={2} type="text" placeholder="20" />
-                                    <input className=" pl-1 w-fit max-w-[1.9rem] p-0 m-0 border-none outline-none w- h-fit bg-inherit placeholder:text-black" maxLength={2} type="text" placeholder="AM" />
+                  <span>:</span>
+                  <input className=" w-fit max-w-[1.3rem] p-0 m-0 border-none outline-none w- h-fit bg-inherit placeholder:text-black" maxLength={2} type="text" placeholder="20" />
+                  <input className=" pl-1 w-fit max-w-[1.9rem] p-0 m-0 border-none outline-none w- h-fit bg-inherit placeholder:text-black" maxLength={2} type="text" placeholder="AM" />
                 </div>
                 <button className="w-6 px-6 border-l border-black"><MarkTimer /></button>
               </div>
