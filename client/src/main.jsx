@@ -21,6 +21,7 @@ import Event from "./pages/admin/event/Event.jsx";
 import AllPost from './pages/admin/AllPost/AllPost';
 import ManageEvent from './pages/admin/event/Event';
 import Admin from "./pages/admin/Admin.jsx";
+import CreateBlog from "./pages/admin/CreateBlog/CreateBlog.jsx"
 
 import {
   QueryClient,
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
       {
         path: 'allpost',
         element: <AllPost />,
+      },
+      {
+        path: 'create/blog',
+        element: <CreateBlog />
       },
       {
         path: 'create/event',
