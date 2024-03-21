@@ -4,11 +4,11 @@ import Header from './components/Header/Header'
 import { Footer } from './components/Footer'
 import { useSelector } from 'react-redux'
 import SideNavbar from './components/Header/SideNavbar'
-import AllPost from './components/admin/AllPost/AllPost'
+import AllPost from './pages/admin/AllPost/AllPost'
 
 const App = () => {
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn)
-
+  FD4F13
   console.log(isLoggedIn)
   return (
     <>

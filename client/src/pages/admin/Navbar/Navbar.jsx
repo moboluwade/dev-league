@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom"
 
-const Navbar = () => {
+const Navbar = ({ setNavActive, navActive }) => {
 
     return (
-        <div className={`md:w-[16rem] pt-6 bg-black sticky top-0 h-full`}>
+        <div className={`max-w-[16rem] pt-6 bg-black md:sticky ${navActive ? "absolute " : "absolute -left-96"}  top-0 h-full`}>
             <div className="flex flex-row items-center justify-start w-full gap-12 px-10 mb-8 text-white">
-                <button>
+                <button onClick={() => setNavActive(!navActive)}>
                     <img width={40} height={40} src="/admin/menu.svg" alt="menu" />
                 </button>
                 <img width={50} height={40} src="/Union.svg" alt="logo" />

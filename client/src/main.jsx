@@ -15,16 +15,17 @@ import Blog from "./pages/Blog/Blog.jsx";
 import BlogView from "./pages/Blog/BlogView.jsx";
 import Shop from "./pages/Shop/Shop.jsx";
 import Home from "./pages/Home/Home.jsx";
-import Login from "./components/admin/login/login.jsx";
-import Event from "./components/admin/event/Event.jsx";
-import AllPost from './components/admin/AllPost/AllPost';
-import ManageEvent from './components/admin/event/Event';
+
+import Login from "./pages/admin/login/login.jsx";
+import Event from "./pages/admin/event/Event.jsx";
+import AllPost from './pages/admin/AllPost/AllPost';
+import ManageEvent from './pages/admin/event/Event';
+import Admin from "./pages/admin/Admin.jsx";
 
 import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
-import Admin from "./components/admin/Admin.jsx";
 
 const router = createBrowserRouter([
   {
