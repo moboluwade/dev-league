@@ -10,7 +10,7 @@ const Admin = () => {
         <div className="flex flex-col w-full h-screen overflow-y-scroll md:flex-row">
             <Navbar setNavActive={setNavActive} navActive={navActive} />
             <button
-                className={`${navActive? "hidden" : "relative" } md:hidden`}
+                className={`${navActive? "hidden" : "relative top-4 left-4 pb-12" } md:hidden`}
                 onClick={() => setNavActive(!navActive)}
             >
                 <img className="p-2 bg-[#FD4F13] rounded-full w-fit h-fit " src="/admin/menu.svg" alt="menu" />
