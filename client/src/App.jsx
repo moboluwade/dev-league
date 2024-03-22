@@ -8,7 +8,6 @@ import AllPost from './pages/admin/AllPost/AllPost'
 
 const App = () => {
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn)
-  FD4F13
   console.log(isLoggedIn)
   return (
     <>
