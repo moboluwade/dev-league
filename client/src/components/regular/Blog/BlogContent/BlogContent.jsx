@@ -73,6 +73,7 @@ function BlogContent() {
             />
           </div>
         </div>
+
         {/* Blog main section */}
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 xl:grid-cols-3">
           {data ?
@@ -119,7 +120,7 @@ function BlogContent() {
             })
             :
             BlogData.map((blog) => {
-              const {id, heading, body, image, author, button} = blog;
+              const { id, heading, body, image, author, button } = blog;
               return (
                 <div
                   key={id}

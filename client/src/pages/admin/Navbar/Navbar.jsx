@@ -1,6 +1,19 @@
-import { Link } from "react-router-dom"
+import { Link, } from "react-router-dom"
+import { UserLogout } from "../../../store/userSlice"
+import { useDispatch, } from "react-redux"
 
 const Navbar = ({ setNavActive, navActive }) => {
+
+    const dispatch = useDispatch()
+
+    const handleLogout = async () => {
+        await dispatch(UserLogout())
+    }
+
+    //this logic is already handled by the general check for isLoggedIn in admin
+    // useEffect(() => {
+    //     // !isLoggedIn && navigate("/")
+    // }, [isLoggedIn, navigate])
 
     return (
         <div className={`max-w-[16rem] pt-6 bg-black md:sticky ${navActive ? "absolute " : "absolute -left-96"}  top-0 h-full`}>
@@ -61,7 +74,9 @@ const Navbar = ({ setNavActive, navActive }) => {
                 <p>Current Policy</p>
             </div>
 
-            <button className="mx-auto text-lg flex flex-row justify-center px-4 gap-2 items-center text-text-dev-orange rounded-md w-[12rem] h-[3rem] bg-white">
+            <button
+                onClick={handleLogout}
+                className="mx-auto text-lg flex flex-row justify-center px-4 gap-2 items-center text-text-dev-orange rounded-md w-[12rem] h-[3rem] bg-white">
                 <img width={25} height={10} src="/admin/logout.svg" alt="" />
                 <div className="font-semibold">Logout</div>
             </button>

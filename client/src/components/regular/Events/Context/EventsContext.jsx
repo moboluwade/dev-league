@@ -41,7 +41,7 @@ const EventsContext = (props) => {
         </div>
         {/* cards  */}
         <div className="mt-4">
-          
+           
           <CardDisplay
             displayType={props.displayType}
             eventsData={cardsData}

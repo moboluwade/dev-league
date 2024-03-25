@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { userActions } from '../../../store/userSlice'
+import { UserLogin } from '../../../store/userSlice'
 import { useNavigate } from 'react-router-dom'
 
 
@@ -13,9 +13,12 @@ const Login = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    await dispatch(userActions.LoggedIn())
-    isLoggedIn && navigate("/admin")
+    await dispatch(UserLogin())
   }
+
+  useEffect(() => {
+    isLoggedIn && navigate("/admin")
+  }, [isLoggedIn, navigate])
 
   return (
     <div className="my-20">
