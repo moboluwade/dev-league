@@ -31,9 +31,9 @@ const CreateBlog = () => {
         setSelectedBlogTypes(newArray)
     }
 
-useEffect(()=>{
-    console.log(selectedBlogTypes)
-},[selectedBlogTypes])
+    useEffect(() => {
+        console.log(selectedBlogTypes)
+    }, [selectedBlogTypes])
 
     return (
         <div className="w-full ">
@@ -52,7 +52,7 @@ useEffect(()=>{
                         <label className="pb-1 font-bold" htmlFor="blog-type">Blog Type</label>
                         <div className="flex flex-row justify-center md:justify-start content-center border-[1.5px] border-[#292422] placeholder:text-[#9F918B] pl-4 py-4 w-full max-w-[36rem] placeholder:text-start h-fit gap-6 outline-none rounded-md overflow-x-scroll" name="blog-type" id="blog-type" >
                             <div className="flex flex-row gap-2">
-                                <label className={`px-3 flex flex-row items-center gap-1 pt-[0.125rem] pb-[0.125rem] text-white border h-fit rounded-2xl ${selectedBlogTypes.includes("article") ? "bg-text-dev-orange" : "bg-[#D4CECB] text-[#9F918B]"} `}>
+                                <label className={`px-3 flex flex-row items-center gap-1 pt-[0.125rem] pb-[0.125rem] text-white border h-fit rounded-2xl ${selectedBlogTypes.includes("articles") ? "bg-text-dev-orange" : "bg-[#D4CECB] text-[#9F918B]"} `}>
                                     <input
                                         className={`w-2 h-2 bg-white rounded-full appearance-none  ${selectedBlogTypes.includes("articles") ? "bg-white" : "bg-[#9F918B]"}`}
                                         type="checkbox"
@@ -62,7 +62,7 @@ useEffect(()=>{
                                     />
                                     <span>Article</span>
                                 </label>
-                                <img onClick={() => {handleTypeDelete("articles") }} src="/admin/delete.svg" alt="delete" />
+                                <img className={`${!selectedBlogTypes.includes("articles") && 'invisible'}`} onClick={() => { handleTypeDelete("articles") }} src="/admin/delete.svg" alt="delete" />
                             </div>
 
                             <div className="flex flex-row gap-2">
@@ -78,7 +78,7 @@ useEffect(()=>{
                                         News
                                     </span>
                                 </label>
-                                <img  onClick={() => { handleTypeDelete("news") }} src="/admin/delete.svg" alt="delete" />
+                                <img className={`${!selectedBlogTypes.includes("news") && 'invisible'}`} onClick={() => { handleTypeDelete("news") }} src="/admin/delete.svg" alt="delete" />
                             </div>
 
                             <div className="flex flex-row gap-2">
@@ -92,7 +92,7 @@ useEffect(()=>{
                                     />
                                     <span>Tech</span>
                                 </label>
-                                <img onClick={() => { handleTypeDelete("tech") }} src="/admin/delete.svg" alt="delete" />
+                                <img className={`${!selectedBlogTypes.includes("tech") && 'invisible'}`} onClick={() => { handleTypeDelete("tech") }} src="/admin/delete.svg" alt="delete" />
                             </div>
 
 
@@ -109,7 +109,7 @@ useEffect(()=>{
                                         Jobs
                                     </span>
                                 </label>
-                                <img  onClick={() => { handleTypeDelete("jobs") }} src="/admin/delete.svg" alt="delete" />
+                                <img className={`${!selectedBlogTypes.includes("jobs") && 'invisible'}`} onClick={() => { handleTypeDelete("jobs") }} src="/admin/delete.svg" alt="delete" />
                             </div>
                         </div>
                         <div className="pb-8"></div>
