@@ -7,21 +7,17 @@ const CreateBlog = () => {
     //
     const handleTypeChange = (event) => {
         const typeToRemove = event.target.value
-        setSelectedBlogTypes(prev => {
-            // function removes existing types and adds new types
-            const filter = (previous, typeToRemove) => {
-                if (previous.includes(typeToRemove)) {
-                    // prev is previous value in setState, which is a list.
-                    const newArray = prev.filter((type) => { type !== typeToRemove })
-                    return newArray
-                    // is a new array of types.
-                } else {
-                    return [...previous, typeToRemove]
-                }
-            }
-
-            filter(prev, typeToRemove)
-        })
+        if (!selectedBlogTypes.includes(typeToRemove)) {
+            setSelectedBlogTypes(prev => [...prev, typeToRemove])
+        }
+        else {
+            // if type exists
+            const array = selectedBlogTypes;
+            const newArray = array.filter((type) => { return type !== typeToRemove })
+            setSelectedBlogTypes(newArray)
+        }
+        // if type is in prev, add it, else remove it
+        
     }
 
     const handleTypeDelete = (typeToRemove) => {
