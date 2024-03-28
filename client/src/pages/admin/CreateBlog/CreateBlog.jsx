@@ -1,23 +1,30 @@
 import { useEffect, useState } from "react"
 import DateStart from "../DateStart"
-
+// import { useMutation, mutation } from "@tanstack/react-query"
+// import { axios } from "axios"
 const CreateBlog = () => {
-    // 
-    const [selectedBlogTypes, setSelectedBlogTypes] = useState(["articles", "jobs", "news", "tech"])
-    //
+    const [selectedBlogTypes, setSelectedBlogTypes] = useState([])
+    const [fileAdded, setFileAdded] = useState("")
+
+    // const createBlog = useMutation({
+    //     mutationFn: (newBlog) => {
+    //         return axios.post('/todos', newBlog)
+    //     },
+    // })
+
+
     const handleTypeChange = (event) => {
         const typeToRemove = event.target.value
         if (!selectedBlogTypes.includes(typeToRemove)) {
             setSelectedBlogTypes(prev => [...prev, typeToRemove])
         }
         else {
-            // if type exists
+            // condition for if type exists
             const array = selectedBlogTypes;
             const newArray = array.filter((type) => { return type !== typeToRemove })
             setSelectedBlogTypes(newArray)
         }
         // if type is in prev, add it, else remove it
-        
     }
 
     const handleTypeDelete = (typeToRemove) => {
@@ -26,6 +33,13 @@ const CreateBlog = () => {
         const newArray = array.filter((type) => { return type !== typeToRemove })
         setSelectedBlogTypes(newArray)
     }
+
+    const handleFile = (fileArray) => {
+        const file = fileArray[0]
+        setFileAdded(file)
+    }
+
+
 
     useEffect(() => {
         console.log(selectedBlogTypes)
@@ -124,14 +138,14 @@ const CreateBlog = () => {
                                     {/* <button className="flex flex-row content-center justify-center w-full border-l border-black"></button> */}
                                 </div>
                                 <span className="px-2 font-bold w-fit">Browse</span>
-                                <input className="hidden" id="file-input" type="file" />
+                                <input onChange={(e) => handleFile(e.target.files)} value={fileAdded} className="hidden" id="file-input" type="file" accept="image/*" />
                             </label>
 
 
-                            {/* <label htmlFor="" className="bg-white placeholder:text-black placeholder:font-semibold pl-4 h-12 outline-none rounded-md rounded-r-none min-w-[88%] " id="event-title">
-                  Choose File
-                </label> */}
-                            {/* <button className="flex flex-row content-center justify-center w-full border-l border-black"><input type="file" placeholder="Browse" className="m-auto font-bold text-black w-fit h-fit" /></button> */}
+                        </div>
+
+                        <div className="flex flex-row justify-end w-full pt-4 max-w-[36rem]">
+                            <button className="px-3 py-2 text-xl font-semibold tracking-wide text-white rounded-lg bg-text-dev-orange" >Submit</button>
                         </div>
                     </div>
                 </div>
