@@ -77,10 +77,9 @@ const ManageEvent = () => {
               </label>
 
 
-              {/* <label htmlFor="" className="bg-white placeholder:text-black placeholder:font-semibold pl-4 h-12 outline-none rounded-md rounded-r-none min-w-[88%] " id="event-title">
-                  Choose File
-                </label> */}
-              {/* <button className="flex flex-row content-center justify-center w-full border-l border-black"><input type="file" placeholder="Browse" className="m-auto font-bold text-black w-fit h-fit" /></button> */}
+              <div className="flex flex-row justify-end w-full pt-4 max-w-[36rem]">
+                <button className="px-3 py-2 text-xl font-semibold tracking-wide text-white rounded-lg bg-text-dev-orange" >Submit</button>
+              </div>
             </div>
           </div>
         </div>
