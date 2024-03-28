@@ -4,7 +4,7 @@ import DateEnd from "../DateEnd";
 import TimeStart from "../TimeStart";
 import TimeEnd from "../TimeEnd";
 
-const ManageEvent = () => {
+const CreateEvent = () => {
   const [selectedLocation, setSelectedLocation] = useState(null)
 
   const handleLocationChange = (event) => {
@@ -88,4 +88,4 @@ const ManageEvent = () => {
   )
 }
 
-export default ManageEvent
+export default CreateEvent

@@ -17,11 +17,10 @@ import Shop from "./pages/Shop/Shop.jsx";
 import Home from "./pages/Home/Home.jsx";
 
 import Login from "./pages/admin/login/login.jsx";
-import Event from "./pages/admin/event/Event.jsx";
 import AllPost from './pages/admin/AllPost/AllPost';
-import ManageEvent from './pages/admin/event/Event';
 import Admin from "./pages/admin/Admin.jsx";
 import CreateBlog from "./pages/admin/CreateBlog/CreateBlog.jsx"
+import CreateEvent from "./pages/admin/CreateEvent/CreateEvent.jsx";
 
 import {
   QueryClient,
@@ -83,11 +82,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'create/event',
-        element: <ManageEvent />,
-      },
-      {
-        path: "event/:events",
-        element: < Event />,
+        element: <CreateEvent />,
       },
     ]
   }
