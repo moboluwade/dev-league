@@ -2,8 +2,14 @@ import { useState } from "react"
 import { motion } from "framer-motion";
 import { OrangeDownArrow } from "../../../../utils";
 
-const BlogHero = () => {
+const BlogHero = (props) => {
   const [search, setSearch] = useState('')
+
+  const isActive = (type) => {
+    return props.displayType === type
+      ? 'text-primary500 border border-1 border-primary500 active'
+      : ''
+  }
 
   return (
     <div className="flex flex-col items-center justify-center overflow-hidden h-fit lg:h-fit bg-text-dev-light-orange">
@@ -64,7 +70,48 @@ const BlogHero = () => {
             </button>
           </div>
         </div>
-        <div className="flex flex-row font-semibold md:font-bold pt-6 font-[inter] justify-center gap-3 sm:gap-5">
+
+        {/* Categories */}
+        <div className="z-20 flex items-center flex-col justify-center gap-2 md:gap-6 md:flex-row font-semibold md:font-bold pt-6 font-[inter] sm:gap-5">
+          <h2 className="text-lg font-bold md:text-2xl ">Categories</h2>
+          <div className="flex flex-row gap-2 md:gap-6">
+            <button
+              className={`px-3 text-sm text-gray700 md:text-lg border border-[rgba(0,0,0,0)] focus:border hover:text-primary500 focus:border-primary500 focus:text-primary500 hover:border-primary500 border-1 rounded-md transition-all duration-300 ${isActive(
+                'all',
+              )}`}
+              onClick={() => props.filterCards('all')}
+            >
+              All
+            </button>
+            <button
+              className={`px-3 text-sm text-gray700 md:text-lg border border-[rgba(0,0,0,0)] focus:border hover:text-primary500 focus:border-primary500 focus:text-primary500 hover:border-primary500 border-1 rounded-md transition-all duration-300 ${isActive(
+                'upcoming',
+              )}`}
+              onClick={() => props.filterCards('articles')}
+            >
+              Articles
+
+            </button>
+            <button
+              className={`px-3 text-sm text-gray700 md:text-lg border border-[rgba(0,0,0,0)] focus:border hover:text-primary500 focus:border-primary500 focus:text-primary500 hover:border-primary500 border-1 rounded-md transition-all duration-300 ${isActive(
+                'closed',
+              )}`}
+              onClick={() => props.filterCards('news')}
+            >
+              News
+            </button>
+            <button
+              className={`px-3 text-sm text-gray700 md:text-lg border border-[rgba(0,0,0,0)] focus:border hover:text-primary500 focus:border-primary500 focus:text-primary500 hover:border-primary500 border-1 rounded-md transition-all duration-300 ${isActive(
+                'closed',
+              )}`}
+              onClick={() => props.filterCards('jobs')}
+            >
+              Jobs
+            </button>
+          </div>
+
+        </div>
+        {/* <div className="flex flex-row font-semibold md:font-bold pt-6 font-[inter] justify-center gap-3 sm:gap-5">
           <span className="md:text-4xl text-[20px] ">Categories</span>
           <div className="flex gap-2 text-xs cursor-pointer md:text-xl">
             <span className="py-[4px] px-4 border-2 font-['Manrope'] rounded-lg">
@@ -80,7 +127,7 @@ const BlogHero = () => {
               Jobs
             </span>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

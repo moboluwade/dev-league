@@ -135,7 +135,7 @@ function BlogContent() {
                 return (
                   <div
                     key={id}
-                    className="flex flex-col flex-grow border border-[#D4CECB] m-auto  min-w-[18rem] bg-white rounded-lg text-start"
+                    className="flex flex-col flex-grow border border-[#D4CECB] m-auto bg-white rounded-lg text-start"
                   >
                     <div>
                       <img
