@@ -1,23 +1,49 @@
 import { useQuery } from "@tanstack/react-query";
 import BlogData from "./BlogData";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function BlogContent() {
+  // store number of pages
+  const [pagination, SetPagination] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9])
+  const [blogArray, setBlogArray] = useState([])
   const [superBlog, setSuperBlog] = useState({})
-  // const [currentPage, setCurrentPage] = useState(1)
-  const currentPage = 1
+
+  const [currentPage, setCurrentPage] = useState(1)
 
   const { data } = useQuery({
     queryKey: ['fetch blogs'],
     queryFn: async () => {
       const response = axios.get('/endpoint/api/articles')
       const blogs = response.json()
+
+      // determine no of pages
+      // save pagination in array
+      const noOfPages = Math.ceil(blogs.length / 7)
+      const end = (noOfPages < 1) ? 1 : noOfPages;
+      const numbers = [];
+
+      for (let i = 1; i <= end; i++) {
+        numbers.push(i);
+      }
+      SetPagination(numbers)
+
+      // handle blogs
+      const flippedArray = [...blogs].reverse();
       setSuperBlog(blogs.slice(0, 1)[0])
+      setBlogArray(flippedArray)
       return blogs.slice(1)
     }
   })
 
+
+  useEffect(() => {
+    data && setBlogArray(data)
+  }, [data])
+
+  const handlePagination = (page) => {
+    setCurrentPage(page)
+  }
 
   const TextLength = (text) => {
     const length = text.length;
@@ -30,16 +56,27 @@ function BlogContent() {
     }
   };
 
+
   return (
     <div className="flex flex-col items-center justify-center overflow-hidden h-fit lg:h-fit ">
       <div className="flex flex-col gap-[50px] py-[4.5rem] lg:px-[7rem] md:px-12 px-4 max-w-[87.5rem] justify-center items-center">
+
+        {/* pagination */}
         <div className="flex flex-row justify-end w-full gap-2 mr-5">
-          <button className={`border px-3 py-[2px] text-black font-bold rounded-[5px] ${currentPage === 1 && "bg-[#FFDCD0]"}`}>
-            1
-          </button>
-          <button className="border px-2 py-[2px] text-black font-bold rounded-[5px]">
-            2
-          </button>
+          {
+            pagination.map(page => {
+              console.log(page)
+              console.log(pagination)
+              return (
+                <button
+                  key={page}
+                  onClick={() => handlePagination(page)}
+                  className={`border py-[2px] text-black font-bold rounded-[5px] ${page === currentPage ? " px-3 bg-[#FFDCD0]" : " px-2"}`}>
+                  {page}
+                </button>
+              )
+            })
+          }
         </div>
         <div className="flex flex-col gap-8 px-4">
           <div className="grid sm:grid-cols-2 gap-7 sm:gap-10 lg:gap-14">
@@ -87,8 +124,8 @@ function BlogContent() {
 
           {/* Blog main section */}
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 xl:grid-cols-3">
-            {data ?
-              data.map((blog) => {
+            {blogArray ?
+              blogArray.map((blog) => {
                 const { id, date, title, description, blogAuthor, blogImage, blogType } = blog
                 // const { id, heading, body, image, author, button } = blog;
                 return (
@@ -172,13 +209,23 @@ function BlogContent() {
               })
             }
           </div>
+
+          {/* pagination */}
           <div className="flex justify-center gap-2">
-            <button className={`border px-3 py-[2px] text-black font-bold rounded-[5px] ${currentPage === 1 && "bg-[#FFDCD0]"}`}>
-              1
-            </button>
-            <button className="border px-2 py-[2px] text-black font-bold rounded-[5px]">
-              2
-            </button>
+            {
+              pagination.map(page => {
+                console.log(page)
+                console.log(pagination)
+                return (
+                  <button
+                    key={page}
+                    onClick={() => handlePagination(page)}
+                    className={`border py-[2px] text-black font-bold rounded-[5px] ${page === currentPage ? " px-3 bg-[#FFDCD0]" : " px-2"}`}>
+                    {page}
+                  </button>
+                )
+              })
+            }
           </div>
         </div>
       </div>
