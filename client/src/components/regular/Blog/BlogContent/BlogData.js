@@ -97,7 +97,7 @@ export default [
     blogType: 'Article'
   },
   {
-    id: 8,
+    id: 9,
     blogImage: '/Image.png',
     title: 'The Impact of DevOps on Software Development and Deployment',
     description: 'How do you create compelling presentations that wow your audience ...',

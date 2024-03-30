@@ -29,7 +29,7 @@ const BlogsToDisplay = ({ currentPage, blogArray }) => {
   }, [currentPage, blogArray])
 
   const TextLength = (text) => {
-    const length = text.length;
+    const length = text.length || "";
     if (length > 65) {
       const textLength = text.slice(0, 65);
       const newText = textLength + "...";
@@ -60,7 +60,7 @@ const BlogsToDisplay = ({ currentPage, blogArray }) => {
               {Object.keys(superBlog).length !== 0 ? superBlog.title : ' The Impact of DevOps on Software Development and Deployment'}
             </b>
             <p className="w-full text-sm font-normal lg:text-base">
-              {Object.keys(superBlog).length !== 0 ? TextLength(superBlog.description) : 'How do you create compelling presentations that wow your audience...'}
+              {Object.keys(superBlog).length !== 0 ? TextLength(superBlog.description || "") : 'How do you create compelling presentations that wow your audience...'}
               {" "}
               <a
                 className="underline text-text-dev-orange hover:opacity-70"
@@ -95,7 +95,7 @@ const BlogsToDisplay = ({ currentPage, blogArray }) => {
           // {/* other blogs */ }
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 xl:grid-cols-3">
             {displayIndex.map((index) => {
-              const { id, date, title, description, blogAuthor, blogImage, blogType } = blogArray[index] || BlogData;
+              const { id, date, title, description, blogAuthor, blogImage, blogType } = blogArray[index] || BlogData[index % 7];
               return (
                 <div
                   key={id || index}
