@@ -56,9 +56,10 @@ router.post("/admin-create", async (req, res) => {
       // Create a new user
       const newUser = new User({ username, password: hashedPassword, isAdmin: true });
       const savedUser = await newUser.save();
+      const protecteduser = savedUser.select('-password')
 
       // Send a positive response
-      res.json({ message: "User created successfully", user: savedUser });
+      res.json({ message: "User created successfully", user: protecteduser });
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "Server Error" });
