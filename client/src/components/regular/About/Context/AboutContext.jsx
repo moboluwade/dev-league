@@ -198,7 +198,7 @@ const AboutContext = () => {
                                 variants={teamChild}
                                 className="max-w-[21rem] py-8 flex flex-col mx-auto justify-start content-start" key={member.id}>
                                 <div className="overflow-hidden w-fit ">
-                                    <img className="object-cover w-80 aspect-square" src={member.profile} alt="" />
+                                    <img className="object-cover rounded-lg w-80 aspect-square" src={member.profile} alt="" />
                                 </div>
                                 <div className="flex flex-col pt-6">
                                     <span className="text-xl font-semibold">{member.name}</span>
