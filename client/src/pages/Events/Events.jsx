@@ -12,7 +12,7 @@ const Events = () => {
   return (
     <div>
       <EventsHero displayType={displayType} setDisplayType={setDisplayType} filterCards={filterCards}/>
-      <EventsContext displayType={displayType} setDisplayType={setDisplayType} filterCards={filterCards}/>
+      <EventsContext displayType={displayType} filterCards={filterCards}/>
     </div>
   )
 }

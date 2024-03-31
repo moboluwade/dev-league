@@ -6,11 +6,11 @@ import axios from "axios"
 
 const EventsContext = (props) => {
 
-  const [eventsData, setEventsData] = useState([])
+  const [eventsData, setEventsData] = useState(customEventsData)
   const [cardsData, setCardsData] = useState(eventsData)
 
-   // fetch events from the fetch events endpoint
-   const { data } = useQuery({
+  // fetch events from the fetch events endpoint
+  const { data } = useQuery({
     queryKey: ['fetch events'],
     queryFn: async () => {
       const response = axios.get('/endpoint/api/events')
@@ -19,11 +19,14 @@ const EventsContext = (props) => {
     }
   })
 
-  useEffect(()=>{
-    setEventsData(data ? data : customEventsData)
-  },[data, eventsData])
+  useEffect(() => {
+    data && setEventsData(data )
+  }, [data, eventsData])
 
-  
+  useEffect(()=>{
+    setCardsData(eventsData)
+  },[eventsData])
+
   return (
     <div>
       <div className="px-6 mx-auto my-12 lg:px-16 max-w-screen-2xl">
@@ -41,7 +44,7 @@ const EventsContext = (props) => {
         </div>
         {/* cards  */}
         <div className="mt-4">
-           
+
           <CardDisplay
             displayType={props.displayType}
             eventsData={cardsData}

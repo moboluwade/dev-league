@@ -13,7 +13,7 @@ const Blog = () => {
   return (
     <div>
       <BlogHero displayType={displayType} setDisplayType={setDisplayType} filterCards={filterCards} />
-      <BlogContent displayType={displayType} setDisplayType={setDisplayType} filterCards={filterCards} />
+      <BlogContent displayType={displayType} />
     </div>
   );
 };
