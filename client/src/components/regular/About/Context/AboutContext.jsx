@@ -203,7 +203,7 @@ const AboutContext = () => {
                                 <div className="flex flex-col pt-6">
                                     <span className="text-xl font-semibold">{member.name}</span>
                                     <span className="pt-2 text-lg text-text-dev-orange">{member.role}</span>
-                                    <span className="pt-4">{member.description}</span>
+                                    {/* <span className="pt-4">{member.description}</span> */}
                                 </div>
                                 <div className="flex flex-row gap-5 pt-6 grayscale">
                                     <div className="">

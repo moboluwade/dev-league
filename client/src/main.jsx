@@ -13,7 +13,7 @@ import Events from "./pages/Events/Events.jsx";
 import EventView from "./pages/Events/EventView/EventView.jsx";
 import Blog from "./pages/Blog/Blog.jsx";
 import BlogView from "./pages/Blog/BlogView.jsx";
-import Shop from "./pages/Shop/Shop.jsx";
+// import Shop from "./pages/Shop/Shop.jsx";
 import Home from "./pages/Home/Home.jsx";
 
 import Login from "./pages/admin/login/login.jsx";
@@ -58,10 +58,10 @@ const router = createBrowserRouter([
         path: '/blog/:id',
         element: <BlogView />,
       },
-      {
-        path: '/shop',
-        element: <Shop />,
-      },
+      // {
+      //   path: '/shop',
+      //   element: <Shop />,
+      // },
       {
         path: '/admin/login',
         element: <Login />,
