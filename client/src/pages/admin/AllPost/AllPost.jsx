@@ -73,7 +73,7 @@ const AllPost = () => {
                         </p>
                       </div>
                     </div>
-                    <div className="flex items-start md:items-center gap-3 mt-6 cursor-pointer w-full">
+                    <div className="flex items-center self-end justify-start md:justify-end  gap-3 mt-6 cursor-pointer w-full">
                       <img src="/edit2.png" alt="" />
                       <img src="/search.png" alt="" />
                       <img src="/delete2.png" alt="" />
