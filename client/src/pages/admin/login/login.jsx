@@ -1,14 +1,24 @@
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { userActions } from '../../../store/userSlice'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { UserLogin } from '../../../store/userSlice'
+import { useNavigate } from 'react-router-dom'
+
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
-  const dispatch = useDispatch()
+  const isLoggedIn = useSelector(state => state.user.isLoggedIn)
 
-  const handleLogin = () => {
-    dispatch(userActions.LoggedIn())
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    await dispatch(UserLogin())
   }
+
+  useEffect(() => {
+    isLoggedIn && navigate("/admin")
+  }, [isLoggedIn, navigate])
 
   return (
     <div className="my-20">
@@ -16,8 +26,11 @@ const Login = () => {
         <h2 className="text-[28px] font-semibold text-center mb-5">
           Login to you account
         </h2>
+        {/* login form */}
 
-        <form>
+        <form
+          onSubmit={handleLogin}
+        >
           <label className="font-normal text-base block mb-2 text-[rgba(52, 64, 84, 1)]">
             Email
           </label>
@@ -26,7 +39,7 @@ const Login = () => {
             type="text"
             placeholder="balamia@gmail.com"
           />
-          <div className="flex justify-center mb-2 mt-6">
+          <div className="flex justify-center mt-6 mb-2">
             <label className="font-normal text-base text-[rgba(52, 64, 84, 1)]">
               Password
             </label>
@@ -77,8 +90,8 @@ const Login = () => {
           </div>
 
           <button
+            type='submit'
             className="bg-[#FD4F13] hover:bg-[#FD4F30] transition text-[#fff] mt-8 w-full text-center p-4 text-base font-semibold rounded-lg"
-            onClick={handleLogin}
           >
             Login
           </button>

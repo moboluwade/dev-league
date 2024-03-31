@@ -9,11 +9,14 @@ const CardDisplay = ({ displayType, eventsData, setEventsData }) => {
     setDisplayedCards(eventsData)
   }, [eventsData])
 
-  if (displayType === 'upcoming') {
-    setDisplayedCards(eventsData.filter((card) => card ? card.eventStatus : []))
-  } else if (displayType === 'closed') {
-    setDisplayedCards(eventsData.filter((card) => card ? !card.eventStatus : []))
-  }
+
+  useEffect(() => {
+    if (displayType === 'upcoming') {
+      setDisplayedCards(eventsData.filter((card) => card ? card.eventStatus : []))
+    } else if (displayType === 'closed') {
+      setDisplayedCards(eventsData.filter((card) => card ? !card.eventStatus : []))
+    }
+  }, [displayType, eventsData])
 
   const handleCardClick = (cardId) => {
     const updatedCards = eventsData.map((card) =>
