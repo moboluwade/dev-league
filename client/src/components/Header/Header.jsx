@@ -35,10 +35,10 @@ const Header = () => {
       title: 'Blog',
       path: '/blog',
     },
-    {
-      title: 'Shop',
-      path: '/shop',
-    },
+    // {
+    //   title: 'Shop',
+    //   path: '/shop',
+    // },
   ]
 
   const [togglerNav, setTogglerNav] = useState(false)
@@ -68,17 +68,18 @@ const Header = () => {
             )
           })}
         </div>
-        <div className="flex flex-row items-center gap-4">
+
+        <div className="flex flex-row items-center gap-2">
           <div className="inline pt-1 h-fit md:block">
             <motion.button
               whileHover={{ scale: 1.05, x: -4 }}
               whileTap={{ scale: 1 }}
               transition={{ duration: 0.3 }}
-              className="px-3 py-3 uppercase rounded-lg md:px-4 md:py-3 bg-text-dev-orange"
+              className="px-2 py-2 border-2 rounded-lg md:py-3 border-text-dev-orange md:px-3 bg-text-dev-orange"
               onClick={handleDonateClick}
             >
               <span className="text-sm font-semibold text-white md:text-xl">
-                donate
+                Donate
               </span>
             </motion.button>
           </div>
@@ -87,7 +88,7 @@ const Header = () => {
               whileHover={{ scale: 1.05, x: -4 }}
               whileTap={{ scale: 1 }}
               transition={{ duration: 0.3 }}
-              className="px-3 py-3 rounded-lg md:px-5 md:py-3 border-2 border-text-dev-orange"
+              className="px-2 py-2 border-2 rounded-lg md:px-3 md:py-3 border-text-dev-orange"
             >
               <Link
                 to="/admin/login"
@@ -100,7 +101,7 @@ const Header = () => {
 
           {/* Mobile nav-icon */}
           <div
-            className="pl-6 cursor-pointer w-fit md:hidden right-4"
+            className="cursor-pointer w-fit md:hidden right-4"
             onClick={handleClick}
           >
             {!togglerNav && (
@@ -122,11 +123,11 @@ const Header = () => {
           )}
         </div>
 
+
         {/* mobile navigation menu */}
         <motion.div
-          className={`md:hidden absolute inset-y-0 h-[574px] w-[15rem] z-50 bg-white p-4 transition duration-300 transform ${
-            togglerNav ? 'translate-x-0 top-0 right-0' : 'hidden'
-          }`}
+          className={`md:hidden absolute inset-y-0 h-[574px] w-[15rem] z-50 bg-white p-4 transition duration-300 transform ${togglerNav ? 'translate-x-0 top-0 right-0' : 'hidden'
+            }`}
         >
           {/* Header content goes here */}
           <div className="p-4">
@@ -138,11 +139,8 @@ const Header = () => {
                 onClick={() => setTogglerNav(!togglerNav)}
               />
             </div>
+            
             <NavLink onClick={handleClick} to={'/'} key={'Home'} end>
-              <div className="flex items-center justify-between py-4 mt-3 border-b-2">
-                {'Home'}
-                <img src="/Vector.png" alt="vector" className="vec" />
-              </div>
             </NavLink>
             {links.map((link) => {
               return (
