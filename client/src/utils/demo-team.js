@@ -28,7 +28,7 @@ export const demoTeam = [
     //     twitter: "https://twitter.com/abdull_network",
     //     github: "https://github.com/TheYoungestDev"
     // },
-     {
+    {
         id: 4,
         profile: "/dev-league-team/bello-lateefat.jpg",
         name: "Bello Lateefat",
