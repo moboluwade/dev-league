@@ -7,6 +7,7 @@ const Blog = () => {
   const [displayType, setDisplayType] = useState('all')
 
   const filterCards = (type) => {
+    console.log(type)
     setDisplayType(type)
   }
 

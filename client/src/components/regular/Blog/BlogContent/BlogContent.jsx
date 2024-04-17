@@ -16,7 +16,7 @@ const BlogsToDisplay = ({ currentPage, blogArray }) => {
   useEffect(() => {
     const start = startingBlog(currentPage)
     const array = []
-    console.log(array)
+    // console.log(array)
     for (let i = start; i < start + 7; i++) {
       if (i === start) {
         // set super blog
@@ -147,9 +147,12 @@ const BlogsToDisplay = ({ currentPage, blogArray }) => {
 
 
 
-function BlogContent() {
+function BlogContent({ displayType }) {
+
   // store number of pages
   const [pagination, SetPagination] = useState([1, 2, 3])
+  // holds the data fetch from the backend
+  const [originalBlogArray, setOriginalBlogArray] = useState([])
   const [blogArray, setBlogArray] = useState([])
   // const [superBlog, setSuperBlog] = useState({})
 
@@ -166,7 +169,7 @@ function BlogContent() {
 
 
   useEffect(() => {
-    data && setBlogArray(data)
+    data && setOriginalBlogArray(data)
 
     // save pagination in array
     const noOfPages = data ? Math.ceil(data.length / 7) : 5
@@ -182,6 +185,61 @@ function BlogContent() {
     const flippedArray = (data || []).slice().reverse();
     setBlogArray(flippedArray)
   }, [data])
+
+  useEffect(() => {
+    originalBlogArray.length !== 0 && setBlogArray(originalBlogArray)
+  }, [data, originalBlogArray])
+
+  useEffect(() => {
+    if (displayType === 'articles') {
+      const filteredBlogs = originalBlogArray.filter((blog) => {
+        blog.blogType === 'Articles'
+      })
+      console.log('Articles')
+      setBlogArray(filteredBlogs)
+
+    }
+
+  }, [displayType, originalBlogArray])
+
+  useEffect(() => {
+    if (displayType === 'news') {
+      const filteredBlogs = originalBlogArray.filter((blog) => {
+
+        blog.blogType === 'News'
+      })
+      console.log('News')
+      setBlogArray(filteredBlogs)
+
+    }
+
+  }, [displayType, originalBlogArray])
+
+  useEffect(() => {
+    if (displayType === 'jobs') {
+      const filteredBlogs = originalBlogArray.filter((blog) => {
+
+        blog.blogType === 'Jobs'
+      })
+      console.log('Jobs')
+      setBlogArray(filteredBlogs)
+
+    }
+  }, [displayType, originalBlogArray])
+  useEffect(() => {
+
+    if (displayType === 'all') {
+      const filteredBlogs = originalBlogArray.filter((blog) => {
+
+        blog.blogType === 'Jobs'
+      })
+      console.log('All')
+      setBlogArray(filteredBlogs)
+
+    }
+
+  }, [displayType, originalBlogArray])
+
 
   const handlePagination = (page) => {
     setCurrentPage(page)

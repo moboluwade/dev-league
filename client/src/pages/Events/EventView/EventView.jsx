@@ -1,21 +1,37 @@
+import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
+import { useParams } from 'react-router-dom'
+
 const Events = () => {
+  const id = useParams()
+
+  const { data } = useQuery({
+    queryKey: ['event-details'],
+    queryFn: async () => {
+      const response = axios.get(`/api/events/${id.event}`)
+      const event = response.json()
+      return event
+    }
+  })
+
   return (
     <div>
       <div
         className="px-4 lg:px-16 max-w-screen-2xl mx-auto py-28 bg-no-repeat bg-center bg-[#FFF6F3]"
         style={{ backgroundImage: "url('/events_bg.png')" }}
       >
-        <div className="flex flex-col justify-center items-center gap-4 md:gap-6">
-          <div className="bg-white px-2 py-1 rounded-md border border-1 border-gray600">
-            <span className="text-neutral600 text-sm">Virtual</span>
+
+        <div className="flex flex-col items-center justify-center gap-4 md:gap-6">
+          <div className="px-2 py-1 bg-white border rounded-md border-1 border-gray600">
+            <span className="text-sm text-neutral600">{data ? data.eventType : 'Virtual'}</span>
           </div>
-          <h1 className="text-2xl md:text-4xl font-bold text-neutral900">
-            Why Techies Need Law
+          <h1 className="text-2xl font-bold md:text-4xl text-neutral900">
+            {data ? data.title : 'Why Techies Need Law'}
           </h1>
-          <div className="bg-white flex justify-center items-center gap-4 px-2 py-1 rounded-md border border-1 border-gray600">
-            <span className="text-neutral600 text-sm">UP COMING</span>
-            <span className="text-neutral600 text-sm">01 June 2024</span>
-            <span className="text-neutral600 text-sm">8:30pm</span>
+          <div className="flex items-center justify-center gap-4 px-2 py-1 bg-white border rounded-md border-1 border-gray600">
+            <span className="text-sm text-neutral600">{data && data.eventStatus === open ? 'UP COMING' : 'PASSED'}</span>
+            <span className="text-sm text-neutral600">{data ? data.date : '01 June 2024'}</span>
+            <span className="text-sm text-neutral600">8:30pm</span>
           </div>
         </div>
       </div>
@@ -23,26 +39,21 @@ const Events = () => {
         <h1 className="mb-4 text-4xl font-semibold text-primary500">
           Overview
         </h1>
-        <div className="lg:w-2/5 px-4 md:px-6">
-          <p className="mb-8 text-md text-neutral600 md:text-start text-center">
-            In the dynamic world of technology, the synergy between techies and
-            the law is indispensable. As architects of the digital frontier,
-            techies constantly innovate, but the complexities of this realm
-            necessitate legal frameworks. Intellectual property laws protect
-            creative minds, fostering an environment where innovation can
-            flourish securely. Data privacy laws act as guardians, ensuring
-            responsible handling of personal information. Far from stifling
-            creativity, these legal frameworks empower techies, offering a
-            roadmap that guides responsible innovation and ethical conduct. The
-            integration of law in technology is not a constraint; it is a
-            foundation for a harmonious and thriving digital future.
+        <div className="px-4 lg:w-2/5 md:px-6">
+          <p className="mb-8 text-center text-md text-neutral600 md:text-start">
+            {data ?
+              data.description
+              :
+              "In the dynamic world of technology, the synergy between techies and the law is indispensable. As architects of the digital frontier, techies constantly innovate, but the complexities of this realm necessitate legal frameworks. Intellectual property laws protect creative minds, fostering an environment where innovation can flourish securely. Data privacy laws act as guardians, ensuring responsible handling of personal information. Far from stifling creativity, these legal frameworks empower techies, offering a roadmap that guides responsible innovation and ethical conduct. The integration of law in technology is not a constraint; it is a foundation for a harmonious and thriving digital future."
+            }
+
           </p>
         </div>
-        <h1 className="mb-4 text-4xl font-semibold text-primary500">
+        {/* <h1 className="mb-4 text-4xl font-semibold text-primary500">
           STARTING OUT IN TECH
         </h1>
-        <div className="lg:w-2/5 px-4 md:px-6">
-          <p className="mb-8 text-md text-neutral600 md:text-start text-center">
+        <div className="px-4 lg:w-2/5 md:px-6">
+          <p className="mb-8 text-center text-md text-neutral600 md:text-start">
             In a world where technology trends are ever evolving, many tech
             newbies often encounter the challenge of wanting to explore various
             technological pursuits. They may overlook their passion, follow
@@ -56,8 +67,8 @@ const Events = () => {
         <h1 className="mb-4 text-4xl font-semibold text-primary500">
           GAME NIGHT
         </h1>
-        <div className="lg:w-2/5 px-4 md:px-6">
-          <p className="mb-8 text-md text-neutral600 md:text-start text-center">
+        <div className="px-4 lg:w-2/5 md:px-6">
+          <p className="mb-8 text-center text-md text-neutral600 md:text-start">
             One of my favorite Goated quotes is “All work and no play makes Jack
             a dull boy”. As techies, we can sometimes get overwhelmed with the
             demands of work and forget to have proper fun and that&apos;s
@@ -67,13 +78,13 @@ const Events = () => {
             out on this chance to connect, have fun, and shoot your shot at that
             tech bro/ sis (wink). I bet you are as excited as I am! Be there!
           </p>
-        </div>
+        </div> */}
 
-        <div className="flex flex-col items-center justify-center gap-4 md:gap-8 mt-4 md:mt-12">
-          <h2 className="text-3xl font-bold mb-2 md:mb-4">Session Details</h2>
-          <div className="flex flex-col items-center justify-center gap-4 px-2 md:px-6 mx-4 md:mx-auto py-4 md:py-8 mb-10 bg-lightPink rounded-3xl border border-2 border-primary500">
+        <div className="flex flex-col items-center justify-center gap-4 mt-4 md:gap-8 md:mt-12">
+          {/* <h2 className="mb-2 text-3xl font-bold md:mb-4">Session Details</h2> */}
+          <div className="flex flex-col items-center justify-center gap-4 px-2 py-4 mx-4 mb-10 border-2 md:px-6 md:mx-auto md:py-8 bg-lightPink rounded-3xl border-primary500">
             <div className="flex flex-wrap items-center justify-center gap-8">
-              <div className="flex flex-col md:flex-row gap-8">
+              {/* <div className="flex flex-col gap-8 md:flex-row">
                 <div>
                   <img src="/person1.png" alt="" />
                   <div className="flex flex-col items-center gap-1 py-1 text-center">
@@ -90,29 +101,29 @@ const Events = () => {
                     <p className="text-sm/[17px]">Web Designer</p>
                   </div>
                 </div>
-              </div>
+              </div> */}
               <div className="flex flex-col gap-4 md:ml-16 md:mr-12">
-                <h2 className="text-neutral900 text-2xl font-bold md:text-start text-center">
+                <h2 className="text-2xl font-bold text-center text-neutral900 md:text-start">
                   Meeting Details
                 </h2>
                 <div className="flex gap-2">
                   <img src="/lmp.png" alt="" />
                   <a
-                    href="#"
-                    className="no-underline text-grey700 text-sm font-semibold"
+                    href="https:twitter.com/devleague23"
+                    className="text-sm font-semibold no-underline text-grey700"
                   >
                     https:twitter.com/devleague23
                   </a>
                 </div>
-                <div className="flex gap-2">
+                {/* <div className="flex gap-2">
                   <img src="/pers.png" alt="" />
                   <a
                     href="#"
-                    className="no-underline text-grey700 text-sm font-semibold"
+                    className="text-sm font-semibold no-underline text-grey700"
                   >
                     https:twitter.com/devleague23
                   </a>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

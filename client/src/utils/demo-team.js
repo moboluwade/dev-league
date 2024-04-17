@@ -18,16 +18,16 @@ export const demoTeam = [
         twitter: "https://twitter.com/darnyy_abiola?t=korP_twbt4zomd6q8LD6HQ&s=09",
         github: "https://github.com/Azeez-Abiola"
     },
-    //  {
-    //     id: 3,
-    //     profile: "/dev-league-team/abdullah-tijani.jpg",
-    //     name: "Abdullah Tijani",
-    //     role: "Dev League Technical Lead ",
-    //     description: "Former PM for Bamboohr, Lambda School, and On Deck.",
-    //     linkedin: "https://www.linkedin.com/in/TheYoungestDev",
-    //     twitter: "https://twitter.com/abdull_network",
-    //     github: "https://github.com/TheYoungestDev"
-    // },
+     {
+        id: 3,
+        profile: "/dev-league-team/abdullah-tijani.jpg",
+        name: "Abdullah Tijani",
+        role: "Dev League Technical Lead ",
+        description: "Former PM for Bamboohr, Lambda School, and On Deck.",
+        linkedin: "https://www.linkedin.com/in/TheYoungestDev",
+        twitter: "https://twitter.com/abdull_network",
+        github: "https://github.com/TheYoungestDev"
+    },
     {
         id: 4,
         profile: "/dev-league-team/bello-lateefat.jpg",

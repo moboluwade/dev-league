@@ -20,12 +20,12 @@ const EventsContext = (props) => {
   })
 
   useEffect(() => {
-    data && setEventsData(data )
+    data && setEventsData(data)
   }, [data, eventsData])
 
-  useEffect(()=>{
+  useEffect(() => {
     setCardsData(eventsData)
-  },[eventsData])
+  }, [eventsData])
 
   return (
     <div>

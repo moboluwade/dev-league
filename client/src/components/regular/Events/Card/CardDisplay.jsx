@@ -3,6 +3,7 @@ import Card from './EventCard'
 import { Link } from 'react-router-dom'
 
 const CardDisplay = ({ displayType, eventsData, setEventsData }) => {
+  
   const [displayedCards, setDisplayedCards] = useState(eventsData || [])
 
   useEffect(() => {
@@ -31,12 +32,12 @@ const CardDisplay = ({ displayType, eventsData, setEventsData }) => {
             key={id}
             style={{ cursor: isEventOpen ? 'pointer' : 'not-allowed' }}
           >
-            <Link to={'/event-details'}>
+            <Link to={`/${id}`}>
               <Card
                 isEventOpen={isEventOpen}
-                day={ day}
-                month={ month}
-                type={ type}
+                day={day}
+                month={month}
+                type={type}
                 onClick={handleCardClick}
               />
             </Link>
