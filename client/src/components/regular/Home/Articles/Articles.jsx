@@ -46,7 +46,7 @@ const Articles = () => {
 
         <motion.div
           className="flex flex-row flex-wrap items-start justify-center w-full gap-8 pb-12 text-black">
-          {data ?
+          {/* {data ?
             data.map((card) => {
               const { id, date, title, description, blogAuthor, blogImage } = card
               return (
@@ -108,16 +108,25 @@ const Articles = () => {
                 </Link>
               )
             })
-          }
+          } */}
+
+
         </motion.div>
 
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 1 }}
-          transition={{ delay: 0, duration: 0.3, type: "spring" }}
-          className='h-12 px-5 py-3 bg-black rounded-lg w-fit text-[#FFF6F3]'>
-          <a href="">Read Blog</a>
-        </motion.button>
+        <div className='flex flex-col items-center pb-24'>
+          <img width={50} src="/bookshelf-svgrepo-com.svg" alt="" />
+          <span className='pt-4 text-3xl font-semibold text-dev-black'>No Articles Yet</span>
+          <span className='font-semibold pt-2text-lg text-dev-black opacity-80'> coming soon...</span>
+        </div>
+
+        {data &&
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 1 }}
+            transition={{ delay: 0, duration: 0.3, type: "spring" }}
+            className='h-12 px-5 py-3 bg-black rounded-lg w-fit text-[#FFF6F3]'>
+            <a href="">Read Blog</a>
+          </motion.button>}
       </div>
     </div>
   )
