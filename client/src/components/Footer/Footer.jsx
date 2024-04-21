@@ -9,9 +9,10 @@ const Footer = () => {
 
     const addEmail = useMutation({
         mutationFn: (userEmail) => {
-            return axios.post('/email', userEmail)
+            return axios.post('https://dev-league-dsi2.onrender.com/api/emails', userEmail)
         },
     })
+
     return (
         <footer className="flex flex-col items-center text-white bg-dev-black">
             <div className="justify-between max-w-[87.5rem] w-full lg:px-[7rem] px-8 py-4 md:px-12">
@@ -61,10 +62,22 @@ const Footer = () => {
                                 whileHover={{ scale: 1.1, x: -6 }}
                                 whileTap={{ scale: 1.05 }}
                                 transition={{ duration: 0.5 }}
-                                onClick={() => { addEmail.mutation({ email: email }) }}
+                                onClick={() => { addEmail.mutate({ email: email }) }}
                                 className=" right-[0.25rem] top-[0.25rem] text-sm w-25 h-8 py-4 px-5 absolute md:right-[0.5rem] md:top-[0.5rem] flex flex-col justify-center text-white text-center w-fit md:h-12 bg-text-dev-orange font-semibold rounded-[3rem]"
                             >
-                                Get started
+                                {addEmail.isLoading && 'Adding...'}
+                                {
+                                    addEmail.isError && 'try again'
+                                }
+                                {
+                                    addEmail.isSuccess && 'Added Up!'
+                                }
+                                {
+                                    !addEmail.isLoading && !addEmail.isError && !addEmail.isSuccess &&
+                                    (
+                                        'Get Started'
+                                    )
+                                }
                             </motion.button>
                         </div>
                         <div className="md:hidden flex flex-row relative w-10/12 max-w-[20rem] md:min-w-[23rem] mt-8">
