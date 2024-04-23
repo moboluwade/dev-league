@@ -8,7 +8,7 @@ const Events = () => {
   const { data } = useQuery({
     queryKey: ['event-details'],
     queryFn: async () => {
-      const response = axios.get(`/api/events/${id.event}`)
+      const response = axios.get(`/https://dev-league-dsi2.onrender.com/api/events/${id.event}`)
       const event = response.json()
       return event
     }
@@ -20,7 +20,6 @@ const Events = () => {
         className="px-4 lg:px-16 max-w-screen-2xl mx-auto py-28 bg-no-repeat bg-center bg-[#FFF6F3]"
         style={{ backgroundImage: "url('/events_bg.png')" }}
       >
-
         <div className="flex flex-col items-center justify-center gap-4 md:gap-6">
           <div className="px-2 py-1 bg-white border rounded-md border-1 border-gray600">
             <span className="text-sm text-neutral600">{data ? data.eventType : 'Virtual'}</span>
@@ -49,36 +48,6 @@ const Events = () => {
 
           </p>
         </div>
-        {/* <h1 className="mb-4 text-4xl font-semibold text-primary500">
-          STARTING OUT IN TECH
-        </h1>
-        <div className="px-4 lg:w-2/5 md:px-6">
-          <p className="mb-8 text-center text-md text-neutral600 md:text-start">
-            In a world where technology trends are ever evolving, many tech
-            newbies often encounter the challenge of wanting to explore various
-            technological pursuits. They may overlook their passion, follow
-            trends, and heed toxic advice from various &apos;tech
-            influencers.&apos; What should be the fate of these newbies, and how
-            can they discover the compass to navigate the tech world? In our
-            upcoming tech event titled &apos;Starting Out in Tech&apos; we will
-            provide answers to these questions. Come one, come all!
-          </p>
-        </div>
-        <h1 className="mb-4 text-4xl font-semibold text-primary500">
-          GAME NIGHT
-        </h1>
-        <div className="px-4 lg:w-2/5 md:px-6">
-          <p className="mb-8 text-center text-md text-neutral600 md:text-start">
-            One of my favorite Goated quotes is “All work and no play makes Jack
-            a dull boy”. As techies, we can sometimes get overwhelmed with the
-            demands of work and forget to have proper fun and that&apos;s
-            understandable. But it&apos;s not understandable when our game night
-            comes knocking on your door and you block your ears. Join us for an
-            evening of fun pro max at our upcoming game night! Don&apos;t miss
-            out on this chance to connect, have fun, and shoot your shot at that
-            tech bro/ sis (wink). I bet you are as excited as I am! Be there!
-          </p>
-        </div> */}
 
         <div className="flex flex-col items-center justify-center gap-4 mt-4 md:gap-8 md:mt-12">
           {/* <h2 className="mb-2 text-3xl font-bold md:mb-4">Session Details</h2> */}
@@ -115,15 +84,6 @@ const Events = () => {
                     https:twitter.com/devleague23
                   </a>
                 </div>
-                {/* <div className="flex gap-2">
-                  <img src="/pers.png" alt="" />
-                  <a
-                    href="#"
-                    className="text-sm font-semibold no-underline text-grey700"
-                  >
-                    https:twitter.com/devleague23
-                  </a>
-                </div> */}
               </div>
             </div>
           </div>

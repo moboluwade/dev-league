@@ -1,19 +1,20 @@
 import CardDisplay from '../Card/CardDisplay'
 import { useEffect, useState } from 'react'
-import { customEventsData } from '../../../../utils/data'
+// import { customEventsData } from '../../../../utils/data'
 import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
+import NoCards from './NoCards'
 
 const EventsContext = (props) => {
 
-  const [eventsData, setEventsData] = useState(customEventsData)
+  const [eventsData, setEventsData] = useState([])
   const [cardsData, setCardsData] = useState(eventsData)
 
   // fetch events from the fetch events endpoint
   const { data } = useQuery({
     queryKey: ['fetch events'],
     queryFn: async () => {
-      const response = axios.get('/endpoint/api/events')
+      const response = axios.get('https://dev-league-dsi2.onrender.com/api/events')
       const events = response.json()
       return events
     }
@@ -44,6 +45,9 @@ const EventsContext = (props) => {
         </div>
         {/* cards  */}
         <div className="mt-4">
+
+          {eventsData.length === 0 && <NoCards />}
+
 
           <CardDisplay
             displayType={props.displayType}
