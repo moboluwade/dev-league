@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { motion } from "framer-motion";
 import { OrangeDownArrow } from "../../../../utils";
+import { useMutation } from "@tanstack/react-query"
+import axios from "axios";
 
 const BlogHero = (props) => {
   const [search, setSearch] = useState('')
@@ -10,6 +12,12 @@ const BlogHero = (props) => {
       ? 'text-primary500 border border-1 border-primary500 active'
       : ''
   }
+
+  const searchBlog = useMutation({
+    mutationFn: async (blog) => {
+      return axios.post(`/api/articles/search/${blog.search}`)
+    }
+  })
 
   return (
     <div className="flex flex-col items-center justify-center overflow-hidden h-fit lg:h-fit bg-text-dev-light-orange">
@@ -65,7 +73,9 @@ const BlogHero = (props) => {
               }}
               type="search"
             />
-            <button className="bg-text-dev-orange rounded-md md:font-bold text-white text-[15px] md:text-lg sm:text-sm py-2 px-2 ">
+            <button
+              onClick={searchBlog.mutate({ search: search })}
+              className="bg-text-dev-orange rounded-md md:font-bold text-white text-[15px] md:text-lg sm:text-sm py-2 px-2 ">
               Search
             </button>
           </div>

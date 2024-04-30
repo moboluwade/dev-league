@@ -13,13 +13,14 @@ export const demoImpactStories = [
         username: 'muhammad',
         testimonial: "Dev league as a tech community has impacted me by providing a supportive and collaborative environment where I can learn and grow as a developer. It has also helped me in connecting with like minded people."
     }
-    // ,{
-    //     id: 3,
-    //     profile: '/impact-avatar.png',
-    //     name: 'trial',
-    //     username: 'capti',
-    //     testimonial: 'Sit ut diam bibendum dolor. Ullamcorper pharetra nibh eget vitae pulvinar. Placerat sapien, dolor, aenean vivamus in tincidunt et. Mauris dolor vestibulum et lacus a ante orci.'
-    // },{
+    ,{
+        id: 3,
+        profile: '/impact-avatar.png',
+        name: 'Aminah',
+        username: 'aminah',
+        testimonial: "It has really helped me in a great way, as a baby in the tech world. Whenever I ask any questions I am always put through without hesitation. That alone always motivates me to learn more amidst my busy schedule, and come back so I can be corrected when I've made a mistake, and commended when I've done well.The entire team is a silent blessing in disguise as they are ever ready to help when in trouble🫠🥰"
+    },
+    // {
     //     id: 4,
     //     profile: '/impact-avatar.png',
     //     name: 'help',
