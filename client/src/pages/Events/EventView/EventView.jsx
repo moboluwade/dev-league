@@ -8,7 +8,7 @@ const Events = () => {
   const { data } = useQuery({
     queryKey: ['event-details'],
     queryFn: async () => {
-      const response = axios.get(`/https://dev-league-dsi2.onrender.com/api/events/${id.event}`)
+      const response = axios.get(`/https://dev-league-backend.onrender.com/api/events/${id.event}`)
       const event = response.json()
       return event
     }

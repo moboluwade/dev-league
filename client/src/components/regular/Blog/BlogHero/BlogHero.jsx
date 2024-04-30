@@ -15,7 +15,7 @@ const BlogHero = (props) => {
 
   const searchBlog = useMutation({
     mutationFn: async (blog) => {
-      return axios.post(`/api/articles/search/${blog.search}`)
+      return axios.post(`https://dev-league-backend.onrender.com/articles/search/${blog.search}`)
     }
   })
 

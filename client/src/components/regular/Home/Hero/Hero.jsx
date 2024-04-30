@@ -28,7 +28,7 @@ const Hero = () => {
 
   const addEmail = useMutation({
     mutationFn: (userEmail) => {
-      return axios.post('https://dev-league-dsi2.onrender.com/api/emails', userEmail)
+      return axios.post('https://dev-league-backend.onrender.com/api/emails', userEmail)
     },
   })
   //as a fix, give user a feedback when their email is added successfully

@@ -14,7 +14,7 @@ const EventsContext = (props) => {
   const { data } = useQuery({
     queryKey: ['fetch events'],
     queryFn: async () => {
-      const response = axios.get('https://dev-league-dsi2.onrender.com/api/events')
+      const response = axios.get('https://dev-league-backend.onrender.com/api/events')
       const events = response.json()
       return events
     }

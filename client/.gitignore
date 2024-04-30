@@ -27,3 +27,5 @@ dist-ssr
 # folders to ignore in dev
 yarn.lock
 
+# environment variables
+.env
