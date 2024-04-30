@@ -40,10 +40,10 @@ app.use('/api/articles', articles);
 app.use('/api/admin', authorization)
 
 
-// gets the static files from the build folder
-app.get('*', (req, res) => {
-    res.sendFile(path.join(buildPath, 'index.html'))
-})
+// // gets the static files from the build folder
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(buildPath, 'index.html'))
+// })
 
 
 app.listen(port, () => console.log(`listening on port ${port}`))
