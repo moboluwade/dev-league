@@ -9,7 +9,7 @@ const Footer = () => {
 
     const addEmail = useMutation({
         mutationFn: (userEmail) => {
-            return axios.post('https://dev-league-backend.onrender.com/api/emails', userEmail)
+            return axios.post(`${import.meta.env.BACKEND_URL}/api/emails`, userEmail)
         },
     })
 
