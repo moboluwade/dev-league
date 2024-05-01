@@ -8,25 +8,34 @@ import NoCards from './NoCards'
 const EventsContext = (props) => {
 
   const [eventsData, setEventsData] = useState([])
-  const [cardsData, setCardsData] = useState(eventsData)
+  // const [cardsData, setCardsData] = useState(eventsData)
 
   // fetch events from the fetch events endpoint
   const { data } = useQuery({
     queryKey: ['fetch events'],
     queryFn: async () => {
-      const response = axios.get(`${import.meta.env.BACKEND_URL}/api/events`)
-      const events = response.json()
-      return events
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/events`)
+        const events = await response.data
+        const eventRes = events.Events
+        return eventRes
+      } catch (error) {
+        console.error('Error fetching events:', error);
+        throw new Error('Failed to fetch events. Please try again.');
+      }
     }
   })
 
   useEffect(() => {
     data && setEventsData(data)
-  }, [data, eventsData])
+    console.log(data)
+  }, [ data])
 
-  useEffect(() => {
-    setCardsData(eventsData)
-  }, [eventsData])
+
+  // useEffect(() => {
+  //   setCardsData(eventsData)
+  //   console.log(eventsData)
+  // }, [eventsData])
 
   return (
     <div>
@@ -51,8 +60,8 @@ const EventsContext = (props) => {
 
           <CardDisplay
             displayType={props.displayType}
-            eventsData={cardsData}
-            setEventsData={setCardsData}
+            eventsData={eventsData}
+            setEventsData={setEventsData}
           />
         </div>
       </div>

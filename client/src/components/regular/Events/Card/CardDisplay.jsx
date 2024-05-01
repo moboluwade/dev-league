@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const CardDisplay = ({ displayType, eventsData, setEventsData }) => {
 
-  const [displayedCards, setDisplayedCards] = useState(eventsData || [])
+  const [displayedCards, setDisplayedCards] = useState(eventsData)
 
   useEffect(() => {
     if (displayType === 'upcoming') {
