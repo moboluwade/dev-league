@@ -28,7 +28,7 @@ const Hero = () => {
 
   const addEmail = useMutation({
     mutationFn: (userEmail) => {
-      return axios.post(`${import.meta.env.BACKEND_URL}/api/emails`, userEmail)
+      return axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/emails`, userEmail)
     },
   })
   //as a fix, give user a feedback when their email is added successfully

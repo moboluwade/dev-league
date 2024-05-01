@@ -10,7 +10,7 @@ const Articles = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ['home-articles'],
     queryFn: (async () => {
-      const response = await fetch(`/${import.meta.env.BACKEND_URL}/api/articles`)
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/articles`)
       if (!response.ok) {
         throw new error('failed to fetch response')
       }

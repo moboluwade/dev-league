@@ -9,7 +9,7 @@ const Footer = () => {
 
     const addEmail = useMutation({
         mutationFn: (userEmail) => {
-            return axios.post(`${import.meta.env.BACKEND_URL}/api/emails`, userEmail)
+            return axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/emails`, userEmail)
         },
     })
 

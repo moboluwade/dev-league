@@ -15,7 +15,7 @@ const BlogHero = (props) => {
 
   const searchBlog = useMutation({
     mutationFn: async (blog) => {
-      return axios.post(`${import.meta.env.BACKEND_URL}/articles/search/${blog.search}`)
+      return axios.post(`${import.meta.env.VITE_BACKEND_URL}/articles/search/${blog.search}`)
     }
   })
 
