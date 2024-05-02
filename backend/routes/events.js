@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
     try {
 
         const Event = await Events.find()
-            .sort({ date: -1 });
+            .sort({ id: -1 });
         res.status(200).json({ Events: Event })
 
     } catch (error) {
@@ -25,7 +25,7 @@ router.get('/:id', async (req, res) => {
     try {
         const id = req.params.id
         const Event = await Events.findOne({ _id: id })
-        res.status(200).json({ data: { event: Event } })
+        res.status(200).json({ event: Event })
 
     } catch (error) {
         res.status(500).json({ error: error.message })
