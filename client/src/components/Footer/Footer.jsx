@@ -33,18 +33,6 @@ const Footer = () => {
                                     <motion.div whileHover={{ y: -6 }} className="">About Us</motion.div>
                                 </div>
                             </a>
-                            {/* <div
-                                className=" cursor-pointer mr-8 mb-4 border-b-[1.5px] max-w-fit border-text-dev-light-orange">
-                                <motion.div whileHover={{ y: -6 }} className="">Careers</motion.div>
-                            </div>
-                            <div
-                                className=" cursor-pointer mr-8 mb-4 border-b-[1.5px] max-w-fit border-text-dev-light-orange">
-                                <motion.div whileHover={{ y: -6 }} className="">Help</motion.div>
-                            </div>
-                            <div
-                                className=" cursor-pointer mb-4 border-b-[1.5px] max-w-fit border-text-dev-light-orange">
-                                <motion.div whileHover={{ y: -6 }} className="">Privacy</motion.div>
-                            </div> */}
                         </div>
                     </div>
                     <div className="flex flex-col items-center w-full md:items-end md:w-1/2 md:pl-8">
@@ -80,6 +68,8 @@ const Footer = () => {
                                 }
                             </motion.button>
                         </div>
+                        
+                        {/* mobile view */}
                         <div className="md:hidden flex flex-row relative w-10/12 max-w-[20rem] md:min-w-[23rem] mt-8">
                             <input
                                 className="w-full focus:outline-none focus:border-text-dev-orange focus:border-opacity-80 focus:border-2 shadow-input pl-6 pr-12 md:h-16 h-10 bg-white rounded-[3rem] placeholder:opacity-40 placeholder:font-normal placeholder:text-text-dev-faded-base text-text-dev-faded-base"
@@ -94,7 +84,7 @@ const Footer = () => {
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 1.05 }}
                                 transition={{ duration: 0.5 }}
-                                onClick={() => { addEmail.mutation({ email: email }) }}
+                                onClick={() => { addEmail.mutate({ email: email }) }}
                                 className=" right-[0.25rem] top-[0.25rem] text-sm w-25 h-8 w-8 md:w-12 absolute md:right-[0.5rem] md:top-[0.5rem] flex flex-col justify-center text-white text-center md:h-12 bg-text-dev-orange font-semibold rounded-[3rem]"
                             >
                                 <img className="m-auto " width={27} src="/send-icon.svg" alt="send-icon" />
