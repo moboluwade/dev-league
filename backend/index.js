@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const ConnectDB = require('./config/ConnectDb');
+const ConnectDBs = require('./config/ConnectDb');
 const cors = require('cors');
 const port = process.env.PORT || 5000;
 const methodoverride = require('method-override')
@@ -16,7 +16,7 @@ const path = require('path')
 
 const buildPath = path.join(__dirname, '../client/dist')
 
-ConnectDB();
+ConnectDBs();
 
 
 app.use(cookieParser());
