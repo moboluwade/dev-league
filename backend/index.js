@@ -22,6 +22,7 @@ ConnectDBs();
 app.use(cookieParser());
 app.use(methodoverride('_method'));
 
+// update: only activate this for admin users, we don't need regulars to have sessions.
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
