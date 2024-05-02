@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const User = require('../model/Admin');
+const { User } = require('../model/CreateModels')
 const bcrypt = require('bcryptjs');
 
 // LOGIN THE USER AND SEND A TOKEN
@@ -11,7 +11,7 @@ router.post("/login", async (req, res) => {
     const { username, password } = req.body;
 
     // Check if the user exists
-    const user  = await User .findOne({username});
+    const user = await User.findOne({ username });
     if (!user) {
       return res.json({ message: "Invalid username or password" });
     }
@@ -23,12 +23,12 @@ router.post("/login", async (req, res) => {
     }
 
     // Create a token
-    const token = jwt.sign({ userId: user._id}, process.env.JWT_SECRET, { expiresIn: "1h" });
-            res.cookie('token', token, { httpOnly: true });
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+    res.cookie('token', token, { httpOnly: true });
 
     // Send the token in the response
-    res.json({ message: "Login successful" , token , user });
-   
+    res.json({ message: "Login successful", token, user });
+
 
   } catch (error) {
     console.error(error);
@@ -37,35 +37,35 @@ router.post("/login", async (req, res) => {
 });
 
 
-          //  crete a new admin
+//  crete a new admin
 router.post("/admin-create", async (req, res) => {
-    try {
-      const { username, password } = req.body;
-  
-      // Check if the user already exists
-      const userExists = await User.findOne ({ username });
+  try {
+    const { username, password } = req.body;
 
-      if (userExists) {
-        return res.json({ message: "User already exists" });
-      }
+    // Check if the user already exists
+    const userExists = await User.findOne({ username });
 
-      // Hash the password
-      const salt = await bcrypt.genSalt(10);
-      const hashedPassword = await bcrypt.hash(password, salt);
-
-      // Create a new user
-      const newUser = new User({ username, password: hashedPassword, isAdmin: true });
-      const savedUser = await newUser.save();
-
-      // Send a positive response
-      res.json({ message: "User created successfully", user: savedUser });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: "Server Error" });
+    if (userExists) {
+      return res.json({ message: "User already exists" });
     }
 
+    // Hash the password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
 
-  });
+    // Create a new user
+    const newUser = new User({ username, password: hashedPassword, isAdmin: true });
+    const savedUser = await newUser.save();
+
+    // Send a positive response
+    res.json({ message: "User created successfully", user: savedUser });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
 
 
-  module.exports = router;
+});
+
+
+module.exports = router;

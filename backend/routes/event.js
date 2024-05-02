@@ -1,15 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const Events = require('../model/events');
+const { Event } = require('../model/CreateModels');
 const checkAuth = require('../middlewares/auth');
-
-
 
 // get all the EVENTS
 router.get('/', async (req, res) => {
     try {
-
-        const Event = await Events.find()
+        const Event = await Event.find()
             .sort({ id: -1 });
         res.status(200).json({ Events: Event })
 
@@ -21,10 +18,9 @@ router.get('/', async (req, res) => {
 
 // get specific event
 router.get('/:id', async (req, res) => {
-
     try {
         const id = req.params.id
-        const Event = await Events.findOne({ _id: id })
+        const Event = await Event.findOne({ _id: id })
         res.status(200).json({ event: Event })
 
     } catch (error) {
@@ -35,7 +31,6 @@ router.get('/:id', async (req, res) => {
 // CREATE A NEW EVENT 
 router.post('/', checkAuth, async (req, res) => {
     const { date, title, description, eventType, eventStatus } = req.body;
-
     try {
         const event = new Events({
             date: date,
@@ -87,10 +82,5 @@ router.get('/eventstatus/:eventStatus', async (req, res) => {
         res.status(500).json({ error: error.message })
     }
 })
-
-
-
-
-
 
 module.exports = router
