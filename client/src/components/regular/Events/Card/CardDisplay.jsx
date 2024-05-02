@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom'
 const CardDisplay = ({ displayType, eventsData, setEventsData }) => {
 
   const [displayedCards, setDisplayedCards] = useState(eventsData)
-
+  // update events once available
   useEffect(() => {
-    setDisplayedCards(eventsData)
+    eventsData && setDisplayedCards(eventsData)
   }, [eventsData])
 
   useEffect(() => {
@@ -24,7 +24,6 @@ const CardDisplay = ({ displayType, eventsData, setEventsData }) => {
     )
     setEventsData(updatedCards)
   }
-
 
   return (
     <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
