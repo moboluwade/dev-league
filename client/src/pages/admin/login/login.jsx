@@ -2,23 +2,66 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { UserLogin } from '../../../store/userSlice'
 import { useNavigate } from 'react-router-dom'
-
+import { useMutation } from '@tanstack/react-query'
+import axios from 'axios'
 
 const Login = () => {
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const isLoggedIn = useSelector(state => state.user.isLoggedIn)
+
+  const [showDiv, setShowDiv] = useState(false);
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  const loginMutation = useMutation({
+    mutationKey: 'login',
+    mutationFn: async ({ username, password }) => {
+      const res = axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/admin/login`, { username: username, password: password })
+      return res
+    }
+  })
+
+  useEffect(() => {
+    loginMutation.isSuccess && dispatch(UserLogin())
+  }, [loginMutation.isSuccess, dispatch])
+
   const handleLogin = async (event) => {
     event.preventDefault();
-    await dispatch(UserLogin())
+
+    try {
+      const feedback = loginMutation.mutateAsync({ username: username, password: password })
+      // await dispatch(UserLogin())
+      loginMutation.isSuccess && console.log(feedback)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   useEffect(() => {
     isLoggedIn && navigate("/admin")
   }, [isLoggedIn, navigate])
+
+  useEffect(() => {
+    loginMutation.isError && setShowDiv(true)
+  }, [loginMutation.isError]);
+
+  useEffect(() => {
+    if (loginMutation.isError) {
+      const timeout = setTimeout(() => {
+        setShowDiv(false);
+      }, 2000);
+
+      // Clean up the timeout when the component unmounts or when showDiv changes
+      return () => clearTimeout(timeout);
+    }
+
+    // Return an empty cleanup function if loginMutation is not in error state
+    return () => { };
+  }, [loginMutation.isError])
+
 
   return (
     <div className="my-20">
@@ -29,6 +72,7 @@ const Login = () => {
         {/* login form */}
 
         <form
+          className='relative'
           onSubmit={handleLogin}
         >
           <label className="font-normal text-base block mb-2 text-[rgba(52, 64, 84, 1)]">
@@ -38,6 +82,8 @@ const Login = () => {
             className="block py-3 px-4 rounded-lg w-full focus:ring-0 border-2 focus:outline-none focus:border-[#D1E9FF]  border-gray-300"
             type="text"
             placeholder="balamia@gmail.com"
+            value={username}
+            onChange={(e) => { setUsername(e.target.value) }}
           />
           <div className="flex justify-center mt-6 mb-2">
             <label className="font-normal text-base text-[rgba(52, 64, 84, 1)]">
@@ -50,6 +96,8 @@ const Login = () => {
               className="block py-3 px-4 rounded-lg w-full focus:ring-0 border-2 focus:outline-none focus:border-[#D1E9FF]  border-gray-300"
               type={`${showPassword ? 'text' : 'password'}`}
               placeholder="Enter your password"
+              value={password}
+              onChange={(e) => { setPassword(e.target.value) }}
             />
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -87,6 +135,12 @@ const Login = () => {
                 />
               )}
             </svg>
+          </div>
+
+          <div className='relative h-fit'>
+            <div className='absolute flex flex-row justify-center w-full px-2 text-xs text-white rounded-md bg-text-dev-faded-base top-2 h-fit'>
+              {showDiv && "! username and password is invalid"}
+            </div>
           </div>
 
           <button
