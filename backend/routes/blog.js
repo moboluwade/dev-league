@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const Blog = require('../model/blogs');
 const { Blog } = require('../model/CreateModels')
 const checkAuth = require('../middlewares/auth');
 

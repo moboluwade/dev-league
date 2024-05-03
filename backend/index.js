@@ -1,23 +1,21 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const ConnectDBs = require('./config/ConnectDb');
 const cors = require('cors');
 const port = process.env.PORT || 5000;
 const methodoverride = require('method-override')
+const connectDB = require('./config/ConnectDb')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
-const events = require('./routes/events');
+const event = require('./routes/event');
 const email = require('./routes/email');
-const articles = require('./routes/articles');
+const blog = require('./routes/blog');
 const authorization = require('./routes/auth');
 const MongoStore = require('connect-mongo');
 const path = require('path')
+// const buildPath = path.join(__dirname, '../client/dist')
 
-const buildPath = path.join(__dirname, '../client/dist')
-
-ConnectDBs();
-
+connectDB()
 
 app.use(cookieParser());
 app.use(methodoverride('_method'));
@@ -36,8 +34,8 @@ app.use(express.json());
 
 app.use(cors())
 app.use('/api/emails', email)
-app.use('/api/events', events);
-app.use('/api/articles', articles);
+app.use('/api/event', event);
+app.use('/api/blog', blog);
 app.use('/api/admin', authorization)
 
 
