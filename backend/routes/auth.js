@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const { User } = require('../model/CreateModels')
+const { Admin } = require('../model/CreateModels')
 const bcrypt = require('bcryptjs');
 
 // LOGIN THE USER AND SEND A TOKEN
@@ -11,7 +11,7 @@ router.post("/login", async (req, res) => {
     const { username, password } = req.body;
 
     // Check if the user exists
-    const user = await User.findOne({ username });
+    const user = await Admin.findOne({ username });
     if (!user) {
       return res.json({ message: "Invalid username or password" });
     }
@@ -36,17 +36,20 @@ router.post("/login", async (req, res) => {
   }
 });
 
-
+// LOGOUT AND INVALIDATE JWT TOKEN
+router.post("/logout", async (req, res) => {
+  res.cookie('token', '', { maxAge: 1 });
+});
 //  crete a new admin
 router.post("/admin-create", async (req, res) => {
   try {
     const { username, password } = req.body;
-
+    console.log(username, password)
     // Check if the user already exists
-    const userExists = await User.findOne({ username });
+    const userExists = await Admin.findOne({ username });
 
     if (userExists) {
-      return res.json({ message: "User already exists" });
+      return res.json({ message: "Admin already exists" });
     }
 
     // Hash the password
@@ -54,11 +57,11 @@ router.post("/admin-create", async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, salt);
 
     // Create a new user
-    const newUser = new User({ username, password: hashedPassword, isAdmin: true });
-    const savedUser = await newUser.save();
+    const newAdmin = new Admin({ username, password: hashedPassword, isAdmin: true });
+    const savedAdmin = await newAdmin.save();
 
     // Send a positive response
-    res.json({ message: "User created successfully", user: savedUser });
+    res.json({ message: "Admin created successfully", user: savedAdmin });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server Error" });
