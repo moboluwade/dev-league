@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'
-import { UserLogout } from '../../../store/userSlice'
+import { LogoutUser } from '../../../store/userSlice'
 import { useDispatch } from 'react-redux'
 
 const Navbar = ({ setNavActive, navActive }) => {
   const dispatch = useDispatch()
 
   const handleLogout = async () => {
-    await dispatch(UserLogout())
+    await dispatch(LogoutUser(true))
   }
 
   //this logic is already handled by the general check for isLoggedIn in admin
@@ -16,9 +16,8 @@ const Navbar = ({ setNavActive, navActive }) => {
 
   return (
     <div
-      className={`max-w-[16rem] pt-6 bg-black md:sticky ${
-        navActive ? 'absolute ' : 'absolute -left-96'
-      }  top-0 h-full`}
+      className={`max-w-[16rem] pt-6 bg-black md:sticky ${navActive ? 'absolute ' : 'absolute -left-96'
+        }  top-0 h-full`}
     >
       <div className="flex flex-row items-center justify-start w-full gap-12 px-10 mb-8 text-white">
         <button onClick={() => setNavActive(!navActive)}>

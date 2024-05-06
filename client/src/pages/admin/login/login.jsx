@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { UserLogin } from '../../../store/userSlice'
+import { useDispatch } from 'react-redux'
+import { LoginUser } from '../../../store/userSlice'
 import { useNavigate } from 'react-router-dom'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
@@ -9,7 +9,7 @@ const Login = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
-  const isLoggedIn = useSelector(state => state.user.isLoggedIn)
+
 
   const [showDiv, setShowDiv] = useState(false);
 
@@ -19,13 +19,13 @@ const Login = () => {
   const loginMutation = useMutation({
     mutationKey: 'login',
     mutationFn: async ({ username, password }) => {
-      const res = axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/admin/login`, { username: username, password: password })
+      const res = axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/admin/login`, { username: username, password: password }, { withCredentials: 'include' })
       return res
     }
   })
 
   useEffect(() => {
-    loginMutation.isSuccess && dispatch(UserLogin())
+    loginMutation.isSuccess && dispatch(LoginUser(true))
   }, [loginMutation.isSuccess, dispatch])
 
   const handleLogin = async (event) => {
@@ -33,7 +33,6 @@ const Login = () => {
 
     try {
       const feedback = loginMutation.mutateAsync({ username: username, password: password })
-      // await dispatch(UserLogin())
       loginMutation.isSuccess && console.log(feedback)
     } catch (error) {
       console.log(error)
@@ -41,8 +40,8 @@ const Login = () => {
   }
 
   useEffect(() => {
-    isLoggedIn && navigate("/admin")
-  }, [isLoggedIn, navigate])
+    loginMutation.isSuccess && navigate("/admin")
+  }, [loginMutation.isSuccess, navigate])
 
   useEffect(() => {
     loginMutation.isError && setShowDiv(true)

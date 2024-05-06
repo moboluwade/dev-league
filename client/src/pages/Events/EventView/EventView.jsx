@@ -12,7 +12,7 @@ const Events = () => {
       // const response = await axios.get(`http://localhost:blurred/api/events/${eventId}`)
       const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/events/${eventId}`)
       const event = await response.data
-      const eventRes = await event.event
+      const eventRes = await event.Event
       return eventRes
     }
   })
