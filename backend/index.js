@@ -32,9 +32,14 @@ app.use(session({
 app.use(express.json());
 
 
-app.use(cors())
+app.use(cors(
+    {
+        origin: 'http://localhost:5173',
+        credentials: true
+    }
+))
 app.use('/api/emails', email)
-app.use('/api/event', event);
+app.use('/api/events', event);
 app.use('/api/blog', blog);
 app.use('/api/admin', authorization)
 
