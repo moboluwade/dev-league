@@ -63,7 +63,7 @@ const router = createBrowserRouter([
       //   element: <Shop />,
       // },
       {
-        path: '/admin/login',
+        path: '/login',
         element: <Login />,
       },
     ],

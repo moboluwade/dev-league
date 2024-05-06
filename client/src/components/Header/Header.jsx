@@ -91,7 +91,7 @@ const Header = () => {
               className="px-2 py-2 border-2 rounded-lg md:px-3 md:py-3 border-text-dev-orange"
             >
               <Link
-                to="/admin/login"
+                to="/login"
                 className="text-sm font-semibold text-dev-orange md:text-xl"
               >
                 Login
