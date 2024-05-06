@@ -6,9 +6,9 @@ const checkAuth = require('../middlewares/auth');
 // get all the EVENTS
 router.get('/', async (req, res) => {
     try {
-        const Event = await Event.find()
+        const events = await Event.find()
             .sort({ id: -1 });
-        res.status(200).json({ Events: Event })
+        res.status(200).json({ Events: events })
 
     } catch (error) {
         res.status(500).json({ error: error.message })
@@ -20,9 +20,8 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const id = req.params.id
-        const Event = await Event.findOne({ _id: id })
-        res.status(200).json({ event: Event })
-
+        const event = await Event.findOne({ _id: id })
+        res.status(200).json({ Event: event })
     } catch (error) {
         res.status(500).json({ error: error.message })
     }
@@ -39,7 +38,7 @@ router.post('/', checkAuth, async (req, res) => {
             eventType: eventType,
             eventStatus: eventStatus
         })
-        const savedEvent = await Events.create(event);
+        const savedEvent = await Event.create(event);
         res.status(201).json({ message: 'Events created successfully', Event: savedEvent });
     } catch (error) {
         res.status(400).json({ error: error.message, message: "Events can either be VIRTUAL or ONSITE" });

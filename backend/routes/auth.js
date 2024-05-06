@@ -4,8 +4,14 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const { Admin } = require('../model/CreateModels')
 const bcrypt = require('bcryptjs');
+const authMiddleware = require('../middlewares/auth')
 
 // LOGIN THE USER AND SEND A TOKEN
+
+router.get("/validate", authMiddleware, async (req, res) => {
+  res.status(200).json({ message: 'user is Authenticated' });
+})
+
 router.post("/login", async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -13,22 +19,20 @@ router.post("/login", async (req, res) => {
     // Check if the user exists
     const user = await Admin.findOne({ username });
     if (!user) {
-      return res.json({ message: "Invalid username or password" });
+      return res.status(401).json({ message: "Invalid username or password" });
     }
 
     // Check if the password is correct
     const validPassword = await bcrypt.compare(password, user.password);
     if (!validPassword) {
-      return res.json({ message: "Invalid username or password" });
+      return res.status(401).json({ message: "Invalid username or password" });
     }
 
     // Create a token
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
-    res.cookie('token', token, { httpOnly: true });
-
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET,);
+    res.cookie('token', token, { httpOnly: true, path: '/' });
     // Send the token in the response
-    res.json({ message: "Login successful", token, user });
-
+    res.status(200).json({ message: "Login successful" });
 
   } catch (error) {
     console.error(error);
@@ -37,7 +41,7 @@ router.post("/login", async (req, res) => {
 });
 
 // LOGOUT AND INVALIDATE JWT TOKEN
-router.post("/logout", async (req, res) => {
+router.post("/logout", authMiddleware, async (req, res) => {
   res.cookie('token', '', { maxAge: 1 });
 });
 //  crete a new admin

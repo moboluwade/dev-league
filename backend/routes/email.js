@@ -16,9 +16,8 @@ router.post('/', async (req, res) => {
         else {
             const newEmail = new Email({ email });
             const savedEmail = await newEmail.save();
-            res.json({ message: 'Email sent successfully', Email: savedEmail, status: 'success' });
+            res.status(200).json({ message: 'Email sent successfully', Email: savedEmail, status: 'success' });
         }
-
     } catch (error) {
 
         return res.status(500).json({ message: 'Internal server error', error: error, status: 'failed' });
