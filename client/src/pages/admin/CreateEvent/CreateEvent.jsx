@@ -6,11 +6,18 @@ import TimeEnd from "../TimeEnd";
 
 const CreateEvent = () => {
   const [selectedLocation, setSelectedLocation] = useState(null)
+  // states for managing endHour
+  const [endHour, setEndHour] = useState('')
+  const [endMinute, setEndMinute] = useState('')
+  // states for managing startHour
+  const [startHour, setStartHour] = useState('')
+  const [startMinute, setStartMinute] = useState('')
+
+
 
   const handleLocationChange = (event) => {
     setSelectedLocation(event.target.value)
   }
-
 
 
   return (
@@ -57,8 +64,8 @@ const CreateEvent = () => {
             <DateStart />
             <DateEnd />
 
-            <TimeStart />
-            <TimeEnd />
+            <TimeStart setStartHour={setStartHour} setStartMinute={setStartMinute} endHour={startHour} endMinute={startMinute} />
+            <TimeEnd setEndHour={setEndHour} setEndMinute={setEndMinute} endHour={endHour} endMinute={endMinute} />
 
 
             <div className="flex flex-col pt-4">

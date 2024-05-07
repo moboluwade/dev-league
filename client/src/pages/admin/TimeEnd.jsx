@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from "react"
 import { MarkTimer } from "./svg"
 
-const TimeEnd = () => {
+const TimeEnd = ({ setEndMinute, setEndHour, endHour, endMinute }) => {
     //manages individual inputs for hour and minute input tags
-    const [endHour, setEndHour] = useState('')
-    const [endMinute, setEndMinute] = useState('')
+    const [meridian, setMeridaian] = useState('PM')
 
     // manages state for the Clock widget 
     const [selectTime, setSelectTime] = useState('')
@@ -17,23 +16,40 @@ const TimeEnd = () => {
         timerStartRef.current.showPicker()
     }
 
-    // handles individual input state change for hour and minute input tags.
-    const handleHourChange = (value) => {
-        value > 23 ? setEndHour(0) : setEndHour(value)
-        value < 0 ? setEndHour(0) : setEndHour(value)
-    }
-    const handleMinuteChange = (value) => {
-        value > 59 ? setEndMinute(0) : value < 0 ? setEndMinute(0) : setEndMinute(value)
-    }
+    // const handleHourChange = (value) => {
+    //     // handles individual input state change for hour and minute input tags.
+    //     value > 23 ? setEndHour(0) : setEndHour(value)
+    //     value < 0 ? setEndHour(0) : setEndHour(value)
+    // }
 
-    // updates date, month and year state based on calendar widget
+
+    // const handleMinuteChange = (value) => {
+    //     value > 59 ? setEndMinute(0) : value < 0 ? setEndMinute(0) : setEndMinute(value)
+    // }
+
+
     useEffect(() => {
-        setEndHour(hour)
-    }, [hour])
+        const handleHourConversion = (value) => {
+            value < 13 && setEndHour(value)
+            const x = value - 12
+            const edit = String(x).padStart(2, '0');
+            console.log(value, edit)
+
+
+            value > 12 && setEndHour(edit)
+        }
+
+        //pm and hour does not correlate
+        !isNaN(hour) && handleHourConversion(hour)
+        // if hour is between 0 and 11 inclusive set to 'AM'
+        hour < 12 && setMeridaian('AM')
+        // if hour is between 12 and 23 inclusive set to 'PM'
+        hour > 11 && hour < 24 && setMeridaian('PM'), console.log(meridian)
+    }, [hour, meridian, setEndHour])
 
     useEffect(() => {
         setEndMinute(minute)
-    }, [minute])
+    }, [minute, setEndMinute])
 
     return (
         <div className="flex flex-col pt-4">
@@ -42,9 +58,10 @@ const TimeEnd = () => {
                 {/* <input className="bg-[#E2DEDC] placeholder:text-black placeholder:font-semibold pl-4 h-12 outline-none rounded-md w-[88%] " placeholder="01:00 PM" type="text" name="event-title" id="event-title" /> */}
                 <div className="bg-[#E2DEDC] placeholder:text-black placeholder:font-semibold pl-4 h-12 outline-none rounded-md w-[88%] flex flex-row items-center font-semibold">
                     <input
+                        disabled
                         maxLength={2}
                         max={23}
-                        onChange={handleHourChange}
+                        // onChange={handleHourChange}
                         value={endHour}
                         type="text"
                         placeholder="18"
@@ -52,18 +69,21 @@ const TimeEnd = () => {
                     />
                     <span>:</span>
                     <input
+                        disabled
                         maxLength={2}
                         max={59}
-                        onChange={handleMinuteChange}
+                        // onChange={handleMinuteChange}
                         value={endMinute}
                         type="text"
                         placeholder="20"
                         className=" w-fit max-w-[1.3rem] p-0 m-0 border-none outline-none w- h-fit bg-inherit placeholder:text-black"
                     />
                     <input
+                        disabled
                         className=" pl-1 w-fit max-w-[1.9rem] p-0 m-0 border-none outline-none w- h-fit bg-inherit placeholder:text-black"
                         maxLength={2}
                         type="text"
+                        value={meridian}
                         placeholder="AM" />
                 </div>
                 <button

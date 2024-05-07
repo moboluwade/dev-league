@@ -51,6 +51,7 @@ const DateEnd = () => {
       <div className=" h-fit border-[1.5px] bg-[#E2DEDC] border-[#292422] rounded-md flex flex-row w-full max-w-[36rem]">
         <div className="bg-[#E2DEDC] placeholder:text-black placeholder:font-semibold pl-4 h-12 outline-none rounded-md w-[88%] flex flex-row items-center font-semibold">
           <input
+            disabled
             max={31}
             maxLength={2}
             type="number"
@@ -61,6 +62,7 @@ const DateEnd = () => {
           />
           <span>/</span>
           <input
+            disabled
             max={12}
             maxLength={2}
             type="number"
@@ -71,6 +73,7 @@ const DateEnd = () => {
           />
           <span>/</span>
           <input
+            disabled
             max={99}
             maxLength={2}
             type="number"

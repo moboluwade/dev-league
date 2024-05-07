@@ -31,12 +31,6 @@ const EventsContext = (props) => {
     console.log(data)
   }, [data])
 
-
-  // useEffect(() => {
-  //   setCardsData(eventsData)
-  //   console.log(eventsData)
-  // }, [eventsData])
-
   return (
     <div>
       <div className="px-6 mx-auto my-12 lg:px-16 max-w-screen-2xl">
