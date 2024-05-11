@@ -30,7 +30,7 @@ router.post("/login", async (req, res) => {
 
     // Create a token
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET,);
-    res.cookie('token', token, { httpOnly: true, path: '/' });
+    res.cookie('token', token, { httpOnly: true, path: '/', maxAge: 12 * 60 * 60 * 1000});
     // Send the token in the response
     res.status(200).json({ message: "Login successful" });
 
@@ -42,8 +42,10 @@ router.post("/login", async (req, res) => {
 
 // LOGOUT AND INVALIDATE JWT TOKEN
 router.post("/logout", authMiddleware, async (req, res) => {
-  res.cookie('token', '', { maxAge: 1 });
+  res.clearCookie('token')
+  res.status(200).send({ message: "logout successful" })
 });
+
 //  crete a new admin
 router.post("/admin-create", async (req, res) => {
   try {
@@ -70,8 +72,6 @@ router.post("/admin-create", async (req, res) => {
     console.error(error);
     res.status(500).json({ message: "Server Error" });
   }
-
-
 });
 
 
