@@ -1,14 +1,11 @@
 import { useEffect, useRef, useState } from "react"
 import { MarkCalendar } from "./svg"
 
-const DateStart = () => {
-    //manages individual inputs for date, month and year input tags
-    const [startDate, setStartDate] = useState('')
-    const [startDateMonth, setStartDateMonth] = useState('')
-    const [startDateYear, setStartDateYear] = useState('')
+const DateStart = ({ setStartDate, startDate, setStartDateMonth, startDateMonth, setStartDateYear, startDateYear }) => {
+
 
     // manages state for the Calendar widget 
-    const [selectDate, setSelectDate] = useState('')
+    const [selectDate, setSelectDate] = useState('2024-10-11')
     const [year, month, day] = selectDate.split("-")
 
     // allows the real calendar input widget (which is hidden) to be targeted.
@@ -20,8 +17,8 @@ const DateStart = () => {
 
     // handles individual input state change for date, montha and year input tags.
     const handleDateChange = (value) => {
-        value > 31 ? setStartDate(31) : setStartDate(value)
-        value < 0 ? setStartDate(0) : setStartDate(value)
+        value > 31 ? setStartDate(31) : value ? setStartDate(value) : setStartDate('')
+        value < 0 ? setStartDate(0) : value ? setStartDate(value) : setStartDate('')
     }
     const handleDateMonthChange = (value) => {
         value > 31 ? setStartDateMonth(31) : value < 0 ? setStartDateMonth(0) : setStartDateMonth(value)
@@ -33,15 +30,15 @@ const DateStart = () => {
     // updates date, month and year state based on calendar widget
     useEffect(() => {
         setStartDate(day)
-    }, [selectDate, day])
+    }, [selectDate, day, setStartDate])
 
     useEffect(() => {
         setStartDateMonth(month)
-    }, [selectDate, month])
+    }, [selectDate, month, setStartDateMonth])
 
     useEffect(() => {
-        setStartDateYear(year.slice(-2))
-    }, [selectDate, year])
+        setStartDateYear(year)
+    }, [selectDate, year, setStartDateYear])
 
     return (
         <div className="flex flex-col pt-4">
@@ -77,15 +74,15 @@ const DateStart = () => {
                         type="number"
                         placeholder="24"
                         onChange={(e) => { handleDateYearChange(e.target.value) }}
-                        value={startDateYear}
+                        value={startDateYear.slice(-2)}
                         className=" w-fit max-w-[1.3rem] p-0 m-0 border-none outline-none h-fit bg-inherit placeholder:text-black"
                     />
                 </div>
                 <label onClick={handleCalendarStartClick} className="flex flex-col items-center justify-center w-6 px-6 border-l border-black" htmlFor="calendar"><MarkCalendar /></label>
                 <input
                     ref={calStartRef}
-                    onChange={(e) => setSelectDate(e.target.value)}
-                    value={console.log(selectDate)}
+                    onChange={(e) => { setSelectDate(e.target.value) }}
+                    value={selectDate}
                     className="invisible w-0 h-0"
                     type="date" name="" id="calendar" />
             </div>

@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react"
 import { MarkTimer } from "./svg"
 
-const TimeEnd = ({ setEndMinute, setEndHour, endHour, endMinute }) => {
+const TimeEnd = ({ setEndMinute, setEndHour }) => {
+
     //manages individual inputs for hour and minute input tags
     const [meridian, setMeridaian] = useState('PM')
 
     // manages state for the Clock widget 
-    const [selectTime, setSelectTime] = useState('')
+    const [selectTime, setSelectTime] = useState('00:00')
     const [hour, minute] = selectTime.split(":")
 
     // allows the real timer input widget (which is hidden) to be targeted.
@@ -33,8 +34,6 @@ const TimeEnd = ({ setEndMinute, setEndHour, endHour, endMinute }) => {
             value < 13 && setEndHour(value)
             const x = value - 12
             const edit = String(x).padStart(2, '0');
-            console.log(value, edit)
-
 
             value > 12 && setEndHour(edit)
         }
@@ -44,7 +43,7 @@ const TimeEnd = ({ setEndMinute, setEndHour, endHour, endMinute }) => {
         // if hour is between 0 and 11 inclusive set to 'AM'
         hour < 12 && setMeridaian('AM')
         // if hour is between 12 and 23 inclusive set to 'PM'
-        hour > 11 && hour < 24 && setMeridaian('PM'), console.log(meridian)
+        hour > 11 && hour < 24 && setMeridaian('PM')
     }, [hour, meridian, setEndHour])
 
     useEffect(() => {
@@ -62,7 +61,7 @@ const TimeEnd = ({ setEndMinute, setEndHour, endHour, endMinute }) => {
                         maxLength={2}
                         max={23}
                         // onChange={handleHourChange}
-                        value={endHour}
+                        value={hour}
                         type="text"
                         placeholder="18"
                         className="p-0 m-0 border-none outline-none w-fit max-w-[1.3rem] h-fit bg-inherit placeholder:text-black"
@@ -73,7 +72,7 @@ const TimeEnd = ({ setEndMinute, setEndHour, endHour, endMinute }) => {
                         maxLength={2}
                         max={59}
                         // onChange={handleMinuteChange}
-                        value={endMinute}
+                        value={minute}
                         type="text"
                         placeholder="20"
                         className=" w-fit max-w-[1.3rem] p-0 m-0 border-none outline-none w- h-fit bg-inherit placeholder:text-black"
@@ -87,6 +86,7 @@ const TimeEnd = ({ setEndMinute, setEndHour, endHour, endMinute }) => {
                         placeholder="AM" />
                 </div>
                 <button
+                    type="button"
                     onClick={handleTimeStartClick}
                     className="flex flex-col items-center justify-center w-6 px-6 border-l border-black"><MarkTimer /></button>
                 <input

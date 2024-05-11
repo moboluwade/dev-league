@@ -1,7 +1,6 @@
 import { Outlet, useNavigate } from 'react-router-dom'
 import { Navbar } from './Navbar'
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 // import AuthenticatedRoute from './AuthorizedRoute'
@@ -11,9 +10,12 @@ import axios from 'axios'
 const Admin = () => {
   // this boolean logic should only affect mobile
   const [navActive, setNavActive] = useState(false)
-  const isLoggedIn = useSelector((state) => state.user.isLoggedIn)
+  
+  
+  const navigate = useNavigate()
 
-  const { data, isError, isSuccess } = useQuery({
+  
+  const { isError, isSuccess } = useQuery({
     queryKey: 'validate-token',
     queryFn: async () => {
       const res = axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/admin/validate`, { withCredentials: 'inlcude' })
@@ -21,13 +23,7 @@ const Admin = () => {
     }
   })
 
-  // useEffect(() => {
-  //   console.log('validate Token')
-  //   console.log(validateToken.isFetched)
-  // }, [validateToken.isFetched])
 
-
-  const navigate = useNavigate()
   useEffect(() => {
 
     isError && navigate('/login')

@@ -2,14 +2,10 @@ import { useRef, useState } from "react"
 import { MarkCalendar } from "./svg"
 import { useEffect } from "react"
 
-const DateEnd = () => {
-  //manages individual inputs for date, month and year input tags
-  const [endDate, setEndDate] = useState('')
-  const [endDateMonth, setEndDateMonth] = useState('')
-  const [endDateYear, setEndDateYear] = useState('')
+const DateEnd = ({ endDate, setEndDate, endDateMonth, setEndDateMonth, endDateYear, setEndDateYear }) => {
 
   // manages state for the Calendar widget 
-  const [selectDate, setSelectDate] = useState('')
+  const [selectDate, setSelectDate] = useState('2024-10-11')
   const [year, month, day] = selectDate.split("-")
 
   // allows the real calendar input widget (which is hidden) to be targeted.
@@ -34,15 +30,15 @@ const DateEnd = () => {
   // updates date, month and year state based on calendar widget
   useEffect(() => {
     setEndDate(day)
-  }, [selectDate, day])
+  }, [selectDate, day, setEndDate])
 
   useEffect(() => {
     setEndDateMonth(month)
-  }, [selectDate, month])
+  }, [selectDate, month, setEndDateMonth])
 
   useEffect(() => {
-    setEndDateYear(year.slice(-2))
-  }, [selectDate, year])
+    setEndDateYear(year)
+  }, [selectDate, year, setEndDateYear])
 
 
   return (
@@ -79,7 +75,7 @@ const DateEnd = () => {
             type="number"
             placeholder="24"
             onChange={(e) => { handleDateYearChange(e.target.value) }}
-            value={endDateYear}
+            value={endDateYear.slice(-2)}
             className=" w-fit max-w-[1.3rem] p-0 m-0 border-none outline-none h-fit bg-inherit placeholder:text-black"
           />
         </div>
