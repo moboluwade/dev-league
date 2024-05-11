@@ -2,6 +2,16 @@ const express = require('express');
 const router = express.Router();
 const { Event } = require('../model/CreateModels');
 const checkAuth = require('../middlewares/auth');
+const cloudinary = require('cloudinary').v2
+
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET
+});
+
+
+// Configure Multer for handling file uploads
 
 // get all the EVENTS
 router.get('/', async (req, res) => {
@@ -14,7 +24,6 @@ router.get('/', async (req, res) => {
         res.status(500).json({ error: error.message })
     }
 })
-
 
 // get specific event
 router.get('/:id', async (req, res) => {
@@ -29,15 +38,34 @@ router.get('/:id', async (req, res) => {
 
 // CREATE A NEW EVENT 
 router.post('/', checkAuth, async (req, res) => {
-    const { date, title, description, eventType, eventStatus } = req.body;
     try {
-        const event = new Events({
-            date: date,
+        const { startDate, endDate, title, description, eventType, eventStatus, eventBanner, eventBannerName } = req.body;
+       
+
+        // Upload image to Cloudinary
+        const cloudinaryUploadPromise = new Promise((resolve, reject) => {
+            cloudinary.uploader.upload(eventBanner, { public_id: eventBannerName }, function (error, result) {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(result.url);
+                }
+            });
+        });
+
+        
+        // Wait for Cloudinary upload response
+        const cloudinaryResponse = await cloudinaryUploadPromise;
+
+        const event = new Event({
+            startDate: new Date(startDate),
+            endDate: new Date(endDate),
             title: title,
             description: description,
             eventType: eventType,
-            eventStatus: eventStatus
+            imageUrl: cloudinaryResponse
         })
+        
         const savedEvent = await Event.create(event);
         res.status(201).json({ message: 'Events created successfully', Event: savedEvent });
     } catch (error) {
