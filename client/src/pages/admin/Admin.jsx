@@ -16,9 +16,9 @@ const Admin = () => {
 
   
   const { isError, isSuccess } = useQuery({
-    queryKey: 'validate-token',
+    queryKey: 'validate-tokenz',
     queryFn: async () => {
-      const res = axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/admin/validate`, { withCredentials: 'include' })
+      const res = axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/admin/validate`, {}, { withCredentials: 'include' })
       return res
     }
   })

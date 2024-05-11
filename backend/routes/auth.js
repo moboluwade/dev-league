@@ -8,7 +8,7 @@ const authMiddleware = require('../middlewares/auth')
 
 // LOGIN THE USER AND SEND A TOKEN
 
-router.get("/validate", authMiddleware, async (req, res) => {
+router.post("/validate", authMiddleware, async (req, res) => {
   res.status(200).json({ message: 'user is Authenticated' });
 })
 
