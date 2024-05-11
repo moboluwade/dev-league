@@ -49,7 +49,7 @@ const Header = () => {
   }
 
   return (
-    <div className="bg-white flex flex-row justify-center text lg:px-[7.5rem] md:px-8 px-auto">
+    <div className="bg-white flex flex-row justify-center text lg:px-[7.5rem] md:px-8 px-auto relative">
       <div className="relative flex items-center gap-4 h-20 md:pb-5 pt-4 pb-3 justify-between max-w-[80.5rem] w-full px-4">
         <Link to="/">
           <img
@@ -126,7 +126,7 @@ const Header = () => {
 
         {/* mobile navigation menu */}
         <motion.div
-          className={`md:hidden absolute inset-y-0 h-[574px] w-[15rem] z-50 bg-white p-4 transition duration-300 transform ${togglerNav ? 'translate-x-0 top-0 right-0' : 'hidden'
+          className={`md:hidden h-full fixed inset-y-0  w-[15rem] z-50 bg-white p-4 transition duration-300 transform ${togglerNav ? 'translate-x-0 top-0 right-0' : 'hidden'
             }`}
         >
           {/* Header content goes here */}
@@ -139,7 +139,7 @@ const Header = () => {
                 onClick={() => setTogglerNav(!togglerNav)}
               />
             </div>
-            
+
             <NavLink onClick={handleClick} to={'/'} key={'Home'} end>
             </NavLink>
             {links.map((link) => {
