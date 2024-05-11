@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { LoginUser } from '../../../store/userSlice'
 import { useNavigate } from 'react-router-dom'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 
 const Login = () => {
@@ -11,18 +11,34 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
 
 
-  const [showDiv, setShowDiv] = useState(false);
+  // Use the useSelector hook to access state from the Redux store
 
+  const [showDiv, setShowDiv] = useState(false);
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  // validates if admin is already loggedIn
+  const validateToken = useQuery({
+    queryKey: 'validate-token',
+    queryFn: async () => {
+      const res = axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/admin/validate`, { withCredentials: 'inlcude' })
+      return res
+    }
+  })
+
+  useEffect(() => {
+    // navigate to admin route if already logged In
+    validateToken.isSuccess && navigate('/admin')
+  }, [validateToken.isSuccess, navigate])
+
   const loginMutation = useMutation({
-    mutationKey: 'login',
+    mutationKey: ['login'],
     mutationFn: async ({ username, password }) => {
       const res = axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/admin/login`, { username: username, password: password }, { withCredentials: 'include' })
       return res
     }
   })
+
 
   useEffect(() => {
     loginMutation.isSuccess && dispatch(LoginUser(true))
