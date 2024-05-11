@@ -21,7 +21,7 @@ const Login = () => {
   const validateToken = useQuery({
     queryKey: 'validate-token',
     queryFn: async () => {
-      const res = axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/admin/validate`, { withCredentials: 'inlcude' })
+      const res = axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/admin/validate`, { withCredentials: 'include' })
       return res
     }
   })
