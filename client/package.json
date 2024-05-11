@@ -12,7 +12,9 @@
     "dependencies": {
         "@reduxjs/toolkit": "^2.1.0",
         "@tanstack/react-query": "^5.28.9",
+        "@uploadthing/react": "^6.5.3",
         "axios": "^1.6.7",
+        "buffer": "^6.0.3",
         "crypto-js": "^4.2.0",
         "framer-motion": "^10.16.5",
         "react": "^18.2.0",
@@ -23,6 +25,7 @@
         "react-router-dom": "^6.21.1",
         "react-text-mask": "^5.5.0",
         "redux": "^5.0.1",
+        "uploadthing": "^6.10.3",
         "uuid": "^9.0.1"
     },
     "devDependencies": {
