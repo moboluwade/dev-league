@@ -1,8 +1,12 @@
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+
 const Events = () => {
+  const [startDate, setStartDate] = useState(null)
+  const [endDate, setEndDate] = useState(null)
+  const [eventType, setEventType] = useState(null)
 
   const { eventId } = useParams()
 
@@ -17,8 +21,39 @@ const Events = () => {
   })
 
   useEffect(() => {
-    data && console.log(data)
+    data && setStartDate(new Date(data.startDate))
+    data && setEndDate(new Date(data.endDate))
+    data && setEventType(data.eventType)
   }, [data])
+
+  const calculateEventPassed = () => {
+    let eventState
+    startDate && new Date < startDate && (eventState = 'UPCOMING')
+    startDate && new Date > startDate && new Date < endDate && (eventState = 'ONGOING')
+    startDate && new Date < startDate && (eventState = 'PASSED')
+    return eventState
+  }
+  const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+  const calculateDate = () => {
+    let dayIndex
+    startDate && (dayIndex = startDate.getDay())
+    const text = daysOfWeek[dayIndex]
+    return text
+  }
+
+  const calculateTime = () => {
+    let finalhour, hour, minute, meridian
+    if (startDate) {
+      hour = startDate.getHours().toString().padStart(2, '0');
+      minute = startDate.getMinutes().toString().padStart(2, '0'); // Pad minute with leading zero
+      hour < 12 && (meridian = 'AM')
+      hour > 11 && hour < 24 && (meridian = 'PM')
+      hour === 24 && (meridian = 'AM')
+      finalhour = (hour % 12 || 12).toString(); // Convert to 12-hour format and pad with leading zero if needed
+    }
+    return finalhour + ':' + minute + ' ' + meridian
+  }
 
   return (
     <div className='min-h-[30rem]'>
@@ -31,15 +66,15 @@ const Events = () => {
             >
               <div className="flex flex-col items-center justify-center gap-4 md:gap-6">
                 <div className="px-2 py-1 bg-white border rounded-md border-1 border-gray600">
-                  <span className="text-sm text-neutral600">{data.eventType}</span>
+                  <span className="text-sm uppercase text-neutral600">{eventType}</span>
                 </div>
                 <h1 className="text-2xl font-bold md:text-4xl text-neutral900">
-                  {data ? data.title : 'Why Techies Need Law'}
+                  {data && data.title}
                 </h1>
                 <div className="flex items-center justify-center gap-4 px-2 py-1 bg-white border rounded-md border-1 border-gray600">
-                  <span className="text-sm text-neutral600">{data && data.eventStatus === open ? 'UP COMING' : 'PASSED'}</span>
-                  <span className="text-sm text-neutral600">{data ? data.date : '01 June 2024'}</span>
-                  <span className="text-sm text-neutral600">8:30pm</span>
+                  <span className="text-sm text-neutral600">{calculateEventPassed()}</span>
+                  <span className="text-sm text-neutral600">{calculateDate()}</span>
+                  <span className="text-sm text-neutral600">{calculateTime()}</span>
                 </div>
               </div>
             </div>
@@ -49,12 +84,7 @@ const Events = () => {
               </h1>
               <div className="px-4 lg:w-2/5 md:px-6">
                 <p className="mb-8 text-center text-md text-neutral600 md:text-start">
-                  {data ?
-                    data.description
-                    :
-                    "In the dynamic world of technology, the synergy between techies and the law is indispensable. As architects of the digital frontier, techies constantly innovate, but the complexities of this realm necessitate legal frameworks. Intellectual property laws protect creative minds, fostering an environment where innovation can flourish securely. Data privacy laws act as guardians, ensuring responsible handling of personal information. Far from stifling creativity, these legal frameworks empower techies, offering a roadmap that guides responsible innovation and ethical conduct. The integration of law in technology is not a constraint; it is a foundation for a harmonious and thriving digital future."
-                  }
-
+                  {data && data.description}
                 </p>
               </div>
 
@@ -80,15 +110,19 @@ const Events = () => {
                   </div>
                 </div>
               </div> */}
-                    <div className="flex flex-col gap-4 md:ml-16 md:mr-12">
-                      <h2 className="text-2xl font-bold text-center text-neutral900 md:text-start">
+                    <div className="flex flex-col justify-center gap-4 md:ml-16 md:mr-12">
+                      <h2 className="text-2xl font-bold text-center text-neutral900 md:text-center">
                         Meeting Details
                       </h2>
-                      <div className="flex gap-2">
-                        <img src="/lmp.png" alt="" />
+                      <div className="flex flex-col items-center justify-center gap-2 h-fit">
+                        {data &&
+                          <div className='flex flex-col justify-end w-64 overflow-hidden max-h-64 h-fit'> 
+                            <img className='w-64' src={data.imageUrl} alt="" width={200} height={200} />
+                          </div>
+                        }
                         <a
                           href="https:twitter.com/devleague23"
-                          className="text-sm font-semibold no-underline text-grey700"
+                          className="pt-4 text-sm font-semibold underline underline-offset-2 hover:underline-offset-1 hover:text-text-dev-orange text-grey700"
                         >
                           https:twitter.com/devleague23
                         </a>

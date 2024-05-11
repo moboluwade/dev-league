@@ -12,9 +12,13 @@ const CardDisplay = ({ displayType, eventsData, setEventsData }) => {
 
   useEffect(() => {
     if (displayType === 'upcoming') {
-      setDisplayedCards(eventsData.filter((card) => card.eventStatus || card.isEventOpen && card))
+      setDisplayedCards(eventsData.filter((card) => {
+        return new Date(card.startDate) > new Date()
+      }))
     } else if (displayType === 'closed') {
-      setDisplayedCards(eventsData.filter((card) => !card.isEventOpen && card))
+      setDisplayedCards(eventsData.filter((card) => {
+        return new Date(card.endDate) < new Date()
+      }))
     }
   }, [displayType, eventsData])
 
@@ -29,8 +33,7 @@ const CardDisplay = ({ displayType, eventsData, setEventsData }) => {
     <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
 
       {displayedCards.map((card) => {
-        const { _id, title, description, eventType, eventStatus } = card
-        // const { id, day, month, type, isEventOpen } = card
+        const { _id, title, description, eventType, eventStatus, startDate } = card
 
         return (
           <div
@@ -39,11 +42,10 @@ const CardDisplay = ({ displayType, eventsData, setEventsData }) => {
           >
             <Link to={`/events/${_id}`}>
               <Card
-                isEventOpen={eventStatus === 'open' ? true : false}
-                day={"03"}
-                month={"12"}
+                isEventOpen={new Date(startDate) > new Date() && true}
                 title={title}
                 type={eventType}
+                startDate={startDate}
                 description={description}
                 onClick={handleCardClick}
               />

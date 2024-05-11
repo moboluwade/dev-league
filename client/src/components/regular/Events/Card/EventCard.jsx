@@ -3,9 +3,7 @@ import { RxDotFilled } from 'react-icons/rx'
 import { IoArrowRedo } from 'react-icons/io5'
 import { motion } from 'framer-motion'
 
-const Card = ({ isEventOpen, title, description, day, month, type }) => {
-
-  
+const Card = ({ isEventOpen, title, description, type, startDate }) => {
 
   const buttonStyles = {
     backgroundColor: isEventOpen ? 'black' : '#9F918B',
@@ -26,8 +24,8 @@ const Card = ({ isEventOpen, title, description, day, month, type }) => {
           className="flex flex-col items-center justify-center px-8 py-6 text-white"
           style={dateStyles}
         >
-          <span className="text-2xl font-bold md:text-5xl">{day}</span>
-          <span className="text-lg uppercase md:text-2xl">{month}</span>
+          <span className="text-2xl font-bold md:text-5xl">{startDate && new Date(startDate).getDate().toString().padStart(2, '0')}</span>
+          <span className="text-lg uppercase md:text-2xl">{startDate && (new Date(startDate).getMonth()+1).toString().padStart(2, '0')}</span>
         </div>
         <div>
           <div className="flex flex-wrap items-center gap-2 mb-1 md:justify-between md:gap-4 md:mb-3">
@@ -43,8 +41,8 @@ const Card = ({ isEventOpen, title, description, day, month, type }) => {
             </div>
           </div>
           <div className="mb-2 md:mb-8">
-            <p className="text-sm text-neutral600 md:text-lg">
-              {description}...{' '}
+            <p className="w-full max-w-full text-sm whitespace-normal text-neutral600 md:text-lg">
+              {description.slice(0, 100)}...{' '}
               <span className="underline text-primary500 underline-offset-2">
                 Read More
               </span>
