@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 const SideNavbar = () => {
   return (
     <div className="w-[25.3rem] bg-[#14171F] font-Inter">
-      <div className="flex flex-col ml-28 mt-28 gap-4">
+      <div className="flex flex-col gap-4 ml-28 mt-28">
         <div className="flex items-center gap-16 mb-24">
           <FaBars className="text-3xl text-white" />
           <Link to="/">
@@ -17,30 +17,30 @@ const SideNavbar = () => {
             />
           </Link>
         </div>
-        <div className="bg-primary500 w-60 p-4 text-white flex items-center justify-start gap-2 rounded-md text-xl cursor-pointer">
+        <div disabled className="flex items-center justify-start gap-2 p-4 text-xl text-white rounded-md cursor-pointer bg-text-dev-faded-base w-60">
           <FaPlusCircle />
           <h2>New Blog</h2>
         </div>
-        <div className="bg-primary500 w-60 p-4 text-white flex items-center justify-start gap-2 rounded-md text-xl cursor-pointer">
+        <div className="flex items-center justify-start gap-2 p-4 text-xl text-white rounded-md cursor-pointer bg-primary500 w-60">
           <FaPlusCircle />
           <h2>New Event</h2>
         </div>
         <div className="flex flex-col mt-12 text-sm">
-          <div className="flex items-center justify-between w-60 text-white p-4 gap-4 rounded-md cursor-pointer hover:bg-primary500 hover:bg-opacity-10">
+          <div className="flex items-center justify-between gap-4 p-4 text-white rounded-md cursor-pointer w-60 hover:bg-primary500 hover:bg-opacity-10">
             <div className="flex items-center gap-4">
               <img src="/file.png" alt="" />
               <h1>All posts</h1>
             </div>
             <IoIosArrowForward />
           </div>
-          <div className="flex items-center justify-between w-60 text-white p-4 gap-4 rounded-md cursor-pointer hover:bg-primary500 hover:bg-opacity-10">
+          <div className="flex items-center justify-between gap-4 p-4 text-white rounded-md cursor-pointer w-60 hover:bg-primary500 hover:bg-opacity-10">
             <div className="flex items-center gap-4">
               <img src="/file.png" alt="" />
               <h1>Manage blog</h1>
             </div>
             <IoIosArrowForward />
           </div>
-          <div className="flex items-center justify-between w-60 text-white p-4 gap-4 rounded-md cursor-pointer hover:bg-primary500 hover:bg-opacity-10">
+          <div className="flex items-center justify-between gap-4 p-4 text-white rounded-md cursor-pointer w-60 hover:bg-primary500 hover:bg-opacity-10">
             <div className="flex items-center gap-4">
               <img src="/file.png" alt="" />
               <h1>Manage events</h1>
