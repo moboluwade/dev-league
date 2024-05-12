@@ -8,7 +8,7 @@ const authMiddleware = require('../middlewares/auth')
 
 // LOGIN THE USER AND SEND A TOKEN
 
-router.post("/validate", authMiddleware, async (req, res) => {
+router.get("/validate", authMiddleware, async (req, res) => {
   res.status(200).json({ message: 'user is Authenticated' });
 })
 
@@ -30,7 +30,7 @@ router.post("/login", async (req, res) => {
 
     // Create a token
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET,);
-    res.cookie('token', token, { httpOnly: true, path: '/', maxAge: 12 * 60 * 60 * 1000});
+    res.cookie('token', token, { httpOnly: true, path: '/', maxAge: 12 * 60 * 60 * 1000, sameSite: 'lax'});
     // Send the token in the response
     res.status(200).json({ message: "Login successful" });
 
