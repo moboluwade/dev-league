@@ -10,13 +10,13 @@ import axios from 'axios'
 const Admin = () => {
   // this boolean logic should only affect mobile
   const [navActive, setNavActive] = useState(false)
-  
-  
-  const navigate = useNavigate()
 
-  
+
+  // const navigate = useNavigate()
+
+
   const { isError, isSuccess } = useQuery({
-    queryKey: 'validate-tokenz',
+    queryKey: ['validate-tokenz'],
     queryFn: async () => {
       const res = axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/admin/validate`, { withCredentials: 'include' })
       return res
@@ -24,17 +24,17 @@ const Admin = () => {
   })
 
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    isError && navigate('/login')
+  //   isError && navigate('/login')
 
-  }, [isError, navigate])
+  // }, [isError, navigate])
 
 
   return (
     <div className="w-full h-screen">
       {
-        isSuccess &&
+        !isSuccess &&
         <div className='relative flex flex-col w-full h-screen overflow-y-scroll md:flex-row'>
           <Navbar setNavActive={setNavActive} navActive={navActive} />
           <button

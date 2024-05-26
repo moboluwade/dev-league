@@ -53,7 +53,7 @@ const Navbar = ({ setNavActive, navActive }) => {
       <div className="flex flex-col items-center w-full gap-4 mb-8 text-white">
         {/* main buttons */}
         <Link to="create/blog">
-          <button disabled className="text-lg gap-2 flex flex-row justify-start pl-4 items-center text-white rounded-md w-[12rem] h-[3rem] bg-text-dev-orange opacity-25">
+          <button className="text-lg gap-2 flex flex-row justify-start pl-4 items-center text-white rounded-md w-[12rem] h-[3rem] bg-text-dev-orange">
             <img width={20} height={10} src="/admin/add.svg" alt="add button" />
             <div className="font-semibold">New Blog</div>
           </button>
