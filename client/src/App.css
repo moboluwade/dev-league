@@ -54,3 +54,9 @@ input {
 /* 
 .editor li {
     margin-bottom: 0.2em; /* spacing between list items */
+
+.editor a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    color:  rgba(253, 79, 19, 1);
+}

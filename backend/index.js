@@ -43,6 +43,7 @@ app.options('*', cors({
     origin: process.env.FRONTEND_URL,
     credentials: true
 }))
+
 app.use('/api/emails', email)
 app.use('/api/events', event);
 app.use('/api/blog', blog);

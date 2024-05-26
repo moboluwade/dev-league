@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Editor from "./MDXEditor"
 import { useMutation } from "@tanstack/react-query"
 import axios from "axios"
@@ -8,14 +8,13 @@ const CreateBlog = () => {
     const [selectedBlogTypes, setSelectedBlogTypes] = useState([])
     const [fileAdded, setFileAdded] = useState("")
     const [blogTitle, setBlogTitle] = useState("")
-    const [bannerImage, setBannerImage] = useState()
-    const [bannerImageName, setBannerImageName] = useState(null)
+    const [fileAddedName, setFileAddedName] = useState(null)
     const [mdxValue, setMdxValue] = useState("Enter blog content")
 
 
     const createBlog = useMutation({
         mutationFn: (newBlog) => {
-            return axios.post('/todos', newBlog)
+            return axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/blog`, newBlog)
         },
     })
 
@@ -43,13 +42,18 @@ const CreateBlog = () => {
 
     const handleFile = (fileArray) => {
         const file = fileArray[0]
-        setFileAdded(file)
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onload = () => {
+            setFileAdded(reader.result)
+            console.log(reader.result)
+        }
+        setFileAddedName(file.name)
     }
 
-
-    useEffect(() => {
-        console.log(selectedBlogTypes)
-    }, [selectedBlogTypes])
+    // useEffect(() => {
+    //     console.log(selectedBlogTypes)
+    // }, [selectedBlogTypes])
 
     return (
         <div className="w-full ">
@@ -60,7 +64,7 @@ const CreateBlog = () => {
                         <label className="pb-1 font-bold" htmlFor="blog-title">Blog Title</label>
                         <input
                             value={blogTitle}
-                            onChange={setBlogTitle}
+                            onChange={(e) => setBlogTitle(e.target.value)}
                             className="border-[1.5px] border-[#292422] placeholder:text-[#9F918B] pl-4 w-full max-w-[36rem] h-10 outline-none rounded-md" placeholder="Blog Title" type="text" name="blog-title" id="blog-title" />
                     </div>
 
@@ -72,11 +76,11 @@ const CreateBlog = () => {
                             className=" h-fit border-[1.5px] bg-[#E2DEDC] border-[#292422] rounded-md flex flex-row items-center w-full max-w-[36rem]"
                         >
                             <div className="bg-white placeholder:text-black w-full placeholder:font-semibold pl-4 h-12 outline-none rounded-md rounded-r-none border-r-[1px] border-black flex flex-col justify-center">
-                                <span className="text-[#9F918B] font-bold"> Choose image </span>
+                                <span className="text-[#9F918B] font-bold"> {fileAddedName && fileAddedName !== "" ? fileAddedName : " Choose image"} </span>
                                 {/* <button className="flex flex-row content-center justify-center w-full border-l border-black"></button> */}
                             </div>
                             <span className="px-2 font-bold w-fit">Browse</span>
-                            <input onChange={(e) => handleFile(e.target.files)} value={fileAdded} className="hidden" id="file-input" type="file" accept="image/*" />
+                            <input onChange={(e) => handleFile(e.target.files)} className="hidden" id="file-input" type="file" accept="image/*" />
                         </label>
 
 
@@ -154,7 +158,7 @@ const CreateBlog = () => {
 
                         <div className="flex flex-col">
                             <label className="pb-1 font-bold" htmlFor="blog-description">Blog Description</label>
-                            <div className=" w-full h-full min-h-[12rem] max-w-[36rem] border-[1.5px] border-[#292422] rounded-lg">
+                            <div className=" w-full h-full min-h-[12rem] max-w-[36rem] border-[1.5px] border-[#292422] rounded-lg z-0">
                                 {/* imported markdown editor */}
                                 <Editor mdxValue={mdxValue} setMdxValue={setMdxValue} />
                             </div>
@@ -162,7 +166,7 @@ const CreateBlog = () => {
 
                         <div className="flex flex-row justify-end w-full pt-4 max-w-[36rem]">
                             <button
-                                onClick={() => createBlog({ title: title, coverImage: coverImage, blogType: selectedBlogTypes, blogContent: mdxValue })}
+                                onClick={() => createBlog.mutate({ title: blogTitle, coverImage: fileAdded, imageName: fileAddedName, blogType: selectedBlogTypes, blogContent: mdxValue })}
                                 className="px-3 py-2 text-xl font-semibold tracking-wide text-white rounded-lg bg-text-dev-orange" >Submit</button>
                         </div>
                     </div>

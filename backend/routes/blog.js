@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { Blog } = require('../model/CreateModels')
 const checkAuth = require('../middlewares/auth');
+const imageUploadMIddleware = require('../middlewares/imageUpload');
 
 // GET ALL ARTICLES
 router.get('/', async (req, res) => {
@@ -13,11 +14,14 @@ router.get('/', async (req, res) => {
     }
 })
 // Create a new Blog
-router.post('/', checkAuth, async (req, res) => {
+router.post('/',  imageUploadMIddleware, async (req, res) => {
     try {
-        const { title, body, author, blogtype, blogimage } = req.body;
-        const newBlog = new Blog({ title, body, author, blogtype, blogimage });
+        const { title, blogContent, blogType } = req.body;
+        const blogImage = req.blogimageURL; // Get the image URL from the middleware
+        const author = 'superAdmin'
+        const newBlog = new Blog({ title, blogContent, author, blogType, blogImage });
         const savedBlog = await newBlog.save();
+        
         res.json({ data: [{ message: 'Blog created successfully' }, { Blog: savedBlog }] });
     } catch (error) {
         console.log(error);

@@ -6,7 +6,7 @@ const blogSchema = new Schema({
         type: String,
         required: true
     },
-    body: {
+    blogContent: {
         type: String,
         required: true
     },
@@ -14,14 +14,13 @@ const blogSchema = new Schema({
         type: String,
         required: true
     },
-    blogimage: {
+    blogImage: {
         type: String,
         required: true
 
     },
-    blogtype: {
-        type: String,
-        enum: ['Article', 'Job', 'News'],
+    blogType: {
+        type: [String],
         required: true
     },
     date: {
