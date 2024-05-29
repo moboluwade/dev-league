@@ -11,7 +11,7 @@ import About from "./pages/About/About.jsx";
 // import Events from './pages/EventsPage/Events.jsx'
 import Events from "./pages/Events/Events.jsx";
 import EventView from "./pages/Events/EventView/EventView.jsx";
-// import Blog from "./pages/Blog/Blog.jsx";
+import Blog from "./pages/Blog/Blog.jsx";
 import BlogView from "./pages/Blog/BlogView.jsx";
 // import Shop from "./pages/Shop/Shop.jsx";
 import Home from "./pages/Home/Home.jsx";
@@ -49,10 +49,10 @@ const router = createBrowserRouter([
         path: '/events/:eventId',
         element: <EventView />,
       },
-      // {
-      //   path: '/blog',
-      //   element: <Blog />,
-      // },
+      {
+        path: '/blog',
+        element: <Blog />,
+      },
 
       {
         path: '/blog/:id',

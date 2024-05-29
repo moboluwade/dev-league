@@ -121,23 +121,6 @@ const BlogHero = (props) => {
           </div>
 
         </div>
-        {/* <div className="flex flex-row font-semibold md:font-bold pt-6 font-[inter] justify-center gap-3 sm:gap-5">
-          <span className="md:text-4xl text-[20px] ">Categories</span>
-          <div className="flex gap-2 text-xs cursor-pointer md:text-xl">
-            <span className="py-[4px] px-4 border-2 font-['Manrope'] rounded-lg">
-              All
-            </span>
-            <span className="py-[4px] px-4 border-2 font-['Manrope'] rounded-lg">
-              Articles
-            </span>
-            <span className="py-[4px] px-4 border-2 font-['Manrope'] rounded-lg">
-              News
-            </span>
-            <span className="py-[4px] px-4 border-2 font-['Manrope'] rounded-lg">
-              Jobs
-            </span>
-          </div>
-        </div> */}
       </div>
     </div>
   );

@@ -31,10 +31,10 @@ const Header = () => {
       title: 'Events',
       path: '/events',
     },
-    // {
-    //   title: 'Blog',
-    //   path: '/blog',
-    // },
+    {
+      title: 'Blog',
+      path: '/blog',
+    },
     // {
     //   title: 'Shop',
     //   path: '/shop',
