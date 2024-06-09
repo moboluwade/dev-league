@@ -1,12 +1,11 @@
 .blogview {
-  padding: 4rem 0;
+  padding: 4rem 9rem;
   background-color: #fbfbfb;
 }
 
 .blogview__header {
   display: flex;
   justify-content: space-between;
-  margin: 0 5rem;
 }
 
 .blogview__header > div {
@@ -17,7 +16,7 @@
 
 .blogview__main {
   max-width: 1000px;
-  margin: 2rem auto 0 auto;
+  padding: 2rem auto 0 auto;
 }
 
 .blogview__main > span {
@@ -33,12 +32,16 @@
   margin-top: 2.5rem;
 }
 
+.post {
+  padding: 2rem;
+}
 .post-details {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 1.5rem;
   color: #141211;
+  padding: 0 2rem;
 }
 
 .post-details .avatar {
@@ -74,6 +77,10 @@
   font-size: 24px;
   font-weight: 700;
   margin: 2.4rem 0 1.5rem 0;
+}
+
+.post p {
+  padding-top: 0.4em
 }
 
 .post__navigation {

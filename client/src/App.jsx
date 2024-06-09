@@ -7,8 +7,8 @@ const App = () => {
 
   return (
     <>
-      <div className="min-h-screen">
-        <div>
+      <div className="relative min-h-screen">
+        <div className='relative'>
           <Header />
           <Outlet />
           <Footer />

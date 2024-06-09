@@ -14,7 +14,7 @@ const Footer = () => {
     })
 
     return (
-        <footer className="flex flex-col items-center text-white bg-dev-black">
+        <footer className="absolute flex flex-col items-center w-full text-white b-0 bg-dev-black">
             <div className="justify-between max-w-[87.5rem] w-full lg:px-[7rem] px-8 py-4 md:px-12">
                 <div className="flex flex-col justify-center py-4 md:py-16 md:justify-start md:flex-row ">
                     <div className="flex flex-col items-center w-full text-center md:w-1/2 md:text-left md:items-start">
