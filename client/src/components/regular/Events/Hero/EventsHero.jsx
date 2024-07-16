@@ -56,7 +56,7 @@ const EventsHero = (props) => {
         <div className="z-20 flex items-center justify-center gap-2 md:gap-6">
           <h2 className="text-lg font-bold md:text-2xl">Categories</h2>
           <button
-            className={`px-3 text-sm text-gray700 md:text-lg hover:border focus:border hover:text-primary500 focus:border-primary500 focus:text-primary500 hover:border-primary500 border-1 rounded-md transition-all duration-300 ${isActive(
+            className={`px-3 text-sm text-gray700 md:text-lg  border border-[rgba(0,0,0,0)] focus:border hover:text-primary500 focus:border-primary500 focus:text-primary500 hover:border-primary500 border-1 rounded-md transition-all duration-300 ${isActive(
               'all',
             )}`}
             onClick={() => props.filterCards('all')}
@@ -64,7 +64,7 @@ const EventsHero = (props) => {
             All
           </button>
           <button
-            className={`px-3 text-sm text-gray700 md:text-lg hover:border focus:border hover:text-primary500 focus:border-primary500 focus:text-primary500 hover:border-primary500 border-1 rounded-md transition-all duration-300 ${isActive(
+            className={`px-3 text-sm text-gray700 md:text-lg border border-[rgba(0,0,0,0)] focus:border hover:text-primary500 focus:border-primary500 focus:text-primary500 hover:border-primary500 border-1 rounded-md transition-all duration-300 ${isActive(
               'upcoming',
             )}`}
             onClick={() => props.filterCards('upcoming')}
@@ -72,7 +72,7 @@ const EventsHero = (props) => {
             Upcoming
           </button>
           <button
-            className={`px-3 text-sm text-gray700 md:text-lg hover:border focus:border hover:text-primary500 focus:border-primary500 focus:text-primary500 hover:border-primary500 border-1 rounded-md transition-all duration-300 ${isActive(
+            className={`px-3 text-sm text-gray700 md:text-lg  border border-[rgba(0,0,0,0)] focus:border hover:text-primary500 focus:border-primary500 focus:text-primary500 hover:border-primary500 border-1 rounded-md transition-all duration-300 ${isActive(
               'closed',
             )}`}
             onClick={() => props.filterCards('closed')}

@@ -4,6 +4,7 @@ import { useState } from "react"
 
 const Events = () => {
   const [displayType, setDisplayType] = useState('all')
+
   const filterCards = (type) => {
     setDisplayType(type)
   }
@@ -11,7 +12,7 @@ const Events = () => {
   return (
     <div>
       <EventsHero displayType={displayType} setDisplayType={setDisplayType} filterCards={filterCards}/>
-      <EventsContext displayType={displayType} setDisplayType={setDisplayType} filterCards={filterCards}/>
+      <EventsContext displayType={displayType} filterCards={filterCards}/>
     </div>
   )
 }

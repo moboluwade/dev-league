@@ -1,19 +1,44 @@
 import { useMutation } from '@tanstack/react-query'
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import axios from "axios"
 const Hero = () => {
 
   const [email, setEmail] = useState('')
 
+
+  // const useMutateEmail = () => {
+  //   const queryClient = useQueryClient()
+  //   return useMutation({
+  //     mutationFn: (userEmail) => {
+  //       return axios.post('https://dev-league-dsi2.onrender.com/api/emails', userEmail)
+  //     },
+  //     // Notice the second argument is the variables object that the `mutate` function receives
+  //     onSuccess: (data, variables) => {
+  //       queryClient.setQueryData(['email', { email: variables.email }], data)
+  //     },
+  //   })
+  // }
+
+  // const { status, data, error } = useQuery({
+  //   queryKey: ['email', { email: userEmail }],
+  //   queryFn: fetchTodoById,
+  // })
+
+
   const addEmail = useMutation({
     mutationFn: (userEmail) => {
-      return axios.post('/email', userEmail)
+      return axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/emails`, userEmail)
     },
   })
   //as a fix, give user a feedback when their email is added successfully
   //either a failure modal.
   //or an appealing tick animation for success.
+  //there's an attempt above.
+
+  const handleClick = useCallback(() => {
+    addEmail.mutate({ email: email })
+  }, [addEmail, email])
 
   return (
     <main className="flex flex-col items-center w-full bg-text-dev-light-orange">
@@ -47,10 +72,22 @@ const Hero = () => {
               whileHover={{ scale: 1.1, x: -6 }}
               whileTap={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
-              onClick={() => { addEmail.mutate({ email: email }) }}
+              onClick={handleClick}
               className="absolute right-[0.5rem] top-[0.5rem] flex flex-col justify-center text-white text-center w-fit h-12 bg-text-dev-orange font-semibold py-4 px-5 rounded-[3rem]"
             >
-              Get started now
+              {addEmail.isLoading && 'Adding...'}
+              {
+                addEmail.isError && ['try again', (console.log(addEmail.data))]
+              }
+              {
+                addEmail.isSuccess && 'Added Up!'
+              }
+              {
+                !addEmail.isLoading && !addEmail.isError && !addEmail.isSuccess &&
+                (
+                  'Get Started'
+                )
+              }
             </motion.button>
           </div>
         </div>
@@ -63,6 +100,8 @@ const Hero = () => {
             width={432}
           />
         </div>
+
+
         {/* mobile view email field */}
         <div className="flex flex-row relative mb-16 md:hidden w-full md:min-w-[23rem]">
           <input
@@ -78,10 +117,22 @@ const Hero = () => {
             whileHover={{ scale: 1.1, x: -4 }}
             whileTap={{ scale: 1.05 }}
             transition={{ duration: 0.5 }}
-            onClick={() => { addEmail.mutate({ email: email }) }}
+            onClick={handleClick}
             className="absolute right-[0.25rem] top-[0.25rem] flex flex-col justify-center text-white text-sm text-center w-25 h-8 bg-text-dev-orange font-semibold py-4 px-5 rounded-[3rem]"
           >
-            Get started
+            {addEmail.isLoading && 'Adding...'}
+            {
+              addEmail.isError && 'try again'
+            }
+            {
+              addEmail.isSuccess && 'Added Up!'
+            }
+            {
+              !addEmail.isLoading && !addEmail.isError && !addEmail.isSuccess &&
+              (
+                'Get Started'
+              )
+            }
           </motion.button>
         </div>
       </motion.div>

@@ -1,8 +1,11 @@
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { store } from './store/store';
+import { Provider } from 'react-redux';
 import ErrorPage from "./ErrorPage.jsx";
 import About from "./pages/About/About.jsx";
 // import Events from './pages/EventsPage/Events.jsx'
@@ -10,68 +13,94 @@ import Events from "./pages/Events/Events.jsx";
 import EventView from "./pages/Events/EventView/EventView.jsx";
 import Blog from "./pages/Blog/Blog.jsx";
 import BlogView from "./pages/Blog/BlogView.jsx";
-import Shop from "./pages/Shop/Shop.jsx";
+// import Shop from "./pages/Shop/Shop.jsx";
 import Home from "./pages/Home/Home.jsx";
-import Login from "./components/admin/login/login.jsx";
-import Event from "./components/admin/event/Event.jsx";
+
+import Login from "./pages/admin/login/login.jsx";
+import AllPost from './pages/admin/AllPost/AllPost';
+import Admin from "./pages/admin/Admin.jsx";
+import CreateBlog from "./pages/admin/CreateBlog/CreateBlog.jsx"
+import CreateEvent from "./pages/admin/CreateEvent/CreateEvent.jsx";
+
 import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import Signup from "./pages/Signup/Signup.jsx";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/",
+        path: '/',
         element: <Home />,
       },
       {
-        path: "/about",
+        path: '/about',
         element: <About />,
       },
       {
-        path: "/events",
+        path: '/events',
         element: <Events />,
       },
       {
-        path: "/event-details",
+        path: '/events/:eventId',
         element: <EventView />,
       },
       {
-        path: "/blog",
+        path: '/blog',
         element: <Blog />,
       },
 
       {
-        path: "/blog/:id",
+        path: '/blog/:blogId',
         element: <BlogView />,
       },
+      // {
+      //   path: '/shop',
+      //   element: <Shop />,
+      // },
       {
-        path: "/shop",
-        element: <Shop />,
-      },
-      {
-        path: "/admin/login",
+        path: '/login',
         element: <Login />,
       },
       {
-        path: "/admin/events",
-        element: < Event />,
-      }
+        path: '/signup',
+        element: <Signup/>,
+      },
     ],
   },
-]);
+  {
+    path: "/admin",
+    element: <Admin />,
+    children: [
+      {
+        path: 'allpost',
+        element: <AllPost />,
+      },
+      {
+        path: 'create/blog',
+        element: <CreateBlog />
+      },
+      {
+        path: 'create/event',
+        element: <CreateEvent />,
+      },
+    ]
+  }
+])
 
 const queryClient = new QueryClient()
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
     </QueryClientProvider>
   </React.StrictMode>,
-);
+)

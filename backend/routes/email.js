@@ -1,22 +1,44 @@
 const express = require('express');
 const router = express.Router();
-const email = require('../model/Email')
+const { Email } = require('../model/CreateModels');
+const checkAuth = require('../middlewares/auth');
 
+// POSt THE EMAIL
+router.post('/', async (req, res) => {
+    try {
+        const { email } = req.body;
 
-router.post('/', async(req,res)=>{
-    const Email= req.body.email
-    try { 
-                            const newEmail = new email({ email :Email  });
-                            const savedEmail = await emailmail.create(newEmail);
-                            res.status(201).json({status: 'success', message: 'Email stored successfully',  data : savedEmail} );
-                        
-    } catch (error) {
-        if(error.code === 11000){
-         return     res.status(409).json({ status: 'failed', message: 'Email already exists' }); 
+        // check if the email already exist
+        const emailExist = await Email.find({ email: email });
+        if (emailExist && emailExist.length > 0) {
+            return res.status(400).json({ message: 'Email already exist' });
         }
-        
-        res.status(500).json({ status: 'failed', message: 'Error saving email' });
+        else {
+            const newEmail = new Email({ email });
+            const savedEmail = await newEmail.save();
+            res.status(200).json({ message: 'Email sent successfully', Email: savedEmail, status: 'success' });
+        }
+    } catch (error) {
+
+        return res.status(500).json({ message: 'Internal server error', error: error, status: 'failed' });
     }
 })
+
+// get all email 
+router.get('/', checkAuth, async (req, res) => {
+    try {
+        const Emails = await Email.find();
+        if (!Emails) {
+            return res.status(404).json({ message: 'Emails not found' });
+        }
+        res.json({ Emails: Emails });
+    }
+    catch (err) {
+        console.log(err);
+        return res.json(err);
+    }
+})
+
+
 
 module.exports = router

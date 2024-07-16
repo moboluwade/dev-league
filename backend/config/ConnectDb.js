@@ -1,15 +1,15 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 
+async function connectDB() {
+    try {
+        const homeDB = await mongoose.connect(process.env.MONGO_URI);
+        console.log('Connected to mongoDB database');
 
-async function ConnectDB(){
-
-try {
-    mongoose.connect('mongodb://localhost:27017/dev-league');
-    console.log('Db COnnected Successfully')
-} catch (error) {
-    res.send(error.message).status(500);
-    console.log(error)
+    } catch (error) {
+        console.error('Error connecting to database:', error);
+        throw error;
+    }
 }
-}
 
-module.exports = ConnectDB
+module.exports = connectDB;
