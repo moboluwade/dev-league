@@ -10,15 +10,14 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
 
-
   // Use the useSelector hook to access state from the Redux store
 
   const [showDiv, setShowDiv] = useState(false);
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  // validates if admin is already loggedIn
   const validateToken = useQuery({
+    // validates if admin is already loggedIn
     queryKey: 'validate-token',
     queryFn: async () => {
       const res = axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/admin/validate`, { withCredentials: 'include' })
@@ -77,12 +76,15 @@ const Login = () => {
     return () => { };
   }, [loginMutation.isError])
 
+  const routeToSignup = () => {
+    navigate("/signup")
+  }
 
   return (
     <div className="my-20">
       <div className="glass sm:mx-auto max-w-[600px] px-4 py-14 mx-8  sm:p-16">
         <h2 className="text-[28px] font-semibold text-center mb-5">
-          Login to you account
+          Login as Admin
         </h2>
         {/* login form */}
 
@@ -104,7 +106,7 @@ const Login = () => {
             <label className="font-normal text-base text-[rgba(52, 64, 84, 1)]">
               Password
             </label>
-            <a className="ml-auto text-[#1570EF]">Forget ?</a>
+            <a className="ml-auto text-[#1570EF] invisible">Forget ?</a>
           </div>
           <div className="flex items-center">
             <input
@@ -164,7 +166,21 @@ const Login = () => {
           >
             Login
           </button>
+
+          <div className="flex flex-col items-center w-full pt-8 ">
+            <div className="flex flex-row ">
+              <span className=" text-text-dev-faded-base">New admin? </span> <span>🤭</span>
+            </div>
+            <button
+              type='button'
+              onClick={routeToSignup}
+              className="bg-[#fff] hover:bg-[#EBEDEF] border-text-dev-orange border-2 transition text-text-dev-orange mt-8 w-full text-center p-4 text-base font-semibold rounded-lg"
+            >
+              Signup
+            </button>
+          </div>
         </form>
+
       </div>
     </div>
   )

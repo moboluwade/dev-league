@@ -10,6 +10,14 @@ const adminSchema = new Schema({
   password: {
     type: String,
     required: true
+  },
+  sudoRole: {
+    type: String,
+    required: true
+  },
+  executiveRole: {
+    type: String,
+    required: true
   }
 
 }, { timestamps: true });
