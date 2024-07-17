@@ -1,7 +1,7 @@
-import { FaBars } from 'react-icons/fa6'
-import { FaPlusCircle } from 'react-icons/fa'
-import { IoIosArrowForward } from 'react-icons/io'
-import { Link } from 'react-router-dom'
+import { FaBars } from "react-icons/fa6";
+import { FaPlusCircle } from "react-icons/fa";
+import { IoIosArrowForward } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const SideNavbar = () => {
   return (
@@ -17,7 +17,10 @@ const SideNavbar = () => {
             />
           </Link>
         </div>
-        <div disabled className="flex items-center justify-start gap-2 p-4 text-xl text-white rounded-md cursor-pointer bg-text-dev-faded-base w-60">
+        <div
+          disabled
+          className="flex items-center justify-start gap-2 p-4 text-xl text-white rounded-md cursor-pointer bg-text-dev-faded-base w-60"
+        >
           <FaPlusCircle />
           <h2>New Blog</h2>
         </div>
@@ -59,7 +62,7 @@ const SideNavbar = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SideNavbar
+export default SideNavbar;
