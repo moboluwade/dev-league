@@ -1,11 +1,10 @@
-
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { store } from './store/store';
-import { Provider } from 'react-redux';
+import { store } from "./store/store";
+import { Provider } from "react-redux";
 import ErrorPage from "./ErrorPage.jsx";
 import About from "./pages/About/About.jsx";
 // import Events from './pages/EventsPage/Events.jsx'
@@ -17,36 +16,36 @@ import BlogView from "./pages/Blog/BlogView.jsx";
 import Home from "./pages/Home/Home.jsx";
 
 import Login from "./pages/admin/login/login.jsx";
-import AllPost from './pages/admin/AllPost/AllPost';
+import AllPost from "./pages/admin/AllPost/AllPost";
 import Admin from "./pages/admin/Admin.jsx";
-import CreateBlog from "./pages/admin/CreateBlog/CreateBlog.jsx"
-import CreateEvent from "./pages/admin/CreateEvent/CreateEvent.jsx";
+import CreateBlog from "./pages/admin/CreateBlog/CreateBlog.jsx";
 
-import {
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query'
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import AllEvent from "./pages/admin/Event/AllEvent.jsx";
+import NewEvent from "./pages/admin/Event/NewEvent.jsx";
+
+import { Toaster } from "react-hot-toast";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: '/',
+        path: "/",
         element: <Home />,
       },
       {
-        path: '/about',
+        path: "/about",
         element: <About />,
       },
       {
-        path: '/events',
+        path: "/events",
         element: <Events />,
       },
       {
-        path: '/events/:eventId',
+        path: "/events/:eventId",
         element: <EventView />,
       },
       // {
@@ -55,7 +54,7 @@ const router = createBrowserRouter([
       // },
 
       {
-        path: '/blog/:id',
+        path: "/blog/:id",
         element: <BlogView />,
       },
       // {
@@ -63,7 +62,7 @@ const router = createBrowserRouter([
       //   element: <Shop />,
       // },
       {
-        path: '/login',
+        path: "/login",
         element: <Login />,
       },
     ],
@@ -73,29 +72,58 @@ const router = createBrowserRouter([
     element: <Admin />,
     children: [
       {
-        path: 'allpost',
+        path: "allpost",
         element: <AllPost />,
       },
       {
-        path: 'create/blog',
-        element: <CreateBlog />
+        path: "create/blog",
+        element: <CreateBlog />,
       },
       {
-        path: 'create/event',
-        element: <CreateEvent />,
+        path: "create/event",
+        element: <NewEvent />,
       },
-    ]
-  }
-])
+      {
+        path: "allevent",
+        element: <AllEvent />,
+      },
+      {
+        path: "allblog",
+        element: <AllEvent />,
+      },
+    ],
+  },
+]);
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
         <RouterProvider router={router} />
       </Provider>
+
+      <Toaster
+        position="top-center"
+        gutter={12}
+        containerStyle={{ margin: "8px" }}
+        toastOptions={{
+          success: {
+            duration: 3000,
+          },
+          error: {
+            duration: 5000,
+          },
+          style: {
+            fontSize: "16px",
+            maxWidth: "500px",
+            padding: "16px 24px",
+            backgroundColor: "#494646",
+            color: "#100f0f",
+          },
+        }}
+      />
     </QueryClientProvider>
   </React.StrictMode>,
-)
+);
