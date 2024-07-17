@@ -11,7 +11,7 @@ const Admin = () => {
 
   const [navActive, setNavActive] = useState(false);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const { isError, isSuccess } = useQuery({
     queryKey: ["validate-tokenz"],
