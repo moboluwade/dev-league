@@ -31,6 +31,17 @@ export default {
         Manrope: ['Manrope', 'sans-serif'],
         Inter: ['Inter', 'sans-serif'],
       },
+      keyframes: {
+        bounce: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-20px)' },
+        },
+      },
+      animation: {
+        bounce1: 'bounce 1s infinite ease-in-out',
+        bounce2: 'bounce 1s infinite ease-in-out 0.2s',
+        bounce3: 'bounce 1s infinite ease-in-out 0.4s',
+      },
     },
   },
   plugins: [],

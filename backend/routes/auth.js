@@ -30,7 +30,7 @@ router.post("/login", async (req, res) => {
 
     // Create a token
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET,);
-    res.cookie('token', token, { httpOnly: true, path: '/', maxAge: 12 * 60 * 60 * 1000, sameSite: 'none', secure: true});
+    res.cookie('token', token, { httpOnly: true, path: '/', maxAge: 12 * 60 * 60 * 1000, sameSite: 'none', secure: true });
     // Send the token in the response
     res.status(200).json({ message: "Login successful" });
 
@@ -42,21 +42,39 @@ router.post("/login", async (req, res) => {
 
 // LOGOUT AND INVALIDATE JWT TOKEN
 router.post("/logout", authMiddleware, async (req, res) => {
-  res.clearCookie('token', {path: '/', secure: true, httpOnly: true, sameSite: 'none' })
+  res.clearCookie('token', { path: '/', secure: true, httpOnly: true, sameSite: 'none' })
   res.status(200).send({ message: "logout successful" })
 });
 
-//  crete a new admin
-router.post("/admin-create", async (req, res) => {
+
+// verify email of the right 
+router.post("/verify-email", async (req, res) => {
+  const { username } = req.body;
+  const user = await Admin.findOne({ username });
+
+  if (!user) {
+    return res.status(404).json({ message: "Email is not registered by lead. Check email?" });
+  }
+  res.status(200).json({ message: "Email is allowed." });
+})
+
+router.post("/verify-passcode", async (req, res) => {
+  const { passcode } = req.body;
+  const hash = process.env.PASSCODE;
+  const validPassword = await bcrypt.compare(passcode, hash);
+  console.log(validPassword)
+  // console.log("password: ", validPassword);
+  if (!passcode) {
+    return res.status(404).json({ message: "Wrong password" });
+  }
+  res.status(200).json({ message: "correct password" });
+})
+
+
+//  create a new admin
+router.post("/signup", async (req, res) => {
   try {
     const { username, password } = req.body;
-    console.log(username, password)
-    // Check if the user already exists
-    const userExists = await Admin.findOne({ username });
-
-    if (userExists) {
-      return res.json({ message: "Admin already exists" });
-    }
 
     // Hash the password
     const salt = await bcrypt.genSalt(10);
