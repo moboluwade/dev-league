@@ -1,8 +1,22 @@
 import { MasterCard, Mail, HelpCircle } from "./SVG";
 import MaskedInput from "react-text-mask";
 import "./PaymentModal.css";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import { useState } from "react";
 
 const PaymentModal = (props) => {
+  const [CVV, setCVV] = useState('')
+  const [expiry, setExpiry] = useState('')
+  const [cardNumber, setCardNumber] = useState('')
+  const [payersName, setPayersName] = useState('')
+  const [email, setEmail] = useState('')
+  
+  const sendDonation = useMutation({
+    mutationFn: (details)=>{
+      return axios.post('payment', details)
+    }
+  })
   return (
     <form className="payment__modal">
       <div className="payment__details">
@@ -19,6 +33,8 @@ const PaymentModal = (props) => {
               type="text"
               className="payment__details-input payment__modal-input"
               id="name"
+              value={payersName}
+              onChange={(e)=>{setPayersName(e.target.value)}}
             />
           </div>
 
@@ -34,12 +50,14 @@ const PaymentModal = (props) => {
               type="text"
               className="payment__modal-input-svg payment__modal-input"
               id="email"
+              value={email}
+              onChange={(e)=>{setEmail(e.target.value)}}
             />
             <HelpCircle />
           </div>
         </div>
         <div className="payment__details-price-container">
-          <div className="payment__details-price-box flex flex-col">
+          <div className="flex flex-col payment__details-price-box">
             <h3 className="mb-5 mt-[-10px]">Donating</h3>
             <p>{`${props.currency}${props.price}`}</p>
           </div>
@@ -61,6 +79,8 @@ const PaymentModal = (props) => {
                 type="text"
                 className="payment__details-input payment__modal-input"
                 id="name-on-card"
+                value={payersName}
+                onChange={(e)=>{setPayersName(e.target.value)}}
               />
             </div>
             <label
@@ -98,6 +118,8 @@ const PaymentModal = (props) => {
                 className="payment__modal-input-svg payment__modal-input"
                 id="card-number"
                 placeholder="0000 0000 0000 0000"
+                value={cardNumber}
+                onChange={(e)=>{setCardNumber(e.target.value)}}
               />
             </div>
           </div>
@@ -117,6 +139,8 @@ const PaymentModal = (props) => {
                 className="payment__details-input payment__modal-input"
                 id="expiry"
                 placeholder="mm/yy"
+                // not sure if it needs value
+                onChange={(e)=>{setExpiry(e.target.value)}}
               />
             </div>
             <label
@@ -134,12 +158,14 @@ const PaymentModal = (props) => {
                 required
                 className="payment__details-input payment__modal-input"
                 id="cvv"
+                value={CVV}
+                onChange={(e)=>{setCVV(e.target.value)}}
               />
             </div>
           </div>
         </div>
       </div>
-      <button className="payment__button">Donate</button>
+      <button onClick={()=>{sendDonation.mutate({expiry:expiry, payersName: payersName, email: email, cvv: CVV })}} className="payment__button">Donate</button>
     </form>
   );
 };

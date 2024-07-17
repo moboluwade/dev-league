@@ -63,7 +63,7 @@ const DateStart = ({ setStartDate, startDate, setStartDateMonth, startDateMonth,
                         type="number"
                         placeholder="20"
                         onChange={(e) => { handleDateMonthChange(e.target.value) }}
-                        value={startDateMonth}
+                        value={startDateMonth && startDateMonth}
                         className=" w-fit max-w-[1.3rem] p-0 m-0 border-none outline-none w- h-fit bg-inherit placeholder:text-black"
                     />
                     <span>/</span>
@@ -74,7 +74,7 @@ const DateStart = ({ setStartDate, startDate, setStartDateMonth, startDateMonth,
                         type="number"
                         placeholder="24"
                         onChange={(e) => { handleDateYearChange(e.target.value) }}
-                        value={startDateYear.slice(-2)}
+                        value={startDateYear && startDateYear.slice(-2)}
                         className=" w-fit max-w-[1.3rem] p-0 m-0 border-none outline-none h-fit bg-inherit placeholder:text-black"
                     />
                 </div>

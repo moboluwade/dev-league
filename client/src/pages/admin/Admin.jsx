@@ -8,12 +8,14 @@ import axios from "axios";
 
 const Admin = () => {
   // this boolean logic should only affect mobile
+
   const [navActive, setNavActive] = useState(false);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const { isError, isSuccess } = useQuery({
     queryKey: ["validate-tokenz"],
+
     queryFn: async () => {
       const res = axios.get(
         `${import.meta.env.VITE_BACKEND_URL}/api/admin/validate`,

@@ -39,9 +39,14 @@ const Navbar = ({ setNavActive, navActive }) => {
 
   return (
     <div
+<<<<<<< HEAD
       className={` pt-6 bg-black md:sticky transition-transform ease-in-out duration-500 ${
         navActive ? "fixed -left-0 " : "fixed -left-96"
       }  top-0 h-full `}
+=======
+      className={`max-w-[16rem] pt-6 bg-black md:sticky transition-transform ease-in-out duration-500 z-50 ${navActive ? 'fixed -left-0' : 'fixed -left-96'
+        }  top-0 h-full `}
+>>>>>>> 5f3e840b26126b763c5e348abf22ef0975c86bcc
     >
       <div className="flex flex-row items-center justify-start w-full gap-12 px-10 mb-8 text-white">
         <button onClick={() => setNavActive(!navActive)}>
@@ -53,10 +58,14 @@ const Navbar = ({ setNavActive, navActive }) => {
       <div className="flex flex-col items-center w-full gap-4 mb-8 text-white">
         {/* main buttons */}
         <Link to="create/blog">
+<<<<<<< HEAD
           <button
             onClick={() => setNavActive(!navActive)}
             className="text-lg gap-2 flex flex-row justify-start pl-4 items-center text-white rounded-md w-[12rem] h-[3rem] bg-text-dev-orange "
           >
+=======
+          <button className="text-lg gap-2 flex flex-row justify-start pl-4 items-center text-white rounded-md w-[12rem] h-[3rem] bg-text-dev-orange">
+>>>>>>> 5f3e840b26126b763c5e348abf22ef0975c86bcc
             <img width={20} height={10} src="/admin/add.svg" alt="add button" />
             <div className="font-semibold">New Blog</div>
           </button>
