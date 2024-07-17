@@ -20,19 +20,11 @@ import AllPost from "./pages/admin/AllPost/AllPost";
 import Admin from "./pages/admin/Admin.jsx";
 import CreateBlog from "./pages/admin/CreateBlog/CreateBlog.jsx";
 
-<<<<<<< HEAD
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AllEvent from "./pages/admin/Event/AllEvent.jsx";
 import NewEvent from "./pages/admin/Event/NewEvent.jsx";
-
-import { Toaster } from "react-hot-toast";
-=======
-import {
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query'
 import Signup from "./pages/Signup/Signup.jsx";
->>>>>>> 5f3e840b26126b763c5e348abf22ef0975c86bcc
+import { Toaster } from "react-hot-toast";
 
 const router = createBrowserRouter([
   {
@@ -57,16 +49,13 @@ const router = createBrowserRouter([
         element: <EventView />,
       },
       {
-        path: '/blog',
+        path: "/blog",
         element: <Blog />,
       },
 
       {
-<<<<<<< HEAD
-        path: "/blog/:id",
-=======
-        path: '/blog/:blogId',
->>>>>>> 5f3e840b26126b763c5e348abf22ef0975c86bcc
+        path: "/blog/:blogId",
+
         element: <BlogView />,
       },
       // {
@@ -78,8 +67,8 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: '/signup',
-        element: <Signup/>,
+        path: "/signup",
+        element: <Signup />,
       },
     ],
   },
