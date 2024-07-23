@@ -2,11 +2,9 @@ require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const { Admin } = require('../model/CreateModels')
+const { Admin, Permissions } = require('../model/CreateModels')
 const bcrypt = require('bcryptjs');
 const authMiddleware = require('../middlewares/auth')
-
-// LOGIN THE USER AND SEND A TOKEN
 
 router.get("/validate", authMiddleware, async (req, res) => {
   res.status(200).json({ message: 'user is Authenticated' });
@@ -47,48 +45,64 @@ router.post("/logout", authMiddleware, async (req, res) => {
 });
 
 
-// verify email of the right 
-router.post("/verify-email", async (req, res) => {
-  const { username } = req.body;
-  const user = await Admin.findOne({ username });
-
-  if (!user) {
-    return res.status(404).json({ message: "Email is not registered by lead. Check email?" });
+// CHECK IF EMAIL IS AVAILABLE IN THE PERMISSIONS DATABASE, ELSE THROW ERROR
+router.post("/validate-email", async (req, res) => {
+  try {
+    const { email } = req.body;
+    const user = Admin.findOne({ email });
+    if (user) {
+      // USER EXISTS DATABASE CONFLICT ERROR
+      res.status(409).json({ message: "No need to Sign up? Admin User Exists." })
+    }
+    const allowed = Permissions.findOne({ email })
+    if (allowed) {
+      // OK STATUS
+      res.status(200).json({ message: `user ${email} is allowed. Continue Signup.` })
+    }
+    // FORBIDDEN STATUS
+    res.status(405).json({ message: "You are not allowed to create an account." })
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Could not validate email", message: err.message })
   }
-  res.status(200).json({ message: "Email is allowed." });
 })
 
-router.post("/verify-passcode", async (req, res) => {
-  const { passcode } = req.body;
-  const hash = process.env.PASSCODE;
-  const validPassword = await bcrypt.compare(passcode, hash);
-  console.log(validPassword)
-  // console.log("password: ", validPassword);
-  if (!passcode) {
-    return res.status(404).json({ message: "Wrong password" });
+// CHECK IF SECRET PASSCODE MATCHES CURRENT PASSCODE
+router.post("/validate-passcode", async (req, res) => {
+  try {
+    const { passcode } = req.body;
+    const hash = process.env.PASSCODE;
+    const validPassword = await bcrypt.compare(passcode, hash);
+    console.log(validPassword)
+
+    if (!passcode) {
+      // WRONG PASSWORD - FORBIDDEN ERROR STATUS
+      return res.status(405).json({ message: "Wrong password. You do not have relevant access" });
+    }
+    // WRONG 
+    res.status(200).json({ message: "Continue Signup. Passcode is correct." });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "could not validate passcode", message: err.message });
   }
-  res.status(200).json({ message: "correct password" });
 })
 
-
-//  create a new admin
+// SIGNUP NEW ADMIN USER AFTER PASSING VALIDATION
 router.post("/signup", async (req, res) => {
   try {
     const { username, password } = req.body;
-
-    // Hash the password
+    // HASH PASSWORD
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    // Create a new user
+    // CREATE A NEW USER
     const newAdmin = new Admin({ username, password: hashedPassword, isAdmin: true });
     const savedAdmin = await newAdmin.save();
-
-    // Send a positive response
+    // OK STATUS
     res.json({ message: "Admin created successfully", user: savedAdmin });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server Error" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "could not complete signup", message: err.message })
   }
 });
 

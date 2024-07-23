@@ -18,8 +18,6 @@ const imageUploadMiddleware = async (req, res, next) => {
 
         // Attach Cloudinary URL to request object
         req.blogimageURL = cloudinaryResponse;
-        console.log(req.bodyimageURL)
-
         // Pass control to the next middleware or route handler
         next();
     } catch (error) {

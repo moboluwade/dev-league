@@ -39,7 +39,7 @@ router.get('/:id', async (req, res) => {
 // CREATE A NEW EVENT 
 router.post('/', checkAuth, async (req, res) => {
     try {
-        const { startDate, endDate, title, description, eventType, eventStatus, eventBanner, eventBannerName } = req.body;
+        const { startDate, endDate, title, description, eventType, eventBanner, eventBannerName } = req.body;
        
 
         // Upload image to Cloudinary
@@ -89,7 +89,7 @@ router.patch('/:id', checkAuth, async (req, res) => {
 
 // GET EVENTS BY EVENT TYPE (})
 
-router.get('/eventtype/:eventType', async (req, res) => {
+router.get('/:eventType', async (req, res) => {
     try {
         const eventType = req.params.eventType;
         const Event = await Events.find({ eventType: eventType });
@@ -100,7 +100,7 @@ router.get('/eventtype/:eventType', async (req, res) => {
 })
 
 // GET EVENTS BY EVENT STATUS
-router.get('/eventstatus/:eventStatus', async (req, res) => {
+router.get('/:eventStatus', async (req, res) => {
     try {
         const eventStatus = req.params.eventStatus;
         const Event = await Events.find({ eventStatus: eventStatus });
@@ -109,5 +109,13 @@ router.get('/eventstatus/:eventStatus', async (req, res) => {
         res.status(500).json({ error: error.message })
     }
 })
+
+
+// router.delete('/:id', (req, res) => {
+//     try{
+//         const Event = await Events.delete(id)
+//         res.status(200).json({message: `Event with id: ${id} successfully deleted`})
+//     }
+// })
 
 module.exports = router

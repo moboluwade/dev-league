@@ -34,7 +34,7 @@ const Admin = () => {
   return (
     <div className="w-full h-screen">
       {
-        !isSuccess &&
+        isSuccess &&
         <div className='relative flex flex-col w-full h-screen overflow-y-scroll md:flex-row'>
           <Navbar setNavActive={setNavActive} navActive={navActive} />
           <button
