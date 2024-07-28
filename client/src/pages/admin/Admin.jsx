@@ -12,7 +12,7 @@ const Admin = () => {
   const [navActive, setNavActive] = useState(false)
 
 
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
 
   const { isError, isSuccess } = useQuery({
@@ -24,11 +24,11 @@ const Admin = () => {
   })
 
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   isError && navigate('/login')
+    isError && navigate('/login')
 
-  // }, [isError, navigate])
+  }, [isError, navigate])
 
 
   return (

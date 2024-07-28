@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Editor from "./MDXEditor"
 import { useMutation } from "@tanstack/react-query"
 import axios from "axios"
@@ -10,6 +10,8 @@ const CreateBlog = () => {
     const [blogTitle, setBlogTitle] = useState("")
     const [fileAddedName, setFileAddedName] = useState(null)
     const [mdxValue, setMdxValue] = useState("Enter blog content")
+    const [showSuccessModal, setShowSuccessModal] = useState(false)
+    const [showErrorModal, setShowErrorModal] = useState(false)
 
 
     const createBlog = useMutation({
@@ -51,13 +53,54 @@ const CreateBlog = () => {
         setFileAddedName(file.name)
     }
 
-    // useEffect(() => {
-    //     console.log(selectedBlogTypes)
-    // }, [selectedBlogTypes])
+    useEffect(() => {
+        createBlog.isSuccess && setShowSuccessModal(true)
+        createBlog.isError && setShowErrorModal(true)
+        createBlog.isSuccess && setSelectedBlogTypes([])
+        createBlog.isSuccess && setFileAdded("")
+        createBlog.isSuccess && setBlogTitle("")
+        createBlog.isSuccess && setFileAddedName(null)
+        createBlog.isSuccess && setMdxValue("Enter blog content")
+    }, [createBlog.isSuccess, createBlog.isError])
 
     return (
-        <div className="w-full ">
-            <div className="flex flex-col justify-start px-4 pt-4 pb-16 items-left md:pl-8 md:pt-20 md:pb-28">
+        <div className="relative w-full h-fit">
+            {/* success and error modals */}
+            {
+                showSuccessModal && (
+                    <div className="absolute top-0 z-20 flex flex-col items-center justify-start w-full h-full pt-64">
+                        <div className="absolute top-0 z-20 w-full h-full bg-text-dev-orange opacity-30">
+
+                        </div>
+
+                        <div className="fixed z-30 flex flex-col items-center justify-center w-64 gap-4 p-6 bg-white rounded-lg shadow-xl border-text-dev-orange h-fit">
+                            <span className="text-center">Blog successfully saved.</span>
+                            <button className="p-2 px-4 text-white rounded-lg bg-text-dev-orange" onClick={() => setShowSuccessModal(false)}>
+                                OK!
+                            </button>
+                        </div>
+                    </div>
+                )
+            }
+
+            {
+                showErrorModal && (
+                    <div className="absolute top-0 z-20 flex flex-col items-center justify-start w-full h-full pt-44">
+                        <div className="absolute top-0 z-20 w-full h-full bg-text-dev-faded-base">
+
+                        </div>
+
+                        <div className="fixed z-30 flex flex-col items-center justify-center w-64 gap-4 p-6 bg-white rounded-lg shadow-xl border-text-dev-orange h-fit">
+                            <span className="text-center ">Blog Not saved. Please Try Again.</span>
+                            <button className="p-2 px-4 text-white rounded-lg bg-text-dev-orange" onClick={() => setShowErrorModal(false)}>
+                                OK!
+                            </button>
+                        </div>
+                    </div>
+                )
+            }
+
+            <div className="z-10 flex flex-col justify-start px-4 pt-4 pb-16 items-left md:pl-8 md:pt-20 md:pb-28">
                 <h2 className="pb-8 text-4xl font-bold">Blog Management</h2>
                 <div className="flex flex-col justify-center">
                     <div className="flex flex-col pt-4">

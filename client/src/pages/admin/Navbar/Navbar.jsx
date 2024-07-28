@@ -26,7 +26,6 @@ const Navbar = ({ setNavActive, navActive }) => {
   // logout click-> activate query -> query res -> navigate
   useEffect(() => {
     logoutQuery.isSuccess && navigate('/')
-    console.log(logoutQuery.data)
   }, [logoutQuery, navigate])
 
   useEffect(() => {
@@ -43,14 +42,14 @@ const Navbar = ({ setNavActive, navActive }) => {
       className={`max-w-[16rem] pt-6 bg-black md:sticky transition-transform ease-in-out duration-500 z-50 ${navActive ? 'fixed -left-0' : 'fixed -left-96'
         }  top-0 h-full `}
     >
-      <div className="flex flex-row items-center justify-start w-full gap-12 px-10 mb-8 text-white">
+      <div className="flex flex-row items-center justify-start w-full gap-12 px-10 mb-6 text-white">
         <button onClick={() => setNavActive(!navActive)}>
           <img width={40} height={40} src="/admin/menu.svg" alt="menu" />
         </button>
         <img width={50} height={40} src="/Union.svg" alt="logo" />
       </div>
 
-      <div className="flex flex-col items-center w-full gap-4 mb-8 text-white">
+      <div className="flex flex-col items-center w-full gap-4 mb-4 text-white">
         {/* main buttons */}
         <Link to="create/blog">
           <button className="text-lg gap-2 flex flex-row justify-start pl-4 items-center text-white rounded-md w-[12rem] h-[3rem] bg-text-dev-orange">
