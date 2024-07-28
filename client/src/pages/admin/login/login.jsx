@@ -6,7 +6,7 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 
 const Login = () => {
-  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
 
@@ -32,8 +32,8 @@ const Login = () => {
 
   const loginMutation = useMutation({
     mutationKey: ['login'],
-    mutationFn: async ({ username, password }) => {
-      const res = axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/admin/login`, { username: username, password: password }, { withCredentials: 'include' })
+    mutationFn: async ({ email, password }) => {
+      const res = axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/admin/login`, { email: email, password: password }, { withCredentials: 'include' })
       return res
     }
   })
@@ -47,7 +47,7 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const feedback = loginMutation.mutateAsync({ username: username, password: password })
+      const feedback = loginMutation.mutateAsync({ email: email, password: password })
       loginMutation.isSuccess && console.log(feedback)
     } catch (error) {
       console.log(error)
@@ -99,8 +99,8 @@ const Login = () => {
             className="block py-3 px-4 rounded-lg w-full focus:ring-0 border-2 focus:outline-none focus:border-[#D1E9FF]  border-gray-300"
             type="text"
             placeholder="balamia@gmail.com"
-            value={username}
-            onChange={(e) => { setUsername(e.target.value) }}
+            value={email}
+            onChange={(e) => { setEmail(e.target.value) }}
           />
           <div className="flex justify-center mt-6 mb-2">
             <label className="font-normal text-base text-[rgba(52, 64, 84, 1)]">
@@ -156,7 +156,7 @@ const Login = () => {
 
           <div className='relative h-fit'>
             <div className='absolute flex flex-row justify-center w-full px-2 text-xs text-white rounded-md bg-text-dev-faded-base top-2 h-fit'>
-              {showDiv && "! username and password is invalid"}
+              {showDiv && "! email and password is invalid"}
             </div>
           </div>
 

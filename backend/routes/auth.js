@@ -12,25 +12,25 @@ router.get("/validate", authMiddleware, async (req, res) => {
 
 router.post("/login", async (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
     // Check if the user exists
-    const user = await Admin.findOne({ username });
+    const user = await Admin.findOne({ email });
     if (!user) {
-      return res.status(401).json({ message: "Invalid username or password" });
+      return res.status(401).json({ message: "Invalid email or password" });
     }
 
     // Check if the password is correct
     const validPassword = await bcrypt.compare(password, user.password);
     if (!validPassword) {
-      return res.status(401).json({ message: "Invalid username or password" });
+      return res.status(401).json({ message: "Invalid email or password" });
     }
 
     // Create a token
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET,);
     res.cookie('token', token, { httpOnly: true, path: '/', maxAge: 12 * 60 * 60 * 1000, sameSite: 'none', secure: true });
     // Send the token in the response
-    res.status(200).json({ message: "Login successful" });
+    return res.status(200).json({ message: "Login successful" });
 
   } catch (error) {
     console.error(error);
@@ -49,21 +49,21 @@ router.post("/logout", authMiddleware, async (req, res) => {
 router.post("/validate-email", async (req, res) => {
   try {
     const { email } = req.body;
-    const user = Admin.findOne({ email });
+    const user = await Admin.findOne({ email });
     if (user) {
       // USER EXISTS DATABASE CONFLICT ERROR
-      res.status(409).json({ message: "No need to Sign up? Admin User Exists." })
+      return res.status(409).json({ message: "No need to Sign up? Admin User Exists." })
     }
     const allowed = Permissions.findOne({ email })
     if (allowed) {
       // OK STATUS
-      res.status(200).json({ message: `user ${email} is allowed. Continue Signup.` })
+      return res.status(200).json({ message: `user ${email} is allowed. Continue Signup.` })
     }
     // FORBIDDEN STATUS
-    res.status(405).json({ message: "You are not allowed to create an account." })
+    return res.status(405).json({ message: "You are not allowed to create an account." })
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Could not validate email", message: err.message })
+    return res.status(500).json({ error: "Could not validate email", message: err.message })
   }
 })
 
@@ -73,36 +73,35 @@ router.post("/validate-passcode", async (req, res) => {
     const { passcode } = req.body;
     const hash = process.env.PASSCODE;
     const validPassword = await bcrypt.compare(passcode, hash);
-    console.log(validPassword)
 
-    if (!passcode) {
+    if (!validPassword) {
       // WRONG PASSWORD - FORBIDDEN ERROR STATUS
       return res.status(405).json({ message: "Wrong password. You do not have relevant access" });
     }
     // WRONG 
-    res.status(200).json({ message: "Continue Signup. Passcode is correct." });
+    return res.status(200).json({ message: "Continue Signup. Passcode is correct." });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "could not validate passcode", message: err.message });
+    return res.status(500).json({ error: "could not validate passcode", message: err.message });
   }
 })
 
 // SIGNUP NEW ADMIN USER AFTER PASSING VALIDATION
 router.post("/signup", async (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
     // HASH PASSWORD
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
     // CREATE A NEW USER
-    const newAdmin = new Admin({ username, password: hashedPassword, isAdmin: true });
+    const newAdmin = new Admin({ email: email, password: hashedPassword });
     const savedAdmin = await newAdmin.save();
     // OK STATUS
-    res.json({ message: "Admin created successfully", user: savedAdmin });
+    return res.json({ message: "Admin created successfully", user: savedAdmin });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "could not complete signup", message: err.message })
+    return res.status(500).json({ error: "could not complete signup", message: err.message })
   }
 });
 

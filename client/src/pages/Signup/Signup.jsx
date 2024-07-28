@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import {useNavigate} from "react-router-dom";
 // import { useDispatch } from "react-redux";
 // import { useNavigate } from "react-router-dom";
 // import { LoginUser } from "../../store/userSlice";
@@ -18,6 +19,7 @@ const Signup = () => {
     // const dispatch = useDispatch()
     // const navigate = useNavigate()
 
+    const navigate = useNavigate()
     // DECLARE MUTATIONS
     const emailVerification = useMutation({
         mutationKey: ['email'],
@@ -58,10 +60,10 @@ const Signup = () => {
 
     useEffect(() => {
         // increases flow count if the request is successful
-        signupMutation.isSuccess && setCurrentFlow(prev => ++prev)
+        signupMutation.isSuccess && navigate('/admin')
         signupMutation.error && alert('Signup could not complete')
         signupMutation.error && console.log(signupMutation.status, signupMutation.error)
-    }, [signupMutation.isSuccess, signupMutation.error, signupMutation.status])
+    }, [navigate, signupMutation.isSuccess, signupMutation.error, signupMutation.status])
 
     // DECLARE EVENT HANDLERS AND HELPER FUNCTIONS
     const handleSignupFlow = () => {
@@ -105,7 +107,7 @@ const Signup = () => {
                 <form
                     className='relative'
                     onKeyDown={handleKeyPress}
-                    onSubmit={() => handleSignup()}
+                // onSubmit={() => handleSignup()}
                 >
                     {
                         currentFlow === 0 &&
@@ -312,7 +314,8 @@ const Signup = () => {
                     }
                     {currentFlow === 2 && <div className="flex flex-col items-center w-full pt-2 ">
                         <button
-                            type='submit'
+                            type='button'
+                            onClick={handleSignup}
                             className="bg-[#fff] hover:bg-[#EBEDEF] border-text-dev-orange border-2 transition text-text-dev-orange mt-8 w-full text-center p-4 text-base font-semibold rounded-lg"
                         >
                             Signup
