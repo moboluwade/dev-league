@@ -17,7 +17,7 @@ const SideNavbar = () => {
             />
           </Link>
         </div>
-        <div disabled className="flex items-center justify-start gap-2 p-4 text-xl text-white rounded-md cursor-pointer bg-text-dev-faded-base w-60">
+        <div className="flex items-center justify-start gap-2 p-4 text-xl text-white rounded-md cursor-pointer bg-text-dev-faded-base w-60">
           <FaPlusCircle />
           <h2>New Blog</h2>
         </div>

@@ -36,6 +36,10 @@ const Navbar = ({ setNavActive, navActive }) => {
   //   logoutQuery.isSuccess && dispatch(LogoutUser(true))
   // }
 
+  // personal account
+  // manage blogs
+  // manage events
+  //
 
   return (
     <div
@@ -57,6 +61,7 @@ const Navbar = ({ setNavActive, navActive }) => {
             <div className="font-semibold">New Blog</div>
           </button>
         </Link>
+        
         <Link to="create/event">
           <button className="text-lg gap-2 flex flex-row justify-start pl-4 items-center text-white rounded-md w-[12rem] h-[3rem] bg-text-dev-orange">
             <img width={20} height={10} src="/admin/add.svg" alt="add button" />
