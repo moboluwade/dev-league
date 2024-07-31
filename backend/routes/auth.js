@@ -11,7 +11,7 @@ router.get("/validate", authMiddleware, async (req, res) => {
 })
 
 router.post("/login", async (req, res) => {
-  try {
+  try { 
     const { email, password } = req.body;
 
     // Check if the user exists

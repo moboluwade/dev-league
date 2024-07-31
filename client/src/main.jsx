@@ -27,6 +27,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import Signup from "./pages/Signup/Signup.jsx";
+import Profile from "./pages/admin/Profile/Profile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -89,6 +90,10 @@ const router = createBrowserRouter([
         path: 'create/event',
         element: <CreateEvent />,
       },
+      {
+        path: 'manage',
+        element: <Profile />,
+      }
     ]
   }
 ])

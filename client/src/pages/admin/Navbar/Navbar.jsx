@@ -71,11 +71,11 @@ const Navbar = ({ setNavActive, navActive }) => {
       </div>
 
       <div className="flex flex-col items-center w-full gap-4 mb-6 font-semibold text-white">
-        <Link to="allpost">
+        <Link to="manage">
           <button className="text-md flex justify-between flex-row px-4 items-center text-white rounded-md w-[13rem] h-[3rem] ">
             <div className="flex flex-row items-center gap-2">
               <img width={15} height={10} src="/admin/article.svg" alt="" />
-              <p className="font-semibold">All posts</p>
+              <p className="font-semibold">Profile</p>
             </div>
             <img width={20} height={10} src="/admin/chevron-up.svg" alt="" />
           </button>
