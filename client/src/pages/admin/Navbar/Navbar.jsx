@@ -43,10 +43,10 @@ const Navbar = ({ setNavActive, navActive }) => {
 
   return (
     <div
-      className={`max-w-[16rem] pt-6 bg-black md:sticky transition-transform ease-in-out duration-500 z-50 ${navActive ? 'fixed -left-0' : 'fixed -left-96'
+      className={`max-w-[16rem] pt-6 overflow-y-clip fixed h-screen bg-black md:sticky transition-transform ease-in-out duration-500 z-50 ${navActive ? 'fixed -left-0' : 'fixed -left-96'
         }  top-0 h-full `}
     >
-      <div className="flex flex-row items-center justify-start w-full gap-12 px-10 mb-6 text-white">
+      <div className="z-30 flex flex-row items-center justify-start w-full gap-12 px-10 mb-6 text-white">
         <button onClick={() => setNavActive(!navActive)}>
           <img width={40} height={40} src="/admin/menu.svg" alt="menu" />
         </button>
@@ -61,7 +61,7 @@ const Navbar = ({ setNavActive, navActive }) => {
             <div className="font-semibold">New Blog</div>
           </button>
         </Link>
-        
+
         <Link to="create/event">
           <button className="text-lg gap-2 flex flex-row justify-start pl-4 items-center text-white rounded-md w-[12rem] h-[3rem] bg-text-dev-orange">
             <img width={20} height={10} src="/admin/add.svg" alt="add button" />
@@ -71,7 +71,7 @@ const Navbar = ({ setNavActive, navActive }) => {
       </div>
 
       <div className="flex flex-col items-center w-full gap-4 mb-6 font-semibold text-white">
-        <Link to="manage">
+        <Link to="manage/profile">
           <button className="text-md flex justify-between flex-row px-4 items-center text-white rounded-md w-[13rem] h-[3rem] ">
             <div className="flex flex-row items-center gap-2">
               <img width={15} height={10} src="/admin/article.svg" alt="" />
@@ -80,21 +80,24 @@ const Navbar = ({ setNavActive, navActive }) => {
             <img width={20} height={10} src="/admin/chevron-up.svg" alt="" />
           </button>
         </Link>
-        <button disabled className="text-md flex justify-between flex-row px-4 items-center text-white rounded-md w-[13rem] h-[3rem] opacity-30">
-          <div className="flex flex-row items-center gap-2">
-            <img width={15} height={10} src="/admin/article.svg" alt="" />
-            <p className="font-semibold">Manage blog</p>
-          </div>
-          <img width={20} height={10} src="/admin/chevron-up.svg" alt="" />
-        </button>
-        <button disabled className="text-md justify-between flex flex-row px-4 items-center text-white rounded-md w-[13rem] h-[3rem] opacity-30 ">
-          <div className="flex flex-row items-center gap-2">
-            <img width={15} height={10} src="/admin/article.svg" alt="" />
-            <p className="font-semibold">Manage events</p>
-          </div>
-
-          <img width={20} height={10} src="/admin/chevron-up.svg" alt="" />
-        </button>
+        <Link to="manage/blog">
+          <button className="text-md flex justify-between flex-row px-4 items-center text-white rounded-md w-[13rem] h-[3rem]">
+            <div className="flex flex-row items-center gap-2">
+              <img width={15} height={10} src="/admin/article.svg" alt="" />
+              <p className="font-semibold">Manage blog</p>
+            </div>
+            <img width={20} height={10} src="/admin/chevron-up.svg" alt="" />
+          </button>
+        </Link>
+        <Link to="manage/event">
+          <button className="text-md justify-between flex flex-row px-4 items-center text-white rounded-md w-[13rem] h-[3rem]">
+            <div className="flex flex-row items-center gap-2">
+              <img width={15} height={10} src="/admin/article.svg" alt="" />
+              <p className="font-semibold">Manage events</p>
+            </div>
+            <img width={20} height={10} src="/admin/chevron-up.svg" alt="" />
+          </button>
+        </Link>
       </div>
 
       <div className="flex flex-row flex-wrap items-center w-full gap-4 mb-8 text-xs text-gray-400 font-sm px-14">

@@ -11,18 +11,24 @@ import axios from 'axios'
 import { useQuery } from "@tanstack/react-query";
 import Markdown from 'react-markdown'
 import { Loader } from "../../components/Loader";
-import {useEffect, useMemo, useState } from "react";
-import {useSearchParams} from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const BlogView = () => {
     const [publishDate, setPublishDate] = useState(null);
-    const {blogId} = useSearchParams()
-    
-    useEffect(()=>{
+    const [searchParams] = useSearchParams();
+    const location = useLocation();
+    const pathParts = location.pathname.split('/'); // Split the pathname by '/'
+    const blogId = pathParts.length === 3 && pathParts[1] === 'blog' ? pathParts[2] : null;
+
+    useEffect(() => {
         // console.log(blogId.get(blogId.get(blogId.get())))
         console.log(blogId)
-    },[blogId])
-    
+        console.log(location.pathname)
+    }, [blogId, location])
+
+
     const { data, isLoading } = useQuery({
         queryKey: ['fetch-blog'],
         queryFn: async () => {
@@ -33,12 +39,15 @@ const BlogView = () => {
         },
         enabled: !!blogId
     }
-)
+    )
 
     useMemo(() => {
         return data && setPublishDate(new Date(data.createdAt));
     }, [data])
 
+    useEffect(() => {
+        data && console.log(data)
+    }, [data])
 
     if (isLoading) {
         return (
@@ -92,12 +101,14 @@ const BlogView = () => {
                             <span className="capitalize blog__type" key={index}>{type}</span>
                         ))}
                     </div>
-                    <h1>The Impact of DevOps on Software Development and Deployment</h1>
+                    <h1>{data && data.title}</h1>
                     <div className="post-details">
-                        <div className="avatar">
-                            <img src="/Avatar.png" />
-                            <p className="author">{ data && data.author}</p>
-                        </div>
+                        {data &&
+                            <div className="avatar">
+                                <img src="/Avatar.png" />
+                                <p className="author">{data && data.author}</p>
+                            </div>
+                        }
                         {
                             publishDate &&
                             <div className="post-status">
@@ -110,17 +121,18 @@ const BlogView = () => {
                             </div>
                         }
                     </div>
-
-                    <div className="flex flex-col items-center justify-start break-words whitespace-pre-wrap post">
-                        {/* <img src="/post2.png" /> */}
-                        {data && <img className="object-cover w-full h-full pb-0" src={data.blogImage} />}
-                        <span className="pb-4 text-text-dev-faded-base">*attribution text</span>
-                        <div className="max-w-[768px]">
-                            <Markdown>
-                                {data && data.blogContent}
-                            </Markdown>
+                    {data &&
+                        <div className="flex flex-col items-center justify-start break-words whitespace-pre-wrap post">
+                            {/* <img src="/post2.png" /> */}
+                            <img className="object-cover w-full h-full pb-0" src={data.blogImage} />
+                            <span className="pb-4 text-text-dev-faded-base">*attribution text</span>
+                            <div className="max-w-[768px]">
+                                <Markdown>
+                                    {data && data.blogContent}
+                                </Markdown>
+                            </div>
                         </div>
-                    </div>
+                    }
                 </main>
             </div>
         </div>

@@ -28,6 +28,8 @@ import {
 } from '@tanstack/react-query'
 import Signup from "./pages/Signup/Signup.jsx";
 import Profile from "./pages/admin/Profile/Profile.jsx";
+import ManageBlog from "./pages/admin/ManageBlog/ManageBlog.jsx";
+import ManageEvent from "./pages/admin/ManageEvent/ManageEvent.jsx";
 
 const router = createBrowserRouter([
   {
@@ -70,7 +72,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/signup',
-        element: <Signup/>,
+        element: <Signup />,
       },
     ],
   },
@@ -91,8 +93,16 @@ const router = createBrowserRouter([
         element: <CreateEvent />,
       },
       {
-        path: 'manage',
+        path: 'manage/profile',
         element: <Profile />,
+      },
+      {
+        path: 'manage/blog',
+        element: <ManageBlog />,
+      },
+      {
+        path: 'manage/event',
+        element: <ManageEvent />,
       }
     ]
   }

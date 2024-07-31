@@ -25,7 +25,7 @@ const Card = ({ isEventOpen, title, description, type, startDate }) => {
           style={dateStyles}
         >
           <span className="text-2xl font-bold md:text-5xl">{startDate && new Date(startDate).getDate().toString().padStart(2, '0')}</span>
-          <span className="text-lg uppercase md:text-2xl">{startDate && (new Date(startDate).getMonth()+1).toString().padStart(2, '0')}</span>
+          <span className="text-lg uppercase md:text-2xl">{startDate && (new Date(startDate).getMonth() + 1).toString().padStart(2, '0')}</span>
         </div>
         <div>
           <div className="flex flex-wrap items-center gap-2 mb-1 md:justify-between md:gap-4 md:mb-3">

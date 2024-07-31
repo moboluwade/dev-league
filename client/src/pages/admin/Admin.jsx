@@ -38,12 +38,12 @@ const Admin = () => {
         <div className='relative flex flex-col w-full h-screen overflow-y-scroll md:flex-row'>
           <Navbar setNavActive={setNavActive} navActive={navActive} />
           <button
-            className={`${navActive ? 'hidden' : 'relative top-4 left-4 md:pb-12'
+            className={`${navActive ? 'hidden' : 'relative h-full z-40 bg-text-dev-light-orange top-4 left-4 '
               } md:hidden`}
             onClick={() => setNavActive(!navActive)}
           >
             <img
-              className="p-2 bg-[#FD4F13] rounded-full w-fit h-fit "
+              className="p-2 bg-[#FD4F13] fixed rounded-full w-fit h-fit "
               src="/admin/menu.svg"
               alt="menu"
             />

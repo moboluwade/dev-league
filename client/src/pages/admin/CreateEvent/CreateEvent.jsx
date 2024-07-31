@@ -92,7 +92,7 @@ const CreateEvent = () => {
     <div className="w-full ">
       <form
         onSubmit={handleFormSubmit}
-        className="flex flex-col justify-start px-4 pt-4 pb-16 items-left md:pl-8 md:pt-20 md:pb-28">
+        className="flex flex-col justify-start px-4 pt-4 pb-16 overflow-y-scroll items-left md:pl-8 md:pt-20 md:pb-28">
         <h2 className="pb-8 text-4xl font-bold">Event Management</h2>
         <div className="flex flex-col justify-center">
           <div className="flex flex-col pt-4">
@@ -172,7 +172,7 @@ const CreateEvent = () => {
           <button
             type="submit"
             className="px-3 py-2 text-xl font-semibold tracking-wide text-white rounded-lg bg-text-dev-orange" >
-            {createEvent.isPending ? "Pending" : createEvent.isSuccess ? "Saved" : createEvent.isError ? "Failed": "Submit"}
+            {createEvent.isPending ? "Pending" : createEvent.isSuccess ? "Saved" : createEvent.isError ? "Failed" : "Submit"}
           </button>
         </div>
       </form>
