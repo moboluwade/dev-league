@@ -30,6 +30,8 @@ import Signup from "./pages/Signup/Signup.jsx";
 import Profile from "./pages/admin/Profile/Profile.jsx";
 import ManageBlog from "./pages/admin/ManageBlog/ManageBlog.jsx";
 import ManageEvent from "./pages/admin/ManageEvent/ManageEvent.jsx";
+import EditBlog from "./pages/admin/EditBlog/EditBlog.jsx";
+import EditEvent from "./pages/admin/EditEvent/EditEvent.jsx";
 
 const router = createBrowserRouter([
   {
@@ -101,8 +103,16 @@ const router = createBrowserRouter([
         element: <ManageBlog />,
       },
       {
+        path: 'manage/blog/:id',
+        element: <EditBlog />,
+      },
+      {
         path: 'manage/event',
         element: <ManageEvent />,
+      },
+      {
+        path: 'manage/event/:id',
+        element: <EditEvent />,
       }
     ]
   }

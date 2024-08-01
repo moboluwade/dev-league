@@ -50,15 +50,15 @@ const ManageBlog = () => {
                   {blogs.length > 0 && blog.title}
 
                 </span>
-                <p className="mt-2 text-sm font-normal md:text-base">
+                <p className="relative mt-2 text-sm font-normal md:text-base">
                   {blogs.length > 0 && blog.blogContent.slice(0, 100)}
                   {" ... "}
 
                   <a
-                    className="underline text-text-dev-orange hover:opacity-70"
-                    href={`/blog/` + blog._id}
+                    className="absolute right-0 flex flex-row items-center justify-center w-6 h-6 text-white rounded-lg -top-9 hover:opacity-70 bg-text-dev-orange"
+                    href={`/admin/manage/blog/` + blog._id}
                   >
-                    Read more
+                    +
                   </a>
                 </p>
 

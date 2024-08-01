@@ -12,12 +12,10 @@ import { useQuery } from "@tanstack/react-query";
 import Markdown from 'react-markdown'
 import { Loader } from "../../components/Loader";
 import { useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 const BlogView = () => {
     const [publishDate, setPublishDate] = useState(null);
-    const [searchParams] = useSearchParams();
     const location = useLocation();
     const pathParts = location.pathname.split('/'); // Split the pathname by '/'
     const blogId = pathParts.length === 3 && pathParts[1] === 'blog' ? pathParts[2] : null;
@@ -38,8 +36,7 @@ const BlogView = () => {
             return blog
         },
         enabled: !!blogId
-    }
-    )
+    })
 
     useMemo(() => {
         return data && setPublishDate(new Date(data.createdAt));
