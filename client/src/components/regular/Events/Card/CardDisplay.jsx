@@ -33,7 +33,7 @@ const CardDisplay = ({ displayType, eventsData, setEventsData }) => {
     <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
 
       {displayedCards.map((card) => {
-        const { _id, title, description, eventType, eventStatus, startDate } = card
+        const { _id, title, description, eventType, eventStatus, startDate, endDate } = card
 
         return (
           <div
@@ -42,7 +42,9 @@ const CardDisplay = ({ displayType, eventsData, setEventsData }) => {
           >
             <Link to={`/events/${_id}`}>
               <Card
-                isEventOpen={new Date(startDate) > new Date() && true}
+                isEventOpen={new Date(startDate) > new Date() && new Date(endDate) > new Date() ? true : false}
+                isOngoing={new Date(startDate) < new Date && new Date(endDate) > new Date() ? true : false}
+                isEventClosed={new Date(startDate) < new Date() && new Date(endDate) < new Date() ? true : false}
                 title={title}
                 type={eventType}
                 startDate={startDate}

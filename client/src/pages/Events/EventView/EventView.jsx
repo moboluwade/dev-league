@@ -7,7 +7,7 @@ const Events = () => {
   const [startDate, setStartDate] = useState(null)
   const [endDate, setEndDate] = useState(null)
   const [eventType, setEventType] = useState(null)
-
+  const [regLink, setRegLink] = useState(null)
   const { eventId } = useParams()
 
   const { data } = useQuery({
@@ -24,13 +24,14 @@ const Events = () => {
     data && setStartDate(new Date(data.startDate))
     data && setEndDate(new Date(data.endDate))
     data && setEventType(data.eventType)
+    data && setRegLink(data.regLink)
   }, [data])
 
   const calculateEventPassed = () => {
     let eventState
     startDate && new Date < startDate && (eventState = 'UPCOMING')
     startDate && new Date > startDate && new Date < endDate && (eventState = 'ONGOING')
-    startDate && new Date > startDate && (eventState = 'PASSED')
+    startDate && new Date > startDate && new Date > endDate && (eventState = 'PASSED')
     // console.log(new Date, "current date")
     // endDate && console.log(endDate, "future date")
     return eventState
@@ -133,13 +134,16 @@ const Events = () => {
                           </div>
                         }
                         <div className="flex flex-col items-center md:items-start">
-                          <span className="pt-2 text-lg font-bold text-center text-neutral900 md:text-center">Have you registered on Luma?</span>
-                          <a
-                            href="https:twitter.com/devleague23"
-                            className="text-sm font-semibold underline underline-offset-2 hover:underline-offset-1 hover:text-text-dev-orange text-grey700"
-                          >
-                            https:twitter.com/devleague23
-                          </a>
+                          {regLink &&
+                            <div className="flex flex-col">
+                              <span className="pt-2 text-lg font-bold text-center text-neutral900 md:text-center">Have you registered on Luma?</span>
+                              <a
+                                href={regLink}
+                                className="text-sm font-semibold underline underline-offset-2 hover:underline-offset-1 hover:text-text-dev-orange text-grey700"
+                              >
+                                {regLink}
+                              </a>
+                            </div>}
                           <span className="pt-2 text-lg font-bold text-center text-neutral900 md:text-center">Dev League on Twitter</span>
                           <a
                             href="https:twitter.com/devleague23"

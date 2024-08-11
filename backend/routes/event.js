@@ -39,7 +39,7 @@ router.get('/:id', async (req, res) => {
 // CREATE A NEW EVENT 
 router.post('/', checkAuth, async (req, res) => {
     try {
-        const { startDate, endDate, title, description, eventType, eventBanner, eventBannerName } = req.body;
+        const { startDate, endDate, title, description, eventType, regLink, eventBanner, eventBannerName } = req.body;
        
 
         // Upload image to Cloudinary
@@ -63,6 +63,7 @@ router.post('/', checkAuth, async (req, res) => {
             title: title,
             description: description,
             eventType: eventType,
+            regLink: regLink,
             imageUrl: cloudinaryResponse
         })
         
