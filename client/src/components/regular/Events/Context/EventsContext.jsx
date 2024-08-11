@@ -28,7 +28,7 @@ const EventsContext = (props) => {
 
   useEffect(() => {
     data && setEventsData(data)
-    console.log(data)
+    // console.log(data)
   }, [data])
 
   return (

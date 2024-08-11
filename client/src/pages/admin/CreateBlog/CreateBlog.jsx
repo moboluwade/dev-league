@@ -48,7 +48,7 @@ const CreateBlog = () => {
         reader.readAsDataURL(file)
         reader.onload = () => {
             setFileAdded(reader.result)
-            console.log(reader.result)
+            // console.log(reader.result)
         }
         setFileAddedName(file.name)
     }

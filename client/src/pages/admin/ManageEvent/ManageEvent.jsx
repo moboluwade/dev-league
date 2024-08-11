@@ -27,7 +27,7 @@ const ManageEvent = () => {
 
   useEffect(() => {
     data && setEventsData(data)
-    console.log(data)
+    // console.log(data)
   }, [data])
 
   const handleCardClick = (cardId) => {

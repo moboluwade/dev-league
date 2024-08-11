@@ -31,8 +31,8 @@ const Events = () => {
     startDate && new Date < startDate && (eventState = 'UPCOMING')
     startDate && new Date > startDate && new Date < endDate && (eventState = 'ONGOING')
     startDate && new Date > startDate && (eventState = 'PASSED')
-    console.log(new Date, "current date")
-    endDate && console.log(endDate, "future date")
+    // console.log(new Date, "current date")
+    // endDate && console.log(endDate, "future date")
     return eventState
   }
   const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -44,7 +44,7 @@ const Events = () => {
     const time = startDate ? startDate.getDate() : null;
     const month = startDate ? monthsOfTheYear[startDate.getMonth()] : null;
     const year = startDate ? startDate.getFullYear() : null;
-    console.log(dayIndex)
+    // console.log(dayIndex)
     // const month = monthsOfTheYear[startDate.getMonth()]
 
     return text + " " + time + " " + month + " " + year

@@ -44,14 +44,14 @@ const CreateEvent = () => {
     setFinalStartDate(date)
   }, [startDateYear, startDateMonth, startDate, startHour, startMinute])
 
-  useEffect(() => {
-    console.log(finalEndDate)
-  }, [finalEndDate])
+  // useEffect(() => {
+  //   console.log(finalEndDate)
+  // }, [finalEndDate])
 
   useEffect(() => {
     const date = new Date(endDateYear, endDateMonth - 1, endDate, endHour, endMinute)
     setFinalEndDate(date)
-    console.log(date, "i am date")
+    // console.log(date, "i am date")
   }, [endDateYear, endDateMonth, endDate, endHour, endMinute])
 
   const handleLocationChange = (event) => {
