@@ -7,6 +7,7 @@ const eventSchema = new Schema({
     title: { type: String },
     description: { type: String },
     eventType: { type: String, enum: ['virtual', 'onsite'] },
+    regLink: {type: String},
     imageUrl: { type: String },
 }, { timestamps: true })
 

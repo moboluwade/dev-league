@@ -30,16 +30,24 @@ const Events = () => {
     let eventState
     startDate && new Date < startDate && (eventState = 'UPCOMING')
     startDate && new Date > startDate && new Date < endDate && (eventState = 'ONGOING')
-    startDate && new Date < startDate && (eventState = 'PASSED')
+    startDate && new Date > startDate && (eventState = 'PASSED')
+    console.log(new Date, "current date")
+    endDate && console.log(endDate, "future date")
     return eventState
   }
   const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const monthsOfTheYear = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
 
   const calculateDate = () => {
-    let dayIndex
-    startDate && (dayIndex = startDate.getDay())
-    const text = daysOfWeek[dayIndex]
-    return text
+    const dayIndex = startDate ? startDate.getDay() : null;
+    let text = daysOfWeek[dayIndex]
+    const time = startDate ? startDate.getDate() : null;
+    const month = startDate ? monthsOfTheYear[startDate.getMonth()] : null;
+    const year = startDate ? startDate.getFullYear() : null;
+    console.log(dayIndex)
+    // const month = monthsOfTheYear[startDate.getMonth()]
+
+    return text + " " + time + " " + month + " " + year
   }
 
   const calculateTime = () => {
@@ -66,16 +74,18 @@ const Events = () => {
             >
               <div className="flex flex-col items-center justify-center gap-4 md:gap-6">
                 <div className="px-2 py-1 bg-white border rounded-md border-1 border-gray600">
-                  <span className="text-sm uppercase text-neutral600">{eventType}</span>
+                  <span className="text-sm uppercase text-neutral600">{eventType ? eventType : "VIRTUAL"}</span>
                 </div>
                 <h1 className="text-2xl font-bold md:text-4xl text-neutral900">
                   {data && data.title}
                 </h1>
-                <div className="flex items-center justify-center gap-4 px-2 py-1 bg-white border rounded-md border-1 border-gray600">
-                  <span className="text-sm text-neutral600">{calculateEventPassed()}</span>
-                  <span className="text-sm text-neutral600">{calculateDate()}</span>
-                  <span className="text-sm text-neutral600">{calculateTime()}</span>
-                </div>
+                {startDate &&
+                  <div className="flex items-center justify-center gap-4 px-2 py-1 bg-white border rounded-md border-1 border-gray600">
+                    <span className="text-sm text-neutral600">{calculateEventPassed()}</span>
+                    <span className="text-sm text-neutral600">{calculateDate()}</span>
+                    <span className="text-sm text-neutral600">{calculateTime()}</span>
+                  </div>
+                }
               </div>
             </div>
             <div className="flex flex-col flex-wrap items-center justify-center gap-4 mx-auto mt-6 md:mt-24 max-w-screen-2xl">
@@ -92,6 +102,8 @@ const Events = () => {
                 {/* <h2 className="mb-2 text-3xl font-bold md:mb-4">Session Details</h2> */}
                 <div className="flex flex-col items-center justify-center gap-4 px-2 py-4 mx-4 mb-10 border-2 md:px-6 md:mx-auto md:py-8 bg-lightPink rounded-3xl border-primary500">
                   <div className="flex flex-wrap items-center justify-center gap-8">
+                    {/* UI for later, when admins and speakers are configured */}
+
                     {/* <div className="flex flex-col gap-8 md:flex-row">
                 <div>
                   <img src="/person1.png" alt="" />
@@ -114,18 +126,28 @@ const Events = () => {
                       <h2 className="text-2xl font-bold text-center text-neutral900 md:text-center">
                         Meeting Details
                       </h2>
-                      <div className="flex flex-col items-center justify-center gap-2 h-fit">
+                      <div className="flex flex-col items-center justify-center gap-2 md:grid-cols-2 md:grid h-fit">
                         {data &&
-                          <div className='flex flex-col justify-end w-64 overflow-hidden max-h-64 h-fit'> 
-                            <img className='w-64' src={data.imageUrl} alt="" width={200} height={200} />
+                          <div className='flex flex-col items-center justify-end w-64 h-full pt-2 overflow-hidden max-h-64'>
+                            <img className='w-64 rounded-lg' src={data.imageUrl} alt="" width={200} height={200} />
                           </div>
                         }
-                        <a
-                          href="https:twitter.com/devleague23"
-                          className="pt-4 text-sm font-semibold underline underline-offset-2 hover:underline-offset-1 hover:text-text-dev-orange text-grey700"
-                        >
-                          https:twitter.com/devleague23
-                        </a>
+                        <div className="flex flex-col items-center md:items-start">
+                          <span className="pt-2 text-lg font-bold text-center text-neutral900 md:text-center">Have you registered on Luma?</span>
+                          <a
+                            href="https:twitter.com/devleague23"
+                            className="text-sm font-semibold underline underline-offset-2 hover:underline-offset-1 hover:text-text-dev-orange text-grey700"
+                          >
+                            https:twitter.com/devleague23
+                          </a>
+                          <span className="pt-2 text-lg font-bold text-center text-neutral900 md:text-center">Dev League on Twitter</span>
+                          <a
+                            href="https:twitter.com/devleague23"
+                            className="text-sm font-semibold underline underline-offset-2 hover:underline-offset-1 hover:text-text-dev-orange text-grey700"
+                          >
+                            https:twitter.com/devleague23
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>

@@ -5,7 +5,7 @@ const TimeEnd = ({ setEndMinute, setEndHour }) => {
 
     //manages individual inputs for hour and minute input tags
     const [meridian, setMeridaian] = useState('PM')
-
+    const [showEndHour, setShowEndHour] = useState(0)
     // manages state for the Clock widget 
     const [selectTime, setSelectTime] = useState('00:00')
     const [hour, minute] = selectTime.split(":")
@@ -30,12 +30,12 @@ const TimeEnd = ({ setEndMinute, setEndHour }) => {
 
 
     useEffect(() => {
+
         const handleHourConversion = (value) => {
-            value < 13 && setEndHour(value)
+            value < 13 && setShowEndHour(value)
             const x = value - 12
             const edit = String(x).padStart(2, '0');
-
-            value > 12 && setEndHour(edit)
+            value > 12 && setShowEndHour(edit)
         }
 
         //pm and hour does not correlate
@@ -50,6 +50,10 @@ const TimeEnd = ({ setEndMinute, setEndHour }) => {
         setEndMinute(minute)
     }, [minute, setEndMinute])
 
+    useEffect(() => {
+        setEndHour(hour)
+    }, [setEndHour, hour])
+
     return (
         <div className="flex flex-col pt-4">
             <label className="pb-1 font-bold" htmlFor="event-title">Event End Time</label>
@@ -61,7 +65,7 @@ const TimeEnd = ({ setEndMinute, setEndHour }) => {
                         maxLength={2}
                         max={23}
                         // onChange={handleHourChange}
-                        value={hour}
+                        value={showEndHour}
                         type="text"
                         placeholder="18"
                         className="p-0 m-0 border-none outline-none w-fit max-w-[1.3rem] h-fit bg-inherit placeholder:text-black"

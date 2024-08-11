@@ -4,6 +4,7 @@ import { MarkTimer } from './svg'
 const TimeStart = ({ setStartMinute, setStartHour}) => {
     //manages individual inputs for hour and minute input tags
     const [meridian, setMeridaian] = useState('PM')
+    const [showStartHour, setShowStartHour] = useState(0)
 
 
     // manages state for the Clock widget 
@@ -22,11 +23,11 @@ const TimeStart = ({ setStartMinute, setStartHour}) => {
 
     useEffect(() => {
         const handleHourConversion = (value) => {
-            value < 13 && setStartHour(value)
+            value < 13 && setShowStartHour(value)
             const x = value - 12
             const edit = String(x).padStart(2, '0');
 
-            value > 12 && setStartHour(edit)
+            value > 12 && setShowStartHour(edit)
         }
 
         //pm and hour does not correlate
@@ -41,6 +42,10 @@ const TimeStart = ({ setStartMinute, setStartHour}) => {
         setStartMinute(minute)      
     }, [minute, setStartMinute])
     
+    useEffect(() => {
+        setStartHour(hour)
+    }, [setStartHour, hour])
+
     return (
         <div className="flex flex-col pt-4">
             <label className="pb-1 font-bold" htmlFor="event-title">Event Start Time</label>
@@ -50,7 +55,7 @@ const TimeStart = ({ setStartMinute, setStartHour}) => {
                         disabled
                         maxLength={2}
                         max={23}
-                        value={hour}
+                        value={showStartHour}
                         type="text"
                         placeholder="18"
                         className="p-0 m-0 border-none outline-none w-fit max-w-[1.3rem] h-fit bg-inherit placeholder:text-black"

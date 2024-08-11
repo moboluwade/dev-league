@@ -2,8 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import NoCards from '../../../components/regular/Events/Context/NoCards'
-import { Link } from 'react-router-dom'
-import Card from '../../../components/regular/Events/Card/EventCard'
+import Card from '../../../pages/admin/ManageEvent/EventCard.jsx'
 
 const ManageEvent = () => {
 
@@ -63,7 +62,6 @@ const ManageEvent = () => {
                   key={_id}
                   style={{ cursor: eventStatus ? 'pointer' : 'not-allowed' }}
                 >
-                  <Link to={`/events/${_id}`}>
                     <Card
                       isEventOpen={new Date(startDate) > new Date() && true}
                       title={title}
@@ -71,8 +69,8 @@ const ManageEvent = () => {
                       startDate={startDate}
                       description={description}
                       onClick={handleCardClick}
+                      id={_id}
                     />
-                  </Link>
                 </div>
               )
             })

@@ -6,9 +6,9 @@ import TimeEnd from "../TimeEnd";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 
-import { generateUploadButton } from "@uploadthing/react";
+// import { generateUploadButton } from "@uploadthing/react";
 
-export const UploadButton = generateUploadButton();
+// export const UploadButton = generateUploadButton();
 
 const CreateEvent = () => {
   // state management
@@ -29,6 +29,7 @@ const CreateEvent = () => {
   const [endDateMonth, setEndDateMonth] = useState('')
   const [endDateYear, setEndDateYear] = useState('')
 
+  const [regLink, setRegLink] = useState("")
   // states for managing endHour
   const [endHour, setEndHour] = useState('')
   const [endMinute, setEndMinute] = useState('')
@@ -39,13 +40,18 @@ const CreateEvent = () => {
 
 
   useEffect(() => {
-    const date = new Date(startDateYear, startDateMonth, startDate, startHour, startMinute)
+    const date = new Date(startDateYear, startDateMonth - 1, startDate, startHour, startMinute)
     setFinalStartDate(date)
   }, [startDateYear, startDateMonth, startDate, startHour, startMinute])
 
   useEffect(() => {
-    const date = new Date(endDateYear, endDateMonth, endDate, endHour, endMinute)
+    console.log(finalEndDate)
+  }, [finalEndDate])
+
+  useEffect(() => {
+    const date = new Date(endDateYear, endDateMonth - 1, endDate, endHour, endMinute)
     setFinalEndDate(date)
+    console.log(date, "i am date")
   }, [endDateYear, endDateMonth, endDate, endHour, endMinute])
 
   const handleLocationChange = (event) => {
@@ -73,6 +79,7 @@ const CreateEvent = () => {
       title: eventTitle,
       description: eventTagline,
       eventType: selectedLocation,
+      regLink: regLink,
       eventBanner: bannerImage,
       eventBannerName: bannerImageName
     })
@@ -103,6 +110,7 @@ const CreateEvent = () => {
               required
               className="border-[1.5px] border-[#292422] placeholder:text-[#9F918B] pl-4 w-full max-w-[36rem] h-10 outline-none rounded-md" placeholder="Event Title" type="text" name="event-title" id="event-title" />
           </div>
+
           <div className="flex flex-col pt-4">
             <label className="pb-1 font-bold" htmlFor="event-tagline">Event Tagline</label>
             <input
@@ -137,6 +145,19 @@ const CreateEvent = () => {
                 </span>
               </label>
             </div>
+
+            <div className="flex flex-col pt-4">
+              <label className="pb-1 font-bold" htmlFor="event-title">Luma Reg Link</label>
+              <div className="relative">
+                <input
+                  onChange={(e) => { setRegLink(e.target.value) }}
+                  value={regLink}
+                  className="border-[1.5px] border-[#292422] placeholder:text-[#9F918B] placeholder:font-bold font-bold pl-4 w-full max-w-[36rem] h-10 outline-none rounded-md" placeholder="https://lu.ma/..."  type="text" name="event-title" id="event-title" />
+                {/* <span className="absolute top-0 left-0 p-2 pl-4 font-bold text-[#9F918B]">https://lu.ma/...</span> */}
+
+              </div>
+            </div>
+
             <div className="pb-8"></div>
 
             <DateStart setStartDate={setStartDate} startDate={startDate} setStartDateMonth={setStartDateMonth} startDateMonth={startDateMonth} setStartDateYear={setStartDateYear} startDateYear={startDateYear} />

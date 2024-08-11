@@ -81,7 +81,7 @@ const DateStart = ({ setStartDate, startDate, setStartDateMonth, startDateMonth,
                 <label onClick={handleCalendarStartClick} className="flex flex-col items-center justify-center w-6 px-6 border-l border-black" htmlFor="calendar"><MarkCalendar /></label>
                 <input
                     ref={calStartRef}
-                    onChange={(e) => { setSelectDate(e.target.value) }}
+                    onChange={(e) => { setSelectDate(e.target.value)}}
                     value={selectDate}
                     className="invisible w-0 h-0"
                     type="date" name="" id="calendar" />
