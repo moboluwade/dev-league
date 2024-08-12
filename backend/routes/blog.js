@@ -14,14 +14,14 @@ router.get('/', async (req, res) => {
     }
 })
 // Create a new Blog
-router.post('/',  imageUploadMIddleware, async (req, res) => {
+router.post('/', imageUploadMIddleware, async (req, res) => {
     try {
         const { title, blogContent, blogType } = req.body;
         const blogImage = req.blogimageURL; // Get the image URL from the middleware
         const author = 'superAdmin'
         const newBlog = new Blog({ title, blogContent, author, blogType, blogImage });
         const savedBlog = await newBlog.save();
-        
+
         res.json({ data: [{ message: 'Blog created successfully' }, { Blog: savedBlog }] });
     } catch (error) {
         console.log(error);
@@ -70,6 +70,33 @@ router.get('/blogtype/:blogtype', async (req, res) => {
         return res.status(500).json({ message: 'Internal server error', error: error });
     }
 })
+
+
+// UPDATE SPECIFIC BLOG BY ID
+router.patch('/update/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const updates = req.body;
+        const options = { new: true }
+        const updatedBlog = await Blog.findOneAndUpdate({ _id: id }, updates, options);
+        res.status(200).json({ message: `Blog with id: ${id} successfully updated`, blog: updatedBlog });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+})
+
+
+// DELETE SPECIFIC SELECTED BLOG
+router.delete('/delete/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const blog = await Blog.delete(id);
+        res.status(200).json({ message: `Blog with id: ${id} successfully deleted` });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+})
+
 
 
 module.exports = router;

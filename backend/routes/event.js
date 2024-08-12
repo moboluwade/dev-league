@@ -40,7 +40,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', checkAuth, async (req, res) => {
     try {
         const { startDate, endDate, title, description, eventType, regLink, eventBanner, eventBannerName } = req.body;
-       
+
 
         // Upload image to Cloudinary
         const cloudinaryUploadPromise = new Promise((resolve, reject) => {
@@ -53,7 +53,7 @@ router.post('/', checkAuth, async (req, res) => {
             });
         });
 
-        
+
         // Wait for Cloudinary upload response
         const cloudinaryResponse = await cloudinaryUploadPromise;
 
@@ -66,7 +66,7 @@ router.post('/', checkAuth, async (req, res) => {
             regLink: regLink,
             imageUrl: cloudinaryResponse
         })
-        
+
         const savedEvent = await Event.create(event);
         res.status(201).json({ message: 'Events created successfully', Event: savedEvent });
     } catch (error) {
@@ -75,25 +75,12 @@ router.post('/', checkAuth, async (req, res) => {
 
 })
 
-// update a specific event
-router.patch('/:id', checkAuth, async (req, res) => {
-    try {
-        const id = req.params.id;
-        const update = req.body;
-        const options = { new: true }
-        const result = await Events.findByIdAndUpdate(id, update, options);
-        res.status(200).json({ message: 'Event updated successfully', event: result })
-    } catch (error) {
-        res.status(400).json({ error: error.message })
-    }
-})
-
 // GET EVENTS BY EVENT TYPE (})
 
 router.get('/:eventType', async (req, res) => {
     try {
         const eventType = req.params.eventType;
-        const Event = await Events.find({ eventType: eventType });
+        const event = await Event.find({ eventType: eventType });
         res.status(200).json({ Events: Event })
     } catch (error) {
         res.status(500).json({ error: error.message })
@@ -104,7 +91,7 @@ router.get('/:eventType', async (req, res) => {
 router.get('/:eventStatus', async (req, res) => {
     try {
         const eventStatus = req.params.eventStatus;
-        const Event = await Events.find({ eventStatus: eventStatus });
+        const event = await Event.find({ eventStatus: eventStatus });
         res.status(200).json({ Events: Event })
     } catch (error) {
         res.status(500).json({ error: error.message })
@@ -112,11 +99,42 @@ router.get('/:eventStatus', async (req, res) => {
 })
 
 
-// router.delete('/:id', (req, res) => {
-//     try{
-//         const Event = await Events.delete(id)
-//         res.status(200).json({message: `Event with id: ${id} successfully deleted`})
+// UPDATE SPECIFIC EVENTS BY ID
+router.patch('/update/:id', checkAuth, async (req, res) => {
+    try {
+        const id = req.params.id;
+        const updates = req.body;
+        const options = { new: true }
+        const updatedEvent = await Event.findOneAndUpdate({ _id: id }, updates, options);
+        res.status(200).json({ message: `Event with id: ${id} successfully updated`, event: updatedEvent });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+})
+
+// // update a specific event
+// router.patch('/:id', checkAuth, async (req, res) => {
+//     try {
+//         const id = req.params.id;
+//         const update = req.body;
+//         const options = { new: true }
+//         const result = await Event.findByIdAndUpdate(id, update, options);
+//         res.status(200).json({ message: 'Event updated successfully', event: result })
+//     } catch (error) {
+//         res.status(400).json({ error: error.message })
 //     }
 // })
+
+
+// DELETE SPECIFIC SELECTED EVENT
+router.delete('/delete/:id', checkAuth, async (req, res) => {
+    try {
+        const id = req.params.id;
+        const event = await Event.delete(id)
+        res.status(200).json({ message: `Event with id: ${id} successfully deleted` })
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+})
 
 module.exports = router
