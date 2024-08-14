@@ -1,34 +1,29 @@
-import { useRouteError } from "react-router-dom";
-import errorimg from "../public/404Text.png";
-import liquidobjects from "../public/LiquidsObject.png";
-import line from "../public/Line.png";
+import { useRouteError, useNavigate } from "react-router-dom";
+import errorimg from "../public/404img.png";
 
 const ErrorPage = () => {
   const error = useRouteError();
   console.error(error);
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/");
+  };
+
   return (
-    <div className="flex justify-center items-center bg-white h-screen">
-      <div className="rounded-full flex flex-col items-center justify-center text-center">
-        <div className="relative">
-          <img
-            src={errorimg}
-            alt="error img"
-            className="md:-mb-8 z-2 mb-4 h-[332px] w-[594px]"
-          />
-          <img
-            src={liquidobjects}
-            alt="liquid object"
-            className="absolute top-24 right-28 z-1"
-          />
-          <img src={line} alt="line" className="absolute top-4 right-2" />
-        </div>
-        <h1 className="font-Inter text-[#223051] font-extrabold text-6xl">
-          Oops, This Page Could Not Be Found.
+    <div className="flex flex-col text-center items-center bg-white h-screen">
+      <img src={errorimg} alt="error img" className="" />
+      <div className="md:my-20 my-8 font-Rubik">
+        <h1 className="text-[#565872] text-xl uppercase font-semibold">
+          Oops! page not found!
         </h1>
-        <p className="font-extrabold text-[#7C869C] py-3">
-          The page you are looking for might have been removed, had its name
-          changed, or is temporarily unavailable.
-        </p>
+        <button
+          className="bg-[#FB8133] uppercase px-12 py-3 text-sm text-white my-8 md:my-12 rounded-3xl"
+          onClick={handleClick}
+        >
+          back to home
+        </button>
       </div>
     </div>
   );
