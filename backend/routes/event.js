@@ -25,6 +25,19 @@ router.get('/', async (req, res) => {
     }
 })
 
+// get last 5 EVENTS
+router.get('/last-five', async (req, res) => {
+    try {
+        const events = await Event.find()
+            .sort({ id: -1 })
+            .limit(5);
+        res.status(200).json({ Events: events })
+
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+    }
+})
+
 // get specific event
 router.get('/:id', async (req, res) => {
     try {
@@ -35,6 +48,7 @@ router.get('/:id', async (req, res) => {
         res.status(500).json({ error: error.message })
     }
 })
+
 
 // CREATE A NEW EVENT 
 router.post('/', checkAuth, async (req, res) => {
