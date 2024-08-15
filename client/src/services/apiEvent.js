@@ -6,10 +6,8 @@ export const getEvent = async ({ id }) => {
     redirect: "follow",
   };
 
-  console.log(id);
-
   const response = await fetch(
-    `${import.meta.env.VITE_BACKEND_URL}/api/event/${id}`,
+    `${import.meta.env.VITE_BACKEND_URL}/api/events/${id}`,
     requestOptions,
   );
 
@@ -19,46 +17,38 @@ export const getEvent = async ({ id }) => {
 
   const data = await response.json();
 
-  if (data && data.Events) {
-    console.log(data);
-    return data.Events;
+  if (data && data.Event) {
+    return data.Event;
   } else {
     throw new Error("Invalid data structure");
   }
 };
 
-export const createEvent = async (newEvent) => {
-  const res = axios.post(
-    `${import.meta.env.VITE_BACKEND_URL}/api/events`,
+export const editEvent = async (newEvent, id) => {
+  console.log(newEvent);
+
+  const response = await axios.patch(
+    `${import.meta.env.VITE_BACKEND_URL}/api/events/update/${id}`,
     newEvent,
     {
       withCredentials: "include",
     },
   );
-  return res;
-};
 
-export const editEvent = async (newEvent, id) => {
-  const res = await axios.post(
-    `${import.meta.env.VITE_BACKEND_URL}/api/events`,
-    { newEvent, id },
-    {
-      withCredentials: "include",
-    },
-  );
-  return res;
+  const data = await response.json();
+  console.log(data);
 };
 
 export const deleteEvent = async (id) => {
-  const requestOptions = {
-    method: "DELETE",
-    redirect: "follow",
-  };
+  console.log(id);
 
   try {
-    const response = await fetch(
-      `${import.meta.env.VITE_BACKEND_URL}/api/events/${id}`,
-      requestOptions,
+    const response = await axios.delete(
+      `${import.meta.env.VITE_BACKEND_URL}/api/events/delete/${id}`,
+      id,
+      {
+        withCredentials: "include",
+      },
     );
 
     if (!response.ok) {

@@ -3,7 +3,7 @@ import { getEvent } from "../../../services/apiEvent";
 
 export const useEvent = ({ id }) => {
   const {
-    isLoading,
+    isPending: isLoading,
     data: event,
     error,
   } = useQuery({

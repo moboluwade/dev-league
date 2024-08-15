@@ -7,6 +7,9 @@ import TimeEnd from "../TimeEnd";
 
 import { generateUploadButton } from "@uploadthing/react";
 import { useEditEvent } from "./useEditEvent";
+import { useDeleteEvent } from "./useDeleteEvent";
+import Modal from "../../../components/ui/Modal";
+import ConfirmDelete from "../../../components/ui/ConfirmDelete";
 
 export const UploadButton = generateUploadButton();
 
@@ -66,19 +69,21 @@ const EventForm = ({ eventToEdit }) => {
     };
   };
 
-  const { id: editId, ...editValues } = eventToEdit || {};
+  // Check if we are editing or creating a new event through Id
+  const { id: eventId, ...editValues } = eventToEdit || {};
 
   // This will return true if we are editing only
-  const isEditSession = Boolean(editId);
+  const isEditSession = Boolean(eventId);
 
   // React-hook-form to set the default value of input field in edit session
-  const { register, handleSubmit, reset, setValue } = useForm({
+  const { register, handleSubmit, setValue } = useForm({
     defaultValues: isEditSession ? editValues : "",
   });
 
   // The custom hook for creating and editing event
 
-  const { isEditing, editEvent } = useEditEvent(reset);
+  const { isEditing, editEvent } = useEditEvent();
+  const { isDeleting, deleteEvent } = useDeleteEvent();
 
   useEffect(() => {
     // Set the default value for eventType radio based on editValues.eventType
@@ -88,19 +93,19 @@ const EventForm = ({ eventToEdit }) => {
     }
   }, [editValues.eventType, setValue]);
 
-  const handleFormSubmit = () => {
+  const handleFormSubmit = (data) => {
     if (isEditSession) {
       editEvent({
         newEventDataData: {
           startDate: finalStartDate,
           endDate: finalEndDate,
-          title: editValues.eventTitle,
-          description: editValues.eventTagline,
-          eventType: selectedLocation,
+          title: data.title,
+          description: data.description,
+          eventType: data.eventType,
           eventBanner: bannerImage,
           eventBannerName: bannerImageName,
         },
-        editId,
+        eventId,
       });
     }
   };
@@ -122,7 +127,6 @@ const EventForm = ({ eventToEdit }) => {
             type="text"
             name="title"
             id="title"
-            defaultValue={editValues.title}
           />
         </div>
         <div className="flex flex-col pt-4">
@@ -137,7 +141,6 @@ const EventForm = ({ eventToEdit }) => {
             placeholder="Break in to Tech in 2024 seamlessly..."
             name="description"
             id="description"
-            defaultValue={editValues.description}
           />
         </div>
         <div className="flex flex-col pt-4">
@@ -243,14 +246,33 @@ const EventForm = ({ eventToEdit }) => {
         </div>
       </div>
 
-      <div className="flex flex-row justify-end w-full pt-4">
-        <button
-          type="submit"
-          className="px-6 py-2 text-xl font-semibold tracking-wide text-white rounded-lg bg-text-dev-orange"
-        >
-          {isEditSession ? "Edit" : "Submit"}
-        </button>
-      </div>
+      <Modal>
+        <div className="flex flex-row items-center gap-4 justify-end w-full pt-4 mb-20">
+          <Modal.Open opens={eventId}>
+            <button
+              type="button"
+              className="px-6 py-2 text-xl font-semibold tracking-wide text-white rounded-lg bg-red-700 "
+            >
+              {isDeleting ? "Deleting..." : "Delete"}
+            </button>
+          </Modal.Open>
+          <button
+            disabled={isEditing}
+            type="submit"
+            className="px-6 py-2 text-xl font-semibold tracking-wide text-white rounded-lg bg-text-dev-orange"
+          >
+            {isEditing ? "Loading" : "Edit"}
+          </button>
+
+          <Modal.Window name={eventId}>
+            <ConfirmDelete
+              disabled={isDeleting}
+              resourceName="event"
+              onConfirm={(eventId) => deleteEvent(eventId)}
+            />
+          </Modal.Window>
+        </div>
+      </Modal>
     </form>
   );
 };

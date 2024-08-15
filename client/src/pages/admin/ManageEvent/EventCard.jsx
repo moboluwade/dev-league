@@ -1,9 +1,15 @@
 import PropTypes from "prop-types"; // Import PropTypes
 import { RxDotFilled } from "react-icons/rx";
 import { IoArrowRedo } from "react-icons/io5";
+import { RiDeleteBin6Line } from "react-icons/ri";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { useDeleteEvent } from "../EditEvent/useDeleteEvent";
+import Modal from "../../../components/ui/Modal";
+import ConfirmDelete from "../../../components/ui/ConfirmDelete";
 
 const Card = ({ id, isEventOpen, title, description, type, startDate }) => {
+  const { isDeleting, deleteEvent } = useDeleteEvent();
   const buttonStyles = {
     backgroundColor: isEventOpen ? "black" : "#9F918B",
     cursor: isEventOpen ? "pointer" : "not-allowed",
@@ -48,12 +54,12 @@ const Card = ({ id, isEventOpen, title, description, type, startDate }) => {
           <div className="mb-2 md:mb-8">
             <p className="w-full max-w-full text-sm whitespace-normal text-neutral600 md:text-lg">
               {description.slice(0, 100)}...{" "}
-              <a
+              <Link
                 className="flex flex-row items-center justify-center w-6 h-6 text-white rounded-lg hover:opacity-70 bg-text-dev-orange"
-                href={`/admin/manage/event/` + id}
+                to={`/admin/manage/event/` + id}
               >
                 +
-              </a>
+              </Link>
             </p>
           </div>
           <div className="flex items-center justify-between gap-2">
@@ -74,9 +80,23 @@ const Card = ({ id, isEventOpen, title, description, type, startDate }) => {
                 </div>
               )}
             </div>
-            <div className="text-xl text-neutral600">
-              <IoArrowRedo />
-            </div>
+            <Modal>
+              <div className="text-xl gap-2 text-neutral600 flex">
+                <Modal.Open opens={id}>
+                  <Link>
+                    <RiDeleteBin6Line size={20} />
+                  </Link>
+                </Modal.Open>
+                <Modal.Window name={id}>
+                  <ConfirmDelete
+                    disabled={isDeleting}
+                    resourceName="event"
+                    onConfirm={(id) => deleteEvent(id)}
+                  />
+                </Modal.Window>
+                <IoArrowRedo />
+              </div>
+            </Modal>
           </div>
         </div>
       </motion.div>

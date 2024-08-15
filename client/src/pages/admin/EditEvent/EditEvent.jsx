@@ -8,15 +8,30 @@ const EditEvent = () => {
   const { isLoading, event } = useEvent({ id });
 
   if (isLoading) return;
-  const { isEventOpen, title, description, type, startDate } = event;
-
-  console.log(event);
+  const {
+    isEventOpen,
+    title,
+    description,
+    type,
+    startDate,
+    eventType,
+    endDate,
+  } = event;
 
   return (
-    <div className=" py-2  flex flex-col justify-start px-4 items-left md:p-12 ">
+    <div className=" py-2  flex flex-col justify-start px-4 items-left md:p-12 w-full pb-10">
       <h2 className="pb-8 text-4xl font-bold">Event Management</h2>
       <EventForm
-        eventToEdit={{ isEventOpen, title, description, type, startDate }}
+        eventToEdit={{
+          id,
+          isEventOpen,
+          title,
+          description,
+          type,
+          startDate,
+          endDate,
+          eventType,
+        }}
       />
     </div>
   );
