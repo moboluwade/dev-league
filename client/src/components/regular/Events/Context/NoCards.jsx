@@ -1,12 +1,12 @@
-import { FaRegFile } from "react-icons/fa";
+import eventBusyIcon from "./event-busy-svgrepo-com.svg";
 const NoCards = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-full text-center py-2">
-      <FaRegFile className="text-6xl mb-2" />
-      <p className="text-xl md:text-2xl font-semibold text-gray-800 mb-2">
-        No Articles Yet
+    <div className="flex flex-col items-center justify-center h-full py-2 text-center">
+      <img className="w-32 mb-2 text-6xl" src={eventBusyIcon} alt="no events" />
+      <p className="mb-2 text-xl font-semibold text-gray-800 md:text-2xl">
+        No Events Yet
       </p>
-      <p className="text-lg md:text-xl text-gray-600">coming soon...</p>
+      <p className="text-lg text-gray-600 md:text-xl">coming soon...</p>
     </div>
   );
 };
