@@ -1,4 +1,4 @@
-import emptyfolder from "../../../../../public/empty-folder-svgrepo-com.svg";
+import emptyfolder from "/empty-folder-svgrepo-com.svg";
 const NoBlog = () => {
   return (
     <div className="flex flex-col items-center justify-center h-full text-center bg-gray-50 p-4">

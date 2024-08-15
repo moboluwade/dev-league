@@ -13,6 +13,19 @@ router.get('/', async (req, res) => {
         console.log(err);
     }
 })
+
+// GET the last 5 ARTICLES
+router.get('/last-five', async (req, res) => {
+    try {
+        const blogs = await Blog.find()
+            .sort({ id: -1 })
+            .limit(5);
+        res.json({ blogs: blogs })
+    } catch (err) {
+        console.log(err);
+    }
+})
+
 // Create a new Blog
 router.post('/', imageUploadMIddleware, async (req, res) => {
     try {
