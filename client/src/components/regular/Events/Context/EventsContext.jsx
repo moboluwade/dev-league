@@ -1,36 +1,38 @@
-import CardDisplay from '../Card/CardDisplay'
-import { useEffect, useState } from 'react'
+import CardDisplay from "../Card/CardDisplay";
+import { useEffect, useState } from "react";
 // import { customEventsData } from '../../../../utils/data'
-import { useQuery } from "@tanstack/react-query"
-import axios from "axios"
-import NoCards from './NoCards'
-import Loader from "../../../../components/Loader/Loader"
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import NoCards from "./NoCards";
+import Loader from "../../../../components/Loader/Loader";
 
 const EventsContext = (props) => {
-
-  const [eventsData, setEventsData] = useState([])
+  const [eventsData, setEventsData] = useState([]);
   // const [cardsData, setCardsData] = useState(eventsData)
 
   // fetch events from the fetch events endpoint
   const { data, isLoading, isFetched } = useQuery({
-    queryKey: ['fetch events'],
+    queryKey: ["fetch events"],
     queryFn: async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/events`)
-        const events = await response.data
-        const eventRes = events.Events
-        return eventRes
+        const response = await axios.get(
+          `${import.meta.env.VITE_BACKEND_URL}/api/events/last-five`
+        );
+        const events = await response.data;
+        const eventRes = events.Events;
+        console.log(eventRes);
+        return eventRes;
       } catch (error) {
-        console.error('Error fetching events:', error);
-        throw new Error('Failed to fetch events. Please try again.');
+        console.error("Error fetching events:", error);
+        throw new Error("Failed to fetch events. Please try again.");
       }
-    }
-  })
+    },
+  });
 
   useEffect(() => {
-    data && setEventsData(data)
+    data && setEventsData(data);
     // console.log(data)
-  }, [data])
+  }, [data]);
 
   const [showNoCards, setShowNoCards] = useState(false);
 
@@ -59,14 +61,13 @@ const EventsContext = (props) => {
 
           <button
             className="font-bold text-black underline text-md md:text-xl underline-offset-2"
-            onClick={() => props.filterCards('all')}
+            onClick={() => props.filterCards("all")}
           >
             View all
           </button>
         </div>
         {/* cards  */}
         <div className="relative mt-4">
-
           {/* show no cards if there is fetch has occured and event list is empty */}
           {/* prevent users seeing the no events everytime they come to the events page. */}
           <div className="relative w-full -top-32">
@@ -82,7 +83,7 @@ const EventsContext = (props) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default EventsContext
+export default EventsContext;

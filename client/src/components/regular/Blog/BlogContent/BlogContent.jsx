@@ -77,7 +77,7 @@ function BlogContent() {
     queryKey: ["fetch blogs"],
     queryFn: async () => {
       const res = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/api/blog`
+        `${import.meta.env.VITE_BACKEND_URL}/api/blog/last-five`
       );
       const response = res.data;
       const blogArray = response.blogs;
@@ -106,11 +106,8 @@ function BlogContent() {
     return () => clearTimeout(timeoutId);
   }, [isFetched, blogs]);
 
-
-
   return (
     <div className="flex flex-col items-center justify-center overflow-hidden h-fit lg:h-fit min-h-[566px] ">
-
       {/* show no cards if there is fetch has occured and blog list is empty */}
       {/* prevent users seeing the no blog everytime they come to the blog page. */}
       <div className="relative w-full -top-14">
@@ -118,7 +115,7 @@ function BlogContent() {
         {isFetched && showNoCards && <NoBlog />}
       </div>
 
-      {data &&
+      {data && (
         <div className="flex flex-col gap-[50px] py-[4.5rem] lg:px-[7rem] md:px-12 px-4 max-w-[87.5rem] justify-center items-center">
           {/* blogs */}
           {blogs.length !== 0 && (
@@ -176,7 +173,8 @@ function BlogContent() {
           )}
 
           <BlogsToDisplay blogs={blogs} currentPage={currentPage} />
-        </div>}
+        </div>
+      )}
     </div>
   );
 }
