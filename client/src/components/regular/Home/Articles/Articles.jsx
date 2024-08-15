@@ -5,24 +5,22 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Articles = () => {
+  const navigate = useNavigate();
   const { data, isLoading } = useQuery({
     queryKey: ["home-articles"],
     queryFn: async () => {
       try {
-        const data = await axios.get(
+        const response = await axios.get(
           `${import.meta.env.VITE_BACKEND_URL}/api/blog/last-five`
         );
-        const articles = data?.data || [];
+        const articles = Array.isArray(response?.data?.blogs)
+          ? response.data.blogs
+          : [];
         console.log("Articles:", articles);
-
-        if (articles.length > 0) {
-          return articles.slice(0, 3);
-        } else {
-          console.log("No articles found");
-          return [];
-        }
+        return articles.slice(0, 2);
       } catch (error) {
         console.error("Failed to fetch articles:", error);
         throw error;
@@ -34,14 +32,28 @@ const Articles = () => {
     !isLoading && console.log(data);
   }, [isLoading, data]);
   const SliceText = (text) => {
+    if (!text) return "...";
+
     const length = text.length;
     if (length > 65) {
       const slicedText = text.slice(0, 65);
-      const newText = slicedText + "...";
-      return newText;
+      return slicedText + "...";
     } else {
       return text + "...";
     }
+  };
+
+  const formatDate = (isoDate) => {
+    const date = new Date(isoDate);
+    return date.toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+  };
+
+  const handleReadBlogClick = () => {
+    navigate("/blog");
   };
   return (
     <div className="flex flex-col items-center w-full pb-12 text-center text-black h-fit">
@@ -57,7 +69,7 @@ const Articles = () => {
           {
             data &&
               data.map((card) => {
-                const { id, date, title, description, blogAuthor, blogImage } =
+                const { id, date, title, blogContent, author, blogImage } =
                   card;
                 return (
                   <Link to="/" key={id} className="w-fit h-fit">
@@ -80,7 +92,7 @@ const Articles = () => {
                           {title}
                         </span>
                         <p className="w-full pt-2 textLight">
-                          {SliceText(description)}{" "}
+                          {SliceText(blogContent)}{" "}
                           <a
                             className="underline text-text-dev-orange hover:opacity-80"
                             href="#"
@@ -90,9 +102,13 @@ const Articles = () => {
                         </p>
 
                         <div className="flex items-center w-full gap-4 pt-7">
-                          <img src={blogImage} alt="" />
-                          <span className="text">{blogAuthor}</span>
-                          <span className="textLight">{date}</span>
+                          <img
+                            src={blogImage}
+                            alt=""
+                            className="h-8 w-8 rounded-full"
+                          />
+                          <span className="text">{author}</span>
+                          <span className="textLight">{formatDate(date)}</span>
                         </div>
                       </div>
                     </motion.div>
@@ -152,8 +168,9 @@ const Articles = () => {
             whileTap={{ scale: 1 }}
             transition={{ delay: 0, duration: 0.3, type: "spring" }}
             className="h-12 px-5 py-3 bg-black rounded-lg w-fit text-[#FFF6F3]"
+            onClick={handleReadBlogClick}
           >
-            <a href="">Read Blog</a>
+            <a href="/blog">Read Blog</a>
           </motion.button>
         )}
       </div>
