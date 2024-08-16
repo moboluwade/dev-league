@@ -11,10 +11,10 @@ const Sponsor = () => {
         <div className="p-4"><Gizmodo /></div>
         <div className="p-4"><Forbes /></div> */}
         <div className="p-4">
-          <img width={150} src="/aws-cc.jpg" alt="AWS Cloud Clubs Unilorin" />
+          <img width={50} src="/aws-cc.jpg" className="rounded-xl md:w-[80px]" alt="AWS Cloud Clubs Unilorin" />
         </div>
         <div className="p-4">
-          <img width={150} src="/hult-prize.jpg" alt="Hult Prize Unilorin" />
+          <img width={50} src="/hult-prize.jpg" className="rounded-xl md:w-[80px]" alt="Hult Prize Unilorin" />
         </div>
       </div>
     </section>

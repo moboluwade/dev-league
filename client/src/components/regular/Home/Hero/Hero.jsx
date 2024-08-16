@@ -2,6 +2,7 @@ import { useMutation } from '@tanstack/react-query'
 import { motion } from 'framer-motion'
 import { useCallback, useState } from 'react'
 import axios from "axios"
+import { LazyLoadImage } from "react-lazy-load-image-component"
 const Hero = () => {
 
   const [email, setEmail] = useState('')
@@ -54,7 +55,8 @@ const Hero = () => {
               Code or {""}
               <span className="text-text-dev-orange">No</span>
               -Code, Thrive with {" "}
-              <span className="text-text-dev-orange">DEV LEAGUE</span>
+              <span className="text-text-dev-orange">
+                DEV LEAGUE</span>
               !
             </span>
             <span className="pb-9 md:pb-6 mx-auto md:ml-0 md:max-w-[30rem] max-w-[20rem] opacity-80">
@@ -96,11 +98,12 @@ const Hero = () => {
           </div>
         </div>
         <div className="flex flex-col items-end h-full pb-6 pl-6 my-auto md:pb-8 md:w-1/2 lg:pt-10 md:pt-8 ">
-          <img
+          <LazyLoadImage
             className="lg:w-[27rem] md:max-w-[23rem] m-auto aspect-auto"
             src="/hero-image.png"
             alt="hero-image"
             draggable="false"
+            height={523}
             width={432}
           />
         </div>

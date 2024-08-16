@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Articles = () => {
   const navigate = useNavigate();
@@ -59,7 +60,7 @@ const Articles = () => {
     <div className="flex flex-col items-center w-full pb-12 text-center text-black h-fit">
       <div className="lg:px-[7.5rem] md:px-12 px-4 max-w-[87.5rem] flex flex-col justify-center items-center">
         <div className="flex flex-col pt-6 pb-9">
-          <span className="pb-2 text-4xl font-semibold ">Our Articles</span>
+          <span className="pb-2 text-4xl font-semibold ">Our{" "}<span className="text-text-dev-orange"> Articles</span></span>
           <span className="text-lg font-normal ">
             The latest industry news, interviews, technologies, and resources.
           </span>
@@ -68,53 +69,54 @@ const Articles = () => {
         <motion.div className="flex flex-row flex-wrap items-start justify-center w-full gap-8 pb-12 text-black">
           {
             data &&
-              data.map((card) => {
-                const { id, date, title, blogContent, author, blogImage } =
-                  card;
-                return (
-                  <Link to="/" key={id} className="w-fit h-fit">
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 1.02 }}
-                      transition={{ delay: 0, duration: 0.5, type: "spring" }}
-                      className="flex flex-col border border-[#D4CECB] lg:max-w-[22rem] m-auto max-w-[18rem] bg-white rounded-lg text-start"
-                    >
-                      <div>
-                        <img
-                          className="w-full rounded-t-lg"
-                          draggable="false"
-                          src={blogImage}
-                          alt="image"
-                        />
-                      </div>
-                      <div className="px-3 pt-5 pb-3">
-                        <span className="text-xl font-semibold text-black ">
-                          {title}
-                        </span>
-                        <p className="w-full pt-2 textLight">
-                          {SliceText(blogContent)}{" "}
-                          <a
-                            className="underline text-text-dev-orange hover:opacity-80"
-                            href="#"
-                          >
-                            Read more
-                          </a>
-                        </p>
+            data.map((card) => {
+              const { id, date, title, blogContent, blogImage } =
+                card;
+              return (
+                <Link to="/" key={id} className="w-fit h-fit">
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 1.02 }}
+                    transition={{ delay: 0, duration: 0.5, type: "spring" }}
+                    className="flex flex-col border border-[#D4CECB] lg:max-w-[22rem] m-auto max-w-[18rem] bg-white rounded-lg text-start"
+                  >
+                    <div>
+                      <LazyLoadImage
+                        className="w-full rounded-t-lg max-h-[197px]"
+                        height={197}
+                        draggable="false"
+                        src={blogImage}
+                        alt="image"
+                      />
+                    </div>
+                    <div className="px-3 pt-5 pb-3">
+                      <span className="text-xl font-semibold text-black ">
+                        {title}
+                      </span>
+                      <p className="w-full pt-2 textLight">
+                        {SliceText(blogContent)}{" "}
+                        <a
+                          className="underline underline-offset-2 text-text-dev-orange hover:opacity-80"
+                          href="#"
+                        >
+                          Read blog
+                        </a>
+                      </p>
 
-                        <div className="flex items-center w-full gap-4 pt-7">
-                          <img
-                            src={blogImage}
-                            alt=""
-                            className="h-8 w-8 rounded-full"
-                          />
-                          <span className="text">{author}</span>
-                          <span className="textLight">{formatDate(date)}</span>
-                        </div>
+                      <div className="flex items-center w-full gap-4 pt-7">
+                        {/* <img
+                          src={blogImage}
+                          alt=""
+                          className="w-8 h-8 rounded-full"
+                        />
+                        <span className="text">{author}</span> */}
+                        <span className="textLight">{formatDate(date)}</span>
                       </div>
-                    </motion.div>
-                  </Link>
-                );
-              })
+                    </div>
+                  </motion.div>
+                </Link>
+              );
+            })
             // :
             // Cards.map((card) => {
             //   const { id, title, desc, img, person } = card
@@ -167,10 +169,10 @@ const Articles = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 1 }}
             transition={{ delay: 0, duration: 0.3, type: "spring" }}
-            className="h-12 px-5 py-3 bg-black rounded-lg w-fit text-[#FFF6F3]"
+            className="h-12 px-5 py-3 bg-text-dev-orange font-semibold tracking-wide rounded-lg w-fit text-[#FFF6F3]"
             onClick={handleReadBlogClick}
           >
-            <a href="/blog">Read Blog</a>
+            <a href="/blog">More Blogs</a>
           </motion.button>
         )}
       </div>

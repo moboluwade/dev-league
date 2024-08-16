@@ -24,7 +24,8 @@ const Impact = () => {
         <section className="items-center pb-12 text-black bg-white xl:flex-col xl:flex">
             <div className="max-w-[88rem] lg:px-[7.5rem] md:px-12 px-4 w-full">
                 <span className="flex flex-row justify-center">
-                    <span className="w-full pb-20 text-5xl font-bold text-center pt-14 ">Impact Stories</span>
+                    <span className="w-full pb-20 text-5xl font-bold text-center pt-14 ">
+                        <span className="text-text-dev-orange">Impact {""}</span> Stories</span>
                     {/* <span className="absolute"><a href="">X</a></span> */}
                     {/* link to dev league testimonial twitter feed */}
                 </span>
@@ -48,7 +49,8 @@ const Impact = () => {
                                             <img className="w-8 h-8 bg-white aspect-square" src={story.profile} alt="" />
                                             <div className="flex flex-col pl-2">
                                                 <span className="text-xs font-semibold capitalize">{story.name}</span>
-                                                <span className="text-xs opacity-60">@{story.username}</span>
+                                                <span className="text-xs opacity-60 text-text-dev-orange">@
+                                                    <span className="text-text-dev-orange">{story.username}</span></span>
                                             </div>
                                         </motion.div>
                                         <span className="w-[15rem] text-base font-normal">{story.testimonial}</span>

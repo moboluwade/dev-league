@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { useParams } from 'react-router-dom'
 
 const Events = () => {
@@ -129,8 +130,8 @@ const Events = () => {
                       </h2>
                       <div className="flex flex-col items-center justify-center gap-2 md:grid-cols-2 md:grid h-fit">
                         {data &&
-                          <div className='flex flex-col items-center justify-end w-64 h-full pt-2 overflow-hidden max-h-64'>
-                            <img className='w-64 rounded-lg' src={data.imageUrl} alt="" width={200} height={200} />
+                          <div className='flex flex-col items-center justify-end w-64  h-[200px] pt-2 overflow-clip max-h-64'>
+                            <LazyLoadImage className='w-64 h-full rounded-lg aspect-auto' src={data.imageUrl} alt="" width={200} height={200} />
                           </div>
                         }
                         <div className="flex flex-col items-center md:items-start">
