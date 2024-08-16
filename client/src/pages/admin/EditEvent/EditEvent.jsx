@@ -1,26 +1,41 @@
-import { useQuery } from "@tanstack/react-query"
-import axios from "axios"
-import { useEffect } from "react"
+
+import { useParams } from "react-router-dom";
+import EventForm from "./EventForm";
+import { useEvent } from "./useEvent";
 
 const EditEvent = () => {
+  const { id } = useParams();
 
-  const { data, isLoading } = useQuery({
-    queryKey: ['fetch-blog'],
-    queryFn: async () => {
-      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/events/${"66a6cb4de946dab5d8f99709"}`)
-      const blogResponse = response.data
-      const blog = blogResponse.blog
-      return blog
-    },
-    // enabled: !!blogId
-  })
+  const { isLoading, event } = useEvent({ id });
 
-  useEffect(() => {
-    console.log(data)
-  }, [data])
+  if (isLoading) return;
+  const {
+    isEventOpen,
+    title,
+    description,
+    type,
+    startDate,
+    eventType,
+    endDate,
+  } = event;
+
   return (
-    <div>EditEvent</div>
-  )
-}
+    <div className=" py-2  flex flex-col justify-start px-4 items-left md:p-12 w-full pb-10">
+      <h2 className="pb-8 text-4xl font-bold">Event Management</h2>
+      <EventForm
+        eventToEdit={{
+          id,
+          isEventOpen,
+          title,
+          description,
+          type,
+          startDate,
+          endDate,
+          eventType,
+        }}
+      />
+    </div>
+  );
+};
 
-export default EditEvent
+export default EditEvent;

@@ -1,65 +1,74 @@
-import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { LoginUser } from '../../../store/userSlice'
-import { useNavigate } from 'react-router-dom'
-import { useMutation, useQuery } from '@tanstack/react-query'
-import axios from 'axios'
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { LoginUser } from "../../../store/userSlice";
+import { useNavigate } from "react-router-dom";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const Login = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [showPassword, setShowPassword] = useState(false)
+  const [email, setEmail] = useState("folarinboluwade@gmail.com");
+  const [password, setPassword] = useState("HiThereIAmAdmin");
+  const [showPassword, setShowPassword] = useState(false);
 
   // Use the useSelector hook to access state from the Redux store
 
   const [showDiv, setShowDiv] = useState(false);
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const validateToken = useQuery({
     // validates if admin is already loggedIn
-    queryKey: 'validate-token',
+    queryKey: "validate-token",
     queryFn: async () => {
-      const res = axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/admin/validate`, { withCredentials: 'include' })
-      return res
-    }
-  })
+      const res = axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/api/admin/validate`,
+        { withCredentials: "include" },
+      );
+      return res;
+    },
+  });
 
   useEffect(() => {
     // navigate to admin route if already logged In
-    validateToken.isSuccess && navigate('/admin')
-  }, [validateToken.isSuccess, navigate])
+    validateToken.isSuccess && navigate("/admin");
+  }, [validateToken.isSuccess, navigate]);
 
   const loginMutation = useMutation({
-    mutationKey: ['login'],
+    mutationKey: ["login"],
     mutationFn: async ({ email, password }) => {
-      const res = axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/admin/login`, { email: email, password: password }, { withCredentials: 'include' })
-      return res
-    }
-  })
-
+      const res = axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/admin/login`,
+        { email: email, password: password },
+        { withCredentials: "include" },
+      );
+      return res;
+    },
+  });
 
   useEffect(() => {
-    loginMutation.isSuccess && dispatch(LoginUser(true))
-  }, [loginMutation.isSuccess, dispatch])
+    loginMutation.isSuccess && dispatch(LoginUser(true));
+  }, [loginMutation.isSuccess, dispatch]);
 
   const handleLogin = async (event) => {
     event.preventDefault();
 
     try {
-      const feedback = loginMutation.mutateAsync({ email: email, password: password })
-      loginMutation.isSuccess && console.log(feedback)
+      const feedback = loginMutation.mutateAsync({
+        email: email,
+        password: password,
+      });
+      loginMutation.isSuccess && console.log(feedback);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
-    loginMutation.isSuccess && navigate("/admin")
-  }, [loginMutation.isSuccess, navigate])
+    loginMutation.isSuccess && navigate("/admin");
+  }, [loginMutation.isSuccess, navigate]);
 
   useEffect(() => {
-    loginMutation.isError && setShowDiv(true)
+    loginMutation.isError && setShowDiv(true);
   }, [loginMutation.isError]);
 
   useEffect(() => {
@@ -73,12 +82,12 @@ const Login = () => {
     }
 
     // Return an empty cleanup function if loginMutation is not in error state
-    return () => { };
-  }, [loginMutation.isError])
+    return () => {};
+  }, [loginMutation.isError]);
 
   const routeToSignup = () => {
-    navigate("/signup")
-  }
+    navigate("/signup");
+  };
 
   return (
     <div className="my-20">
@@ -88,10 +97,7 @@ const Login = () => {
         </h2>
         {/* login form */}
 
-        <form
-          className='relative'
-          onSubmit={handleLogin}
-        >
+        <form className="relative" onSubmit={handleLogin}>
           <label className="font-normal text-base block mb-2 text-[rgba(52, 64, 84, 1)]">
             Email
           </label>
@@ -100,7 +106,9 @@ const Login = () => {
             type="text"
             placeholder="balamia@gmail.com"
             value={email}
-            onChange={(e) => { setEmail(e.target.value) }}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
           />
           <div className="flex justify-center mt-6 mb-2">
             <label className="font-normal text-base text-[rgba(52, 64, 84, 1)]">
@@ -111,10 +119,12 @@ const Login = () => {
           <div className="flex items-center">
             <input
               className="block py-3 px-4 rounded-lg w-full focus:ring-0 border-2 focus:outline-none focus:border-[#D1E9FF]  border-gray-300"
-              type={`${showPassword ? 'text' : 'password'}`}
+              type={`${showPassword ? "text" : "password"}`}
               placeholder="Enter your password"
               value={password}
-              onChange={(e) => { setPassword(e.target.value) }}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -154,14 +164,14 @@ const Login = () => {
             </svg>
           </div>
 
-          <div className='relative h-fit'>
-            <div className='absolute flex flex-row justify-center w-full px-2 text-xs text-white rounded-md bg-text-dev-faded-base top-2 h-fit'>
+          <div className="relative h-fit">
+            <div className="absolute flex flex-row justify-center w-full px-2 text-xs text-white rounded-md bg-text-dev-faded-base top-2 h-fit">
               {showDiv && "! email and password is invalid"}
             </div>
           </div>
 
           <button
-            type='submit'
+            type="submit"
             className="bg-[#FD4F13] hover:bg-[#FD4F30] transition text-[#fff] mt-8 w-full text-center p-4 text-base font-semibold rounded-lg"
           >
             Login
@@ -169,10 +179,11 @@ const Login = () => {
 
           <div className="flex flex-col items-center w-full pt-8 ">
             <div className="flex flex-row ">
-              <span className=" text-text-dev-faded-base">New admin? </span> <span>🤭</span>
+              <span className=" text-text-dev-faded-base">New admin? </span>{" "}
+              <span>🤭</span>
             </div>
             <button
-              type='button'
+              type="button"
               onClick={routeToSignup}
               className="bg-[#fff] hover:bg-[#EBEDEF] border-text-dev-orange border-2 transition text-text-dev-orange mt-8 w-full text-center p-4 text-base font-semibold rounded-lg"
             >
@@ -180,10 +191,9 @@ const Login = () => {
             </button>
           </div>
         </form>
-
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
