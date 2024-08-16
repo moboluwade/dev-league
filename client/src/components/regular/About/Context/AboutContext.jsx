@@ -205,8 +205,8 @@ const AboutContext = () => {
                                     <span className="pt-2 text-lg text-text-dev-orange">{member.role}</span>
                                     {/* <span className="pt-4">{member.description}</span> */}
                                 </div>
-                                <div className="flex flex-row gap-5 pt-6 grayscale">
-                                    <div className="">
+                                <div className="flex flex-row gap-5 pt-6">
+                                    <div className="relative">
                                         <a target="_blank" rel="noreferrer" href={member.twitter}>
                                             {member.twitter && <TwitterBird />}
                                         </a>
