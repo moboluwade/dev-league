@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import { useDispatch } from "react-redux";
 // import { useNavigate } from "react-router-dom";
 // import { LoginUser } from "../../store/userSlice";
@@ -15,6 +15,8 @@ const Signup = () => {
     const [showConfirmPassword, setShowConfirmPassword] = useState(false)
     const [currentFlow, setCurrentFlow] = useState(0)
 
+    // error code store values
+    const [emailVerificationStatusCode, setEmailVerificationStatusCode] = useState("")
     const [showDiv, setShowDiv] = useState(false);
     // const dispatch = useDispatch()
     // const navigate = useNavigate()
@@ -24,8 +26,9 @@ const Signup = () => {
     const emailVerification = useMutation({
         mutationKey: ['email'],
         mutationFn: async ({ email }) => {
-            console.log("email")
             const res = axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/admin/validate-email`, { email: email }, { withCredentials: 'include' })
+            const statusCode = (await res).status.request
+            setEmailVerificationStatusCode(statusCode.response)
             return res.data
         }
     })
@@ -36,6 +39,7 @@ const Signup = () => {
             return res
         }
     })
+
     const signupMutation = useMutation({
         mutationKey: ['signup'],
         mutationFn: async ({ password }) => {
@@ -45,11 +49,12 @@ const Signup = () => {
     })
     useEffect(() => {
         // increases flow count if the request is successful
-        emailVerification.isSuccess && setCurrentFlow(prev => ++prev)
-        emailVerification.error && alert('Email is not registered by lead. Check email?')
-        emailVerification.error && console.log(emailVerification.status, emailVerification.error)
+        emailVerification.error && emailVerification.error.response.status === 200 && setCurrentFlow(prev => ++prev)
+        emailVerification.error && emailVerification.error.response.status === 409 && alert('Email is not registered by lead. Check email?'), console.log(emailVerification.status, emailVerification.error)
+        emailVerification.error && console.log(emailVerification.error.response.status)
+    }, [emailVerificationStatusCode, emailVerification.isSuccess, emailVerification.error, emailVerification.status])
 
-    }, [emailVerification.isSuccess, emailVerification.error, emailVerification.status])
+
 
     useEffect(() => {
         // increases flow count if the request is successful

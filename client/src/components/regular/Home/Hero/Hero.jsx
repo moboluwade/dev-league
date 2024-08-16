@@ -47,11 +47,15 @@ const Hero = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5, type: "tween" }}
         viewport={{ once: true }}
-        className=" lg:px-[7.5rem] md:px-12 px-4 flex flex-col justify-between text-center md:text-start md:flex-row ">
-        <div className="flex md:flex-col flex-col md:w-1/2 md:max-w-[50%] lg:pt-[7rem] md:pb-8 md:pt-20 pt-8 md:justify-center h-full ">
+        className=" lg:px-[7.5rem] md:px-12 px-4 flex flex-col justify-between items-start text-center md:text-start md:flex-row md:items-center">
+        <div className="flex flex-col md:w-1/2 md:max-w-[50%]  md:pb-8 md:pt-8 pt-8 md:justify-center h-full ">
           <div className="flex flex-col md:max-w-[44rem] max-w-[30rem]">
             <span className="pb-4 text-4xl font-bold md:text-6xl">
-              Code or No-Code, Thrive with DEV LEAGUE!
+              Code or {""}
+              <span className="text-text-dev-orange">No</span>
+              -Code, Thrive with {" "}
+              <span className="text-text-dev-orange">DEV LEAGUE</span>
+              !
             </span>
             <span className="pb-9 md:pb-6 mx-auto md:ml-0 md:max-w-[30rem] max-w-[20rem] opacity-80">
               Here, you&apos;ll find the right resources and support to take
@@ -91,9 +95,9 @@ const Hero = () => {
             </motion.button>
           </div>
         </div>
-        <div className="flex flex-col items-end pb-6 pl-6 md:pb-8 md:w-1/2 lg:pt-10 md:pt-8 ">
+        <div className="flex flex-col items-end h-full pb-6 pl-6 my-auto md:pb-8 md:w-1/2 lg:pt-10 md:pt-8 ">
           <img
-            className="lg:w-[27rem] m-auto"
+            className="lg:w-[27rem] md:max-w-[23rem] m-auto aspect-auto"
             src="/hero-image.png"
             alt="hero-image"
             draggable="false"
