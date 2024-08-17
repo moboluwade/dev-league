@@ -16,7 +16,7 @@ const EventsContext = (props) => {
     queryFn: async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/api/events/last-five`
+          `${import.meta.env.VITE_BACKEND_URL}/api/events`
         );
         const events = await response.data;
         const eventRes = events.Events;
