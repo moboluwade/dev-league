@@ -151,7 +151,7 @@ const Articles = () => {
           }
         </motion.div>
 
-        {!data && (
+        {!data | (data && data.length) < 1 && (
           <div className="flex flex-col items-center pb-24">
             <img width={50} src="/bookshelf-svgrepo-com.svg" alt="" />
             <span className="pt-4 text-3xl font-semibold text-dev-black">
