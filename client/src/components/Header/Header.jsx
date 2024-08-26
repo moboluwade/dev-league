@@ -1,52 +1,52 @@
-import { motion } from 'framer-motion'
-import { FiBarChart } from 'react-icons/fi'
-import { RxCrossCircled } from 'react-icons/rx'
-import { useState } from 'react'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { motion } from "framer-motion";
+import { FiBarChart } from "react-icons/fi";
+import { RxCrossCircled } from "react-icons/rx";
+import { useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleDonateClick = () => {
-    navigate('/')
+    navigate("/");
     setTimeout(() => {
-      const donationSection = document.getElementById('donationSection')
+      const donationSection = document.getElementById("donationSection");
       if (donationSection) {
         // Scroll to the donation section
-        donationSection.scrollIntoView({ behavior: 'smooth' })
+        donationSection.scrollIntoView({ behavior: "smooth" });
       }
-    }, 100)
-  }
+    }, 100);
+  };
 
   const links = [
     {
-      title: 'Home',
-      path: '/',
+      title: "Home",
+      path: "/",
     },
     {
-      title: 'About us',
-      path: '/about',
+      title: "About us",
+      path: "/about",
     },
     {
-      title: 'Events',
-      path: '/events',
+      title: "Events",
+      path: "/events",
     },
     {
-      title: 'Blog',
-      path: '/blog',
+      title: "Blog",
+      path: "/blog",
     },
     // {
     //   title: 'Shop',
     //   path: '/shop',
     // },
-  ]
+  ];
 
-  const [togglerNav, setTogglerNav] = useState(false)
+  const [togglerNav, setTogglerNav] = useState(false);
 
   const handleClick = () => {
-    setTogglerNav(!togglerNav)
-    console.log(togglerNav)
-  }
+    setTogglerNav(!togglerNav);
+    console.log(togglerNav);
+  };
 
   return (
     <div className="bg-white flex flex-row justify-center text lg:px-[7.5rem] md:px-8 px-auto relative">
@@ -65,7 +65,7 @@ const Header = () => {
               <NavLink to={link.path} key={link.title} end>
                 {link.title}
               </NavLink>
-            )
+            );
           })}
         </div>
 
@@ -107,9 +107,9 @@ const Header = () => {
             {!togglerNav && (
               <FiBarChart
                 style={{
-                  transform: 'rotate(270deg)',
-                  color: '#fd4f13',
-                  fontSize: '3rem',
+                  transform: "rotate(270deg)",
+                  color: "#fd4f13",
+                  fontSize: "3rem",
                 }}
                 className="top-8"
               />
@@ -123,11 +123,11 @@ const Header = () => {
           )}
         </div>
 
-
         {/* mobile navigation menu */}
         <motion.div
-          className={`md:hidden h-full fixed inset-y-0  w-[15rem] z-50 bg-white p-4 transition duration-300 transform ${togglerNav ? 'translate-x-0 top-0 right-0' : 'hidden'
-            }`}
+          className={`md:hidden h-full fixed inset-y-0  w-[15rem] z-50 bg-white p-4 transition duration-300 transform ${
+            togglerNav ? "translate-x-0 top-0 right-0" : "hidden"
+          }`}
         >
           {/* Header content goes here */}
           <div className="p-4">
@@ -135,13 +135,12 @@ const Header = () => {
               <h1 className="font-semibold text-xl/[19px]">Main Menu</h1>
               <RxCrossCircled
                 className="cursor-pointer"
-                style={{ fontSize: '2rem', color: '#D4CECB' }}
+                style={{ fontSize: "2rem", color: "#D4CECB" }}
                 onClick={() => setTogglerNav(!togglerNav)}
               />
             </div>
 
-            <NavLink onClick={handleClick} to={'/'} key={'Home'} end>
-            </NavLink>
+            <NavLink onClick={handleClick} to={"/"} key={"Home"} end></NavLink>
             {links.map((link) => {
               return (
                 <NavLink
@@ -155,13 +154,13 @@ const Header = () => {
                     <img src="/Vector.png" alt="vector" className="vec" />
                   </div>
                 </NavLink>
-              )
+              );
             })}
           </div>
         </motion.div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
