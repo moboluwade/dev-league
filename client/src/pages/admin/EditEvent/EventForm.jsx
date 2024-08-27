@@ -82,8 +82,8 @@ const EventForm = ({ eventToEdit }) => {
 
   // The custom hook for creating and editing event
 
-  const { isEditing, editEvent } = useEditEvent();
-  const { isDeleting, deleteEvent } = useDeleteEvent();
+  const { isEditing, editEvent } = useEditEvent(eventId);
+  const { isDeleting, deleteEvent } = useDeleteEvent(eventId);
 
   useEffect(() => {
     // Set the default value for eventType radio based on editValues.eventType
@@ -113,7 +113,7 @@ const EventForm = ({ eventToEdit }) => {
   return (
     <form
       onSubmit={handleSubmit(handleFormSubmit)}
-      className="flex flex-col justify-start  w-full"
+      className="flex flex-col justify-start w-full"
     >
       <div className="flex flex-col justify-center">
         <div className="flex flex-col pt-4">
@@ -247,11 +247,11 @@ const EventForm = ({ eventToEdit }) => {
       </div>
 
       <Modal>
-        <div className="flex flex-row items-center gap-4 justify-end w-full pt-4 mb-20">
+        <div className="flex flex-row items-center justify-end w-full gap-4 pt-4 mb-20">
           <Modal.Open opens={eventId}>
             <button
               type="button"
-              className="px-6 py-2 text-xl font-semibold tracking-wide text-white rounded-lg bg-red-700 "
+              className="px-6 py-2 text-xl font-semibold tracking-wide text-white bg-red-700 rounded-lg "
             >
               {isDeleting ? "Deleting..." : "Delete"}
             </button>

@@ -24,11 +24,12 @@ export const getEvent = async ({ id }) => {
   }
 };
 
-export const editEvent = async (newEvent, id) => {
-  console.log(newEvent);
+export const editEvent = async (newEvent, eventId) => {
+  // console.log(newEvent);
+  // console.log(eventId, "from edit event")
 
   const response = await axios.patch(
-    `${import.meta.env.VITE_BACKEND_URL}/api/events/update/${id}`,
+    `${import.meta.env.VITE_BACKEND_URL}/api/events/update/${eventId}`,
     newEvent,
     {
       withCredentials: "include",

@@ -18,6 +18,7 @@ const ManageEvent = () => {
         const events = await response.data
         const eventRes = events.Events
         return eventRes
+        
       } catch (error) {
         console.error('Error fetching events:', error);
         throw new Error('Failed to fetch events. Please try again.');
