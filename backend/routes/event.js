@@ -144,7 +144,7 @@ router.patch('/update/:id', checkAuth, async (req, res) => {
 router.delete('/delete/:id', checkAuth, async (req, res) => {
     try {
         const id = req.params.id;
-        const event = await Event.delete(id)
+        const event = await Event.findByIdAndDelete(id)
         res.status(200).json({ message: `Event with id: ${id} successfully deleted` })
     } catch (error) {
         res.status(500).json({ error: error.message });
