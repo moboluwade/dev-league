@@ -101,7 +101,6 @@ const BlogsToDisplay = ({ blogs }) => {
 function BlogContent() {
   // holds the data fetch from the backend
   const [blogs, setBlogs] = useState([]);
-  const [currentPage, setCurrentPage] = useState(0);
 
   const { data, isFetched, isLoading } = useQuery({
     queryKey: ["fetch blogs"],
@@ -253,7 +252,7 @@ function BlogContent() {
             </div>
           </div>
 
-          <BlogsToDisplay blogs={blogs} currentPage={currentPage} />
+          <BlogsToDisplay blogs={blogs}/>
         </div>
       )}
     </div>

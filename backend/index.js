@@ -13,9 +13,12 @@ const blog = require('./routes/blog');
 const authorization = require('./routes/auth');
 const MongoStore = require('connect-mongo');
 const path = require('path')
-// const buildPath = path.join(__dirname, '../client/dist')
+const buildPath = path.join(__dirname, '../client/dist/')
 
 connectDB()
+
+// Serve static files from the Vite build output
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.use(cookieParser());
 app.use(methodoverride('_method'));
@@ -49,10 +52,10 @@ app.use('/api/events', event);
 app.use('/api/blog', blog);
 app.use('/api/admin', authorization)
 
-// // gets the static files from the build folder
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(buildPath, 'index.html'))
-// })
+// gets the static files from the build folder
+app.get('*', (req, res) => {
+    res.sendFile(path.join(buildPath, 'index.html'))
+})
 
 
 app.listen(port, () => console.log(`listening on port ${port}`))
