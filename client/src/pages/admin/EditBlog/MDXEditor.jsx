@@ -11,36 +11,34 @@ import {
   linkPlugin,
   listsPlugin,
   toolbarPlugin,
-} from "@mdxeditor/editor";
-import "@mdxeditor/editor/style.css";
-import { useRef } from "react";
-
-// use the markdown$ cell to get the current markdown value,
-// and the rootEditor$ cell to get the Lexical editor instance.
+} from "@mdxeditor/editor"
+import "@mdxeditor/editor/style.css"
+import { useRef, useEffect } from "react"
 
 const Editor = ({ mdxValue, setMdxValue }) => {
-  const mdxEditorRef = useRef(null);
+  const mdxEditorRef = useRef(null)
+
+  useEffect(() => {
+    if (mdxEditorRef.current) {
+      mdxEditorRef.current.setMarkdown(mdxValue)
+    }
+  }, [mdxValue])
 
   const handleChange = () => {
     if (mdxEditorRef.current) {
-      // capture the markdown editor value
-      const value = mdxEditorRef.current.getMarkdown();
-      console.log(value);
-      setMdxValue(value);
+      const value = mdxEditorRef.current.getMarkdown()
+      setMdxValue(value)
     }
-  };
+  }
 
   return (
     <MDXEditor
       className=""
       ref={mdxEditorRef}
-      onChange={() => {
-        handleChange();
-      }}
+      onChange={handleChange}
       placeholder="Let's create to the fullest!"
       markdown={mdxValue}
       contentEditableClassName="editor min-h-[20rem]"
-      // plugins={[headingsPlugin(), imagePlugin()]}
       plugins={[
         linkPlugin(),
         linkDialogPlugin(),
@@ -49,10 +47,8 @@ const Editor = ({ mdxValue, setMdxValue }) => {
         toolbarPlugin({
           toolbarContents: () => (
             <>
-              {" "}
               <UndoRedo />
               <Separator />
-              {/* <InsertCodeBlock /> */}
               <BoldItalicUnderlineToggles />
               <Separator />
               <CreateLink />
@@ -63,7 +59,7 @@ const Editor = ({ mdxValue, setMdxValue }) => {
         }),
       ]}
     />
-  );
-};
+  )
+}
 
-export default Editor;
+export default Editor

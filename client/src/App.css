@@ -60,3 +60,19 @@ input {
     text-underline-offset: 2px;
     color:  rgba(253, 79, 19, 1);
 }
+
+
+.orange-scroll::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background of the scrollbar track */
+}
+
+.orange-scroll::-webkit-scrollbar-thumb {
+    background-color: #fd4f13; /* Scrollbar color */
+    border: solid #f1f1f1; /* Padding around the scrollbar thumb */
+}
+
+/* For Firefox */
+.orange-scroll {
+    scrollbar-width: thin; /* Set the width to thin */
+    scrollbar-color: #fd4f13 #f1f1f1; /* Scrollbar color and track color */
+}
