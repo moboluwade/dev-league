@@ -25,7 +25,8 @@ const adminSchema = new Schema({
   },
   sudoRole: {
     type: String,
-    required: false
+    required: false,
+    defualt: 'regular',
   },
   username: {
     type: String,
