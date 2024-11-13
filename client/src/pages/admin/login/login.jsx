@@ -22,7 +22,7 @@ const Login = () => {
     queryFn: async () => {
       const res = axios.get(
         `${import.meta.env.VITE_BACKEND_URL}/api/admin/validate`,
-        { withCredentials: "include" },
+        { withCredentials: "include" }
       );
       return res;
     },
@@ -39,7 +39,7 @@ const Login = () => {
       const res = axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/api/admin/login`,
         { email: email, password: password },
-        { withCredentials: "include" },
+        { withCredentials: "include" }
       );
       return res;
     },

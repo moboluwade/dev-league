@@ -70,9 +70,11 @@ const EventsContext = (props) => {
         <div className="relative mt-4">
           {/* show no cards if there is fetch has occured and event list is empty */}
           {/* prevent users seeing the no events everytime they come to the events page. */}
-          <div className="relative w-full -top-32">
+          <div className="relative w-full ">
             {isLoading && <Loader />}
-            {isFetched && showNoCards && <NoCards />}
+            {/* Show Loader while fetching */}
+            {!isLoading && isFetched && showNoCards && <NoCards />}{" "}
+            {/* Only show NoCards if loading is done and no events found */}
           </div>
 
           <CardDisplay

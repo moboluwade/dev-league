@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Email } = require("../model/CreateModels");
+const { RegisteredAdmin } = require("../model/CreateModels");
 const checkAuth = require("../middlewares/auth");
 
 // Post THE EMAIL
@@ -9,13 +9,15 @@ router.post("/", async (req, res) => {
     const { email } = req.body;
 
     // check if the email already exist
-    const emailExist = await Email.find({ email: email });
+    const emailExist = await RegisteredAdmin.find({ email: email });
+
     if (emailExist && emailExist.length > 0) {
       return res.status(400).json({ message: "Email already exist" });
     } else {
-      const newEmail = new Email({ email });
+      const newEmail = new RegisteredAdmin({ email });
       console.log("This works, this gets logged:", newEmail);
       const savedEmail = await newEmail.save();
+
       res.status(200).json({
         message: "Email sent successfully",
         Email: savedEmail,
@@ -35,29 +37,33 @@ router.post("/", async (req, res) => {
 // router.get('/', checkAuth, async (req, res) => {
 router.get("/", async (req, res) => {
   try {
-    const Emails = await Email.find();
+    const Emails = await RegisteredAdmin.find();
+
     if (!Emails) {
       return res.status(404).json({ message: "Emails not found" });
     }
-    res.json({ Emails: Emails });
+
+    res.json({ emails: Emails });
   } catch (err) {
     console.log(err);
     return res.json(err);
   }
 });
 
-// router.delete("/", async (req, res) => {
-//   const email = req.body.email;
-//   try {
-//     const Emails = await Email.deleteOne({email: email});
-//     if (!Emails) {
-//       return res.status(404).json({ message: "Emails not found" });
-//     }
-//     res.json({ Emails: Emails });
-//   } catch (err) {
-//     console.log(err);
-//     return res.json(err);
-//   }
-// });
+router.delete("/", async (req, res) => {
+  const email = req.body.email;
+  try {
+    const Emails = await RegisteredAdmin.deleteOne({ email: email });
+
+    if (!Emails) {
+      return res.status(404).json({ message: "Emails not found" });
+    }
+
+    res.json({ emails: Emails });
+  } catch (err) {
+    console.log(err);
+    return res.json(err);
+  }
+});
 
 module.exports = router;

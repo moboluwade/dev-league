@@ -8,10 +8,22 @@ import "./blogContent.css";
 import Loader from "../../../Loader/Loader";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-
 const DateEdit = ({ date }) => {
-  const monthsOfTheYear = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
-  const dateNo = new Date(date).getDate()
+  const monthsOfTheYear = [
+    "Jan",
+    "Feb",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  const dateNo = new Date(date).getDate();
   const month = monthsOfTheYear[new Date(date).getMonth()];
   const year = new Date(date).getFullYear();
   console.log("date", year);
@@ -21,9 +33,8 @@ const DateEdit = ({ date }) => {
         <span>{date && dateNo + " " + month + " " + year}</span>
       </div>
     </div>
-  )
-
-}
+  );
+};
 const BlogsToDisplay = ({ blogs }) => {
   return (
     <div className="flex flex-col w-full gap-8 ">
@@ -90,7 +101,6 @@ const BlogsToDisplay = ({ blogs }) => {
 function BlogContent() {
   // holds the data fetch from the backend
   const [blogs, setBlogs] = useState([]);
-  const [currentPage, setCurrentPage] = useState(0);
 
   const { data, isFetched, isLoading } = useQuery({
     queryKey: ["fetch blogs"],
@@ -109,7 +119,6 @@ function BlogContent() {
   }, [data]);
 
   const [showNoCards, setShowNoCards] = useState(false);
-
 
   useEffect(() => {
     let timeoutId;
@@ -137,8 +146,6 @@ function BlogContent() {
         {isLoading && <Loader />}
         {isFetched && showNoCards && <NoBlog />}
       </div>
-
-
       {data && (
         <div className="flex flex-col gap-[50px] py-4 md:py-[4.5rem] lg:px-[7rem] md:px-12 px-4 max-w-[87.5rem] justify-center items-center">
           {/* blogs */}
@@ -207,7 +214,6 @@ function BlogContent() {
                   src="/Image.png"
                   alt=""
                   height={200}
-
                 />
               </div>
               <div className="px-3 pt-3 pb-2">
@@ -218,23 +224,27 @@ function BlogContent() {
                   {blogs.length > 0 && blogs[0].blogContent.slice(0, 100)}
                   {" ... "}
 
-                  {blogs.length > 0 &&
+                  {blogs.length > 0 && (
                     <a
                       className="underline text-text-dev-orange hover:opacity-70"
                       href={`/blog/` + blogs[0]._id}
                     >
                       Read more
-                    </a>}
+                    </a>
+                  )}
                 </p>
 
-                {blogs.length > 0 &&
+                {blogs.length > 0 && (
                   <div className="flex items-center w-full gap-4 py-3">
                     {/* <img src="/Avatar.png" alt="authorImg" />
                     <span className="text">
                       {blogs.length > 0 && blog.author}
                     </span> */}
-                    <span className="textLight">{<DateEdit date={blogs[0].createdAt} />}</span>
-                  </div>}
+                    <span className="textLight">
+                      {<DateEdit date={blogs[0].createdAt} />}
+                    </span>
+                  </div>
+                )}
                 <div className="text-[15px] text-center flex flex-row justify-center items-center h-8 sm:text-[18px] text-[#7A6C65] font-[inter] font-normal sm:p-[12px] border-[0.5px] max-w-[73px] rounded-[8px] ">
                   {blogs.length > 0 && blogs[0].blogType[0]}
                 </div>
@@ -242,7 +252,7 @@ function BlogContent() {
             </div>
           </div>
 
-          <BlogsToDisplay blogs={blogs} currentPage={currentPage} />
+          <BlogsToDisplay blogs={blogs}/>
         </div>
       )}
     </div>
