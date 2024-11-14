@@ -57,6 +57,8 @@ app.use("/api/events", event);
 app.use("/api/blog", blog);
 app.use("/api/admin", authorization);
 app.use("/api/permissions", registeredAdmin);
+app.use("/api/check-sudo", checkSudo);
+
 // app.use("/api/permissions", admin);
 // // gets the static files from the build folder
 // app.get('*', (req, res) => {
