@@ -55,3 +55,12 @@ git checkout -b setup
 9. Click on **Create pull request**.
 
 And that's it! You've now created a pull request and contributed to a React + Vite project. Happy coding! 🎉
+
+### Task manager
+
+[x] allow edits for events
+[x] add authorization for frontend admin page
+[] switch authorization to react context for admin panel
+[x] provide authorization to CRUD tasks
+[] manage admins CRUD and only let sudoAdmin roles manage admins
+[] host application.

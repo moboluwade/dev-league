@@ -5,7 +5,11 @@ import { editEvent as editEventApi } from "../../../services/apiEvent";
 export const useEditEvent = (reset) => {
   const queryClient = useQueryClient();
 
-  const { mutate: editEvent, isPending: isEditing } = useMutation({
+  const {
+    mutate: editEvent,
+    isPending: isEditing,
+    isSuccess: isSuccess,
+  } = useMutation({
     mutationFn: (newEventData, id) => editEventApi(newEventData, id),
     onSuccess: () => {
       toast.success("Event successfully edited");
@@ -15,5 +19,5 @@ export const useEditEvent = (reset) => {
     onError: (err) => toast.error(err.message),
   });
 
-  return { isEditing, editEvent };
+  return { isEditing, editEvent, isSuccess };
 };

@@ -1,35 +1,37 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { PlusCircle, Trash2 } from "lucide-react";
+import { PlusCircle } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import {
-  useAddAdmin,
-  useLoadAdmins,
-  useRemoveAdmin,
-} from "@/services/apiAdmin";
+import { useAddAdmin, useRemoveAdmin } from "@/services/apiAdmin";
 import { useToast } from "@/hooks/use-toast";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import AdminTable from "./AdminTable";
 
-const ManageAdmin = () => {
+export default function ManageAdmin() {
   const [newAdminEmail, setNewAdminEmail] = useState("");
-  const [adminUsers, setAdminUsers] = useState([
-    { email: "admin1@example.com", status: "verified" },
-    { email: "admin2@example.com", status: "pending" },
-  ]);
-  const [addedEmail, setAddedEmail] = useState("");
-  const [loadCount, setLoadCount] = useState(0);
+  const [debouncedEmail, setDebouncedEmail] = useState(newAdminEmail);
+  const [confirmSudoEmail, setConfirmSudoEmail] = useState("");
+  const [confirmDeleteEmail, setConfirmDeleteEmail] = useState("");
+  const [isSudoDialogOpen, setIsSudoDialogOpen] = useState(false);
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
 
   const { toast } = useToast();
+
   const {
     mutate: addAdmin,
     isPending: addIsPending,
@@ -37,51 +39,99 @@ const ManageAdmin = () => {
     isError: addIsError,
   } = useAddAdmin();
 
-  const { mutate: removeAdmin } = useRemoveAdmin();
-
-  const { mutate: loadAdmins } = useLoadAdmins();
-
-  // useEffect(() => {
-  //   if (loadCount < 3) {
-  //     const response = loadAdmins();
-  //     console.log("response:", response);
-
-  //     // Increment loadCount each time useEffect is triggered
-  //     setLoadCount(prevCount => prevCount + 1);
-  //   }
-  // }, [loadCount, loadAdmins]); // Effect depends on loadCount
-
-  const addNewAdmin = () => {
-    // demo
-    // if (newAdminEmail && !adminUsers.some(user => user.email === newAdminEmail)) {
-    //   setAdminUsers([...adminUsers, { email: newAdminEmail, status: 'pending' }])
-    //   setNewAdminEmail('')
-    // }
-
-    // real
-    addAdmin(newAdminEmail); // Trigger the mutation to add admin
-  };
-
-  const removeOldAdmin = (email) => {
-    // demo
-    // setAdminUsers(adminUsers.filter(user => user.email !== email))
-    // real
-    removeAdmin(email);
-  };
+  const {
+    mutate: removeAdmin,
+    isSuccess: removeIsSuccess,
+    isError: removeIsError,
+  } = useRemoveAdmin();
 
   useEffect(() => {
-    addIsSuccess &&
+    const handler = setTimeout(() => setDebouncedEmail(newAdminEmail), 300);
+    return () => clearTimeout(handler);
+  }, [newAdminEmail]);
+
+  const loadAdmins = async () => {
+    const response = await axios.get(
+      `${import.meta.env.VITE_BACKEND_URL}/api/permissions/`,
+      { withCredentials: true }
+    );
+    return response.data;
+  };
+
+  const handleAddAdmin = async () => {
+    addAdmin(debouncedEmail ?? newAdminEmail);
+  };
+
+  const handleSudoRoleChange = (email) => {
+    setConfirmSudoEmail(email);
+    setIsSudoDialogOpen(true);
+  };
+
+  const handleConfirmSudoRole = async () => {
+    try {
+      await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/permissions/give-sudo`,
+        { emails: [confirmSudoEmail] },
+        { withCredentials: true }
+      );
+      toast({ title: "Sudo Role Assigned Successfully" });
+      setIsSudoDialogOpen(false);
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Failed to assign sudo role",
+      });
+    }
+  };
+
+  const handleDeleteAdmin = (email) => {
+    setConfirmDeleteEmail(email);
+    setIsDeleteDialogOpen(true);
+  };
+
+  const handleConfirmDelete = () => {
+    console.log(confirmDeleteEmail)
+    removeAdmin(confirmDeleteEmail);
+    setIsDeleteDialogOpen(false);
+  };
+
+  const { data: adminData } = useQuery({
+    queryKey: ["load-admins"],
+    queryFn: loadAdmins,
+  });
+
+  useEffect(() => {
+    if (addIsSuccess) {
       toast({
         title: "Admin Added Successfully",
-        description: addedEmail,
+        description: debouncedEmail,
       });
-
-      addIsError &&
+    }
+    if (addIsError) {
       toast({
         variant: "destructive",
         title: "Failed to add Admin",
-      })
-  }, [addIsSuccess, addedEmail, toast, addIsError]);
+      });
+    }
+    if (removeIsSuccess) {
+      toast({
+        title: "Admin Removed Successfully",
+      });
+    }
+    if (removeIsError) {
+      toast({
+        variant: "destructive",
+        title: "Failed to remove Admin",
+      });
+    }
+  }, [
+    addIsSuccess,
+    addIsError,
+    removeIsSuccess,
+    removeIsError,
+    debouncedEmail,
+    toast,
+  ]);
 
   return (
     <div className="h-screen bg-[#fff6f3] text-gray-800 w-full">
@@ -108,7 +158,7 @@ const ManageAdmin = () => {
                 />
                 <Button
                   disabled={addIsPending}
-                  onClick={()=>{addNewAdmin(), setAddedEmail(newAdminEmail)}}
+                  onClick={handleAddAdmin}
                   className={`w-full ${
                     addIsPending && `opacity-30`
                   } text-white bg-orange-500 hover:bg-orange-600 sm:w-auto`}
@@ -131,7 +181,7 @@ const ManageAdmin = () => {
                 value="verified"
                 className="flex-1 sm:flex-none data-[state=active]:bg-orange-100"
               >
-                Verified
+                Onboarded
               </TabsTrigger>
               <TabsTrigger
                 value="pending"
@@ -142,68 +192,83 @@ const ManageAdmin = () => {
             </TabsList>
 
             <TabsContent value="all">
-              <AdminTable admins={adminUsers} onRemove={removeOldAdmin} />
+              <AdminTable
+                admins={adminData && adminData.admins}
+                onSudoChange={handleSudoRoleChange}
+                onDelete={handleDeleteAdmin}
+              />
             </TabsContent>
 
             <TabsContent value="verified">
               <AdminTable
-                admins={adminUsers.filter((user) => user.status === "verified")}
-                onRemove={removeOldAdmin}
+                admins={
+                  adminData &&
+                  adminData.admins.filter(
+                    (admin) => admin.onboarding === "completed"
+                  )
+                }
+                onSudoChange={handleSudoRoleChange}
+                onDelete={handleDeleteAdmin}
               />
             </TabsContent>
 
             <TabsContent value="pending">
               <AdminTable
-                admins={adminUsers.filter((user) => user.status === "pending")}
-                onRemove={removeOldAdmin}
+                admins={
+                  adminData &&
+                  adminData.admins.filter(
+                    (admin) => admin.onboarding === "pending"
+                  )
+                }
+                onSudoChange={handleSudoRoleChange}
+                onDelete={handleDeleteAdmin}
               />
             </TabsContent>
           </Tabs>
         </div>
       </ScrollArea>
+
+      <Dialog open={isSudoDialogOpen} onOpenChange={setIsSudoDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Confirm Sudo Role Assignment</DialogTitle>
+            <DialogDescription>
+              Are you sure you want to assign sudo role to {confirmSudoEmail}?
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button
+              variant="outline"
+              onClick={() => setIsSudoDialogOpen(false)}
+            >
+              Cancel
+            </Button>
+            <Button onClick={handleConfirmSudoRole}>Confirm</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Confirm Admin Deletion</DialogTitle>
+            <DialogDescription>
+              Are you sure you want to delete admin {confirmDeleteEmail}?
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button
+              variant="outline"
+              onClick={() => setIsDeleteDialogOpen(false)}
+            >
+              Cancel
+            </Button>
+            <Button variant="destructive" onClick={handleConfirmDelete}>
+              Delete
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
-};
-
-const AdminTable = ({ admins, onRemove }) => (
-  <Card className="w-full mb-12 overflow-hidden bg-white shadow-md">
-    <ScrollArea className="w-full overflow-auto">
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead className="text-gray-800">Email</TableHead>
-            <TableHead className="text-gray-800">Status</TableHead>
-            <TableHead className="text-gray-800">Action</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {admins.map((admin) => (
-            <TableRow key={admin.email}>
-              <TableCell className="font-medium text-gray-800">
-                {admin.email}
-              </TableCell>
-              <TableCell>
-                {admin.status === "verified" ? (
-                  <span className="text-green-600">Verified</span>
-                ) : (
-                  <span className="text-yellow-600">Pending</span>
-                )}
-              </TableCell>
-              <TableCell>
-                <Button
-                  variant="ghost"
-                  onClick={() => onRemove(admin.email)}
-                  className="h-auto p-1 text-red-500 hover:text-red-700"
-                >
-                  <Trash2 className="w-4 h-4" />
-                </Button>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </ScrollArea>
-  </Card>
-);
-
-export default ManageAdmin;
+}

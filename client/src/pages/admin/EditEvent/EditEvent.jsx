@@ -19,7 +19,7 @@ const EditEvent = () => {
   } = event;
 
   return (
-    <div className="flex flex-col justify-start w-full px-4 py-2 pb-10  items-left md:p-12">
+    <div className="flex flex-col justify-start w-full max-h-screen px-4 py-2 pb-10 overflow-y-auto items-left md:p-12">
       <h2 className="pb-8 text-4xl font-bold">Event Management</h2>
       <EventForm
         eventToEdit={{

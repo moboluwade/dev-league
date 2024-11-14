@@ -3,7 +3,8 @@ import { Navbar } from "@components/AdminNavbar";
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { Toaster } from "@/components/ui/toaster";
+// import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "react-hot-toast";
 
 // import AuthenticatedRoute from './AuthorizedRoute'
 // import Login from './login/login'
@@ -23,14 +24,17 @@ const Admin = () => {
       );
       return res;
     },
+
+
   });
 
   useEffect(() => {
-    // isError && navigate("/login");
+    isError && navigate("/login");
   }, [isError, navigate]);
 
   return (
     <div className="w-screen max-h-screen bg-text-dev-light-orange">
+      <Toaster />
       {isSuccess && (
         <div className="relative flex flex-col w-full h-screen overflow-hidden md:flex-row">
           <div className="relative w-64 h-full ">
@@ -38,7 +42,6 @@ const Admin = () => {
           </div>
           <div className="flex flex-grow">
             <Outlet />
-            <Toaster />
           </div>
         </div>
       )}

@@ -8,7 +8,7 @@ import Card from "../../../pages/admin/ManageEvent/EventCard.jsx";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
-import { CalendarIcon, SearchIcon, LayoutGridIcon } from 'lucide-react';
+import { SearchIcon, LayoutGridIcon } from 'lucide-react';
 
 const ManageEvent = () => {
   const [eventsData, setEventsData] = useState([]);

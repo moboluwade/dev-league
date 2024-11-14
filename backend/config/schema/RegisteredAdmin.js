@@ -13,10 +13,10 @@ const registeredAdminSchema = new Schema({
     enum: ["pending", "completed"], // restricts values to "pending" or "completed"
     default: "pending", // sets the default to "pending"
   },
-  registered: {
-    type: Boolean,
-    required: true,
-    default: false,
+  sudoRole: {
+    type: String,
+    enum: ["regular", "sudoAdmin"], // restricts values to "regular" or "sudo"
+    default: "regular",
   },
 });
 
