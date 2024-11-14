@@ -8,7 +8,7 @@ export const getEvent = async ({ id }) => {
 
   const response = await fetch(
     `${import.meta.env.VITE_BACKEND_URL}/api/events/${id}`,
-    requestOptions,
+    requestOptions
   );
 
   if (!response.ok) {
@@ -24,40 +24,37 @@ export const getEvent = async ({ id }) => {
   }
 };
 
-export const editEvent = async (newEvent, eventId) => {
-  // console.log(newEvent);
-  // console.log(eventId, "from edit event")
+export const editEvent = async (newEvent, id) => {
+  console.log(id, newEvent);
+  // DEBUG: FOR SOME REASON ID IS NOT PASSED INTO THE EDITEVENT  //FUTURE
+  // HACK RIGHT NOW IS TO REMOVE THE ID FROM THE NEW EVENT OBJECT
 
   const response = await axios.patch(
-    `${import.meta.env.VITE_BACKEND_URL}/api/events/update/${eventId}`,
+    `${import.meta.env.VITE_BACKEND_URL}/api/events/update/${newEvent.eventId}`,
     newEvent,
     {
       withCredentials: "include",
-    },
+    }
   );
 
-  const data = await response.json();
-  console.log(data);
+  console.log(response);
+  return await response;
 };
 
 export const deleteEvent = async (id) => {
-  console.log(id);
-
   try {
     const response = await axios.delete(
       `${import.meta.env.VITE_BACKEND_URL}/api/events/delete/${id}`,
       id,
       {
         withCredentials: "include",
-      },
+      }
     );
-
-    if (!response.ok) {
+    console.log(response);
+    if (response.status !== 200) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-
-    const data = await response.json();
-    return data;
+    return response;
   } catch (error) {
     console.error("Error:", error);
     throw error;

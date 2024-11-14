@@ -1,92 +1,103 @@
-import { CiSearch } from 'react-icons/ci'
-import { FaRegEdit } from 'react-icons/fa'
-import { RxDotFilled } from 'react-icons/rx'
-import { eventsCard } from '../../../utils/eventsCard'
+"use client";
 
-const AllPost = () => {
+import { useEffect, useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Search } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+
+// This would typically come from an API call
+// const subscribers = [
+//   "john.doe@example.com",
+//   "jane.smith@example.com",
+//   "alice.johnson@example.com",
+//   "bob.williams@example.com",
+//   "emma.brown@example.com",
+//   "michael.davis@example.com",
+//   "olivia.miller@example.com",
+//   "william.wilson@example.com",
+//   "sophia.moore@example.com",
+//   "james.taylor@example.com",
+// ];
+
+export default function AllPost() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [subscribers, setSubscribers] = useState([]);
+
+  const { data } = useQuery({
+    queryKey: ["fetchSubscriber"],
+    queryFn: async () => {
+      const res = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/api/emails`,
+        {
+          withCredentials: "include",
+        }
+      );
+      return res.data;
+    },
+  });
+
+  useEffect(() => {
+    data && setSubscribers(data.Emails);
+  }, [data]);
+
+  const filteredEmails = subscribers.filter((subscriber) => subscriber.email.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
-    <div className="flex flex-col items-center gap-2 md:gap-6 mx-auto my-12 font-Inter">
-      <div className="flex justify-center md:justify-between items-center gap-2 md:gap-20 w-full md:w-[52.95rem] mb-8">
-        <div className="flex justify-between bg-[#E2DEDC] w-[14rem] md:w-[32rem] lg:w-[42rem] rounded-md">
-          <div className="flex items-center gap-2 px-6 py-3">
-            <CiSearch className="text-sm md:text-xl" />
-            <input
-              type="text"
-              className="outline-none border-none bg-[#E2DEDC] focus:outline-none focus:border-none block w-full md:w-40"
-              placeholder="Search or type here"
-            />
+    <div className="h-screen bg-[#fff6f3] text-gray-800 w-full">
+      <div className="container p-4 mx-auto sm:p-6">
+        <div className="flex items-center justify-between mb-6">
+          <h1 className="text-2xl font-bold sm:text-3xl">
+            Newsletter Subscribers
+          </h1>
+          <div className="px-4 py-2 bg-white rounded-lg shadow-sm">
+            <p className="text-sm font-medium text-gray-600">
+              Total subscribers:{" "}
+              <span className="text-[#FF4405]">{subscribers.length}</span>
+            </p>
           </div>
-          <button className="px-4 py-1 md:py-3 rounded-md bg-primary500">
-            <span className="text-sm md:text-lg font-semibold text-white">
-              Search
-            </span>
-          </button>
         </div>
-        <div className="flex items-center gap-4">
-          <FaRegEdit className="text-[#9CA1B6] text-lg md:text-3xl" />
-          <img src="/admin.png" alt="" className="max-w-sm" />
-        </div>
-      </div>
-      <div className="flex flex-col gap-6 px-4 justify-center items-center w-[22.5rem] lg:w-full">
-        <div className="flex gap-6 flex-col w-full md:w-[52.95rem]">
-          {eventsCard.map((card) => {
-            return (
-              <div
-                key={card.id}
-                className="flex gap-2 px-2 py-4 border-2 rounded-md md:px-4 border-neutral400 md:gap-4 w-full"
-              >
-                <div className="flex flex-col items-center justify-center px-8 py-6 text-white bg-primary500">
-                  <span className="text-2xl font-bold md:text-5xl">
-                    {card.day}
-                  </span>
-                  <span className="text-lg uppercase md:text-2xl">
-                    {card.month}
-                  </span>
-                </div>
-                <div className="flex flex-col w-80 md:w-full gap-2 py-4">
-                  <div className="flex md:items-center justify-between w-5/6 md:w-full">
-                    <div className="flex flex-col md:flex-row flex-wrap md:items-center gap-2 mb-1 md:justify-between md:mb-3">
-                      <h2 className="font-bold text-neutral900 text-sm md:text-xl">
-                        Why Techies Need Law
-                      </h2>
-                      <div className="flex items-center justify-center py-1 pl-2 pr-4 text-white rounded-full bg-neutral800 w-20">
-                        <RxDotFilled />
-                        <span className="text-sm">Virtual</span>
-                      </div>
+
+        <Card className="overflow-hidden bg-white shadow-md">
+          <CardHeader className="border-b bg-white/50">
+            <div className="relative">
+              <Search className="absolute left-2 top-2.5 h-4 w-4 text-gray-400" />
+              <Input
+                type="search"
+                placeholder="Search subscribers..."
+                className="pl-8 bg-white border-gray-200"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+          </CardHeader>
+          <CardContent className="p-0">
+            <ScrollArea className="h-[calc(100vh-280px)] w-full">
+              <div className="divide-y">
+                {filteredEmails && filteredEmails.map((subscriber, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center px-4 py-3 transition-colors hover:bg-orange-50"
+                  >
+                    <div className="flex items-center justify-center w-8 h-8 mr-3 text-white bg-[#FF4405] rounded-full">
+                      {subscriber.email[0].toUpperCase()}
                     </div>
-                    <div className="flex items-center gap-2 self-start">
-                      <span>Qawi</span>
-                      <img src="/adminImg.png" alt="" />
-                    </div>
+                    <span className="text-sm font-medium">{subscriber.email}</span>
                   </div>
-                  <div className="flex flex-col md:flex-row items-center justify-between">
-                    <div className="flex flex-col gap-1">
-                      <span className="text-sm md:text-xl text-neutral600 w-3/4 md:w-full">
-                        How do you create compelling presentations......
-                      </span>
-                      <div className="flex items-center gap-2 md:gap-4">
-                        <p className="text-neutral600 text-sm md:text-md">
-                          {card.type}
-                        </p>
-                        <p className="text-primary500 text-sm md:text-md">
-                          {card.date}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-center self-end justify-start md:justify-end  gap-3 mt-6 cursor-pointer w-full">
-                      <img src="/edit2.png" alt="" />
-                      <img src="/search.png" alt="" />
-                      <img src="/delete2.png" alt="" />
-                    </div>
+                ))}
+                {filteredEmails.length === 0 && (
+                  <div className="p-4 text-center text-gray-500">
+                    No matching subscribers found
                   </div>
-                </div>
+                )}
               </div>
-            )
-          })}
-        </div>
+            </ScrollArea>
+          </CardContent>
+        </Card>
       </div>
     </div>
-  )
+  );
 }
-
-export default AllPost

@@ -1,4 +1,3 @@
-const { string, required } = require('joi');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -6,7 +5,12 @@ const PermissionsSchema = new Schema({
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
+  },
+  role:{
+    type: String,
+    required: false,
+    unique: false,
   },
   session: {
     type: String,
@@ -15,4 +19,4 @@ const PermissionsSchema = new Schema({
   }
 }, { timestamps: true });
 
-module.exports = PermissionsSchema
+module.exports = PermissionsSchema;

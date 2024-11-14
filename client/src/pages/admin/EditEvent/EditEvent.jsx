@@ -1,4 +1,3 @@
-
 import { useParams } from "react-router-dom";
 import EventForm from "./EventForm";
 import { useEvent } from "./useEvent";
@@ -20,7 +19,7 @@ const EditEvent = () => {
   } = event;
 
   return (
-    <div className=" py-2  flex flex-col justify-start px-4 items-left md:p-12 w-full pb-10">
+    <div className="flex flex-col justify-start w-full max-h-screen px-4 py-2 pb-10 overflow-y-auto items-left md:p-12">
       <h2 className="pb-8 text-4xl font-bold">Event Management</h2>
       <EventForm
         eventToEdit={{
