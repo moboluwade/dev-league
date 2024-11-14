@@ -9,7 +9,8 @@ import Modal from "../../../components/ui/Modal";
 import ConfirmDelete from "../../../components/ui/ConfirmDelete";
 
 const Card = ({ id, isEventOpen, title, description, type, startDate }) => {
-  const { isDeleting, deleteEvent } = useDeleteEvent();
+  const { isDeleting, deleteEvent, isDeleted } = useDeleteEvent();
+
   const buttonStyles = {
     backgroundColor: isEventOpen ? "black" : "#9F918B",
     cursor: isEventOpen ? "pointer" : "not-allowed",
@@ -81,7 +82,7 @@ const Card = ({ id, isEventOpen, title, description, type, startDate }) => {
               )}
             </div>
             <Modal>
-              <div className="text-xl gap-2 text-neutral600 flex">
+              <div className="flex gap-2 text-xl text-neutral600">
                 <Modal.Open opens={id}>
                   <Link>
                     <RiDeleteBin6Line size={20} />
@@ -91,7 +92,8 @@ const Card = ({ id, isEventOpen, title, description, type, startDate }) => {
                   <ConfirmDelete
                     disabled={isDeleting}
                     resourceName="event"
-                    onConfirm={(id) => deleteEvent(id)}
+                    onConfirm={() => deleteEvent(id)}
+                    isDeleted={isDeleted}
                   />
                 </Modal.Window>
                 <IoArrowRedo />

@@ -11,7 +11,7 @@ const event = require("./routes/event");
 const email = require("./routes/email");
 const blog = require("./routes/blog");
 const authorization = require("./routes/auth");
-const admin = require("./routes/admin");
+const checkSudo = require("./routes/admin");
 const registeredAdmin = require("./routes/registerAdmin");
 const MongoStore = require("connect-mongo");
 const path = require("path");
@@ -57,6 +57,8 @@ app.use("/api/events", event);
 app.use("/api/blog", blog);
 app.use("/api/admin", authorization);
 app.use("/api/permissions", registeredAdmin);
+app.use("/api/check-sudo", checkSudo);
+
 // app.use("/api/permissions", admin);
 // // gets the static files from the build folder
 // app.get('*', (req, res) => {

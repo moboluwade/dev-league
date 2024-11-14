@@ -4,13 +4,12 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const {
   Admin,
-  Permissions,
   RegisteredAdmin,
 } = require("../model/CreateModels");
 const bcrypt = require("bcryptjs");
-const authMiddleware = require("../middlewares/auth");
+const checkAuth = require("../middlewares/auth");
 
-router.get("/validate", authMiddleware, async (req, res) => {
+router.get("/validate", checkAuth, async (req, res) => {
   res.status(200).json({ message: "user is Authenticated" });
 });
 
@@ -48,7 +47,7 @@ router.post("/login", async (req, res) => {
 });
 
 // LOGOUT AND INVALIDATE JWT TOKEN
-router.post("/logout", authMiddleware, async (req, res) => {
+router.post("/logout", checkAuth, async (req, res) => {
   res.clearCookie("token", {
     path: "/",
     secure: true,

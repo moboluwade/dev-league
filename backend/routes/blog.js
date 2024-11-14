@@ -25,7 +25,7 @@ router.get("/last-five", async (req, res) => {
 });
 
 // Create a new Blog
-router.post("/", imageUploadMIddleware, async (req, res) => {
+router.post("/", checkAuth, imageUploadMIddleware, async (req, res) => {
   try {
     const { title, blogContent, blogType } = req.body;
     const blogImage = req.blogimageURL; // Get the image URL from the middleware
@@ -101,7 +101,7 @@ router.get("/blogtype/:blogtype", async (req, res) => {
 });
 
 // UPDATE SPECIFIC BLOG BY ID
-router.patch("/update/:id", async (req, res) => {
+router.patch("/update/:id", checkAuth, async (req, res) => {
   try {
     const id = req.params.id;
     const updates = req.body;
@@ -111,19 +111,17 @@ router.patch("/update/:id", async (req, res) => {
       updates,
       options
     );
-    res
-      .status(200)
-      .json({
-        message: `Blog with id: ${id} successfully updated`,
-        blog: updatedBlog,
-      });
+    res.status(200).json({
+      message: `Blog with id: ${id} successfully updated`,
+      blog: updatedBlog,
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
 
 // DELETE SPECIFIC SELECTED BLOG
-router.delete("/delete/:id", async (req, res) => {
+router.delete("/delete/:id", checkAuth, async (req, res) => {
   try {
     const id = req.params.id;
     const blog = await Blog.findOneAndDelete(id);

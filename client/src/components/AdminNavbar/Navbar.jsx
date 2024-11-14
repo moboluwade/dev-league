@@ -22,6 +22,8 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
+  // USEQUERIES
+  // TODO: Abstract usequeries to dedicated components
   const logoutQuery = useQuery({
     queryKey: ["logout"],
     queryFn: async () => {
@@ -37,12 +39,26 @@ export default function Navbar() {
     enabled: false,
   });
 
+  const { isSuccess: sudoIsSuccess } = useQuery({
+    queryKey: ["check-sudo"],
+    queryFn: async () => {
+      const response = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/api/check-sudo`,
+        {
+          withCredentials: "include",
+        }
+      );
+      return response;
+    },
+  });
+
   useEffect(() => {
     if (logoutQuery.isSuccess) {
       navigate("/");
     }
   }, [logoutQuery.isSuccess, navigate]);
 
+  // callback functions
   const handleLogout = () => {
     logoutQuery.refetch();
   };
@@ -89,7 +105,9 @@ export default function Navbar() {
           <Menu className="text-white" size={30} />
           <span className="sr-only">Toggle menu</span>
         </Button>
-        <img src="/Union.svg" alt="logo" className="w-12 h-12 ml-8" />
+        <a href="/">
+          <img src="/Union.svg" alt="logo" className="w-12 h-12 ml-8" />
+        </a>
       </div>
       <div className="z-10 w-full space-y-4">
         <div className="w-full space-y-2">
@@ -126,9 +144,11 @@ export default function Navbar() {
           <a href="#" className="hover:underline">
             Profile
           </a>
-          <a href="/admin/manage/permissions" className="hover:underline">
-            Manage admins
-          </a>
+          {sudoIsSuccess && (
+            <a href="/admin/manage/permissions" className="hover:underline">
+              Manage admins
+            </a>
+          )}
         </div>
         <Button variant="outline" className="w-full" onClick={handleLogout}>
           <LogOut className="w-4 h-4 mr-2" />
